@@ -15,7 +15,7 @@ namespace Cards
     }
 }
 
-public class Card : MonoBehaviour
+public class TurquoiseCard : MonoBehaviour
 {
     [SerializeField]
     protected uint m_manaCost = 0;

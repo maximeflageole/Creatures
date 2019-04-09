@@ -174,7 +174,6 @@ GameObject:
   - component: {fileID: 8956663106919228935}
   - component: {fileID: 3920724945679272520}
   - component: {fileID: 5752448855472045600}
-  - component: {fileID: 1821851851056031154}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -290,20 +289,6 @@ ScaleConstraint:
   m_IsContraintActive: 1
   m_IsLocked: 1
   m_Sources: []
---- !u!114 &1821851851056031154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5752448855472045601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840a0ef3ecd490342a30f8b29d47ef11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_manaCost: 0
-  m_target: 4
 --- !u!1 &8607513568962813174
 GameObject:
   m_ObjectHideFlags: 0
