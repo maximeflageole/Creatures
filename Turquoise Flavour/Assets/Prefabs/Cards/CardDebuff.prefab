@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 61592922137784166}
   - component: {fileID: 96105402652251814}
   - component: {fileID: 95988350067688582}
+  - component: {fileID: 7549069885327740374}
+  - component: {fileID: 6545776508746678694}
   m_Layer: 0
-  m_Name: Card
+  m_Name: CardDebuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,9 +30,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750386328052332}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -0.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.043619387, w: 0.99904823}
+  m_LocalPosition: {x: 1.3944919, y: -4.5608845, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b3f338481e71b244fa2c3686195c2eb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -278,3 +280,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7549069885327740374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750386328052332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efb69af81f2ba5459b8bb910b2edcc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_abilityType: 0
+--- !u!114 &6545776508746678694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750386328052332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840a0ef3ecd490342a30f8b29d47ef11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manaCost: 0
+  m_target: 4
+  instance: {fileID: 1750386328052332}
+  scaleSpeed: 0.6
+  targetAngle: -5
+  targetPosition: {x: 1.3944919, y: -4.5608845, z: 0}
+  sortOrder: 0
+  offsetAngle: 0
+  targetScale: 0.75
+  moveSpeed: 6
+  lastOnTime: 0
+  curAngle: -5
+  nonInteractBegin: 0.62974787
+  totalDistance: 0
+  originHighY: 0
+  isPlaying: 0
+  isDropping: 0
+  dropDisplayTime: 0
+  targetPlayer: {fileID: 0}

@@ -38,7 +38,7 @@ public class CardEffects : MonoBehaviour {
     [Tooltip("Maximum scale of the card")]
     public float cardBigScale = 0.9f;
     [Tooltip("Normal scale of the card")]
-    public float cardNormalScale = 0.8f;
+    public float cardNormalScale = 3.0f;
     [Tooltip("The normal scale change speed of the card (Such as rising up)")]
     public float scaleSpeed = 1.0f;
     [Tooltip("The slow scale change speed of the card (Such as falling down)")]
@@ -90,7 +90,7 @@ public class CardEffects : MonoBehaviour {
     //Prefabs
     public GameObject arrowHeadPrefab;
     public GameObject arrowBodyPrefab;
-    public GameObject cardPrefab;
+    public List<Card> deckCards;
     public GameObject attackIconPrefab;
     public GameObject defenseIconPrefab;
 
@@ -191,9 +191,9 @@ public class CardEffects : MonoBehaviour {
 
     void InitDrawPileCards()
     {
-        for (int i = 0; i < cardTotalNum; ++i)
+        foreach (var card in deckCards)
         {
-            AddDrawPileCard();
+            AddDrawPileCard(card);
         }
     }
 
@@ -203,11 +203,10 @@ public class CardEffects : MonoBehaviour {
         discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
     }
 
-    void AddDrawPileCard(Dictionary<string, int> cardInfo = null)
+    void AddDrawPileCard(Card cardPrefab)
     {
-        Card card = new Card();
-        card.info = cardInfo;
-        card.instance = (GameObject)Instantiate(cardPrefab);
+        Card card = Instantiate(cardPrefab);
+        card.instance = card.gameObject;
         card.instance.SetActive(false);
         drawPileCards.Enqueue(card);
         drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
@@ -217,6 +216,7 @@ public class CardEffects : MonoBehaviour {
     {
         var card = drawPileCards.Dequeue();
         card.instance.SetActive(true);
+        card.targetScale = 3.0f;
         drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
         return card;
     }
@@ -228,7 +228,7 @@ public class CardEffects : MonoBehaviour {
         {
             // Prepare card state to shuffle
             var curve = shuffle_card_curve[i];
-            var card = (GameObject)Instantiate(cardPrefab);
+            var card = (GameObject)Instantiate(deckCards[0]).gameObject;
             card.transform.localScale = new Vector3(miniCardScale, miniCardScale, 0);
             card.transform.position = dropCardPile.position;                           // Start from discard pile 
             card.transform.Rotate(new Vector3(0, 0, Random.Range(30.0f, 90.0f)));      // Random directions
@@ -252,7 +252,7 @@ public class CardEffects : MonoBehaviour {
         while (discardPileCards.Count > 0)
         {
             var card = discardPileCards.Dequeue();
-            AddDrawPileCard(card.info);
+            AddDrawPileCard(card);
         }
         drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
         discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
@@ -992,27 +992,4 @@ public class CardEffects : MonoBehaviour {
             discardBtn.enabled = true;
         }
     }
-}
-
-public class Card
-{
-    public GameObject instance;        // The gameobject of the card
-    // States for card's transform and interaction
-    public float scaleSpeed = 1.0f;
-    public float targetAngle = 0.0f;
-    public Vector3 targetPosition = Vector3.zero;
-    public int sortOrder = 0;
-    public float offsetAngle = 0.0f;
-    public float targetScale = 0.7f;
-    public float moveSpeed = 1.0f;
-    public float lastOnTime = 0.0f;
-    public float curAngle = 0.0f;
-    public float nonInteractBegin = 0.0f;
-    public float totalDistance = 0.0f;
-    public float originHighY = 0.0f;
-    public bool isPlaying = false;
-    public bool isDropping = false;
-    public float dropDisplayTime;
-    public Dictionary<string, int> info;  // Record card's info here
-    public GameObject targetPlayer;       // Record character the card skilled on
 }
