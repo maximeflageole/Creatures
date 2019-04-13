@@ -1631,8 +1631,8 @@ MonoBehaviour:
   slowMoveSpeed: 6
   rotateSpeed: 80
   centerRadius: 16
-  cardBigScale: 3
-  cardNormalScale: 1.8
+  cardBigScale: 1.5
+  cardNormalScale: 1
   scaleSpeed: 10000
   slowScaleSpeed: 7
   mouseOnInterval: 0.5
@@ -1668,9 +1668,9 @@ MonoBehaviour:
   arrowBodyPrefab: {fileID: 1443724389814156, guid: 1793153e035229140bdd63a88a28efb4,
     type: 3}
   cardPrefabs:
-  - {fileID: 1750386328052332, guid: a39f0319d2f083f4bbc561fb95b3df2b, type: 3}
-  - {fileID: 1750386328052332, guid: a39f0319d2f083f4bbc561fb95b3df2b, type: 3}
-  - {fileID: 1750386328052332, guid: a39f0319d2f083f4bbc561fb95b3df2b, type: 3}
+  - {fileID: 9048216528612182252, guid: 75f50eacc4b9a6d4eba37b904fae0a8f, type: 3}
+  - {fileID: 9048216528612182252, guid: 75f50eacc4b9a6d4eba37b904fae0a8f, type: 3}
+  - {fileID: 9048216528612182252, guid: dece4ce34956b884c83e6e99c42ff2ae, type: 3}
   attackIconPrefab: {fileID: 1557688251390522, guid: 3c2a809ecfac5c7458496d19dd437fb0,
     type: 3}
   defenseIconPrefab: {fileID: 1263153628586066, guid: 84b963a79c0b9b9498ac9f8300c09003,

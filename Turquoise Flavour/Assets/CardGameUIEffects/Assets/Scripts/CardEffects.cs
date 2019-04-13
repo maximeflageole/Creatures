@@ -236,7 +236,7 @@ public class CardEffects : MonoBehaviour {
             card.transform.position = dropCardPile.position;                           // Start from discard pile 
             card.transform.Rotate(new Vector3(0, 0, Random.Range(30.0f, 90.0f)));      // Random directions
             card.GetComponent<TrailRenderer>().enabled = true;                         // Enable the trail renderer
-            card.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            //card.GetComponent<SpriteRenderer>().sortingOrder = 0;
             shuffleCardsEffects.Add(card);
             // The first half of the curve list's motion paths are shorter than the second half ones
             // So the first half of the cards' delay time should be longer than the second half ones
@@ -648,11 +648,11 @@ public class CardEffects : MonoBehaviour {
         card.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0);      // The start size of the card will be sent to hand
         card.gameObject.transform.parent = handCardObj.transform;
         card.gameObject.name = "Card:" + (handCards.Count).ToString();
-        card.gameObject.GetComponent<SpriteRenderer>().sortingOrder = handCards.Count; 
+        //card.gameObject.GetComponent<SpriteRenderer>().sortingOrder = handCards.Count; 
         handCards.Add(card);
         UpdateCardAngle();
         CalCardsTransform(true);
-        cardHalfSize = card.gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size.y * card.gameObject.transform.localScale.y / 2.0f;
+        cardHalfSize = card.gameObject.transform.localScale.y / 2.0f;
         lastAddHandCardTime = Time.time;
     }
 
@@ -864,8 +864,8 @@ public class CardEffects : MonoBehaviour {
     {
         Card card = handCards[idx];
         GameObject cardgo = card.gameObject;
-        card.sortOrder = cardgo.GetComponent<SpriteRenderer>().sortingOrder;
-        cardgo.GetComponent<SpriteRenderer>().sortingOrder = 100;   // Move to the topest layer when a card is checking by the player
+        //card.sortOrder = cardgo.GetComponent<SpriteRenderer>().sortingOrder;
+        //cardgo.GetComponent<SpriteRenderer>().sortingOrder = 100;   // Move to the topest layer when a card is checking by the player
         card.targetScale = cardBigScale;
         card.moveSpeed = moveSpeed;
         card.scaleSpeed = scaleSpeed;
@@ -877,7 +877,7 @@ public class CardEffects : MonoBehaviour {
         if (idx == -1) return;
         Card card = handCards[idx];
         GameObject cardgo = card.gameObject;
-        cardgo.GetComponent<SpriteRenderer>().sortingOrder = card.sortOrder;
+        //cardgo.GetComponent<SpriteRenderer>().sortingOrder = card.sortOrder;
         card.targetScale = cardNormalScale;
         card.moveSpeed = slowMoveSpeed;
         card.scaleSpeed = slowScaleSpeed;
