@@ -38,7 +38,7 @@ public class CardEffects : MonoBehaviour {
     [Tooltip("Maximum scale of the card")]
     public float cardBigScale = 0.9f;
     [Tooltip("Normal scale of the card")]
-    public float cardNormalScale = 3.0f;
+    public float cardNormalScale = 0.8f;
     [Tooltip("The normal scale change speed of the card (Such as rising up)")]
     public float scaleSpeed = 1.0f;
     [Tooltip("The slow scale change speed of the card (Such as falling down)")]
@@ -61,8 +61,6 @@ public class CardEffects : MonoBehaviour {
     public float cardPlaySpeed = 1.0f;
     [Tooltip("Number of arrow parts, the head is the last one")]
     public int arrowsNum = 11;
-    [Tooltip("Total Number of cards")]
-    public int cardTotalNum = 15;
     [Tooltip("Number of cards sent to hand automatically")]
     public int handNumAuto = 5;
     [Tooltip("The minimum card scale use by drop and shuffle effects")]
@@ -90,7 +88,7 @@ public class CardEffects : MonoBehaviour {
     //Prefabs
     public GameObject arrowHeadPrefab;
     public GameObject arrowBodyPrefab;
-    public List<Card> deckCards;
+    public List<GameObject> cardPrefabs;
     public GameObject attackIconPrefab;
     public GameObject defenseIconPrefab;
 
@@ -107,15 +105,19 @@ public class CardEffects : MonoBehaviour {
     private int focusOnCard = -1;
     private float cardHalfSize = 0.0f;
     private bool shufflingCard = false;
+    [SerializeField]
     private List<Card> playingCard = new List<Card>();
-    private List<GameObject> shuffleCardsEffects = new List<GameObject>();
+    private List<Card> shuffleCardsEffects = new List<Card>();
     private List<float> shuffleCardDelay = new List<float>();
     private float shuffleBegin;
     private GameObject focusOnPlayer = null;
     private float lastAddHandCardTime;
+    [SerializeField]
     private List<Card> handCards = new List<Card>();
     private List<GameObject> arrows = new List<GameObject>();
+    [SerializeField]
     private Queue<Card> drawPileCards = new Queue<Card>();
+    [SerializeField]
     private Queue<Card> discardPileCards = new Queue<Card>();
 
     private const string DRAW_PILE_NUM_TEXT = "Draw Pile: ";
@@ -191,8 +193,9 @@ public class CardEffects : MonoBehaviour {
 
     void InitDrawPileCards()
     {
-        foreach (var card in deckCards)
+        for (int i = 0; i < cardPrefabs.Count; ++i)
         {
+            Card card = Instantiate(cardPrefabs[i]).GetComponent<Card>();
             AddDrawPileCard(card);
         }
     }
@@ -203,11 +206,10 @@ public class CardEffects : MonoBehaviour {
         discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
     }
 
-    void AddDrawPileCard(Card cardPrefab)
+    void AddDrawPileCard(Card card)
     {
-        Card card = Instantiate(cardPrefab);
-        card.instance = card.gameObject;
-        card.instance.SetActive(false);
+        //card.info = cardInfo;
+        card.gameObject.SetActive(false);
         drawPileCards.Enqueue(card);
         drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
     }
@@ -215,8 +217,8 @@ public class CardEffects : MonoBehaviour {
     Card GetCardFromDrawPile()
     {
         var card = drawPileCards.Dequeue();
-        card.instance.SetActive(true);
-        card.targetScale = 3.0f;
+        card.Reset();
+        card.gameObject.SetActive(true);
         drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
         return card;
     }
@@ -224,11 +226,12 @@ public class CardEffects : MonoBehaviour {
     // Prepare states to play shuffle effect
     void ShuffleCardAnimation()
     {
-        for(int i = 0; i < shuffle_card_curve.Count; ++i)
+        for(int i = 0; i < cardPrefabs.Count; ++i)
         {
             // Prepare card state to shuffle
             var curve = shuffle_card_curve[i];
-            var card = (GameObject)Instantiate(deckCards[0]).gameObject;
+            //TODO MAX WTF IS THIS
+            var card = Instantiate<GameObject>(cardPrefabs[0]).GetComponent<Card>();
             card.transform.localScale = new Vector3(miniCardScale, miniCardScale, 0);
             card.transform.position = dropCardPile.position;                           // Start from discard pile 
             card.transform.Rotate(new Vector3(0, 0, Random.Range(30.0f, 90.0f)));      // Random directions
@@ -261,7 +264,7 @@ public class CardEffects : MonoBehaviour {
     IEnumerator SendHandCards()
     {
         ShufflePileCard();
-        for (int i = 0; i < handNumAuto; ++i)
+        for (int i = 0; i < cardPrefabs.Count; ++i)
         {
             yield return new WaitForSeconds(0.2f);
             AddHandCard();
@@ -335,22 +338,22 @@ public class CardEffects : MonoBehaviour {
             if (playingCard[i] == null || playingCard[i].isPlaying == true || playingCard[i].isDropping == true) continue;
             var card = playingCard[i];
             var dstPos = new Vector3(0, cardPlayRiseDstY, 0);  // The playing card will rising up
-            if ((card.instance.transform.position - dstPos).magnitude <= Time.fixedDeltaTime * cardPlaySpeed)
+            if ((card.gameObject.transform.position - dstPos).magnitude <= Time.fixedDeltaTime * cardPlaySpeed)
             {
                 if (Time.time - card.dropDisplayTime < 0.3f)
                 {
                     return;
                 }
                 // Prepare card state to drop
-                card.instance.transform.position = dstPos;
+                card.gameObject.transform.position = dstPos;
                 card.isPlaying = true;
                 card.totalDistance = dropCardPile.position.x - dstPos.x;
-                card.instance.GetComponent<TrailRenderer>().enabled = true;
-                card.instance.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
-                card.instance.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                card.instance.transform.Rotate(new Vector3(0.0f, 0.0f, -120.0f));
-                card.totalDistance = Mathf.Abs(card.instance.transform.position.x - dropCardPile.position.x);
-                card.originHighY = card.instance.transform.position.y;
+                card.gameObject.GetComponent<TrailRenderer>().enabled = true;
+                card.gameObject.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
+                card.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                card.gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, -120.0f));
+                card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
+                card.originHighY = card.gameObject.transform.position.y;
                 // Display skill effect
                 if (card.targetPlayer != null)
                 {
@@ -360,7 +363,7 @@ public class CardEffects : MonoBehaviour {
                 }
                 return;
             }
-            card.instance.transform.position = Vector3.MoveTowards(card.instance.transform.position, dstPos, Time.fixedDeltaTime * cardPlaySpeed);
+            card.gameObject.transform.position = Vector3.MoveTowards(card.gameObject.transform.position, dstPos, Time.fixedDeltaTime * cardPlaySpeed);
             card.dropDisplayTime = Time.time;
         }
     }
@@ -382,13 +385,13 @@ public class CardEffects : MonoBehaviour {
             var cardShuffleEps = 0.5f;
             if (Mathf.Abs(getCardPile.position.x - card.transform.position.x) <= cardShuffleEps)
             {
-                card.SetActive(false);
+                card.gameObject.SetActive(false);
             }
         }
         int cnt = 0;
         for (int i = 0; i < shuffleCardsEffects.Count; ++i)
         {
-            if (shuffleCardsEffects[i].activeSelf == false)
+            if (shuffleCardsEffects[i].gameObject.activeSelf == false)
             {
                 cnt += 1;
             }
@@ -403,6 +406,13 @@ public class CardEffects : MonoBehaviour {
             shufflingCard = false;
             StartCoroutine(SendHandCards());      // Send card to hand automatically after shuffling animation
         }
+        for (int i = 0; i < shuffleCardsEffects.Count; ++i)
+        {
+            Destroy(shuffleCardsEffects[i]);  // Destroy show cards after shuffling animation end
+        }
+        shuffleCardsEffects.Clear();
+        shufflingCard = false;
+        StartCoroutine(SendHandCards());
     }
 
     // In card playing effect's second stage, the card dropping to the discard pile
@@ -419,23 +429,22 @@ public class CardEffects : MonoBehaviour {
             if (card.isDropping == true)
             {
                 // Calculate the card motion path by clear card curve 
-                var x_distance = dropCardPile.position.x - (card.instance.transform.position.x + delta_x);
+                var x_distance = dropCardPile.position.x - (card.gameObject.transform.position.x + delta_x);
                 var factor = (card.totalDistance - x_distance) / card.totalDistance;
-                card.instance.transform.position = new Vector3(card.instance.transform.position.x + delta_x, card.originHighY + (clear_card_curve.Evaluate(factor) + 0.5f) * Mathf.Abs(card.originHighY - dropCardPile.position.y) / 0.5f, 0);
+                card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x + delta_x, card.originHighY + (clear_card_curve.Evaluate(factor) + 0.5f) * Mathf.Abs(card.originHighY - dropCardPile.position.y) / 0.5f, 0);
             }
             else
             {
                 // Calculate the card motion path by drop card curve
-                var x_distance = dropCardPile.position.x - (card.instance.transform.position.x + delta_x);
+                var x_distance = dropCardPile.position.x - (card.gameObject.transform.position.x + delta_x);
                 var factor = (card.totalDistance - x_distance) / card.totalDistance;
-                card.instance.transform.position = new Vector3(card.instance.transform.position.x + delta_x, card.originHighY + (drop_card_curve.Evaluate(factor) - 1.0f) * Mathf.Abs(card.originHighY - dropCardPile.position.y), 0);
+                card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x + delta_x, card.originHighY + (drop_card_curve.Evaluate(factor) - 1.0f) * Mathf.Abs(card.originHighY - dropCardPile.position.y), 0);
             }
             var cardDropEps = 0.5f;
-            if (Mathf.Abs(dropCardPile.position.x - card.instance.transform.position.x) <= cardDropEps)
+            if (Mathf.Abs(dropCardPile.position.x - card.gameObject.transform.position.x) <= cardDropEps)
             {
                 // Card reached the discard pile will be destroyed
-                card.instance.SetActive(false);
-                Destroy(card.instance);
+                card.gameObject.SetActive(false);
                 AddDiscardPileCard(card);
                 playingCard[i] = null;
                 var all_destroyed = true;
@@ -446,7 +455,7 @@ public class CardEffects : MonoBehaviour {
                 if (all_destroyed)
                 {
                     // Play shuffle animation when the number of cards in the discard pile equals to the total card number
-                    if (discardPileCards.Count == cardTotalNum)
+                    if (discardPileCards.Count == cardPrefabs.Count)
                     {
                         ShuffleCardAnimation();
                     }
@@ -463,7 +472,7 @@ public class CardEffects : MonoBehaviour {
         for (int i = 0; i < handCards.Count; ++i)
         {
             Card card = handCards[i];
-            Transform transform = card.instance.transform;
+            Transform transform = card.gameObject.transform;
             if (Mathf.Abs(card.curAngle - card.targetAngle) <= Time.fixedDeltaTime * rotateSpeed)
             {
                 card.curAngle = card.targetAngle;
@@ -488,7 +497,7 @@ public class CardEffects : MonoBehaviour {
         for (int i = 0; i < handCards.Count; i++)
         {
             Card card = handCards[i];
-            Transform transform = card.instance.transform;
+            Transform transform = card.gameObject.transform;
             transform.position = new Vector3(transform.position.x, transform.position.y, card.targetPosition.z);
             if ((transform.position - card.targetPosition).magnitude <= Time.fixedDeltaTime * card.moveSpeed)
             {
@@ -508,7 +517,7 @@ public class CardEffects : MonoBehaviour {
         for (int i = 0; i < handCards.Count; i++)
         {
             Card card = handCards[i];
-            Transform transform = card.instance.transform;
+            Transform transform = card.gameObject.transform;
             if (transform.localScale.x >= card.targetScale && transform.localScale.x - card.targetScale <= Time.fixedDeltaTime * card.scaleSpeed)
             {
                 transform.localScale = new Vector3(card.targetScale, card.targetScale, 0.0f);
@@ -589,8 +598,8 @@ public class CardEffects : MonoBehaviour {
 
             var card = handCards[mouseClickCard];
             card.nonInteractBegin = Time.time;
-            card.instance.transform.position = new Vector3(card.instance.transform.position.x, card.instance.transform.position.y, 0);
-            card.moveSpeed = (card.instance.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
+            card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x, card.gameObject.transform.position.y, 0);
+            card.moveSpeed = (card.gameObject.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
             card.scaleSpeed = slowScaleSpeed;
             CalCardsTransform(true);
             mouseClickCard = -1;
@@ -635,15 +644,15 @@ public class CardEffects : MonoBehaviour {
         card.scaleSpeed = sendCardScaleSpeed;
         card.nonInteractBegin = Time.time;
         var getCardPileOffsetX = 1.0f;
-        card.instance.transform.position = new Vector3(getCardPile.position.x + getCardPileOffsetX, getCardPile.position.y, 0);  // The start position for sending card
-        card.instance.transform.localScale = new Vector3(0.2f, 0.2f, 0);      // The start size of the card will be sent to hand
-        card.instance.transform.parent = handCardObj.transform;
-        card.instance.name = "Card:" + (handCards.Count).ToString();
-        card.instance.GetComponent<SpriteRenderer>().sortingOrder = handCards.Count; 
+        card.gameObject.transform.position = new Vector3(getCardPile.position.x + getCardPileOffsetX, getCardPile.position.y, 0);  // The start position for sending card
+        card.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0);      // The start size of the card will be sent to hand
+        card.gameObject.transform.parent = handCardObj.transform;
+        card.gameObject.name = "Card:" + (handCards.Count).ToString();
+        card.gameObject.GetComponent<SpriteRenderer>().sortingOrder = handCards.Count; 
         handCards.Add(card);
         UpdateCardAngle();
         CalCardsTransform(true);
-        cardHalfSize = card.instance.GetComponent<SpriteRenderer>().sprite.bounds.size.y * card.instance.transform.localScale.y / 2.0f;
+        cardHalfSize = card.gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size.y * card.gameObject.transform.localScale.y / 2.0f;
         lastAddHandCardTime = Time.time;
     }
 
@@ -656,12 +665,12 @@ public class CardEffects : MonoBehaviour {
         {
             var card = handCards[i];
             card.isDropping = true;
-            card.instance.GetComponent<TrailRenderer>().enabled = true;
-            card.instance.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
-            card.instance.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            card.instance.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 30.0f)));                // Every card in hand has random direction for discard effect
-            card.totalDistance = Mathf.Abs(card.instance.transform.position.x - dropCardPile.position.x);
-            card.originHighY = card.instance.transform.position.y;
+            card.gameObject.GetComponent<TrailRenderer>().enabled = true;
+            card.gameObject.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
+            card.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            card.gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 30.0f)));                // Every card in hand has random direction for discard effect
+            card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
+            card.originHighY = card.gameObject.transform.position.y;
             playingCard.Add(handCards[i]);
         }
         while(handCards.Count > 0)
@@ -690,7 +699,7 @@ public class CardEffects : MonoBehaviour {
         }
         focusOnCard = -1;
         mouseClickCard = -1;
-        handCards[idx].instance.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
+        handCards[idx].gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
         handCards.RemoveAt(idx);
         ReArrangeCard();
         UpdateCardAngle();
@@ -702,8 +711,8 @@ public class CardEffects : MonoBehaviour {
     {
         for (int i = 0; i < handCards.Count; ++i)
         {
-            handCards[i].instance.name = "Card:" + i.ToString();
-            handCards[i].instance.GetComponent<SpriteRenderer>().sortingOrder = i;
+            handCards[i].gameObject.name = "Card:" + i.ToString();
+            handCards[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
         }
     }
 
@@ -721,16 +730,16 @@ public class CardEffects : MonoBehaviour {
                 card = handCards[i];
                 card.targetAngle = OriginalAngle(i);
                 card.targetPosition = FallDownPosition(i);
-                card.instance.transform.position = new Vector3(card.instance.transform.position.x, card.instance.transform.position.y, 0.0f);
+                card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x, card.gameObject.transform.position.y, 0.0f);
             }
             if (idx >= 0)
             {
                 card = handCards[idx];
                 card.targetPosition = PushUpPosition(idx);
-                card.instance.transform.position = new Vector3(card.instance.transform.position.x, card.instance.transform.position.y, -10.0f);
+                card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x, card.gameObject.transform.position.y, -10.0f);
                 card.targetAngle = 0.0f;
                 card.curAngle = 0.0f;
-                card.instance.transform.rotation = Quaternion.Euler(0, 0, card.targetAngle);
+                card.gameObject.transform.rotation = Quaternion.Euler(0, 0, card.targetAngle);
             }
         }
     }
@@ -854,7 +863,7 @@ public class CardEffects : MonoBehaviour {
     void MouseOnCard(int idx)
     {
         Card card = handCards[idx];
-        GameObject cardgo = card.instance;
+        GameObject cardgo = card.gameObject;
         card.sortOrder = cardgo.GetComponent<SpriteRenderer>().sortingOrder;
         cardgo.GetComponent<SpriteRenderer>().sortingOrder = 100;   // Move to the topest layer when a card is checking by the player
         card.targetScale = cardBigScale;
@@ -867,7 +876,7 @@ public class CardEffects : MonoBehaviour {
     {
         if (idx == -1) return;
         Card card = handCards[idx];
-        GameObject cardgo = card.instance;
+        GameObject cardgo = card.gameObject;
         cardgo.GetComponent<SpriteRenderer>().sortingOrder = card.sortOrder;
         card.targetScale = cardNormalScale;
         card.moveSpeed = slowMoveSpeed;
@@ -880,7 +889,7 @@ public class CardEffects : MonoBehaviour {
         if (mouseClickCard != -1 && focusOnCard == -1)
         {
             var mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            handCards[mouseClickCard].instance.transform.position = new Vector3(mouse_pos.x, mouse_pos.y, -10.0f);
+            handCards[mouseClickCard].gameObject.transform.position = new Vector3(mouse_pos.x, mouse_pos.y, -10.0f);
         }
     }
 
@@ -895,9 +904,9 @@ public class CardEffects : MonoBehaviour {
             focusOnCard = mouseClickCard;
             card.nonInteractBegin = Time.time;
             card.targetAngle = 0.0f;
-            card.instance.transform.position = new Vector3(card.instance.transform.position.x, card.instance.transform.position.y, -10.0f);
+            card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x, card.gameObject.transform.position.y, -10.0f);
             card.targetPosition = new Vector3(0, -3.0f, -10.0f);
-            card.moveSpeed = (card.instance.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
+            card.moveSpeed = (card.gameObject.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
         }
         else if (focusOnCard != -1)
         {
@@ -910,8 +919,8 @@ public class CardEffects : MonoBehaviour {
 
             var card = handCards[mouseClickCard];
             card.nonInteractBegin = Time.time;
-            card.instance.transform.position = new Vector3(card.instance.transform.position.x, card.instance.transform.position.y, 0);
-            card.moveSpeed = (card.instance.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
+            card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x, card.gameObject.transform.position.y, 0);
+            card.moveSpeed = (card.gameObject.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
             card.scaleSpeed = slowScaleSpeed;
             CalCardsTransform(true);
             mouseClickCard = -1;
@@ -931,7 +940,7 @@ public class CardEffects : MonoBehaviour {
             var mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float mouse_x = mouse_pos.x;
             float mouse_y = mouse_pos.y;
-            var card_pos = handCards[mouseClickCard].instance.transform.position;
+            var card_pos = handCards[mouseClickCard].gameObject.transform.position;
             // The control points' positions are changed with the mouse position
             // The parameters below have been modified to best performance, no need to change!!!
             float center_x = 0.0f;

@@ -23,7 +23,6 @@ public class Card : MonoBehaviour
     protected ETarget m_target = ETarget.None;
 
 
-    public GameObject instance;        // The gameobject of the card
     // States for card's transform and interaction
     public float scaleSpeed = 1.0f;
     public float targetAngle = 0.0f;
@@ -42,4 +41,15 @@ public class Card : MonoBehaviour
     public float dropDisplayTime;
     public Dictionary<string, int> info;  // Record card's info here
     public GameObject targetPlayer;       // Record character the card skilled on
+
+    public void Reset()
+    {
+        isPlaying = false;
+        targetPlayer = null;
+        info = null;
+        totalDistance = 0.0f;
+        GetComponent<TrailRenderer>().enabled = false;
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        GetComponent<BoxCollider2D>().enabled = true;
+    }
 }

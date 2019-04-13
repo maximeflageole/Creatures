@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 407065802}
   - component: {fileID: 407065804}
   - component: {fileID: 407065805}
+  - component: {fileID: 407065806}
   m_Layer: 0
   m_Name: GoodEgg
   m_TagString: Untagged
@@ -417,6 +418,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &407065806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407065801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b47367d1640446489488776026d759f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_team: 1
+  m_primaryType: 4
+  m_health: 100
+  m_maxHealth: 100
 --- !u!4 &495292853
 Transform:
   m_ObjectHideFlags: 0
@@ -954,7 +971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -18.539993}
+  m_AnchoredPosition: {x: 0, y: -18.54004}
   m_SizeDelta: {x: 800, y: 37.080017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959049143
@@ -1006,6 +1023,7 @@ GameObject:
   - component: {fileID: 1043736048}
   - component: {fileID: 1043736050}
   - component: {fileID: 1043736051}
+  - component: {fileID: 1043736052}
   m_Layer: 0
   m_Name: BadEgg
   m_TagString: Untagged
@@ -1120,6 +1138,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1043736052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043736047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b47367d1640446489488776026d759f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_team: 0
+  m_primaryType: 7
+  m_health: 100
+  m_maxHealth: 100
 --- !u!1 &1293427431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,17 +1624,17 @@ MonoBehaviour:
   leftPushAngle: 2
   rightPushAngle: 2
   offsetAngleDelta: 1.8
-  cardOffsetY: -4
+  cardOffsetY: -4.2
   sendCardMoveSpeed: 35
   sendCardScaleSpeed: 1.2
   moveSpeed: 10000
   slowMoveSpeed: 6
   rotateSpeed: 80
   centerRadius: 16
-  cardBigScale: 2.5
-  cardNormalScale: 1.7
+  cardBigScale: 3
+  cardNormalScale: 1.8
   scaleSpeed: 10000
-  slowScaleSpeed: 2.5
+  slowScaleSpeed: 7
   mouseOnInterval: 0.5
   nonInteractDelay: 0.5
   cardDropSlowSpeed: 5
@@ -1610,7 +1644,6 @@ MonoBehaviour:
   getCardPile: {fileID: 495292853}
   cardPlaySpeed: 60
   arrowsNum: 12
-  cardTotalNum: 15
   handNumAuto: 5
   miniCardScale: 0.12
   skillIconOffsetY: 2
@@ -1634,10 +1667,10 @@ MonoBehaviour:
     type: 3}
   arrowBodyPrefab: {fileID: 1443724389814156, guid: 1793153e035229140bdd63a88a28efb4,
     type: 3}
-  deckCards:
-  - {fileID: 3322608123572460964, guid: 6a5eb756a706d2744989d679d9c177cf, type: 3}
-  - {fileID: 3322608123572460964, guid: 6a5eb756a706d2744989d679d9c177cf, type: 3}
-  - {fileID: 3322608123572460964, guid: 6a5eb756a706d2744989d679d9c177cf, type: 3}
+  cardPrefabs:
+  - {fileID: 1750386328052332, guid: a39f0319d2f083f4bbc561fb95b3df2b, type: 3}
+  - {fileID: 1750386328052332, guid: a39f0319d2f083f4bbc561fb95b3df2b, type: 3}
+  - {fileID: 1750386328052332, guid: a39f0319d2f083f4bbc561fb95b3df2b, type: 3}
   attackIconPrefab: {fileID: 1557688251390522, guid: 3c2a809ecfac5c7458496d19dd437fb0,
     type: 3}
   defenseIconPrefab: {fileID: 1263153628586066, guid: 84b963a79c0b9b9498ac9f8300c09003,
@@ -2093,6 +2126,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  playingCard: []
+  handCards: []
 --- !u!1 &2140048916
 GameObject:
   m_ObjectHideFlags: 0
