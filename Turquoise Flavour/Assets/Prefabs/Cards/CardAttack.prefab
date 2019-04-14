@@ -1415,8 +1415,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840a0ef3ecd490342a30f8b29d47ef11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_manaCost: 0
-  m_target: 4
+  m_manaCost: 1
+  m_target: 1
+  m_effects:
+  - m_effect: 0
+    m_subtype: 
+    m_value: 5
+    m_targetType: 1
+  m_owner: 0
   scaleSpeed: 1
   targetAngle: 0
   targetPosition: {x: 0, y: 0, z: 0}

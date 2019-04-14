@@ -13,6 +13,13 @@ namespace Cards
         Card,
         None
     }
+    public enum EOwners
+    {
+        TeamA,
+        TeamB,
+        Neutral,
+        None
+    }
 }
 
 public class Card : MonoBehaviour
@@ -21,6 +28,10 @@ public class Card : MonoBehaviour
     protected uint m_manaCost = 0;
     [SerializeField]
     protected ETarget m_target = ETarget.None;
+    [SerializeField]
+    protected List<SCardEffect> m_effects;
+    [SerializeField]
+    protected EOwners m_owner = EOwners.TeamA;
 
 
     // States for card's transform and interaction
@@ -52,4 +63,37 @@ public class Card : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         GetComponent<BoxCollider2D>().enabled = true;
     }
+
+    public void ApplyEffects(Creature selectedCreature)
+    {
+        foreach (var cardEffect in m_effects)
+        {
+            ApplyEffect(cardEffect, selectedCreature);
+        }
+    }
+
+    protected void ApplyEffect(SCardEffect effect, Creature selectedCreature)
+    {
+        selectedCreature.ApplyEffect(effect, m_owner);
+    }
+}
+
+public enum ECardEffect
+{
+    Damage,
+    Healing,
+    Buff,
+    Debuff,
+    Draw,
+    Discard,
+    Other
+}
+
+[System.Serializable]
+public struct SCardEffect
+{
+    public ECardEffect m_effect;
+    public string m_subtype;
+    public int m_value;
+    public ETarget m_targetType;
 }

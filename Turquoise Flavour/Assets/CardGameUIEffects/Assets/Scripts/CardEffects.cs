@@ -355,11 +355,22 @@ public class CardEffects : MonoBehaviour {
                 card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
                 card.originHighY = card.gameObject.transform.position.y;
                 // Display skill effect
+                /*
                 if (card.targetPlayer != null)
                 {
                     var icon = (GameObject)Instantiate((card.targetPlayer.name == ENEMY_CHARA_NAME ? attackIconPrefab : defenseIconPrefab));
                     var target_player_pos = card.targetPlayer.transform.position;
                     icon.transform.position = new Vector3(target_player_pos.x, target_player_pos.y + skillIconOffsetY, target_player_pos.z);
+                }
+                */
+                //Apply skill effects
+                if (card.targetPlayer != null)
+                {
+                    var selectedCreature = card.targetPlayer.GetComponent<Creature>();
+                    if (selectedCreature != null)
+                    {
+                        card.ApplyEffects(selectedCreature);
+                    }
                 }
                 return;
             }
@@ -400,7 +411,7 @@ public class CardEffects : MonoBehaviour {
         {
             for (int i = 0; i < shuffleCardsEffects.Count; ++i)
             {
-                Destroy(shuffleCardsEffects[i]);  // Destroy show cards after shuffling animation end
+                Destroy(shuffleCardsEffects[i].gameObject);  // Destroy show cards after shuffling animation end
             }
             shuffleCardsEffects.Clear();
             shufflingCard = false;
@@ -408,7 +419,7 @@ public class CardEffects : MonoBehaviour {
         }
         for (int i = 0; i < shuffleCardsEffects.Count; ++i)
         {
-            Destroy(shuffleCardsEffects[i]);  // Destroy show cards after shuffling animation end
+            Destroy(shuffleCardsEffects[i].gameObject);  // Destroy show cards after shuffling animation end
         }
         shuffleCardsEffects.Clear();
         shufflingCard = false;
@@ -712,7 +723,7 @@ public class CardEffects : MonoBehaviour {
         for (int i = 0; i < handCards.Count; ++i)
         {
             handCards[i].gameObject.name = "Card:" + i.ToString();
-            handCards[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
+            //handCards[i].gameObject.GetComponent<SpriteRenderer>().sortingOrder = i;
         }
     }
 

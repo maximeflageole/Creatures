@@ -26,15 +26,34 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected float m_maxHealth = 100.0f;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switch(cardEffect.m_effect)
+        {
+            case ECardEffect.Buff:
+                print("Buff" + cardEffect.m_value);
+                break;
+            case ECardEffect.Damage:
+                print("Damage " + cardEffect.m_value);
+                break;
+            case ECardEffect.Debuff:
+                print("Debuff" + cardEffect.m_value);
+                break;
+            case ECardEffect.Discard:
+                print("Discard" + cardEffect.m_value);
+                break;
+            case ECardEffect.Draw:
+                print("Draw" + cardEffect.m_value);
+                break;
+            case ECardEffect.Healing:
+                print("Healing" + cardEffect.m_value);
+                break;
+            case ECardEffect.Other:
+                print("Other" + cardEffect.m_value);
+                break;
+            default:
+                print("Defaut effect type, not supposed to happen");
+                break;
+        }
     }
 }
