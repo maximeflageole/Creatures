@@ -20,6 +20,39 @@ namespace Cards
         Neutral,
         None
     }
+    public enum ECardType
+    {
+        Attack,
+        Power,
+        Other
+    }
+    public enum ERarity
+    {
+        Common,
+        Epic,
+        Legendary,
+        FireCrab,
+        None
+    }
+    public enum ECreaturePart
+    {
+        Claw,
+        Jaw,
+        Aquatic,
+        Fire,
+        Armored,
+        None
+    }
+    public enum ECardEffect
+    {
+        Damage,
+        Healing,
+        Buff,
+        Debuff,
+        Draw,
+        Discard,
+        Other
+    }
 }
 
 public class Card : MonoBehaviour
@@ -33,6 +66,8 @@ public class Card : MonoBehaviour
     [SerializeField]
     protected EOwners m_owner = EOwners.TeamA;
 
+    [SerializeField]
+    protected CardData m_cardData;
 
     // States for card's transform and interaction
     public float scaleSpeed = 1.0f;
@@ -76,17 +111,15 @@ public class Card : MonoBehaviour
     {
         selectedCreature.ApplyEffect(effect, m_owner);
     }
-}
 
-public enum ECardEffect
-{
-    Damage,
-    Healing,
-    Buff,
-    Debuff,
-    Draw,
-    Discard,
-    Other
+    public void Start()
+    {
+        var cardUI = GetComponent<CardUI>();
+        if (cardUI != null)
+        {
+            cardUI.InitCardUI(m_cardData.cardName, m_cardData.description, m_cardData.manaCost.ToString(), m_cardData.artwork);
+        }
+    }
 }
 
 [System.Serializable]
@@ -96,4 +129,5 @@ public struct SCardEffect
     public string m_subtype;
     public int m_value;
     public ETarget m_targetType;
+    public float m_chances;
 }

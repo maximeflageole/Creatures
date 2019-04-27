@@ -437,6 +437,10 @@ public class CardEffects : MonoBehaviour {
             if (playingCard[i].isPlaying == false && playingCard[i].isDropping == false) continue;
             var card = playingCard[i];
             var delta_x = Time.fixedDeltaTime * cardDropFastSpeed;
+            if (card.totalDistance == 0)
+            {
+                card.totalDistance = 0.1f;
+            }
             if (card.isDropping == true)
             {
                 // Calculate the card motion path by clear card curve 

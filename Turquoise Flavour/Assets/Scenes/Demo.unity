@@ -1670,7 +1670,7 @@ MonoBehaviour:
   cardPrefabs:
   - {fileID: 9048216528612182252, guid: 75f50eacc4b9a6d4eba37b904fae0a8f, type: 3}
   - {fileID: 9048216528612182252, guid: 75f50eacc4b9a6d4eba37b904fae0a8f, type: 3}
-  - {fileID: 9048216528612182252, guid: dece4ce34956b884c83e6e99c42ff2ae, type: 3}
+  - {fileID: 9048216528612182252, guid: 75f50eacc4b9a6d4eba37b904fae0a8f, type: 3}
   attackIconPrefab: {fileID: 1557688251390522, guid: 3c2a809ecfac5c7458496d19dd437fb0,
     type: 3}
   defenseIconPrefab: {fileID: 1263153628586066, guid: 84b963a79c0b9b9498ac9f8300c09003,

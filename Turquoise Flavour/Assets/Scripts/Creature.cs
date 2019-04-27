@@ -30,25 +30,25 @@ public class Creature : MonoBehaviour
     {
         switch(cardEffect.m_effect)
         {
-            case ECardEffect.Buff:
+            case Cards.ECardEffect.Buff:
                 print("Buff" + cardEffect.m_value);
                 break;
-            case ECardEffect.Damage:
+            case Cards.ECardEffect.Damage:
                 print("Damage " + cardEffect.m_value);
                 break;
-            case ECardEffect.Debuff:
+            case Cards.ECardEffect.Debuff:
                 print("Debuff" + cardEffect.m_value);
                 break;
-            case ECardEffect.Discard:
+            case Cards.ECardEffect.Discard:
                 print("Discard" + cardEffect.m_value);
                 break;
-            case ECardEffect.Draw:
+            case Cards.ECardEffect.Draw:
                 print("Draw" + cardEffect.m_value);
                 break;
-            case ECardEffect.Healing:
+            case Cards.ECardEffect.Healing:
                 print("Healing" + cardEffect.m_value);
                 break;
-            case ECardEffect.Other:
+            case Cards.ECardEffect.Other:
                 print("Other" + cardEffect.m_value);
                 break;
             default:
