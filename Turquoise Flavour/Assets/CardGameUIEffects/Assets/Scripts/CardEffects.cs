@@ -682,9 +682,13 @@ public class CardEffects : MonoBehaviour {
         if (shufflingCard == true) return;
         if (drawPileCards.Count == 0)
         {
+            ShufflePileCard();
+        }
+        if (drawPileCards.Count == 0)
+        {
             var text = (Text)toast.GetComponent<Text>();
             if (text.enabled == false) text.enabled = true;
-            text.text = "No cards left in draw pile!";
+            text.text = "No cards left in draw or discard pile!";
             return;
         }
         if (handCards.Count >= HAND_CARD_LIMIT)
