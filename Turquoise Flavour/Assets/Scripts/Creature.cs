@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Turquoise;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Turquoise
 {
@@ -17,14 +18,15 @@ namespace Turquoise
 
 public class Creature : MonoBehaviour
 {
-    [SerializeField]
-    protected ETeams m_team = ETeams.None;
+    public ETeams m_team = ETeams.None;
     [SerializeField]
     protected Creatures.CreaturesType m_primaryType;
     [SerializeField]
-    protected float m_health = 100.0f;
+    protected int m_health = 100;
     [SerializeField]
-    protected float m_maxHealth = 100.0f;
+    protected int m_maxHealth = 100;
+    [SerializeField]
+    protected TextMesh m_healthText;
 
     public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
     {
@@ -34,7 +36,7 @@ public class Creature : MonoBehaviour
                 print("Buff" + cardEffect.m_value);
                 break;
             case Cards.ECardEffect.Damage:
-                print("Damage " + cardEffect.m_value);
+                ApplyDamage(cardEffect.m_value);
                 break;
             case Cards.ECardEffect.Debuff:
                 print("Debuff" + cardEffect.m_value);
@@ -46,7 +48,7 @@ public class Creature : MonoBehaviour
                 print("Draw" + cardEffect.m_value);
                 break;
             case Cards.ECardEffect.Healing:
-                print("Healing" + cardEffect.m_value);
+                ApplyDamage(-cardEffect.m_value);
                 break;
             case Cards.ECardEffect.Other:
                 print("Other" + cardEffect.m_value);
@@ -55,5 +57,17 @@ public class Creature : MonoBehaviour
                 print("Defaut effect type, not supposed to happen");
                 break;
         }
+    }
+    public void Update()
+    {
+        if (m_healthText != null)
+        {
+            m_healthText.text = m_health.ToString() + " / " + m_maxHealth.ToString();
+        }
+    }
+
+    protected void ApplyDamage(int damage)
+    {
+        m_health -= damage;
     }
 }

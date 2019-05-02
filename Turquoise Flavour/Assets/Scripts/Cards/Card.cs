@@ -59,15 +59,17 @@ public class Card : MonoBehaviour
 {
     [SerializeField]
     protected uint m_manaCost = 0;
-    [SerializeField]
-    protected ETarget m_target = ETarget.None;
-    [SerializeField]
-    protected List<SCardEffect> m_effects;
+
+    public ETarget m_target = ETarget.None;
+
+    public List<SCardEffect> m_effects;
+
     [SerializeField]
     protected EOwners m_owner = EOwners.TeamA;
 
     [SerializeField]
     protected CardData m_cardData;
+
 
     // States for card's transform and interaction
     public float scaleSpeed = 1.0f;
@@ -103,7 +105,14 @@ public class Card : MonoBehaviour
     {
         foreach (var cardEffect in m_effects)
         {
-            ApplyEffect(cardEffect, selectedCreature);
+            if (cardEffect.m_effect == ECardEffect.Draw)
+            {
+
+            }
+            else
+            {
+                ApplyEffect(cardEffect, selectedCreature);
+            }
         }
     }
 
@@ -119,6 +128,7 @@ public class Card : MonoBehaviour
         {
             cardUI.InitCardUI(m_cardData.cardName, m_cardData.description, m_cardData.manaCost.ToString(), m_cardData.artwork);
         }
+        m_effects = m_cardData.effects;
     }
 }
 

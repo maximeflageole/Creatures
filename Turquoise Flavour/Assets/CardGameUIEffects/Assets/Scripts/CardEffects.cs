@@ -126,6 +126,10 @@ public class CardEffects : MonoBehaviour {
     private const string ENEMY_CHARA_NAME = "BadEgg";
     private const int HAND_CARD_LIMIT = 10;
 
+    //Added for Turquoise Project
+     [SerializeField]
+     protected bool m_hasValidTarget;
+
     void Start()
     {
         // Init cards in draw pile
@@ -264,7 +268,18 @@ public class CardEffects : MonoBehaviour {
     IEnumerator SendHandCards()
     {
         ShufflePileCard();
-        for (int i = 0; i < cardPrefabs.Count; ++i)
+        int cardsToDraw = Mathf.Min(drawPileCards.Count, 5);
+        for (int i = 0; i < cardsToDraw; ++i)
+        {
+            yield return new WaitForSeconds(0.2f);
+            AddHandCard();
+        }
+    }
+
+    IEnumerator SendHandCards(int amount)
+    {
+        int cardsToDraw = Mathf.Min(drawPileCards.Count, amount);
+        for (int i = 0; i < cardsToDraw; ++i)
         {
             yield return new WaitForSeconds(0.2f);
             AddHandCard();
@@ -276,23 +291,33 @@ public class CardEffects : MonoBehaviour {
     {
         focusOnPlayer = null;
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        m_hasValidTarget = false;
         if (hit.collider != null && focusOnCard != -1)
         {
             GameObject go = hit.collider.gameObject;
-            if (go.name == ENEMY_CHARA_NAME || go.name == FRIEND_CHARA_NAME)
+            var team = GetETeams(go);
+            if ((team == Turquoise.ETeams.Enemy && handCards[focusOnCard].m_target == Cards.ETarget.Enemy) || 
+                (team == Turquoise.ETeams.Ally && handCards[focusOnCard].m_target == Cards.ETarget.Self) ||
+                (team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally && handCards[focusOnCard].m_target == Cards.ETarget.Creature))
             {
+                m_hasValidTarget = true;
                 focusOnPlayer = go;
                 // Update arrow's color during touching characters
                 for (int i = 0; i < arrowsNum; ++i)
                 {
                     var arrow = arrows[i];
-                    arrow.GetComponent<SpriteRenderer>().sprite = (go.name == ENEMY_CHARA_NAME ? arrowBodyRedSprite : arrowBodyGreenSprite);
+                    arrow.GetComponent<SpriteRenderer>().sprite = (team == Turquoise.ETeams.Enemy ? arrowBodyRedSprite : arrowBodyGreenSprite);
                     if (i == arrowsNum - 1)
                     {
-                        arrow.GetComponent<SpriteRenderer>().sprite = (go.name == ENEMY_CHARA_NAME ? arrowHeadRedSprite : arrowHeadGreenSprite);
+                        arrow.GetComponent<SpriteRenderer>().sprite = (team == Turquoise.ETeams.Enemy ? arrowHeadRedSprite : arrowHeadGreenSprite);
                     }
                 }
                 return;
+            }
+            //ToDo: Neutral cards
+            else if (team == Turquoise.ETeams.None)
+            {
+                //m_hasValidTarget = true;
             }
         }
         // Default color of arrow
@@ -307,10 +332,20 @@ public class CardEffects : MonoBehaviour {
         }
     }
 
+    protected Turquoise.ETeams GetETeams(GameObject gameObj)
+    {
+        var creature = gameObj.GetComponent<Creature>();
+        if (creature != null)
+        {
+            return creature.m_team;
+        }
+        return Turquoise.ETeams.None;
+    }
+
     // This function is called when the arrow touches the character and the mouse has been clicked
     void PlayCard()
     {
-        if(focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0))
+        if(focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
         {
             // Record the character which the card skilled on
             handCards[focusOnCard].targetPlayer = focusOnPlayer;
@@ -370,6 +405,13 @@ public class CardEffects : MonoBehaviour {
                     if (selectedCreature != null)
                     {
                         card.ApplyEffects(selectedCreature);
+                    }
+                }
+                foreach (var effect in card.m_effects)
+                {
+                    if (effect.m_effect == Cards.ECardEffect.Draw)
+                    {
+                        StartCoroutine(SendHandCards(effect.m_value));
                     }
                 }
                 return;
