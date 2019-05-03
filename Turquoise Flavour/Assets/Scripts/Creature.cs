@@ -35,6 +35,11 @@ public class Creature : MonoBehaviour
         m_deck.LoadGame();
     }
 
+    public Deck GetDeck()
+    {
+        return m_deck;
+    }
+
     public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
     {
         switch(cardEffect.m_effect)

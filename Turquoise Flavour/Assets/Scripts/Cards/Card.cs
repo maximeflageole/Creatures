@@ -70,7 +70,7 @@ public class Card : MonoBehaviour
     [SerializeField]
     protected CardData m_cardData;
 
-
+    
     // States for card's transform and interaction
     public float scaleSpeed = 1.0f;
     public float targetAngle = 0.0f;
@@ -89,6 +89,17 @@ public class Card : MonoBehaviour
     public float dropDisplayTime;
     public Dictionary<string, int> info;  // Record card's info here
     public GameObject targetPlayer;       // Record character the card skilled on
+
+    public void SetCardData(CardData cardData)
+    {
+        m_cardData = cardData;
+        var cardUI = GetComponent<CardUI>();
+        if (cardUI != null)
+        {
+            cardUI.InitCardUI(m_cardData.cardName, m_cardData.description, m_cardData.manaCost.ToString(), m_cardData.artwork);
+        }
+        m_effects = m_cardData.effects;
+    }
 
     public void Reset()
     {
@@ -123,12 +134,14 @@ public class Card : MonoBehaviour
 
     public void Start()
     {
+        /*
         var cardUI = GetComponent<CardUI>();
         if (cardUI != null)
         {
             cardUI.InitCardUI(m_cardData.cardName, m_cardData.description, m_cardData.manaCost.ToString(), m_cardData.artwork);
         }
         m_effects = m_cardData.effects;
+        */
     }
 }
 

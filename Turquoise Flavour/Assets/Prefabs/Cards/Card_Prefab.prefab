@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_manaCost: 1
-  m_target: 2
+  m_target: 1
   m_effects: []
   m_owner: 0
   m_cardData: {fileID: 11400000, guid: d21893938d49c474d9151046641effef, type: 2}

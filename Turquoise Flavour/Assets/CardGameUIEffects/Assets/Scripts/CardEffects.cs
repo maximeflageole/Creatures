@@ -130,10 +130,15 @@ public class CardEffects : MonoBehaviour {
      [SerializeField]
      protected bool m_hasValidTarget;
 
-    void Start()
+    public void Initialization(Player player)
     {
-        // Init cards in draw pile
-        InitDrawPileCards();
+        Creature creature = player.GetCurrentCreature();
+        if (creature == null)
+        {
+            Debug.Log("CardEffects::Initialization : Creature Index Invalid!");
+        }
+
+        LoadDeckFromCreature(creature);
 
         // Add button click events
         drawBtn.GetComponent<Button>().onClick.AddListener(delegate ()
@@ -159,6 +164,7 @@ public class CardEffects : MonoBehaviour {
 
         // Play shuffle card animation
         ShuffleCardAnimation();
+
     }
 
     void Update()
@@ -195,13 +201,40 @@ public class CardEffects : MonoBehaviour {
         CardPlaying();
     }
 
+    void LoadDeckFromCreature(Creature creature)
+    {
+        creature.LoadDeck();
+        Deck deck = creature.GetDeck();
+        if (deck != null)
+        {
+            CardList cardList = FindObjectOfType<CardList>();
+            if (cardList == null)
+            {
+                Debug.Log("Found no card list in the scene");
+                return;
+            }
+            foreach (var cardName in deck.m_cards)
+            {
+                CardData cardData = cardList.GetCardDataFromCardName(cardName);
+                if (cardData != null)
+                {
+                    Card cardInstance = Instantiate(cardPrefabs[0].GetComponent<Card>());
+                    cardInstance.SetCardData(cardData);
+                    AddDrawPileCard(cardInstance);
+                }
+            }
+        }
+    }
+
     void InitDrawPileCards()
     {
+        /*
         for (int i = 0; i < cardPrefabs.Count; ++i)
         {
             Card card = Instantiate(cardPrefabs[i]).GetComponent<Card>();
             AddDrawPileCard(card);
         }
+        */
     }
 
     void AddDiscardPileCard(Card card)
@@ -253,7 +286,7 @@ public class CardEffects : MonoBehaviour {
         shufflingCard = true;
     }
 
-    void ShufflePileCard()
+    void RefreshDrawPile()
     {
         // All cards will be sent from discard pile to draw pile
         while (discardPileCards.Count > 0)
@@ -265,9 +298,17 @@ public class CardEffects : MonoBehaviour {
         discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
     }
 
+    void ShuffleDrawPile()
+    {
+        for (int i = 0; i < drawPileCards.Count; i++)
+        {
+            //TODO: ON EN EST LÀ MAX!
+        }
+    }
+
     IEnumerator SendHandCards()
     {
-        ShufflePileCard();
+        RefreshDrawPile();
         int cardsToDraw = Mathf.Min(drawPileCards.Count, 5);
         for (int i = 0; i < cardsToDraw; ++i)
         {
@@ -511,8 +552,8 @@ public class CardEffects : MonoBehaviour {
                 }
                 if (all_destroyed)
                 {
-                    // Play shuffle animation when the number of cards in the discard pile equals to the total card number
-                    if (discardPileCards.Count == cardPrefabs.Count)
+                    // Play shuffle animation when the number of cards in the draw pile is 0
+                    if (drawPileCards.Count == 0)
                     {
                         ShuffleCardAnimation();
                     }
@@ -682,7 +723,7 @@ public class CardEffects : MonoBehaviour {
         if (shufflingCard == true) return;
         if (drawPileCards.Count == 0)
         {
-            ShufflePileCard();
+            RefreshDrawPile();
         }
         if (drawPileCards.Count == 0)
         {
