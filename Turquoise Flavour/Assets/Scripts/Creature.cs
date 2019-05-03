@@ -27,6 +27,13 @@ public class Creature : MonoBehaviour
     protected int m_maxHealth = 100;
     [SerializeField]
     protected TextMesh m_healthText;
+    [SerializeField]
+    protected Deck m_deck;
+
+    public void LoadDeck()
+    {
+        m_deck.LoadGame();
+    }
 
     public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
     {

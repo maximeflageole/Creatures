@@ -691,11 +691,11 @@ public class CardEffects : MonoBehaviour {
             text.text = "No cards left in draw or discard pile!";
             return;
         }
-        if (handCards.Count >= HAND_CARD_LIMIT)
+        else if (handCards.Count >= HAND_CARD_LIMIT)
         {
             var text = (Text)toast.GetComponent<Text>();
             if (text.enabled == false) text.enabled = true;
-            text.text = "The limit of cards in hand is 10!";
+            text.text = "The limit of cards in hand is " + HAND_CARD_LIMIT;
             return;
         }
         // Prepare card states for sending to hand
