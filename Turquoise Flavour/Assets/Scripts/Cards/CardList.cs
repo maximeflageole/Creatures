@@ -11,6 +11,8 @@ namespace Cards
         Slash,
         Overheat,
         SteamJet,
+        BuffArmor,
+        BuffDamage,
         Count
     }
 }
