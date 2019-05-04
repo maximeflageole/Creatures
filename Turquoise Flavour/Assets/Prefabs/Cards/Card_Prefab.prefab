@@ -1985,7 +1985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_manaCost: 1
-  m_target: 1
   m_effects: []
   m_owner: 0
   m_cardData: {fileID: 11400000, guid: d21893938d49c474d9151046641effef, type: 2}
@@ -2181,7 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nameText: {fileID: 6789634588335043809}
-  m_image: {fileID: 6789634587090970975}
+  m_image: {fileID: 6789634587587071339}
   m_descriptionText: {fileID: 6789634586787339758}
   m_manaText: {fileID: 6789634588031647888}
 --- !u!1 &6789634588335043808

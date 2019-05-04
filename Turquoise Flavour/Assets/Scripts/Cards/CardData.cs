@@ -9,6 +9,7 @@ public class CardData : ScriptableObject
     public string description;
     public Sprite artwork;
     public int manaCost;
+    public Cards.ETarget targetType;
     public List<SCardEffect> effects;
     public Cards.ECardType cardType;
     public Cards.ERarity rarity;

@@ -180,7 +180,7 @@ public class CardEffects : MonoBehaviour {
             CheckMouseClickCard();
             UpdateArrows();
             PlayCard();
-            GetMouseOnPlayer();
+            GetMouseOnCharacter();
         }
     }
 
@@ -224,17 +224,6 @@ public class CardEffects : MonoBehaviour {
                 }
             }
         }
-    }
-
-    void InitDrawPileCards()
-    {
-        /*
-        for (int i = 0; i < cardPrefabs.Count; ++i)
-        {
-            Card card = Instantiate(cardPrefabs[i]).GetComponent<Card>();
-            AddDrawPileCard(card);
-        }
-        */
     }
 
     void AddDiscardPileCard(Card card)
@@ -328,7 +317,7 @@ public class CardEffects : MonoBehaviour {
     }
 
     // This function is called to check if the mouse is on the character 
-    private void GetMouseOnPlayer()
+    private void GetMouseOnCharacter()
     {
         focusOnPlayer = null;
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -337,9 +326,9 @@ public class CardEffects : MonoBehaviour {
         {
             GameObject go = hit.collider.gameObject;
             var team = GetETeams(go);
-            if ((team == Turquoise.ETeams.Enemy && handCards[focusOnCard].m_target == Cards.ETarget.Enemy) || 
-                (team == Turquoise.ETeams.Ally && handCards[focusOnCard].m_target == Cards.ETarget.Self) ||
-                (team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally && handCards[focusOnCard].m_target == Cards.ETarget.Creature))
+            if ((team == Turquoise.ETeams.Enemy && handCards[focusOnCard].GetTarget() == Cards.ETarget.Enemy) || 
+                (team == Turquoise.ETeams.Ally && handCards[focusOnCard].GetTarget() == Cards.ETarget.Self) ||
+                ((team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally) && handCards[focusOnCard].GetTarget() == Cards.ETarget.Creature))
             {
                 m_hasValidTarget = true;
                 focusOnPlayer = go;
