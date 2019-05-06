@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Turquoise;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,12 @@ public class Creature : MonoBehaviour
     protected int m_maxHealth = 100;
     [SerializeField]
     protected int m_armor = 0;
+    [SerializeField]
+    protected int m_mana = 0;
+    [SerializeField]
+    protected int m_maxMana = 3;
+    [SerializeField]
+    protected TextMeshPro m_manaTextMesh;
     [SerializeField]
     protected TextMesh m_healthText;
     [SerializeField]
@@ -97,6 +104,10 @@ public class Creature : MonoBehaviour
         {
             m_armorText.gameObject.SetActive(m_armor != 0);
             m_armorText.text = m_armor.ToString();
+        }
+        if (m_manaTextMesh != null)
+        {
+            m_manaTextMesh.text = "Mana: " + m_mana + "/" + m_maxMana;
         }
     }
 
