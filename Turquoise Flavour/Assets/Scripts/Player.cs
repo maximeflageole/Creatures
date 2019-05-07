@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     protected List<Creature> m_creatures;
 
     [SerializeField]
-    protected int creatureIndex;
+    protected Creature m_currentCreature;
 
     public void Start()
     {
@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
         {
             Debug.Log("CardEffects not found");
         }
+        if (m_creatures.Count == 0)
+        {
+            print("Player:Start No creature found");
+            return;
+        }
+        m_currentCreature = m_creatures[0];
 
         cardEffects.Initialization(this);
     }
@@ -33,17 +39,13 @@ public class Player : MonoBehaviour
 
     public Creature GetCurrentCreature()
     {
-        if (m_creatures.Count >= creatureIndex)
-        {
-            return m_creatures[creatureIndex];
-        }
-        return null;
+        return m_currentCreature;
     }
 
     public bool CanPlayCard(Card card)
     {
         //Verify mana
-        if (card.GetCardData().manaCost > m_creatures[0].GetCurrentMana())
+        if (card.GetCardData().manaCost > m_currentCreature.GetCurrentMana())
         {
             print("Not enough mana to play this card");
             return false;
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
 
         //Verify specific conditions
 
-        m_creatures[0].PlayCard(card);
+        m_currentCreature.PlayCard(card);
         return true;
     }
 
@@ -63,6 +65,6 @@ public class Player : MonoBehaviour
 
     public void TurnBegin()
     {
-        m_creatures[0].TurnBegin();
+        m_currentCreature.TurnBegin();
     }
 }

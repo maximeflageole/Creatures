@@ -123,6 +123,8 @@ public class CardEffects : MonoBehaviour {
     protected Player m_player;
     protected int m_turnCount = 0;
 
+    static CardEffects m_cardEffectInstance;
+
     private const string DRAW_PILE_NUM_TEXT = "Draw Pile: ";
     private const string DISCARD_PILE_NUM_TEXT = "Discard Pile: ";
     private const string FRIEND_CHARA_NAME = "GoodEgg";
@@ -132,6 +134,17 @@ public class CardEffects : MonoBehaviour {
     //Added for Turquoise Project
      [SerializeField]
      protected bool m_hasValidTarget;
+
+    public void Awake()
+    {
+        //Card effect is a singleton and should behave as such
+        m_cardEffectInstance = this;
+    }
+
+    public static CardEffects GetCardEffectsInstance()
+    {
+        return m_cardEffectInstance;
+    }
 
     public void Initialization(Player player)
     {
@@ -1114,6 +1127,18 @@ public class CardEffects : MonoBehaviour {
             m_player.TurnBegin();
             shuffleBegin = Time.time;
             shufflingCard = true;
+        }
+    }
+
+    public void DieEvent(Creature deadCreature)
+    {
+        if (deadCreature.m_team == Turquoise.ETeams.Enemy)
+        {
+            print("Yeah! Player wins");
+        }
+        else
+        {
+            print("Oh no, you dead");
         }
     }
 }

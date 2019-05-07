@@ -128,6 +128,10 @@ public class Creature : MonoBehaviour
         {
             m_health -= damage;
         }
+        if (m_health <= 0)
+        {
+            DieEvent();
+        }
     }
 
     public int GetCurrentMana()
@@ -144,5 +148,10 @@ public class Creature : MonoBehaviour
     {
         m_currentMana = m_currentMaxMana;
         m_armor = 0;
+    }
+
+    public void DieEvent()
+    {
+        CardEffects.GetCardEffectsInstance().DieEvent(this);
     }
 }
