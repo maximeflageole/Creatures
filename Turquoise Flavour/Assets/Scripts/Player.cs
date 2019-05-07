@@ -39,4 +39,30 @@ public class Player : MonoBehaviour
         }
         return null;
     }
+
+    public bool CanPlayCard(Card card)
+    {
+        //Verify mana
+        if (card.GetCardData().manaCost > m_creatures[0].GetCurrentMana())
+        {
+            print("Not enough mana to play this card");
+            return false;
+        }
+        //Verify max cards per turn
+
+        //Verify specific conditions
+
+        m_creatures[0].PlayCard(card);
+        return true;
+    }
+
+    public void TurnEnd()
+    {
+
+    }
+
+    public void TurnBegin()
+    {
+        m_creatures[0].TurnBegin();
+    }
 }

@@ -72,7 +72,7 @@ public class CardEffects : MonoBehaviour {
 
     //UI
     public Button drawBtn;
-    public Button discardBtn;
+    public Button m_nextTurnBtn;
     public Text drawPileText;
     public Text discardPileText;
     public Text toast;
@@ -119,6 +119,9 @@ public class CardEffects : MonoBehaviour {
     private Queue<Card> drawPileCards = new Queue<Card>();
     [SerializeField]
     private Queue<Card> discardPileCards = new Queue<Card>();
+    [SerializeField]
+    protected Player m_player;
+    protected int m_turnCount = 0;
 
     private const string DRAW_PILE_NUM_TEXT = "Draw Pile: ";
     private const string DISCARD_PILE_NUM_TEXT = "Discard Pile: ";
@@ -132,6 +135,7 @@ public class CardEffects : MonoBehaviour {
 
     public void Initialization(Player player)
     {
+        m_player = player;
         Creature creature = player.GetCurrentCreature();
         if (creature == null)
         {
@@ -145,9 +149,9 @@ public class CardEffects : MonoBehaviour {
         {
             AddHandCard();
         });
-        discardBtn.GetComponent<Button>().onClick.AddListener(delegate ()
+        m_nextTurnBtn.GetComponent<Button>().onClick.AddListener(delegate ()
         {
-            ClearHandCard();
+            NextTurn();
         });
 
         // Init arrow parts, the last one is head
@@ -164,7 +168,7 @@ public class CardEffects : MonoBehaviour {
 
         // Play shuffle card animation
         ShuffleCardAnimation();
-
+        ChangeTurn();
     }
 
     void Update()
@@ -271,8 +275,6 @@ public class CardEffects : MonoBehaviour {
             else
                 shuffleCardDelay.Add(Random.Range(0.0f, 0.1f));
         }
-        shuffleBegin = Time.time;
-        shufflingCard = true;
     }
 
     void RefreshDrawPile()
@@ -377,6 +379,10 @@ public class CardEffects : MonoBehaviour {
     {
         if(focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
         {
+            if (!m_player.CanPlayCard(handCards[focusOnCard]))
+            {
+                return;
+            }
             // Record the character which the card skilled on
             handCards[focusOnCard].targetPlayer = focusOnPlayer;
             playingCard.Add(handCards[focusOnCard]);
@@ -487,7 +493,7 @@ public class CardEffects : MonoBehaviour {
             }
             shuffleCardsEffects.Clear();
             shufflingCard = false;
-            StartCoroutine(SendHandCards());      // Send card to hand automatically after shuffling animation
+            //StartCoroutine(SendHandCards());      // Send card to hand automatically after shuffling animation
         }
         for (int i = 0; i < shuffleCardsEffects.Count; ++i)
         {
@@ -748,7 +754,7 @@ public class CardEffects : MonoBehaviour {
     }
 
     // This function is called for discarding all cards in hand
-    void ClearHandCard()
+    void NextTurn()
     {
         if (shufflingCard == true) return;
         if (Time.time - lastAddHandCardTime <= 0.5f) return;
@@ -777,6 +783,7 @@ public class CardEffects : MonoBehaviour {
                 arrows[i].SetActive(false);
             }
         }
+        ChangeTurn();
     }
 
     // This function is called for preparing to drop card after playing effect
@@ -1077,7 +1084,7 @@ public class CardEffects : MonoBehaviour {
                 arrows[i].transform.localScale = new Vector3(1.0f - 0.03f * (arrows.Count - 1 - i), 1.0f - 0.03f * (arrows.Count - 1 - i), 0);
             }
             drawBtn.enabled = false;
-            discardBtn.enabled = false;
+            m_nextTurnBtn.enabled = false;
         }
         else
         {
@@ -1089,7 +1096,24 @@ public class CardEffects : MonoBehaviour {
                 }
             }
             drawBtn.enabled = true;
-            discardBtn.enabled = true;
+            m_nextTurnBtn.enabled = true;
+        }
+    }
+
+    public void ChangeTurn()
+    {
+        m_turnCount++;
+        if (m_turnCount % 2 == 0)
+        {
+            print("Begin Enemy's turn");
+            m_player.TurnEnd();
+        }
+        else
+        {
+            print("Begin player's turn");
+            m_player.TurnBegin();
+            shuffleBegin = Time.time;
+            shufflingCard = true;
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Turquoise
 
 public class Creature : MonoBehaviour
 {
+    public static int m_baseMaxMana = 3;
+
     public ETeams m_team = ETeams.None;
     [SerializeField]
     protected Creatures.CreaturesType m_primaryType;
@@ -29,9 +31,9 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected int m_armor = 0;
     [SerializeField]
-    protected int m_mana = 0;
+    protected int m_currentMana = 0;
     [SerializeField]
-    protected int m_maxMana = 3;
+    protected int m_currentMaxMana = m_baseMaxMana;
     [SerializeField]
     protected TextMeshPro m_manaTextMesh;
     [SerializeField]
@@ -107,7 +109,7 @@ public class Creature : MonoBehaviour
         }
         if (m_manaTextMesh != null)
         {
-            m_manaTextMesh.text = "Mana: " + m_mana + "/" + m_maxMana;
+            m_manaTextMesh.text = "Mana: " + m_currentMana + "/" + m_baseMaxMana;
         }
     }
 
@@ -126,5 +128,21 @@ public class Creature : MonoBehaviour
         {
             m_health -= damage;
         }
+    }
+
+    public int GetCurrentMana()
+    {
+        return m_currentMana;
+    }
+
+    public void PlayCard(Card card)
+    {
+        m_currentMana -= card.GetCardData().manaCost;
+    }
+
+    public void TurnBegin()
+    {
+        m_currentMana = m_currentMaxMana;
+        m_armor = 0;
     }
 }

@@ -531,7 +531,8 @@ MonoBehaviour:
   m_health: 86
   m_maxHealth: 86
   m_armor: 0
-  m_mana: 0
+  m_currentMana: 0
+  m_currentMaxMana: 3
   m_manaTextMesh: {fileID: 1667521555}
   m_healthText: {fileID: 292106999}
   m_armorText: {fileID: 2099224318}
@@ -1482,7 +1483,8 @@ MonoBehaviour:
   m_health: 60
   m_maxHealth: 100
   m_armor: 0
-  m_mana: 0
+  m_currentMana: 0
+  m_currentMaxMana: 3
   m_manaTextMesh: {fileID: 0}
   m_healthText: {fileID: 2000154337}
   m_armorText: {fileID: 2045819719}
@@ -1780,7 +1782,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Discard
+  m_Text: Next turn
 --- !u!222 &1293427434
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2711,7 +2713,7 @@ MonoBehaviour:
   skillIconOffsetY: 2
   cardPlayRiseDstY: 1
   drawBtn: {fileID: 1351093533}
-  discardBtn: {fileID: 2140048918}
+  m_nextTurnBtn: {fileID: 2140048918}
   drawPileText: {fileID: 800415000}
   discardPileText: {fileID: 339464305}
   toast: {fileID: 680457607}
@@ -3188,6 +3190,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   playingCard: []
   handCards: []
+  m_player: {fileID: 0}
   m_hasValidTarget: 0
 --- !u!1 &2000154335
 GameObject:
@@ -3475,7 +3478,7 @@ GameObject:
   - component: {fileID: 2140048919}
   - component: {fileID: 2140048918}
   m_Layer: 5
-  m_Name: DiscardBtn
+  m_Name: NextTurnBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
