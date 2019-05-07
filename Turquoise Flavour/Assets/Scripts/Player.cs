@@ -10,6 +10,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     protected Creature m_currentCreature;
 
+    static Player s_playerInstance;
+
+    public static Player GetPlayerInstance()
+    {
+        return s_playerInstance;
+    }
+
+    public void Awake()
+    {
+        s_playerInstance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Start()
     {
         print("PlayerStart");
@@ -24,8 +37,7 @@ public class Player : MonoBehaviour
             return;
         }
         m_currentCreature = m_creatures[0];
-
-        cardEffects.Initialization(this);
+        LoadCreaturesDecks();
     }
 
     protected void LoadCreaturesDecks()
@@ -66,5 +78,16 @@ public class Player : MonoBehaviour
     public void TurnBegin()
     {
         m_currentCreature.TurnBegin();
+    }
+
+    public bool AddCardToCreatureDeck(Cards.ECard card)
+    {
+        if (m_currentCreature == null)
+        {
+            print("Player does not have a creature!");
+            return false;
+        }
+        m_currentCreature.AddCardToDeck(card);
+        return true;
     }
 }

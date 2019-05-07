@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CardEffects : MonoBehaviour {
 
+    [SerializeField]
+    protected GameObject m_rewardEvent;
     [Tooltip("The angle between two neighbor cards in hand, this will be changed with different card numbers")]
     public float rotateAngle = 30.0f;
     [Tooltip("The angle between two neighbor cards will be changed with different card numbers, define card number here")]
@@ -141,15 +143,20 @@ public class CardEffects : MonoBehaviour {
         m_cardEffectInstance = this;
     }
 
+    public void Start()
+    {
+        Initialization();
+    }
+
     public static CardEffects GetCardEffectsInstance()
     {
         return m_cardEffectInstance;
     }
 
-    public void Initialization(Player player)
+    public void Initialization()
     {
-        m_player = player;
-        Creature creature = player.GetCurrentCreature();
+        m_player = Player.GetPlayerInstance();
+        Creature creature = m_player.GetCurrentCreature();
         if (creature == null)
         {
             Debug.Log("CardEffects::Initialization : Creature Index Invalid!");
@@ -220,7 +227,6 @@ public class CardEffects : MonoBehaviour {
 
     void LoadDeckFromCreature(Creature creature)
     {
-        creature.LoadDeck();
         Deck deck = creature.GetDeck();
         if (deck != null)
         {
@@ -1134,7 +1140,9 @@ public class CardEffects : MonoBehaviour {
     {
         if (deadCreature.m_team == Turquoise.ETeams.Enemy)
         {
+            Instantiate(m_rewardEvent);
             print("Yeah! Player wins");
+            Destroy(gameObject);
         }
         else
         {

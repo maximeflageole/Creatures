@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Overheat
   m_EditorClassIdentifier: 
   cardName: Overheat
+  cardEnumValue: 1
   description: Overheats bitches till they die
   artwork: {fileID: 21300000, guid: 5f085de587f1e254e91c210471a50d35, type: 3}
   manaCost: 2
+  targetType: 0
   effects:
   - m_effect: 0
     m_subtype: Fire

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    public List<Cards.ECard> m_cards;
+    public List<Cards.ECard> m_cards = new List<Cards.ECard>();
 
     public void SaveGame()
     {
@@ -28,5 +28,12 @@ public class Deck : MonoBehaviour
             }
         }
         else Debug.Log("SaveSystem.LoadGame():There is no save file for this deck");
+    }
+
+    public bool AddCard(Cards.ECard card)
+    {
+        m_cards.Add(card);
+        SaveGame();
+        return true;
     }
 }

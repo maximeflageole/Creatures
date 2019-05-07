@@ -565,6 +565,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_buffs: []
   m_debuffs: []
+--- !u!1 &483448710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483448712}
+  - component: {fileID: 483448711}
+  m_Layer: 0
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &483448711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483448710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253da9a152550214994e22d6d72b6622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cards: 
+--- !u!4 &483448712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483448710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4563096, y: -0.16762501, z: -9.890489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &495292853
 Transform:
   m_ObjectHideFlags: 0
@@ -1107,7 +1151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_creatures:
   - {fileID: 407065806}
-  creatureIndex: 0
+  m_currentCreature: {fileID: 0}
 --- !u!4 &763564157
 Transform:
   m_ObjectHideFlags: 0
@@ -1480,7 +1524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_team: 1
   m_primaryType: 7
-  m_health: 60
+  m_health: 4
   m_maxHealth: 100
   m_armor: 0
   m_currentMana: 0
@@ -2678,6 +2722,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a789483d5dc7f4aae435adf176a723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_rewardEvent: {fileID: 2147587399352060765, guid: 28ba2e474fc01bb45b9c3403a88e5ee8,
+    type: 3}
   rotateAngle: 30
   cardNumForAngles: 080000000c000000
   anglesForCardNum:

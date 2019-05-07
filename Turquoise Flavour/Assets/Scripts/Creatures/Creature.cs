@@ -47,6 +47,10 @@ public class Creature : MonoBehaviour
 
     public void LoadDeck()
     {
+        if (m_deck == null)
+        {
+            m_deck = gameObject.AddComponent(typeof(Deck)) as Deck;
+        }
         m_deck.LoadGame();
     }
 
@@ -153,5 +157,11 @@ public class Creature : MonoBehaviour
     public void DieEvent()
     {
         CardEffects.GetCardEffectsInstance().DieEvent(this);
+    }
+
+    public bool AddCardToDeck(Cards.ECard card)
+    {
+        m_deck.AddCard(card);
+        return true;
     }
 }
