@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CardEffects : MonoBehaviour {
 
+    public GameObject m_playerCreature;
+    public GameObject m_enemyCreature;
     [SerializeField]
     protected GameObject m_rewardEvent;
     [Tooltip("The angle between two neighbor cards in hand, this will be changed with different card numbers")]
@@ -145,7 +147,6 @@ public class CardEffects : MonoBehaviour {
 
     public void Start()
     {
-        Initialization();
     }
 
     public static CardEffects GetCardEffectsInstance()

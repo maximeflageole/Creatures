@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    protected List<Creature> m_creatures;
+    protected List<Creature> m_creatures = new List<Creature>();
 
     [SerializeField]
     protected Creature m_currentCreature;
@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
 
     public static Player GetPlayerInstance()
     {
+        if (s_playerInstance == null)
+        {
+            var player = new GameObject("Player");
+            var playerObject = Instantiate(player, Vector3.zero, Quaternion.identity);
+            s_playerInstance = playerObject.AddComponent<Player>();
+        }
         return s_playerInstance;
     }
 
@@ -21,37 +27,53 @@ public class Player : MonoBehaviour
     {
         s_playerInstance = this;
         DontDestroyOnLoad(gameObject);
-    }
+        LoadGame();
 
-    public void Start()
-    {
-        print("PlayerStart");
-        CardEffects cardEffects = FindObjectOfType<CardEffects>();
-        if (cardEffects == null)
-        {
-            Debug.Log("CardEffects not found");
-        }
         if (m_creatures.Count == 0)
         {
             print("Player:Start No creature found");
             return;
         }
         m_currentCreature = m_creatures[0];
-        LoadCreaturesDecks();
+        CardEffects cardEffects = FindObjectOfType<CardEffects>();
+        if (cardEffects != null)
+        {
+            cardEffects.Initialization();
+        }
     }
 
-    protected void LoadCreaturesDecks()
+    protected void LoadGame()
     {
-        foreach (var creature in m_creatures)
+        if (SaveSystem.LoadGame() == null)
+        {
+            print("Save file empty");
+            return;
+        }
+        List<CreatureSaveable> creaturesSave = SaveSystem.LoadGame().creaturesSave;
+        foreach (var creatureSave in creaturesSave)
         {
             print("Creature load decks");
-            creature.LoadDeck();
+            var creatureObject = new GameObject();
+            var creatureInstance = Instantiate(creatureObject, transform);
+            Creature creature = creatureInstance.AddComponent<Creature>();
+            creature.CreateFromSave(creatureSave);
+            m_creatures.Add(creature);
+        }
+        CardEffects cardEffects = FindObjectOfType<CardEffects>();
+        if (cardEffects != null)
+        {
+            cardEffects.m_playerCreature.GetComponent<Creature>().CreateFromSave(creaturesSave[0]);
         }
     }
 
     public Creature GetCurrentCreature()
     {
         return m_currentCreature;
+    }
+
+    public List<Creature> GetCreatures()
+    {
+        return m_creatures;
     }
 
     public bool CanPlayCard(Card card)

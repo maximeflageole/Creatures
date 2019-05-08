@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Turquoise;
 using UnityEngine;
-using UnityEngine.UI;
+using Creatures;
 
 namespace Turquoise
 {
@@ -17,13 +17,31 @@ namespace Turquoise
     }
 }
 
+[System.Serializable]
+public struct CreatureSaveable
+{
+    public ECreature m_eCreature;
+    public int m_level;
+    public List<Cards.ECard> m_deck;
+
+
+    public CreatureSaveable(ECreature eCreature, int level, Deck deck)
+    {
+        m_eCreature = eCreature;
+        m_level = level;
+        m_deck = deck.m_cards;
+    }
+}
+
 public class Creature : MonoBehaviour
 {
     public static int m_baseMaxMana = 3;
 
+    [SerializeField]
+    protected ECreature m_eCreature;
     public ETeams m_team = ETeams.None;
     [SerializeField]
-    protected Creatures.CreaturesType m_primaryType;
+    protected ECreatureType m_primaryType;
     [SerializeField]
     protected int m_health = 100;
     [SerializeField]
@@ -44,6 +62,20 @@ public class Creature : MonoBehaviour
     protected TextMesh m_ConditionsText;
     [SerializeField]
     protected Deck m_deck;
+    [SerializeField]
+    protected int m_level;
+
+    public CreatureSaveable GetSaveableCreature()
+    {
+        return new CreatureSaveable(m_eCreature, m_level, m_deck);
+    }
+
+    public void CreateFromSave(CreatureSaveable creatureSave)
+    {
+        m_level = creatureSave.m_level;
+        m_deck.m_cards = creatureSave.m_deck;
+        m_eCreature = creatureSave.m_eCreature;
+    }
 
     public void LoadDeck()
     {
@@ -57,6 +89,11 @@ public class Creature : MonoBehaviour
     public Deck GetDeck()
     {
         return m_deck;
+    }
+
+    private void Awake()
+    {
+        m_deck = gameObject.AddComponent<Deck>();
     }
 
     public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
@@ -165,3 +202,15 @@ public class Creature : MonoBehaviour
         return true;
     }
 }
+
+namespace Creatures
+{
+    [System.Serializable]
+    public enum ECreature
+    {
+        FireCrab,
+        Dragon,
+        Count
+    }
+}
+

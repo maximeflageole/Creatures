@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Deck : MonoBehaviour
 {
-    public List<Cards.ECard> m_cards = new List<Cards.ECard>();
+    public List<Cards.ECard> m_cards;
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(this);
+        SaveSystem.SaveGame();
     }
 
     public void LoadGame()
     {
         m_cards.Clear();
         print("DeckLoading");
-        GameData data = SaveSystem.LoadGame();
+        SaveData data = SaveSystem.LoadGame();
         if (data != null)
         {
+            /*
             foreach (var cardStr in data.deck)
             {
                 Cards.ECard card = Cards.ECard.Count;
@@ -26,6 +28,7 @@ public class Deck : MonoBehaviour
                     m_cards.Add(card);
                 }
             }
+            */
         }
         else Debug.Log("SaveSystem.LoadGame():There is no save file for this deck");
     }

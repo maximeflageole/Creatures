@@ -47,5 +47,14 @@ public class RewardEvent : MonoBehaviour
     protected void AddCardToDeck(Card card)
     {
         Player.GetPlayerInstance().AddCardToCreatureDeck(card.GetCardData().cardEnumValue);
+        DisableCards();
+    }
+
+    protected void DisableCards()
+    {
+        foreach (var card in cardRewards)
+        {
+            card.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }

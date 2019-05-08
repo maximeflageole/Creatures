@@ -6,13 +6,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+    /*
     public static void SaveGame(Deck deck)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerDeck";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        GameData data = new GameData();
+        SaveData data = new SaveData();
         foreach (var card in deck.m_cards)
         {
             data.deck.Add(card.ToString());
@@ -21,8 +22,26 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
+    */
 
-    public static GameData LoadGame()
+    public static void SaveGame()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerDeck";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        SaveData data = new SaveData();
+        Player player = Player.GetPlayerInstance();
+        foreach (Creature creature in player.GetCreatures())
+        {
+            data.creaturesSave.Add(creature.GetSaveableCreature());
+        }
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static SaveData LoadGame()
     {
         string path = Application.persistentDataPath + "/playerDeck";
         if (File.Exists(path))
@@ -34,7 +53,7 @@ public static class SaveSystem
                 return null;
             }
 
-            GameData data = formatter.Deserialize(stream) as GameData;
+            SaveData data = formatter.Deserialize(stream) as SaveData;
             stream.Close();
 
             return data;
@@ -48,7 +67,7 @@ public static class SaveSystem
 }
 
 [System.Serializable]
-public class GameData
+public class SaveData
 {
-    public List<string> deck = new List<string>();
+    public List<CreatureSaveable> creaturesSave = new List<CreatureSaveable>();
 }
