@@ -53,16 +53,12 @@ public class Player : MonoBehaviour
         foreach (var creatureSave in creaturesSave)
         {
             print("Creature load decks");
-            var creatureObject = new GameObject();
-            var creatureInstance = Instantiate(creatureObject, transform);
-            Creature creature = creatureInstance.AddComponent<Creature>();
+            var creatureObject = new GameObject("Creature");
+            creatureObject.transform.SetParent(transform);
+            Creature creature = creatureObject.AddComponent<Creature>();
             creature.CreateFromSave(creatureSave);
+            creature.m_team = Turquoise.ETeams.Ally;
             m_creatures.Add(creature);
-        }
-        CardEffects cardEffects = FindObjectOfType<CardEffects>();
-        if (cardEffects != null)
-        {
-            cardEffects.m_playerCreature.GetComponent<Creature>().CreateFromSave(creaturesSave[0]);
         }
     }
 

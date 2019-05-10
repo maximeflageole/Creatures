@@ -77,15 +77,6 @@ public class Creature : MonoBehaviour
         m_eCreature = creatureSave.m_eCreature;
     }
 
-    public void LoadDeck()
-    {
-        if (m_deck == null)
-        {
-            m_deck = gameObject.AddComponent(typeof(Deck)) as Deck;
-        }
-        m_deck.LoadGame();
-    }
-
     public Deck GetDeck()
     {
         return m_deck;
@@ -187,8 +178,13 @@ public class Creature : MonoBehaviour
 
     public void TurnBegin()
     {
-        m_currentMana = m_currentMaxMana;
+        RefreshMana();
         m_armor = 0;
+    }
+
+    public void RefreshMana()
+    {
+        m_currentMana = m_currentMaxMana;
     }
 
     public void DieEvent()
@@ -200,6 +196,19 @@ public class Creature : MonoBehaviour
     {
         m_deck.AddCard(card);
         return true;
+    }
+
+    public void SendCreatureToBattle(Creature creatureRef)
+    {
+        creatureRef.m_eCreature = m_eCreature;
+        creatureRef.m_team = m_team;
+        creatureRef.m_primaryType = m_primaryType;
+        creatureRef.m_health = m_health;
+        creatureRef.m_maxHealth = m_maxHealth;
+        creatureRef.m_currentMana = m_currentMana;
+        creatureRef.m_currentMaxMana = m_currentMaxMana;
+        creatureRef.m_deck.m_cards = m_deck.m_cards;
+        creatureRef.m_level = m_level;
     }
 }
 

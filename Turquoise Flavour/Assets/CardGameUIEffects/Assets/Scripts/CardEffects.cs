@@ -163,7 +163,7 @@ public class CardEffects : MonoBehaviour {
             Debug.Log("CardEffects::Initialization : Creature Index Invalid!");
         }
 
-        LoadDeckFromCreature(creature);
+        ChangePlayerCreature(creature);
 
         // Add button click events
         drawBtn.GetComponent<Button>().onClick.AddListener(delegate ()
@@ -226,8 +226,12 @@ public class CardEffects : MonoBehaviour {
         CardPlaying();
     }
 
-    void LoadDeckFromCreature(Creature creature)
+    void ChangePlayerCreature(Creature creature)
     {
+        creature.SendCreatureToBattle(m_playerCreature.GetComponent<Creature>());
+        creature = m_playerCreature.GetComponent<Creature>();
+        creature.RefreshMana();
+        
         Deck deck = creature.GetDeck();
         if (deck != null)
         {

@@ -395,7 +395,6 @@ GameObject:
   - component: {fileID: 407065804}
   - component: {fileID: 407065805}
   - component: {fileID: 407065806}
-  - component: {fileID: 407065807}
   - component: {fileID: 407065808}
   m_Layer: 0
   m_Name: GoodEgg
@@ -538,21 +537,8 @@ MonoBehaviour:
   m_healthText: {fileID: 292106999}
   m_armorText: {fileID: 2099224318}
   m_ConditionsText: {fileID: 1397623260}
-  m_deck: {fileID: 407065807}
+  m_deck: {fileID: 0}
   m_level: 0
---- !u!114 &407065807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407065801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253da9a152550214994e22d6d72b6622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_cards: 
 --- !u!114 &407065808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,8 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c145fd8029a36419ed63696a14e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_creatures:
-  - {fileID: 407065806}
+  m_creatures: []
   m_currentCreature: {fileID: 0}
 --- !u!4 &763564157
 Transform:
@@ -1676,7 +1661,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 407065807}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
