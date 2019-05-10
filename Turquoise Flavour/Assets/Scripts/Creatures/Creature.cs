@@ -9,9 +9,7 @@ namespace Turquoise
 {
     public enum ETeams
     {
-        Player,
         Enemy,
-        Wild,
         Ally,
         None
     }
@@ -85,6 +83,7 @@ public class Creature : MonoBehaviour
     private void Awake()
     {
         m_deck = gameObject.AddComponent<Deck>();
+        gameObject.AddComponent<ConditionsComponent>();
     }
 
     public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
@@ -198,17 +197,12 @@ public class Creature : MonoBehaviour
         return true;
     }
 
-    public void SendCreatureToBattle(Creature creatureRef)
+    public void SendCreatureToBattle(CreatureUIComp creatureUI)
     {
-        creatureRef.m_eCreature = m_eCreature;
-        creatureRef.m_team = m_team;
-        creatureRef.m_primaryType = m_primaryType;
-        creatureRef.m_health = m_health;
-        creatureRef.m_maxHealth = m_maxHealth;
-        creatureRef.m_currentMana = m_currentMana;
-        creatureRef.m_currentMaxMana = m_currentMaxMana;
-        creatureRef.m_deck.m_cards = m_deck.m_cards;
-        creatureRef.m_level = m_level;
+        m_manaTextMesh = creatureUI.m_manaTextMesh;
+        m_healthText = creatureUI.m_healthText;
+        m_armorText = creatureUI.m_armorText;
+        m_ConditionsText = creatureUI.m_ConditionsText;
     }
 }
 

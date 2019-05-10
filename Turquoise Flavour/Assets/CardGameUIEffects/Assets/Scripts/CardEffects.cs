@@ -228,8 +228,8 @@ public class CardEffects : MonoBehaviour {
 
     void ChangePlayerCreature(Creature creature)
     {
-        creature.SendCreatureToBattle(m_playerCreature.GetComponent<Creature>());
-        creature = m_playerCreature.GetComponent<Creature>();
+        creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
+        creature = Player.GetPlayerInstance().GetCurrentCreature();
         creature.RefreshMana();
         
         Deck deck = creature.GetDeck();
@@ -390,10 +390,10 @@ public class CardEffects : MonoBehaviour {
 
     protected Turquoise.ETeams GetETeams(GameObject gameObj)
     {
-        var creature = gameObj.GetComponent<Creature>();
-        if (creature != null)
+        var creatureUI = gameObj.GetComponent<CreatureUIComp>();
+        if (creatureUI != null)
         {
-            return creature.m_team;
+            return creatureUI.m_team;
         }
         return Turquoise.ETeams.None;
     }
@@ -461,10 +461,17 @@ public class CardEffects : MonoBehaviour {
                 //Apply skill effects
                 if (card.targetPlayer != null)
                 {
-                    var selectedCreature = card.targetPlayer.GetComponent<Creature>();
+                    var selectedCreature = card.targetPlayer.GetComponent<CreatureUIComp>();
                     if (selectedCreature != null)
                     {
-                        card.ApplyEffects(selectedCreature);
+                        if (selectedCreature.m_team == Turquoise.ETeams.Ally)
+                        {
+                            card.ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
+                        }
+                        else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
+                        {
+                            card.ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
+                        }
                     }
                 }
                 foreach (var effect in card.m_effects)
