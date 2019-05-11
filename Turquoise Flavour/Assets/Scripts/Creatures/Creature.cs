@@ -78,7 +78,7 @@ public class Creature : MonoBehaviour
         m_deck.m_cards = creatureSave.m_deck;
         m_eCreature = creatureSave.m_eCreature;
         m_health = creatureSave.m_currentHealth;
-        CreatureData creatureData = GameMaster.GetInstance().creatureList.GetCreatureDataFromCreatureName(m_eCreature);
+        CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
         LoadFromStaticData(creatureData);
     }
 

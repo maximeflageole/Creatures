@@ -54,9 +54,10 @@ MonoBehaviour:
   - eventType: 3
     eventPrefab: {fileID: 0}
   m_currentEvent: {fileID: 0}
-  cardList: {fileID: 0}
-  cardListPrefab: {fileID: 8525656888715335837, guid: 687a99139b2a3ea4bbc6827ceccfdc77,
+  m_cardList: {fileID: 0}
+  m_cardListPrefab: {fileID: 8525656888715335837, guid: 687a99139b2a3ea4bbc6827ceccfdc77,
     type: 3}
-  creatureList: {fileID: 0}
-  creatureListPrefab: {fileID: 6123648333561893009, guid: 8faa2ace27f161c488a27f4493fb6606,
+  m_creatureList: {fileID: 0}
+  m_creatureListPrefab: {fileID: 6123648333561893009, guid: 8faa2ace27f161c488a27f4493fb6606,
     type: 3}
+  m_completedNodes: 

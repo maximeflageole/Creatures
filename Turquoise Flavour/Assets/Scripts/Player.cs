@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
+        if (s_playerInstance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         s_playerInstance = this;
         DontDestroyOnLoad(gameObject);
         LoadGame();
@@ -36,21 +41,19 @@ public class Player : MonoBehaviour
             return;
         }
         m_currentCreature = m_creatures[0];
-        CardEffects cardEffects = FindObjectOfType<CardEffects>();
-        if (cardEffects != null)
-        {
-            cardEffects.Initialization();
-        }
+        GameMaster.GetInstance().SaveGame();
     }
 
-    protected void LoadGame()
+    public void LoadGame()
     {
-        if (SaveSystem.LoadGame() == null)
+        SaveData saveData = SaveSystem.LoadGame();
+        if (saveData == null)
         {
             print("Save file empty");
             return;
         }
-        List<CreatureSaveable> creaturesSave = SaveSystem.LoadGame().creaturesSave;
+
+        List<CreatureSaveable> creaturesSave = saveData.creaturesSave;
         foreach (var creatureSave in creaturesSave)
         {
             print("Creature load decks");

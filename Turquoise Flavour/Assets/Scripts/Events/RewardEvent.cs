@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RewardEvent : TurquoiseEvent
 {
@@ -48,6 +49,7 @@ public class RewardEvent : TurquoiseEvent
     {
         Player.GetPlayerInstance().AddCardToCreatureDeck(card.GetCardData().cardEnumValue);
         DisableCards();
+        SceneManager.LoadScene("Overworld", LoadSceneMode.Single);
     }
 
     protected void DisableCards()

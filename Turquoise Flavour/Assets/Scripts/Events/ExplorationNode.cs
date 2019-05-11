@@ -5,20 +5,25 @@ using Exploration;
 
 public class ExplorationNode : MonoBehaviour
 {
-    [SerializeField]
-    protected EEventType m_eventType;
+    public EEventType m_eventType;
     [SerializeField]
     protected bool m_isCompleted;
     [SerializeField]
-    protected ExplorationNodeData nodeData;
+    protected ExplorationNodeData m_nodeData;
+    public int m_nodeId;
 
     // Start is called before the first frame update
     void Start()
     {
-        nodeData = Overworld.GetExplorationNodeDataFromEventType(m_eventType);
-        if (nodeData != null)
+        m_nodeData = Overworld.GetExplorationNodeDataFromEventType(m_eventType);
+        if (m_nodeData != null)
         {
-            GetComponent<SpriteRenderer>().sprite = nodeData.availableSprite;
+            Sprite sprite = m_nodeData.availableSprite;
+            if (m_isCompleted)
+            {
+                sprite = m_nodeData.completedSprite;
+            }
+            GetComponent<SpriteRenderer>().sprite = sprite;
         }
     }
 
@@ -34,10 +39,15 @@ public class ExplorationNode : MonoBehaviour
                 ExplorationNode node = go.GetComponent<ExplorationNode>();
                 if (node != null)
                 {
-                    GameMaster.GetInstance().ChangeEvent(node.m_eventType);
+                    GameMaster.GetInstance().ChangeEvent(this);
                     hit.collider.enabled = false;
                 }
             }
         }
+    }
+
+    public void CompleteNode()
+    {
+        m_isCompleted = true;
     }
 }
