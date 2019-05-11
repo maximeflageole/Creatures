@@ -7,11 +7,19 @@ public class ExplorationNode : MonoBehaviour
 {
     [SerializeField]
     protected EEventType m_eventType;
+    [SerializeField]
+    protected bool m_isCompleted;
+    [SerializeField]
+    protected ExplorationNodeData nodeData;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        nodeData = Overworld.GetExplorationNodeDataFromEventType(m_eventType);
+        if (nodeData != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = nodeData.availableSprite;
+        }
     }
 
     // Update is called once per frame

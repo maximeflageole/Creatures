@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Exploration;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -33,12 +34,6 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeEvent(EEventType eventType)
     {
         if (m_eventTypeDictionary[eventType] != null)
@@ -55,6 +50,7 @@ public class GameMaster : MonoBehaviour
             case EEventType.Treasure:
                 break;
             case EEventType.WildEncounter:
+                SceneManager.LoadScene("Demo", LoadSceneMode.Single);
                 break;
             default:
                 break;

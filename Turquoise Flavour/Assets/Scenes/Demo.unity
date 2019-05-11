@@ -394,7 +394,6 @@ GameObject:
   - component: {fileID: 407065802}
   - component: {fileID: 407065804}
   - component: {fileID: 407065805}
-  - component: {fileID: 407065808}
   - component: {fileID: 407065807}
   m_Layer: 0
   m_Name: GoodEgg
@@ -530,20 +529,6 @@ MonoBehaviour:
   m_armorText: {fileID: 2099224318}
   m_ConditionsText: {fileID: 1397623260}
   m_team: 1
---- !u!114 &407065808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407065801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6cf63cfc03dca48b629b0382da5384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_buffs: []
-  m_debuffs: []
 --- !u!1 &483448710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1355,6 @@ GameObject:
   - component: {fileID: 1043736050}
   - component: {fileID: 1043736051}
   - component: {fileID: 1043736052}
-  - component: {fileID: 1043736053}
   - component: {fileID: 1043736054}
   m_Layer: 0
   m_Name: BadEgg
@@ -1502,7 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_eCreature: 0
-  m_team: 1
+  m_team: 0
   m_primaryType: 7
   m_health: 4
   m_maxHealth: 100
@@ -1515,20 +1499,6 @@ MonoBehaviour:
   m_ConditionsText: {fileID: 587139162}
   m_deck: {fileID: 0}
   m_level: 0
---- !u!114 &1043736053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043736047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6cf63cfc03dca48b629b0382da5384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_buffs: []
-  m_debuffs: []
 --- !u!114 &1043736054
 MonoBehaviour:
   m_ObjectHideFlags: 0

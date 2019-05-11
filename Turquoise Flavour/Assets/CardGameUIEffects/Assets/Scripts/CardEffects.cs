@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardEffects : MonoBehaviour {
+public class CardEffects : TurquoiseEvent {
 
     public GameObject m_playerCreature;
     public GameObject m_enemyCreature;

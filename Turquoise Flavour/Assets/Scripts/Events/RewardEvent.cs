@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RewardEvent : MonoBehaviour
+public class RewardEvent : TurquoiseEvent
 {
     [SerializeField]
     protected List<CardData> cardsData;

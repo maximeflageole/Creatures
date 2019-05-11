@@ -143,7 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f0ab2d265521843aa5a9cf7807de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventType: 0
+  m_eventType: 1
+  m_isCompleted: 0
+  nodeData: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
 --- !u!58 &153433344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -217,10 +219,58 @@ Transform:
   m_GameObject: {fileID: 153433342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.33, y: -0.89, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &510792965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510792967}
+  - component: {fileID: 510792966}
+  m_Layer: 0
+  m_Name: Overworld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &510792966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510792965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e0b73eb2db5c149a18b77927a2dfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nodesData:
+  - {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
+  - {fileID: 11400000, guid: 613bcef23ce563c4dbe95425c4e01114, type: 2}
+  - {fileID: 11400000, guid: edc0f444e0eb718428e9bff41ee065e2, type: 2}
+  - {fileID: 11400000, guid: 41e9bcb8adae15e4cb724728ce5ade45, type: 2}
+--- !u!4 &510792967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510792965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6835009, y: -2.9556088, z: -0.055051275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578441621
 GameObject:
@@ -253,7 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f0ab2d265521843aa5a9cf7807de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventType: 0
+  m_eventType: 1
+  m_isCompleted: 0
+  nodeData: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
 --- !u!58 &578441623
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -327,7 +379,7 @@ Transform:
   m_GameObject: {fileID: 578441621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.33, y: -1.26, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -363,7 +415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f0ab2d265521843aa5a9cf7807de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventType: 0
+  m_eventType: 1
+  m_isCompleted: 0
+  nodeData: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
 --- !u!58 &646674371
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -437,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 646674369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.13, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -534,7 +588,7 @@ Transform:
   m_GameObject: {fileID: 1539173793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -552,6 +606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_eventType: 0
+  m_isCompleted: 0
+  nodeData: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
 --- !u!1 &1866386193
 GameObject:
   m_ObjectHideFlags: 0
