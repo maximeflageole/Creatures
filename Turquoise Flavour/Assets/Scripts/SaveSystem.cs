@@ -36,7 +36,10 @@ public static class SaveSystem
         {
             data.creaturesSave.Add(creature.GetSaveableCreature());
         }
-
+        foreach (var completedNode in GameMaster.GetInstance().m_completedNodes)
+        {
+            data.completedNodes.Add(completedNode);
+        }
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -50,6 +53,7 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
             if (stream.Length == 0)
             {
+                stream.Close();
                 return null;
             }
 
@@ -70,4 +74,5 @@ public static class SaveSystem
 public class SaveData
 {
     public List<CreatureSaveable> creaturesSave = new List<CreatureSaveable>();
+    public List<int> completedNodes = new List<int>();
 }

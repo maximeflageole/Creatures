@@ -20,7 +20,7 @@ namespace Cards
 public class CardList: MonoBehaviour
 {
     [SerializeField]
-    protected List<CardDataDictionnary> cardDataDictionnary;
+    protected List<CardDataTuplet> cardDataDictionnary;
 
     public static string cardResourcesFolder = "Assets/Resources/Cards/";
 
@@ -43,7 +43,7 @@ public class CardList: MonoBehaviour
 }
 
 [System.Serializable]
-public struct CardDataDictionnary
+public struct CardDataTuplet
 {
     public Cards.ECard cardName;
     public CardData cardData;

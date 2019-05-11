@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     protected Creature m_currentCreature;
+    public int m_currentCreatureIndex = 0;
 
     static Player s_playerInstance;
 
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
+        if (s_playerInstance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         s_playerInstance = this;
         DontDestroyOnLoad(gameObject);
         LoadGame();
@@ -35,21 +41,19 @@ public class Player : MonoBehaviour
             return;
         }
         m_currentCreature = m_creatures[0];
-        CardEffects cardEffects = FindObjectOfType<CardEffects>();
-        if (cardEffects != null)
-        {
-            cardEffects.Initialization();
-        }
+        GameMaster.GetInstance().SaveGame();
     }
 
-    protected void LoadGame()
+    public void LoadGame()
     {
-        if (SaveSystem.LoadGame() == null)
+        SaveData saveData = SaveSystem.LoadGame();
+        if (saveData == null)
         {
             print("Save file empty");
             return;
         }
-        List<CreatureSaveable> creaturesSave = SaveSystem.LoadGame().creaturesSave;
+
+        List<CreatureSaveable> creaturesSave = saveData.creaturesSave;
         foreach (var creatureSave in creaturesSave)
         {
             print("Creature load decks");
@@ -107,5 +111,16 @@ public class Player : MonoBehaviour
         }
         m_currentCreature.AddCardToDeck(card);
         return true;
+    }
+
+    public void SwapCreature()
+    {
+        if (m_creatures.Count > 1)
+        {
+            m_currentCreature.ReturnCreatureFromBattle();
+            m_currentCreatureIndex = (m_currentCreatureIndex + 1) % m_creatures.Count;
+            m_currentCreature = m_creatures[m_currentCreatureIndex];
+            CardEffects.GetCardEffectsInstance().ChangePlayerCreature(m_currentCreature);
+        }
     }
 }

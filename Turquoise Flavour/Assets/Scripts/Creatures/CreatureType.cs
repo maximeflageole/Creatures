@@ -6,17 +6,15 @@ namespace Creatures
 {
     public enum ECreatureType
     {
-        Dragon,
         Mineral,
         Beast,
         Magic,
         Plant,
         Dark,
-        Monster,
         Automaton,
-        Robotic,
         Aquatic,
-        Elemental,
+        Ice,
+        Electric,
         None
     };
 }

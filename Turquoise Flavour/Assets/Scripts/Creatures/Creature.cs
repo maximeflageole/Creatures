@@ -21,13 +21,15 @@ public struct CreatureSaveable
     public ECreature m_eCreature;
     public int m_level;
     public List<Cards.ECard> m_deck;
+    public int m_currentHealth;
 
 
-    public CreatureSaveable(ECreature eCreature, int level, Deck deck)
+    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth)
     {
         m_eCreature = eCreature;
         m_level = level;
         m_deck = deck.m_cards;
+        m_currentHealth = currentHealth;
     }
 }
 
@@ -62,10 +64,12 @@ public class Creature : MonoBehaviour
     protected Deck m_deck;
     [SerializeField]
     protected int m_level;
+    [SerializeField]
+    protected Sprite m_sprite;
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_level, m_deck);
+        return new CreatureSaveable(m_eCreature, m_level, m_deck, m_health);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
@@ -73,6 +77,18 @@ public class Creature : MonoBehaviour
         m_level = creatureSave.m_level;
         m_deck.m_cards = creatureSave.m_deck;
         m_eCreature = creatureSave.m_eCreature;
+        m_health = creatureSave.m_currentHealth;
+        CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
+        LoadFromStaticData(creatureData);
+    }
+
+    protected void LoadFromStaticData(CreatureData creatureData)
+    {
+        m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_level);
+        m_health = m_maxHealth;
+        m_primaryType = creatureData.creatureType;
+        m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
+        m_sprite = creatureData.sprite;
     }
 
     public Deck GetDeck()
@@ -203,6 +219,15 @@ public class Creature : MonoBehaviour
         m_healthText = creatureUI.m_healthText;
         m_armorText = creatureUI.m_armorText;
         m_ConditionsText = creatureUI.m_ConditionsText;
+        creatureUI.GetComponent<SpriteRenderer>().sprite = m_sprite;
+    }
+
+    public void ReturnCreatureFromBattle()
+    {
+        m_manaTextMesh = null;
+        m_healthText = null;
+        m_armorText = null;
+        m_ConditionsText = null;
     }
 }
 
@@ -213,6 +238,7 @@ namespace Creatures
     {
         FireCrab,
         Dragon,
+        FrostOwl,
         Count
     }
 }

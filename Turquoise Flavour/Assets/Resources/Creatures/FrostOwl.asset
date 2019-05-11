@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cda87c80a53c91d4a908b444eee9d35b, type: 3}
-  m_Name: FireCrab
+  m_Name: FrostOwl
   m_EditorClassIdentifier: 
-  eCreature: 0
-  creatureName: Ignis Carcinos
-  creatureType: 5
-  initialHealth: 50
-  healthPerLevel: 6
+  eCreature: 2
+  creatureName: Frost Owl
+  creatureType: 7
+  initialHealth: 40
+  healthPerLevel: 5
   initialMana: 3
-  sprite: {fileID: 21300000, guid: 1404fbd094deed84bba271d460d6d597, type: 3}
+  sprite: {fileID: 21300000, guid: 7a1e4ec4c5c8a594cb8352b7ced218a5, type: 3}

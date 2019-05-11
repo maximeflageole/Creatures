@@ -163,8 +163,6 @@ public class CardEffects : TurquoiseEvent {
             Debug.Log("CardEffects::Initialization : Creature Index Invalid!");
         }
 
-        ChangePlayerCreature(creature);
-
         // Add button click events
         drawBtn.GetComponent<Button>().onClick.AddListener(delegate ()
         {
@@ -172,7 +170,7 @@ public class CardEffects : TurquoiseEvent {
         });
         m_nextTurnBtn.GetComponent<Button>().onClick.AddListener(delegate ()
         {
-            NextTurn();
+            EndPlayerTurn();
         });
 
         // Init arrow parts, the last one is head
@@ -189,7 +187,7 @@ public class CardEffects : TurquoiseEvent {
 
         // Play shuffle card animation
         ShuffleCardAnimation();
-        ChangeTurn();
+        ChangePlayerCreature(creature, true);
     }
 
     void Update()
@@ -226,12 +224,24 @@ public class CardEffects : TurquoiseEvent {
         CardPlaying();
     }
 
-    void ChangePlayerCreature(Creature creature)
+    public void ChangePlayerCreature(Creature creature, bool battleStart = false)
     {
         creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
         creature = Player.GetPlayerInstance().GetCurrentCreature();
         creature.RefreshMana();
-        
+
+        if (battleStart)
+        {
+            ChangeTurn();
+        }
+        else
+        {
+            EndPlayerTurn();
+            drawPileCards.Clear();
+            playingCard.Clear();
+            discardPileCards.Clear();
+        }
+
         Deck deck = creature.GetDeck();
         if (deck != null)
         {
@@ -239,6 +249,10 @@ public class CardEffects : TurquoiseEvent {
             if (cardList == null)
             {
                 Debug.Log("Found no card list in the scene");
+                return;
+            }
+            if (deck.m_cards == null || deck.m_cards.Count == 0)
+            {
                 return;
             }
             foreach (var cardName in deck.m_cards)
@@ -785,7 +799,7 @@ public class CardEffects : TurquoiseEvent {
     }
 
     // This function is called for discarding all cards in hand
-    void NextTurn()
+    void EndPlayerTurn()
     {
         if (shufflingCard == true) return;
         if (Time.time - lastAddHandCardTime <= 0.5f) return;
