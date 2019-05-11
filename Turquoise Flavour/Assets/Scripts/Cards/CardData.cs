@@ -6,6 +6,7 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public string cardName;
+    public Cards.ECard cardEnumValue;
     public string description;
     public Sprite artwork;
     public int manaCost;

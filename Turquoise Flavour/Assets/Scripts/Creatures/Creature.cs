@@ -1,32 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Turquoise;
 using UnityEngine;
-using UnityEngine.UI;
+using Creatures;
 
 namespace Turquoise
 {
     public enum ETeams
     {
-        Player,
         Enemy,
-        Wild,
         Ally,
         None
     }
 }
 
+[System.Serializable]
+public struct CreatureSaveable
+{
+    public ECreature m_eCreature;
+    public int m_level;
+    public List<Cards.ECard> m_deck;
+
+
+    public CreatureSaveable(ECreature eCreature, int level, Deck deck)
+    {
+        m_eCreature = eCreature;
+        m_level = level;
+        m_deck = deck.m_cards;
+    }
+}
+
 public class Creature : MonoBehaviour
 {
+    public static int m_baseMaxMana = 3;
+
+    [SerializeField]
+    protected ECreature m_eCreature;
     public ETeams m_team = ETeams.None;
     [SerializeField]
-    protected Creatures.CreaturesType m_primaryType;
+    protected ECreatureType m_primaryType;
     [SerializeField]
     protected int m_health = 100;
     [SerializeField]
     protected int m_maxHealth = 100;
     [SerializeField]
     protected int m_armor = 0;
+    [SerializeField]
+    protected int m_currentMana = 0;
+    [SerializeField]
+    protected int m_currentMaxMana = m_baseMaxMana;
+    [SerializeField]
+    protected TextMeshPro m_manaTextMesh;
     [SerializeField]
     protected TextMesh m_healthText;
     [SerializeField]
@@ -35,15 +60,30 @@ public class Creature : MonoBehaviour
     protected TextMesh m_ConditionsText;
     [SerializeField]
     protected Deck m_deck;
+    [SerializeField]
+    protected int m_level;
 
-    public void LoadDeck()
+    public CreatureSaveable GetSaveableCreature()
     {
-        m_deck.LoadGame();
+        return new CreatureSaveable(m_eCreature, m_level, m_deck);
+    }
+
+    public void CreateFromSave(CreatureSaveable creatureSave)
+    {
+        m_level = creatureSave.m_level;
+        m_deck.m_cards = creatureSave.m_deck;
+        m_eCreature = creatureSave.m_eCreature;
     }
 
     public Deck GetDeck()
     {
         return m_deck;
+    }
+
+    private void Awake()
+    {
+        m_deck = gameObject.AddComponent<Deck>();
+        gameObject.AddComponent<ConditionsComponent>();
     }
 
     public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
@@ -98,6 +138,10 @@ public class Creature : MonoBehaviour
             m_armorText.gameObject.SetActive(m_armor != 0);
             m_armorText.text = m_armor.ToString();
         }
+        if (m_manaTextMesh != null)
+        {
+            m_manaTextMesh.text = "Mana: " + m_currentMana + "/" + m_baseMaxMana;
+        }
     }
 
     protected void ApplyDamage(int damage)
@@ -115,5 +159,61 @@ public class Creature : MonoBehaviour
         {
             m_health -= damage;
         }
+        if (m_health <= 0)
+        {
+            DieEvent();
+        }
+    }
+
+    public int GetCurrentMana()
+    {
+        return m_currentMana;
+    }
+
+    public void PlayCard(Card card)
+    {
+        m_currentMana -= card.GetCardData().manaCost;
+    }
+
+    public void TurnBegin()
+    {
+        RefreshMana();
+        m_armor = 0;
+    }
+
+    public void RefreshMana()
+    {
+        m_currentMana = m_currentMaxMana;
+    }
+
+    public void DieEvent()
+    {
+        CardEffects.GetCardEffectsInstance().DieEvent(this);
+    }
+
+    public bool AddCardToDeck(Cards.ECard card)
+    {
+        m_deck.AddCard(card);
+        return true;
+    }
+
+    public void SendCreatureToBattle(CreatureUIComp creatureUI)
+    {
+        m_manaTextMesh = creatureUI.m_manaTextMesh;
+        m_healthText = creatureUI.m_healthText;
+        m_armorText = creatureUI.m_armorText;
+        m_ConditionsText = creatureUI.m_ConditionsText;
     }
 }
+
+namespace Creatures
+{
+    [System.Serializable]
+    public enum ECreature
+    {
+        FireCrab,
+        Dragon,
+        Count
+    }
+}
+

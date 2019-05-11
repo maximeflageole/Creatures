@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Creatures
 {
-    public enum CreaturesType
+    public enum ECreatureType
     {
         Dragon,
         Mineral,

@@ -115,6 +115,7 @@ public class Card : MonoBehaviour
     public void Reset()
     {
         isPlaying = false;
+        isDropping = false;
         targetPlayer = null;
         info = null;
         totalDistance = 0.0f;

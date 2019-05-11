@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BuffDamage
   m_EditorClassIdentifier: 
   cardName: BuffDamage
+  cardEnumValue: 4
   description: Buff your damage by +2 this round
   artwork: {fileID: 21300000, guid: a2daa2b12f9264443886c9ec12717bc3, type: 3}
   manaCost: 1

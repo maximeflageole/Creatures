@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardEffects : MonoBehaviour {
+public class CardEffects : TurquoiseEvent {
 
+    public GameObject m_playerCreature;
+    public GameObject m_enemyCreature;
+    [SerializeField]
+    protected GameObject m_rewardEvent;
     [Tooltip("The angle between two neighbor cards in hand, this will be changed with different card numbers")]
     public float rotateAngle = 30.0f;
     [Tooltip("The angle between two neighbor cards will be changed with different card numbers, define card number here")]
@@ -72,7 +76,7 @@ public class CardEffects : MonoBehaviour {
 
     //UI
     public Button drawBtn;
-    public Button discardBtn;
+    public Button m_nextTurnBtn;
     public Text drawPileText;
     public Text discardPileText;
     public Text toast;
@@ -119,6 +123,11 @@ public class CardEffects : MonoBehaviour {
     private Queue<Card> drawPileCards = new Queue<Card>();
     [SerializeField]
     private Queue<Card> discardPileCards = new Queue<Card>();
+    [SerializeField]
+    protected Player m_player;
+    protected int m_turnCount = 0;
+
+    static CardEffects m_cardEffectInstance;
 
     private const string DRAW_PILE_NUM_TEXT = "Draw Pile: ";
     private const string DISCARD_PILE_NUM_TEXT = "Discard Pile: ";
@@ -130,24 +139,40 @@ public class CardEffects : MonoBehaviour {
      [SerializeField]
      protected bool m_hasValidTarget;
 
-    public void Initialization(Player player)
+    public void Awake()
     {
-        Creature creature = player.GetCurrentCreature();
+        //Card effect is a singleton and should behave as such
+        m_cardEffectInstance = this;
+    }
+
+    public void Start()
+    {
+    }
+
+    public static CardEffects GetCardEffectsInstance()
+    {
+        return m_cardEffectInstance;
+    }
+
+    public void Initialization()
+    {
+        m_player = Player.GetPlayerInstance();
+        Creature creature = m_player.GetCurrentCreature();
         if (creature == null)
         {
             Debug.Log("CardEffects::Initialization : Creature Index Invalid!");
         }
 
-        LoadDeckFromCreature(creature);
+        ChangePlayerCreature(creature);
 
         // Add button click events
         drawBtn.GetComponent<Button>().onClick.AddListener(delegate ()
         {
             AddHandCard();
         });
-        discardBtn.GetComponent<Button>().onClick.AddListener(delegate ()
+        m_nextTurnBtn.GetComponent<Button>().onClick.AddListener(delegate ()
         {
-            ClearHandCard();
+            NextTurn();
         });
 
         // Init arrow parts, the last one is head
@@ -164,7 +189,7 @@ public class CardEffects : MonoBehaviour {
 
         // Play shuffle card animation
         ShuffleCardAnimation();
-
+        ChangeTurn();
     }
 
     void Update()
@@ -201,9 +226,12 @@ public class CardEffects : MonoBehaviour {
         CardPlaying();
     }
 
-    void LoadDeckFromCreature(Creature creature)
+    void ChangePlayerCreature(Creature creature)
     {
-        creature.LoadDeck();
+        creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
+        creature = Player.GetPlayerInstance().GetCurrentCreature();
+        creature.RefreshMana();
+        
         Deck deck = creature.GetDeck();
         if (deck != null)
         {
@@ -271,8 +299,6 @@ public class CardEffects : MonoBehaviour {
             else
                 shuffleCardDelay.Add(Random.Range(0.0f, 0.1f));
         }
-        shuffleBegin = Time.time;
-        shufflingCard = true;
     }
 
     void RefreshDrawPile()
@@ -364,10 +390,10 @@ public class CardEffects : MonoBehaviour {
 
     protected Turquoise.ETeams GetETeams(GameObject gameObj)
     {
-        var creature = gameObj.GetComponent<Creature>();
-        if (creature != null)
+        var creatureUI = gameObj.GetComponent<CreatureUIComp>();
+        if (creatureUI != null)
         {
-            return creature.m_team;
+            return creatureUI.m_team;
         }
         return Turquoise.ETeams.None;
     }
@@ -377,6 +403,10 @@ public class CardEffects : MonoBehaviour {
     {
         if(focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
         {
+            if (!m_player.CanPlayCard(handCards[focusOnCard]))
+            {
+                return;
+            }
             // Record the character which the card skilled on
             handCards[focusOnCard].targetPlayer = focusOnPlayer;
             playingCard.Add(handCards[focusOnCard]);
@@ -431,10 +461,17 @@ public class CardEffects : MonoBehaviour {
                 //Apply skill effects
                 if (card.targetPlayer != null)
                 {
-                    var selectedCreature = card.targetPlayer.GetComponent<Creature>();
+                    var selectedCreature = card.targetPlayer.GetComponent<CreatureUIComp>();
                     if (selectedCreature != null)
                     {
-                        card.ApplyEffects(selectedCreature);
+                        if (selectedCreature.m_team == Turquoise.ETeams.Ally)
+                        {
+                            card.ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
+                        }
+                        else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
+                        {
+                            card.ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
+                        }
                     }
                 }
                 foreach (var effect in card.m_effects)
@@ -487,7 +524,7 @@ public class CardEffects : MonoBehaviour {
             }
             shuffleCardsEffects.Clear();
             shufflingCard = false;
-            StartCoroutine(SendHandCards());      // Send card to hand automatically after shuffling animation
+            //StartCoroutine(SendHandCards());      // Send card to hand automatically after shuffling animation
         }
         for (int i = 0; i < shuffleCardsEffects.Count; ++i)
         {
@@ -748,7 +785,7 @@ public class CardEffects : MonoBehaviour {
     }
 
     // This function is called for discarding all cards in hand
-    void ClearHandCard()
+    void NextTurn()
     {
         if (shufflingCard == true) return;
         if (Time.time - lastAddHandCardTime <= 0.5f) return;
@@ -777,6 +814,7 @@ public class CardEffects : MonoBehaviour {
                 arrows[i].SetActive(false);
             }
         }
+        ChangeTurn();
     }
 
     // This function is called for preparing to drop card after playing effect
@@ -1077,7 +1115,7 @@ public class CardEffects : MonoBehaviour {
                 arrows[i].transform.localScale = new Vector3(1.0f - 0.03f * (arrows.Count - 1 - i), 1.0f - 0.03f * (arrows.Count - 1 - i), 0);
             }
             drawBtn.enabled = false;
-            discardBtn.enabled = false;
+            m_nextTurnBtn.enabled = false;
         }
         else
         {
@@ -1089,7 +1127,38 @@ public class CardEffects : MonoBehaviour {
                 }
             }
             drawBtn.enabled = true;
-            discardBtn.enabled = true;
+            m_nextTurnBtn.enabled = true;
+        }
+    }
+
+    public void ChangeTurn()
+    {
+        m_turnCount++;
+        if (m_turnCount % 2 == 0)
+        {
+            print("Begin Enemy's turn");
+            m_player.TurnEnd();
+        }
+        else
+        {
+            print("Begin player's turn");
+            m_player.TurnBegin();
+            shuffleBegin = Time.time;
+            shufflingCard = true;
+        }
+    }
+
+    public void DieEvent(Creature deadCreature)
+    {
+        if (deadCreature.m_team == Turquoise.ETeams.Enemy)
+        {
+            Instantiate(m_rewardEvent);
+            print("Yeah! Player wins");
+            Destroy(gameObject);
+        }
+        else
+        {
+            print("Oh no, you dead");
         }
     }
 }
