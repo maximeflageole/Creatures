@@ -12,13 +12,21 @@ public class GameMaster : MonoBehaviour
     protected Dictionary<EEventType, GameObject> m_eventTypeDictionary = new Dictionary<EEventType, GameObject>();
     [SerializeField]
     protected TurquoiseEvent m_currentEvent;
+    public CardList cardList;
+    [SerializeField]
+    protected GameObject cardListPrefab;
+    public CreatureList creatureList;
+    [SerializeField]
+    protected GameObject creatureListPrefab;
 
 
     public static GameMaster GetInstance()
     {
         if (s_gmInstance == null)
         {
-            s_gmInstance = Instantiate(new GameMaster());
+            var gameMaster = new GameObject("_GM");
+            var go = Instantiate(Resources.Load("_GM")) as GameObject;
+            s_gmInstance = go.GetComponent<GameMaster>();
         }
         return s_gmInstance;
     }
@@ -31,6 +39,14 @@ public class GameMaster : MonoBehaviour
         foreach (var eventPair in m_eventTypes)
         {
             m_eventTypeDictionary.Add(eventPair.eventType, eventPair.eventPrefab);
+        }
+        if (creatureListPrefab != null)
+        {
+            creatureList = Instantiate(creatureListPrefab, transform).GetComponent<CreatureList>();
+        }
+        if (cardListPrefab != null)
+        {
+            cardList = Instantiate(cardListPrefab, transform).GetComponent<CardList>();
         }
     }
 
@@ -60,6 +76,11 @@ public class GameMaster : MonoBehaviour
     public void SaveGame()
     {
         SaveSystem.SaveGame();
+    }
+
+    public void ChangeCreature()
+    {
+        Player.GetPlayerInstance().SwapCreature();
     }
 }
 

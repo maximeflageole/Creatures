@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     protected Creature m_currentCreature;
+    public int m_currentCreatureIndex = 0;
 
     static Player s_playerInstance;
 
@@ -107,5 +108,16 @@ public class Player : MonoBehaviour
         }
         m_currentCreature.AddCardToDeck(card);
         return true;
+    }
+
+    public void SwapCreature()
+    {
+        if (m_creatures.Count > 1)
+        {
+            m_currentCreature.ReturnCreatureFromBattle();
+            m_currentCreatureIndex = (m_currentCreatureIndex + 1) % m_creatures.Count;
+            m_currentCreature = m_creatures[m_currentCreatureIndex];
+            CardEffects.GetCardEffectsInstance().ChangePlayerCreature(m_currentCreature);
+        }
     }
 }
