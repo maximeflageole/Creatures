@@ -18,7 +18,7 @@ public class GameMaster : MonoBehaviour
     protected GameObject m_creatureListPrefab;
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
-    protected int m_currentNodeIndex;
+    protected int m_currentNodeIndex = -1;
 
 
     public static GameMaster GetInstance()
@@ -95,6 +95,7 @@ public class GameMaster : MonoBehaviour
 
     public void StartEventOfEventType(EEventType eventType)
     {
+        m_currentNodeIndex = -1;
         var go = Overworld.GetInstance().GetObjectFromEventType(eventType);
         if (go != null)
         {
@@ -129,21 +130,14 @@ public class GameMaster : MonoBehaviour
         m_completedNodes = saveData.completedNodes;
     }
 
-    //TODO: this needs to be revised asap
-    public void CompleteNode(ExplorationNode explorationNode)
-    {
-        if (!m_completedNodes.Contains(explorationNode.m_nodeId))
-        {
-            m_completedNodes.Add(explorationNode.m_nodeId);
-        }
-        explorationNode.CompleteNode();
-    }
-
     public void CompleteNode(int nodeIndex)
     {
-        if (!m_completedNodes.Contains(nodeIndex))
+        if (nodeIndex != -1)
         {
-            m_completedNodes.Add(nodeIndex);
+            if (!m_completedNodes.Contains(nodeIndex))
+            {
+                m_completedNodes.Add(nodeIndex);
+            }
         }
     }
 
