@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
         {
             var player = new GameObject("Player");
             var playerObject = Instantiate(player, Vector3.zero, Quaternion.identity);
-            s_playerInstance = playerObject.AddComponent<Player>();
+            Player playerComp = playerObject.AddComponent<Player>();
+            return playerComp;
         }
         return s_playerInstance;
     }
@@ -33,15 +34,6 @@ public class Player : MonoBehaviour
         }
         s_playerInstance = this;
         DontDestroyOnLoad(gameObject);
-        LoadGame();
-
-        if (m_creatures.Count == 0)
-        {
-            print("Player:Start No creature found");
-            return;
-        }
-        m_currentCreature = m_creatures[0];
-        GameMaster.GetInstance().SaveGame();
     }
 
     public void LoadGame()
@@ -64,6 +56,13 @@ public class Player : MonoBehaviour
             creature.m_team = Turquoise.ETeams.Ally;
             m_creatures.Add(creature);
         }
+        if (m_creatures.Count == 0)
+        {
+            print("Player:Start No creature found");
+            return;
+        }
+        m_currentCreature = m_creatures[0];
+        GameMaster.GetInstance().SaveGame();
     }
 
     public Creature GetCurrentCreature()

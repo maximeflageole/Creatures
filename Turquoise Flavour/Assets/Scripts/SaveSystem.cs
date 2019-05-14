@@ -24,8 +24,9 @@ public static class SaveSystem
     }
     */
 
-    public static void SaveGame()
+    public static bool SaveGame()
     {
+        Debug.Log("Start saving");
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerDeck";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -42,10 +43,13 @@ public static class SaveSystem
         }
         formatter.Serialize(stream, data);
         stream.Close();
+        Debug.Log("End saving");
+        return true;
     }
 
     public static SaveData LoadGame()
     {
+        Debug.Log("Start loading");
         string path = Application.persistentDataPath + "/playerDeck";
         if (File.Exists(path))
         {
@@ -55,16 +59,19 @@ public static class SaveSystem
             {
                 stream.Close();
                 return null;
+                Debug.Log("End loading");
             }
 
             SaveData data = formatter.Deserialize(stream) as SaveData;
             stream.Close();
+            Debug.Log("End loading");
 
             return data;
         }
         else
         {
             Debug.LogError("Save file not found in " + path);
+            Debug.Log("End loading");
             return null;
         }
     }

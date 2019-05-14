@@ -49,7 +49,7 @@ public class RewardEvent : TurquoiseEvent
     {
         Player.GetPlayerInstance().AddCardToCreatureDeck(card.GetCardData().cardEnumValue);
         DisableCards();
-        SceneManager.LoadScene("Overworld", LoadSceneMode.Single);
+        GameMaster.GetInstance().EndCurrentEvent(true);
     }
 
     protected void DisableCards()

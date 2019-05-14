@@ -31,7 +31,7 @@ public class GameMaster : MonoBehaviour
         {
             var gameMaster = new GameObject("_GM");
             var go = Instantiate(Resources.Load("_GM")) as GameObject;
-            s_gmInstance = go.GetComponent<GameMaster>();
+            return go.GetComponent<GameMaster>();
         }
         return s_gmInstance;
     }
@@ -47,6 +47,7 @@ public class GameMaster : MonoBehaviour
         s_gmInstance = this;
         SceneManager.sceneLoaded += OnSceneLoaded;
         DontDestroyOnLoad(gameObject);
+        Player.GetPlayerInstance();
 
         foreach (var eventPair in m_eventTypes)
         {
@@ -60,38 +61,52 @@ public class GameMaster : MonoBehaviour
         {
             m_cardList = Instantiate(m_cardListPrefab, transform).GetComponent<CardList>();
         }
+        Player.GetPlayerInstance().LoadGame();
     }
 
-    public void ChangeEvent(ExplorationNode explorationNode)
+    public void EndCurrentEvent(bool success = false)
     {
-        EEventType eventType = explorationNode.m_eventType;
-        if (m_eventTypeDictionary[eventType] != null)
+        SaveGame();
+        SceneManager.LoadScene("Overworld", LoadSceneMode.Single);
+        if (success)
         {
-            Instantiate(m_eventTypeDictionary[eventType]);
-        }
 
-        m_currentNodeIndex = explorationNode.m_nodeId;
-        CompleteNode(explorationNode);
-
-        switch (eventType)
-        {
-            case EEventType.Boss:
-                break;
-            case EEventType.CardReward:
-                break;
-            case EEventType.Treasure:
-                break;
-            case EEventType.WildEncounter:
-                SceneManager.LoadScene("Demo", LoadSceneMode.Single);
-                break;
-            default:
-                break;
         }
     }
 
-    public void SaveGame()
+    public void StartEvent(ExplorationNode explorationNode)
     {
-        SaveSystem.SaveGame();
+        if (SaveGame())
+        {
+            EEventType eventType = explorationNode.m_eventType;
+            if (m_eventTypeDictionary[eventType] != null)
+            {
+                Instantiate(m_eventTypeDictionary[eventType]);
+            }
+
+            m_currentNodeIndex = explorationNode.m_nodeId;
+            CompleteNode(explorationNode);
+
+            switch (eventType)
+            {
+                case EEventType.Boss:
+                    break;
+                case EEventType.CardReward:
+                    break;
+                case EEventType.Treasure:
+                    break;
+                case EEventType.WildEncounter:
+                    SceneManager.LoadScene("Demo", LoadSceneMode.Single);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public bool SaveGame()
+    {
+        return SaveSystem.SaveGame();
     }
 
     public void ChangeCreature()
@@ -123,6 +138,7 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    //TODO: this needs to be revised asap
     public void CompleteNode(ExplorationNode explorationNode)
     {
         if (!m_completedNodes.Contains(explorationNode.m_nodeId))
@@ -138,6 +154,18 @@ public class GameMaster : MonoBehaviour
         {
             LoadGame();
             CompleteNode(m_explorationNodes[m_currentNodeIndex]);
+            if (GetComponent<ExplorationScreen>() == null)
+            {
+                gameObject.AddComponent<ExplorationScreen>();
+            }
+        }
+        else
+        {
+            var explorationScreen = gameObject.GetComponent<ExplorationScreen>();
+            if (explorationScreen != null)
+            {
+                Destroy(explorationScreen);
+            }
         }
         if (scene.name == "Demo")
         {
