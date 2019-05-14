@@ -47,6 +47,19 @@ public static class SaveSystem
         return true;
     }
 
+    public static void ResetSave()
+    {
+        Debug.Log("Start Reset");
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerDeck";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        SaveData data = new SaveData();
+        formatter.Serialize(stream, data);
+        stream.Close();
+        Debug.Log("End Reset");
+    }
+
     public static SaveData LoadGame()
     {
         Debug.Log("Start loading");
@@ -58,8 +71,8 @@ public static class SaveSystem
             if (stream.Length == 0)
             {
                 stream.Close();
-                return null;
                 Debug.Log("End loading");
+                return null;
             }
 
             SaveData data = formatter.Deserialize(stream) as SaveData;

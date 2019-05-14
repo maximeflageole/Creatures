@@ -62,7 +62,6 @@ public class Player : MonoBehaviour
             return;
         }
         m_currentCreature = m_creatures[0];
-        GameMaster.GetInstance().SaveGame();
     }
 
     public Creature GetCurrentCreature()

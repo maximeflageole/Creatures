@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Exploration;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class GameMaster : MonoBehaviour
 {
@@ -66,12 +67,12 @@ public class GameMaster : MonoBehaviour
 
     public void EndCurrentEvent(bool success = false)
     {
-        SaveGame();
         SceneManager.LoadScene("Overworld", LoadSceneMode.Single);
         if (success)
         {
-
+            CompleteNode(m_currentNodeIndex);
         }
+        SaveGame();
     }
 
     public void StartEvent(ExplorationNode explorationNode)
@@ -85,7 +86,6 @@ public class GameMaster : MonoBehaviour
             }
 
             m_currentNodeIndex = explorationNode.m_nodeId;
-            CompleteNode(explorationNode);
 
             switch (eventType)
             {
@@ -107,6 +107,11 @@ public class GameMaster : MonoBehaviour
     public bool SaveGame()
     {
         return SaveSystem.SaveGame();
+    }
+    
+    public static void ResetSave()
+    {
+        SaveSystem.ResetSave();
     }
 
     public void ChangeCreature()
@@ -148,12 +153,27 @@ public class GameMaster : MonoBehaviour
         explorationNode.CompleteNode();
     }
 
+    public void CompleteNode(int nodeIndex)
+    {
+        if (!m_completedNodes.Contains(nodeIndex))
+        {
+            foreach (var explorationNode in m_explorationNodes)
+            {
+                if (explorationNode.m_nodeId == nodeIndex)
+                {
+                    m_completedNodes.Add(nodeIndex);
+                    explorationNode.CompleteNode();
+                    break;
+                }
+            }
+        }
+    }
+
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Overworld")
         {
             LoadGame();
-            CompleteNode(m_explorationNodes[m_currentNodeIndex]);
             if (GetComponent<ExplorationScreen>() == null)
             {
                 gameObject.AddComponent<ExplorationScreen>();
@@ -173,6 +193,19 @@ public class GameMaster : MonoBehaviour
         }
     }
 }
+
+[CustomEditor(typeof(GameMaster))]
+
+public class GameMasterInspector : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        if (GUI.Button(new Rect(20, 800, 100, 30), new GUIContent("Reset Save")))
+            GameMaster.ResetSave();
+    }
+}
+
 
 [System.Serializable]
 public struct SEventType
