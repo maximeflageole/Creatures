@@ -79,11 +79,13 @@ public class Creature : MonoBehaviour
         m_eCreature = creatureSave.m_eCreature;
         m_health = creatureSave.m_currentHealth;
         CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
-        LoadFromStaticData(creatureData);
+        CreateFromCreatureData(creatureData, creatureSave.m_level);
     }
 
-    protected void LoadFromStaticData(CreatureData creatureData)
+    public void CreateFromCreatureData(CreatureData creatureData, int level = 1)
     {
+        m_eCreature = creatureData.eCreature;
+        m_level = level;
         m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_level);
         m_health = m_maxHealth;
         m_primaryType = creatureData.creatureType;

@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     static Player s_playerInstance;
 
+    public const int MAX_CREATURE_COUNT = 3;
+
     public static Player GetPlayerInstance()
     {
         if (s_playerInstance == null)
@@ -120,5 +122,26 @@ public class Player : MonoBehaviour
             m_currentCreature = m_creatures[m_currentCreatureIndex];
             CardEffects.GetCardEffectsInstance().ChangePlayerCreature(m_currentCreature);
         }
+    }
+
+    public void AddCreature(CreatureData creatureData, int level)
+    {
+        if (m_creatures.Count < MAX_CREATURE_COUNT)
+        {
+            var creature = new GameObject("Creature");
+            var creatureObject = Instantiate(creature, transform);
+            Creature creatureComp = creatureObject.AddComponent<Creature>();
+            m_creatures.Add(creatureComp);
+            if (m_currentCreature == null)
+            {
+                m_currentCreature = creatureComp;
+            }
+            creatureComp.CreateFromCreatureData(creatureData, level);
+        }
+    }
+
+    public bool HasCreatures()
+    {
+        return (m_creatures.Count > 0);
     }
 }

@@ -9,9 +9,6 @@ public class GameMaster : MonoBehaviour
 {
     static GameMaster s_gmInstance;
     [SerializeField]
-    protected List<SEventType> m_eventTypes;
-    protected Dictionary<EEventType, GameObject> m_eventTypeDictionary = new Dictionary<EEventType, GameObject>();
-    [SerializeField]
     protected TurquoiseEvent m_currentEvent;
     public CardList m_cardList;
     [SerializeField]
@@ -20,8 +17,6 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     protected GameObject m_creatureListPrefab;
     public List<int> m_completedNodes = new List<int>();
-    [SerializeField]
-    protected List<ExplorationNode> m_explorationNodes = new List<ExplorationNode>();
     [SerializeField]
     protected int m_currentNodeIndex;
 
@@ -50,10 +45,6 @@ public class GameMaster : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Player.GetPlayerInstance();
 
-        foreach (var eventPair in m_eventTypes)
-        {
-            m_eventTypeDictionary.Add(eventPair.eventType, eventPair.eventPrefab);
-        }
         if (m_creatureListPrefab != null)
         {
             m_creatureList = Instantiate(m_creatureListPrefab, transform).GetComponent<CreatureList>();
@@ -77,36 +68,43 @@ public class GameMaster : MonoBehaviour
 
     public void StartEvent(ExplorationNode explorationNode)
     {
-        if (SaveGame())
+        SaveGame();
+        var go = Overworld.GetInstance().GetObjectFromNode(explorationNode);
+        if(go != null)
         {
-            EEventType eventType = explorationNode.m_eventType;
-            if (m_eventTypeDictionary[eventType] != null)
-            {
-                Instantiate(m_eventTypeDictionary[eventType]);
-            }
+            Instantiate(go);
+        }
 
-            m_currentNodeIndex = explorationNode.m_nodeId;
+        m_currentNodeIndex = explorationNode.m_nodeId;
 
-            switch (eventType)
-            {
-                case EEventType.Boss:
-                    break;
-                case EEventType.CardReward:
-                    break;
-                case EEventType.Treasure:
-                    break;
-                case EEventType.WildEncounter:
-                    SceneManager.LoadScene("Demo", LoadSceneMode.Single);
-                    break;
-                default:
-                    break;
-            }
+        switch (explorationNode.m_eventType)
+        {
+            case EEventType.Boss:
+                break;
+            case EEventType.CardReward:
+                break;
+            case EEventType.Treasure:
+                break;
+            case EEventType.WildEncounter:
+                SceneManager.LoadScene("Demo", LoadSceneMode.Single);
+                break;
+            default:
+                break;
         }
     }
 
-    public bool SaveGame()
+    public void StartEventOfEventType(EEventType eventType)
     {
-        return SaveSystem.SaveGame();
+        var go = Overworld.GetInstance().GetObjectFromEventType(eventType);
+        if (go != null)
+        {
+            Instantiate(go);
+        }
+    }
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame();
     }
     
     public static void ResetSave()
@@ -121,11 +119,6 @@ public class GameMaster : MonoBehaviour
 
     public void LoadGame()
     {
-        m_explorationNodes.Clear();
-        foreach (var element in FindObjectsOfType<ExplorationNode>())
-        {
-            m_explorationNodes.Add(element);
-        }
         SaveData saveData = SaveSystem.LoadGame();
         if (saveData == null)
         {
@@ -134,13 +127,6 @@ public class GameMaster : MonoBehaviour
         }
         m_completedNodes.Clear();
         m_completedNodes = saveData.completedNodes;
-        for (int i = 0; i < m_explorationNodes.Count; i++)
-        {
-            if (m_completedNodes.Contains(m_explorationNodes[i].m_nodeId))
-            {
-                CompleteNode(m_explorationNodes[i]);
-            }
-        }
     }
 
     //TODO: this needs to be revised asap
@@ -157,15 +143,7 @@ public class GameMaster : MonoBehaviour
     {
         if (!m_completedNodes.Contains(nodeIndex))
         {
-            foreach (var explorationNode in m_explorationNodes)
-            {
-                if (explorationNode.m_nodeId == nodeIndex)
-                {
-                    m_completedNodes.Add(nodeIndex);
-                    explorationNode.CompleteNode();
-                    break;
-                }
-            }
+            m_completedNodes.Add(nodeIndex);
         }
     }
 
@@ -174,17 +152,13 @@ public class GameMaster : MonoBehaviour
         if (scene.name == "Overworld")
         {
             LoadGame();
-            if (GetComponent<ExplorationScreen>() == null)
+            if (Player.GetPlayerInstance().HasCreatures())
             {
-                gameObject.AddComponent<ExplorationScreen>();
+                Overworld.GetInstance().StartExploration(m_completedNodes);
             }
-        }
-        else
-        {
-            var explorationScreen = gameObject.GetComponent<ExplorationScreen>();
-            if (explorationScreen != null)
+            else
             {
-                Destroy(explorationScreen);
+                StartEventOfEventType(EEventType.CreaturePick);
             }
         }
         if (scene.name == "Demo")
@@ -204,12 +178,4 @@ public class GameMasterInspector : Editor
         if (GUI.Button(new Rect(20, 800, 100, 30), new GUIContent("Reset Save")))
             GameMaster.ResetSave();
     }
-}
-
-
-[System.Serializable]
-public struct SEventType
-{
-    public EEventType eventType;
-    public GameObject eventPrefab;
 }

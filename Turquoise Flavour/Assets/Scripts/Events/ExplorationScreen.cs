@@ -32,6 +32,7 @@ namespace Exploration
         WildEncounter,
         Boss,
         Treasure,
+        CreaturePick,
         Count
     }
 }

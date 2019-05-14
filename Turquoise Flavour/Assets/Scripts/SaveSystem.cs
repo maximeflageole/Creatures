@@ -24,7 +24,7 @@ public static class SaveSystem
     }
     */
 
-    public static bool SaveGame()
+    public static void SaveGame()
     {
         Debug.Log("Start saving");
         BinaryFormatter formatter = new BinaryFormatter();
@@ -44,7 +44,6 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
         Debug.Log("End saving");
-        return true;
     }
 
     public static void ResetSave()

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &925279154104507533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925279154104507535}
+  - component: {fileID: 925279154104507534}
+  m_Layer: 0
+  m_Name: Overworld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &925279154104507535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925279154104507533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6835009, y: -2.9556088, z: -0.055051275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925279154104507534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925279154104507533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e0b73eb2db5c149a18b77927a2dfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nodesData:
+  - {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
+  - {fileID: 11400000, guid: 613bcef23ce563c4dbe95425c4e01114, type: 2}
+  - {fileID: 11400000, guid: edc0f444e0eb718428e9bff41ee065e2, type: 2}
+  - {fileID: 11400000, guid: 41e9bcb8adae15e4cb724728ce5ade45, type: 2}
+  - {fileID: 11400000, guid: edb5e93ab3a450842a8d6ba86c0140c5, type: 2}
+  m_eventTypes:
+  - eventType: 0
+    eventPrefab: {fileID: 2147587399352060765, guid: 28ba2e474fc01bb45b9c3403a88e5ee8,
+      type: 3}
+  - eventType: 1
+    eventPrefab: {fileID: 0}
+  - eventType: 2
+    eventPrefab: {fileID: 0}
+  - eventType: 3
+    eventPrefab: {fileID: 0}
+  - eventType: 4
+    eventPrefab: {fileID: 5738706847192654584, guid: 84d1e38097ef85a49a8184f344f784c3,
+      type: 3}
+  MapPrefab: {fileID: 5447027914167447910, guid: 35a6c677fb17b6144b13cd8e651ec656,
+    type: 3}
