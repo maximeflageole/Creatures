@@ -31,4 +31,9 @@ public class ExplorationNode : MonoBehaviour
     {
         m_isCompleted = true;
     }
+
+    public bool GetIsCompleted()
+    {
+        return m_isCompleted;
+    }
 }

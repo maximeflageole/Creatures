@@ -14,7 +14,7 @@ public class ExplorationScreen : MonoBehaviour
             {
                 GameObject go = hit.collider.gameObject;
                 ExplorationNode node = go.GetComponent<ExplorationNode>();
-                if (node != null)
+                if (node != null && !node.GetIsCompleted())
                 {
                     GameMaster.GetInstance().StartEvent(node);
                     hit.collider.enabled = false;
