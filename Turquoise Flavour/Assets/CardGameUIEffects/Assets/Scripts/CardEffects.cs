@@ -323,16 +323,28 @@ public class CardEffects : TurquoiseEvent {
             var card = discardPileCards.Dequeue();
             AddDrawPileCard(card);
         }
+        ShuffleDrawPile();
         drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
         discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
     }
 
     void ShuffleDrawPile()
     {
-        for (int i = 0; i < drawPileCards.Count; i++)
+        Card[] drawPileArray = drawPileCards.ToArray();
+        List<Card> drawPileList = new List<Card>();
+        foreach (var card in drawPileArray)
         {
-            //TODO: ON EN EST LÀ MAX!
+            drawPileList.Add(card);
         }
+        Queue<Card> shuffledDrawPile = new Queue<Card>();
+        for (int i = drawPileList.Count; i > 0; i--)
+        {
+            int randomInt = Random.Range(0, i);
+            shuffledDrawPile.Enqueue(drawPileList[randomInt]);
+            drawPileList.RemoveAt(randomInt);
+        }
+        drawPileCards.Clear();
+        drawPileCards = shuffledDrawPile;
     }
 
     IEnumerator SendHandCards()
