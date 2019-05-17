@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddCreature(CreatureData creatureData, int level)
+    public void CaptureCreature(CreatureData creatureData, int level)
     {
         if (m_creatures.Count < MAX_CREATURE_COUNT)
         {
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
             {
                 m_currentCreature = creatureComp;
             }
-            creatureComp.CreateFromCreatureData(creatureData, level);
+            creatureComp.CreateFromCreatureData(creatureData, creatureData.baseDeck, level);
         }
     }
 

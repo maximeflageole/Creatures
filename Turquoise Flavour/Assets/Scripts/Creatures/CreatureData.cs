@@ -13,4 +13,5 @@ public class CreatureData : ScriptableObject
     public int healthPerLevel;
     public int initialMana;
     public Sprite sprite;
+    public List<Cards.ECard> baseDeck;
 }

@@ -75,14 +75,13 @@ public class Creature : MonoBehaviour
     public void CreateFromSave(CreatureSaveable creatureSave)
     {
         m_level = creatureSave.m_level;
-        m_deck.m_cards = creatureSave.m_deck;
         m_eCreature = creatureSave.m_eCreature;
         m_health = creatureSave.m_currentHealth;
         CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
-        CreateFromCreatureData(creatureData, creatureSave.m_level);
+        CreateFromCreatureData(creatureData, creatureSave.m_deck, creatureSave.m_level);
     }
 
-    public void CreateFromCreatureData(CreatureData creatureData, int level = 1)
+    public void CreateFromCreatureData(CreatureData creatureData, List<Cards.ECard> deck, int level = 1)
     {
         m_eCreature = creatureData.eCreature;
         m_level = level;
@@ -91,6 +90,7 @@ public class Creature : MonoBehaviour
         m_primaryType = creatureData.creatureType;
         m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
         m_sprite = creatureData.sprite;
+        m_deck.m_cards = deck;
     }
 
     public Deck GetDeck()

@@ -52,7 +52,7 @@ public class CreaturePickEvent : TurquoiseEvent
 
     protected void AddCreature(CreatureData creatureData, int level = 1)
     {
-        Player.GetPlayerInstance().AddCreature(creatureData, level);
+        Player.GetPlayerInstance().CaptureCreature(creatureData, level);
         DisableEvent();
         GameMaster.GetInstance().EndCurrentEvent(true);
     }
