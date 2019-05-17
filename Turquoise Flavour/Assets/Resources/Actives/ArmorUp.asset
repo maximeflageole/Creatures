@@ -26,4 +26,4 @@ MonoBehaviour:
     m_targetType: 0
     m_chances: 0
   repeatable: 0
-  cooldown: 1
+  cooldown: 0

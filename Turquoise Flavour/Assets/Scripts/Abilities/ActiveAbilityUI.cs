@@ -20,6 +20,8 @@ public class ActiveAbilityUI : MonoBehaviour
 
     private void Update()
     {
+        // TODO: We are here max. I need to implement the playing of active abilities 
+        //if (m_boxCollider.)
     }
 
     public void LoadAbility(ActiveAbilityData data)
@@ -32,5 +34,14 @@ public class ActiveAbilityUI : MonoBehaviour
         m_spriteRenderer.sprite = data.artwork;
         m_manaCostSpriteRenderer.sprite = data.ManaCostArtwork;
         m_cooldownSpriteRenderer.sprite = data.CooldownArtwork;
+        m_manaCostText.text = data.manaCost.ToString();
+        if (data.cooldown == 0)
+        {
+            m_cooldownText.text = "-";
+        }
+        else
+        {
+            m_cooldownText.text = data.cooldown.ToString();
+        }
     }
 }
