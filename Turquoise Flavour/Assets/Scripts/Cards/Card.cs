@@ -13,13 +13,6 @@ namespace Cards
         Card,
         None
     }
-    public enum EOwners
-    {
-        TeamA,
-        TeamB,
-        Neutral,
-        None
-    }
     public enum ECardType
     {
         Attack,
@@ -60,10 +53,7 @@ public class Card : MonoBehaviour
     [SerializeField]
     protected uint m_manaCost = 0;
 
-    public List<SCardEffect> m_effects;
-
-    [SerializeField]
-    protected EOwners m_owner = EOwners.TeamA;
+    public List<SAbilityEffect> m_effects;
 
     [SerializeField]
     protected CardData m_cardData;
@@ -139,14 +129,14 @@ public class Card : MonoBehaviour
         }
     }
 
-    protected void ApplyEffect(SCardEffect effect, Creature selectedCreature)
+    protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature)
     {
-        selectedCreature.ApplyEffect(effect, m_owner);
+        selectedCreature.ApplyEffect(effect);
     }
 }
 
 [System.Serializable]
-public struct SCardEffect
+public struct SAbilityEffect
 {
     public ECardEffect m_effect;
     public string m_subtype;

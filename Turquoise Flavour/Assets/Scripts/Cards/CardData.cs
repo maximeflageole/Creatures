@@ -11,7 +11,7 @@ public class CardData : ScriptableObject
     public Sprite artwork;
     public int manaCost;
     public Cards.ETarget targetType;
-    public List<SCardEffect> effects;
+    public List<SAbilityEffect> effects;
     public Cards.ECardType cardType;
     public Cards.ERarity rarity;
     public Cards.ECreaturePart creaturePart;

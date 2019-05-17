@@ -66,6 +66,8 @@ public class Creature : MonoBehaviour
     protected int m_level;
     [SerializeField]
     protected Sprite m_sprite;
+    [SerializeField]
+    protected ActiveAbility m_activeAbility;
 
     public CreatureSaveable GetSaveableCreature()
     {
@@ -91,6 +93,16 @@ public class Creature : MonoBehaviour
         m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
         m_sprite = creatureData.sprite;
         m_deck.m_cards = deck;
+        if (m_activeAbility == null)
+        {
+            m_activeAbility = gameObject.AddComponent<ActiveAbility>();
+            m_activeAbility.LoadAbility(creatureData.activeAbilityData);
+        }
+    }
+
+    public ActiveAbility GetActiveAbility()
+    {
+        return m_activeAbility;
     }
 
     public Deck GetDeck()
@@ -104,7 +116,7 @@ public class Creature : MonoBehaviour
         gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SCardEffect cardEffect, Cards.EOwners owner)
+    public void ApplyEffect(SAbilityEffect cardEffect)
     {
         switch(cardEffect.m_effect)
         {

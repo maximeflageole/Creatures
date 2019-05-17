@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215988215326112408c869c3407a05f6, type: 3}
+  m_Name: AttackTwice
+  m_EditorClassIdentifier: 
+  activeName: Attack Twice
+  description: The next attack you cast this turn gets casted twice
+  artwork: {fileID: 21300000, guid: 41a185b6e2a953c488c9e94b5f225e4a, type: 3}
+  ManaCostArtwork: {fileID: 21300000, guid: 78ecfd88086ed154e8df3a312567af04, type: 3}
+  CooldownArtwork: {fileID: 21300000, guid: 226a248d13508f648a97d9672335eedd, type: 3}
+  manaCost: 2
+  targetType: 0
+  effects:
+  - m_effect: 2
+    m_subtype: Recast
+    m_value: 1
+    m_targetType: 0
+    m_chances: 0
+  repeatable: 0
+  cooldown: 1

@@ -230,6 +230,11 @@ public class CardEffects : TurquoiseEvent {
         creature = Player.GetPlayerInstance().GetCurrentCreature();
         creature.RefreshMana();
 
+        if (creature.GetActiveAbility() != null)
+        {
+            creature.GetActiveAbility().LoadAbilityUI(m_playerCreature.GetComponent<ActiveAbilityUI>());
+        }
+
         if (battleStart)
         {
             ChangeTurn();
