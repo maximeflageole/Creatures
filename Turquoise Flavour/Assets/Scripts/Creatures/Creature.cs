@@ -205,6 +205,11 @@ public class Creature : MonoBehaviour
         m_currentMana -= card.GetCardData().manaCost;
     }
 
+    public void PlayActiveAbility()
+    {
+        m_currentMana -= m_activeAbility.GetData().manaCost;
+    }
+
     public void TurnBegin()
     {
         RefreshMana();

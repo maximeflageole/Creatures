@@ -20,6 +20,11 @@ public class ActiveAbilityUI : MonoBehaviour
 
     private void Update()
     {
+        //CardEffects cardEffects = CardEffects.GetCardEffectsInstance();
+        //if (cardEffects != null)
+        //{
+        //    cardEffects.ClickOnAbility();
+        //}
         // TODO: We are here max. I need to implement the playing of active abilities 
         //if (m_boxCollider.)
     }

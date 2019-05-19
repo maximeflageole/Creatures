@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cards;
 
 public class CardEffects : TurquoiseEvent {
 
@@ -106,7 +107,9 @@ public class CardEffects : TurquoiseEvent {
 
     private int lastFrameMouseOn = -1;
     private int mouseClickCard = -1;
-    private int focusOnCard = -1;
+    private int m_focusOnCard = -1;
+    [SerializeField]
+    protected bool m_focusOnActive = false;
     private float cardHalfSize = 0.0f;
     private bool shufflingCard = false;
     [SerializeField]
@@ -200,11 +203,17 @@ public class CardEffects : TurquoiseEvent {
                 CalCardsTransform();
             }
             CheckMouseRise();
-            CheckMouseClickCard();
+            CheckMouseClickAbility();
             UpdateArrows();
             PlayCard();
+            PlayAbility();
             GetMouseOnCharacter();
         }
+    }
+
+    public void ClickOnAbility()
+    {
+        m_focusOnActive = true;
     }
 
     private void FixedUpdate()
@@ -379,13 +388,22 @@ public class CardEffects : TurquoiseEvent {
         focusOnPlayer = null;
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         m_hasValidTarget = false;
-        if (hit.collider != null && focusOnCard != -1)
+        if (hit.collider != null && (m_focusOnCard != -1 || m_focusOnActive))
         {
             GameObject go = hit.collider.gameObject;
             var team = GetETeams(go);
-            if ((team == Turquoise.ETeams.Enemy && handCards[focusOnCard].GetTarget() == Cards.ETarget.Enemy) || 
-                (team == Turquoise.ETeams.Ally && handCards[focusOnCard].GetTarget() == Cards.ETarget.Self) ||
-                ((team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally) && handCards[focusOnCard].GetTarget() == Cards.ETarget.Creature))
+            ETarget abilityTarget = ETarget.None;
+            if (m_focusOnCard != -1)
+            {
+                abilityTarget = handCards[m_focusOnCard].GetTarget();
+            }
+            else
+            {
+                abilityTarget = Player.GetPlayerInstance().GetCurrentCreature().GetActiveAbility().GetTargetType();
+            }
+            if ((team == Turquoise.ETeams.Enemy && abilityTarget == ETarget.Enemy) ||
+            (team == Turquoise.ETeams.Ally && abilityTarget == ETarget.Self) ||
+            ((team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally) && abilityTarget == ETarget.Creature))
             {
                 m_hasValidTarget = true;
                 focusOnPlayer = go;
@@ -432,25 +450,67 @@ public class CardEffects : TurquoiseEvent {
     // This function is called when the arrow touches the character and the mouse has been clicked
     void PlayCard()
     {
-        if(focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
+        if(m_focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
         {
-            if (!m_player.CanPlayCard(handCards[focusOnCard]))
+            if (!m_player.TryPlayCard(handCards[m_focusOnCard]))
             {
                 return;
             }
             // Record the character which the card skilled on
-            handCards[focusOnCard].targetPlayer = focusOnPlayer;
-            playingCard.Add(handCards[focusOnCard]);
+            handCards[m_focusOnCard].targetPlayer = focusOnPlayer;
+            playingCard.Add(handCards[m_focusOnCard]);
             // Drop the card from hand
-            DropHandCard(focusOnCard);
-            focusOnCard = -1;
+            DropHandCard(m_focusOnCard);
+            m_focusOnCard = -1;
             mouseClickCard = -1;
-            // Hide the arrow
-            for (int i = 0; i < arrows.Count; ++i)
+            HideArrows();
+        }
+    }
+
+    void HideArrows()
+    {
+        for (int i = 0; i < arrows.Count; ++i)
+        {
+            if (arrows[i].activeSelf == true)
             {
-                if (arrows[i].activeSelf == true)
+                arrows[i].SetActive(false);
+            }
+        }
+    }
+
+    void PlayAbility()
+    {
+        if (m_focusOnActive && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
+        {
+            if (!m_player.CanPlayActiveAbility())
+            {
+                return;
+            }
+            m_player.PlayActiveAbility();
+
+            HideArrows();
+            m_focusOnActive = false;
+
+            if (focusOnPlayer != null)
+            {
+                var selectedCreature = focusOnPlayer.GetComponent<CreatureUIComp>();
+                if (selectedCreature != null)
                 {
-                    arrows[i].SetActive(false);
+                    if (selectedCreature.m_team == Turquoise.ETeams.Ally)
+                    {
+                        m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
+                    }
+                    else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
+                    {
+                        m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
+                    }
+                }
+            }
+            foreach (var effect in m_player.GetCurrentCreature().GetActiveAbility().GetData().effects)
+            {
+                if (effect.m_effect == ECardEffect.Draw)
+                {
+                    StartCoroutine(SendHandCards(effect.m_value));
                 }
             }
         }
@@ -507,7 +567,7 @@ public class CardEffects : TurquoiseEvent {
                 }
                 foreach (var effect in card.m_effects)
                 {
-                    if (effect.m_effect == Cards.ECardEffect.Draw)
+                    if (effect.m_effect == ECardEffect.Draw)
                     {
                         StartCoroutine(SendHandCards(effect.m_value));
                     }
@@ -726,7 +786,7 @@ public class CardEffects : TurquoiseEvent {
     }
 
     // This function is called to check if the mouse has clicked on a card
-    void CheckMouseClickCard()
+    void CheckMouseClickAbility()
     {
         if (Input.GetMouseButtonDown(0) && mouseClickCard == -1)
         {
@@ -740,6 +800,10 @@ public class CardEffects : TurquoiseEvent {
                 {
                     mouseClickCard = -1;
                 }
+            }
+            else if (hit.collider != null && hit.collider.gameObject.name.StartsWith("ActiveAbility"))
+            {
+                m_focusOnActive = true;
             }
         }
         if (mouseClickCard != -1 && Input.GetMouseButtonDown(1))
@@ -758,7 +822,7 @@ public class CardEffects : TurquoiseEvent {
             card.scaleSpeed = slowScaleSpeed;
             CalCardsTransform(true);
             mouseClickCard = -1;
-            focusOnCard = -1;
+            m_focusOnCard = -1;
         }
     }
 
@@ -807,7 +871,7 @@ public class CardEffects : TurquoiseEvent {
         card.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0);      // The start size of the card will be sent to hand
         card.gameObject.transform.parent = handCardObj.transform;
         card.gameObject.name = "Card:" + (handCards.Count).ToString();
-        //card.gameObject.GetComponent<SpriteRenderer>().sortingOrder = handCards.Count; 
+        //card.gameObject.GetComponent<SpriteRenderer>().sortingOrder = handCount; 
         handCards.Add(card);
         UpdateCardAngle();
         CalCardsTransform(true);
@@ -836,15 +900,9 @@ public class CardEffects : TurquoiseEvent {
         {
             DropHandCard(0);
         }
-        focusOnCard = -1;
+        m_focusOnCard = -1;
         mouseClickCard = -1;
-        for (int i = 0; i < arrows.Count; i++)
-        {
-            if (arrows[i].activeSelf == true)
-            {
-                arrows[i].SetActive(false);
-            }
-        }
+        HideArrows();
         ChangeTurn();
     }
 
@@ -857,7 +915,7 @@ public class CardEffects : TurquoiseEvent {
             OffsetSideCards(lastFrameMouseOn, 0.0f, 0.0f);
             lastFrameMouseOn = -1;
         }
-        focusOnCard = -1;
+        m_focusOnCard = -1;
         mouseClickCard = -1;
         handCards[idx].gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
         handCards.RemoveAt(idx);
@@ -1046,7 +1104,7 @@ public class CardEffects : TurquoiseEvent {
     // When click a card, the card follows the mouse on the bottom of the screen, when the mouse moves up, the card moves to the center top of the hand
     void FollowMouse()
     {
-        if (mouseClickCard != -1 && focusOnCard == -1)
+        if (mouseClickCard != -1 && m_focusOnCard == -1)
         {
             var mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             handCards[mouseClickCard].gameObject.transform.position = new Vector3(mouse_pos.x, mouse_pos.y, -10.0f);
@@ -1061,14 +1119,14 @@ public class CardEffects : TurquoiseEvent {
         if (mouse_pos.y >= -3.0f + cardHalfSize / 2)
         {
             var card = handCards[mouseClickCard];
-            focusOnCard = mouseClickCard;
+            m_focusOnCard = mouseClickCard;
             card.nonInteractBegin = Time.time;
             card.targetAngle = 0.0f;
             card.gameObject.transform.position = new Vector3(card.gameObject.transform.position.x, card.gameObject.transform.position.y, -10.0f);
             card.targetPosition = new Vector3(0, -3.0f, -10.0f);
             card.moveSpeed = (card.gameObject.transform.position - FallDownPosition(mouseClickCard)).magnitude * 2 / nonInteractDelay;
         }
-        else if (focusOnCard != -1)
+        else if (m_focusOnCard != -1)
         {
             if (lastFrameMouseOn != -1)
             {
@@ -1084,7 +1142,7 @@ public class CardEffects : TurquoiseEvent {
             card.scaleSpeed = slowScaleSpeed;
             CalCardsTransform(true);
             mouseClickCard = -1;
-            focusOnCard = -1;
+            m_focusOnCard = -1;
         }
     }
 
@@ -1095,12 +1153,16 @@ public class CardEffects : TurquoiseEvent {
     // The joint direction of the arrow can be calculated by the vector from this joint to last joint
     void UpdateArrows()
     {
-        if (focusOnCard != -1)
+        if (m_focusOnCard != -1 || m_focusOnActive)
         {
             var mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float mouse_x = mouse_pos.x;
             float mouse_y = mouse_pos.y;
-            var card_pos = handCards[mouseClickCard].gameObject.transform.position;
+            Vector3 initPos = Vector3.zero;
+            if (m_focusOnCard != -1)
+            {
+                initPos = handCards[mouseClickCard].gameObject.transform.position;
+            }
             // The control points' positions are changed with the mouse position
             // The parameters below have been modified to best performance, no need to change!!!
             float center_x = 0.0f;
@@ -1150,13 +1212,7 @@ public class CardEffects : TurquoiseEvent {
         }
         else
         {
-            for (int i = 0; i < arrows.Count; i++)
-            {
-                if (arrows[i].activeSelf == true)
-                {
-                    arrows[i].SetActive(false);
-                }
-            }
+            HideArrows();
             drawBtn.enabled = true;
             m_nextTurnBtn.enabled = true;
         }

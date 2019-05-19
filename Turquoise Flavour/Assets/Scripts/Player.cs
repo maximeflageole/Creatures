@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         return m_creatures;
     }
 
-    public bool CanPlayCard(Card card)
+    public bool TryPlayCard(Card card)
     {
         //Verify mana
         if (card.GetCardData().manaCost > m_currentCreature.GetCurrentMana())
@@ -90,6 +90,18 @@ public class Player : MonoBehaviour
 
         m_currentCreature.PlayCard(card);
         return true;
+    }
+
+    public bool CanPlayActiveAbility()
+    {
+        ActiveAbility activeAbility = m_currentCreature.GetActiveAbility();
+        return activeAbility.CanCast(m_currentCreature.GetCurrentMana());
+    }
+
+    public void PlayActiveAbility()
+    {
+        m_currentCreature.PlayActiveAbility();
+        Debug.Log("Play Active");
     }
 
     public void TurnEnd()
