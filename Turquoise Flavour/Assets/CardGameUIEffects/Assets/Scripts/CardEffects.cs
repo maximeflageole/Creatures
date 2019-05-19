@@ -824,6 +824,11 @@ public class CardEffects : TurquoiseEvent {
             mouseClickCard = -1;
             m_focusOnCard = -1;
         }
+        if (m_focusOnActive && Input.GetMouseButtonDown(1))
+        {
+            m_focusOnActive = false;
+            HideArrows();
+        }
     }
 
     // Update the card directions by different card numbers
