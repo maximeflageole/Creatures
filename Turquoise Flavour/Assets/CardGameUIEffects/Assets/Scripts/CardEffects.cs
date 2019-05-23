@@ -401,7 +401,7 @@ public class CardEffects : TurquoiseEvent {
 
     IEnumerator SendHandCards(int amount)
     {
-        int cardsToDraw = Mathf.Min(drawPileCards.Count, amount);
+        int cardsToDraw = Mathf.Min(drawPileCards.Count + discardPileCards.Count, amount);
         for (int i = 0; i < cardsToDraw; ++i)
         {
             yield return new WaitForSeconds(0.2f);
@@ -684,7 +684,7 @@ public class CardEffects : TurquoiseEvent {
         }
         shuffleCardsEffects.Clear();
         shufflingCard = false;
-        StartCoroutine(SendHandCards());
+        StartCoroutine(SendHandCards(5));
     }
 
     // In card playing effect's second stage, the card dropping to the discard pile
