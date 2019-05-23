@@ -20,7 +20,6 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     protected int m_currentNodeIndex = -1;
 
-
     public static GameMaster GetInstance()
     {
         if (s_gmInstance == null)

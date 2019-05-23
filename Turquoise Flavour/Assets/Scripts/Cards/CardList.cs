@@ -13,6 +13,7 @@ namespace Cards
         SteamJet,
         BuffArmor,
         BuffDamage,
+        Discard,
         Count
     }
 }
@@ -38,6 +39,7 @@ public class CardList: MonoBehaviour
                 return cardTuplet.cardData;
             }
         }
+        Debug.Log("Card " + card + "could not be found in CardList! Are you sure you added it?");
         return null;
     }
 }

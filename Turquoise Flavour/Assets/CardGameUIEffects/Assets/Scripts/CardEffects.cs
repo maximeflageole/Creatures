@@ -81,6 +81,8 @@ public class CardEffects : TurquoiseEvent {
     public Text drawPileText;
     public Text discardPileText;
     public Text toast;
+    [SerializeField]
+    protected CardSelect m_cardSelectUI;
 
     //Sprites
     public Sprite arrowHeadGraySprite;
@@ -141,6 +143,8 @@ public class CardEffects : TurquoiseEvent {
     //Added for Turquoise Project
      [SerializeField]
      protected bool m_hasValidTarget;
+    [SerializeField]
+    protected bool m_discarding;
 
     public void Awake()
     {
@@ -202,12 +206,33 @@ public class CardEffects : TurquoiseEvent {
             {
                 CalCardsTransform();
             }
+            if (m_discarding)
+            {
+                CheckCardSelect();
+                return;
+            }
             CheckMouseRise();
             CheckMouseClickAbility();
             UpdateArrows();
             PlayCard();
             PlayAbility();
             GetMouseOnCharacter();
+        }
+    }
+
+    protected void CheckCardSelect()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
+            {
+                Card card = hit.collider.GetComponent<Card>();
+                if (card != null)
+                {
+                    m_cardSelectUI.AddCard(card);
+                }
+            }
         }
     }
 
@@ -571,12 +596,35 @@ public class CardEffects : TurquoiseEvent {
                     {
                         StartCoroutine(SendHandCards(effect.m_value));
                     }
+                    if (effect.m_effect == ECardEffect.Discard)
+                    {
+                        if (m_cardSelectUI != null)
+                        {
+                            m_cardSelectUI.gameObject.SetActive(true);
+                            m_cardSelectUI.StartDiscarding(effect.m_value);
+                            m_discarding = true;
+                        }
+                    }
                 }
                 return;
             }
             card.gameObject.transform.position = Vector3.MoveTowards(card.gameObject.transform.position, dstPos, Time.fixedDeltaTime * cardPlaySpeed);
             card.dropDisplayTime = Time.time;
         }
+    }
+
+    public int CardHandCount()
+    {
+        return handCards.Count;
+    }
+
+    public void DiscardCardList(List<Card> cards)
+    {
+        foreach (var card in cards)
+        {
+            DropHandCard(card);
+        }
+        m_discarding = false;
     }
 
     // Card shuffling effect
@@ -924,6 +972,28 @@ public class CardEffects : TurquoiseEvent {
         mouseClickCard = -1;
         handCards[idx].gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
         handCards.RemoveAt(idx);
+        ReArrangeCard();
+        UpdateCardAngle();
+        CalCardsTransform(true);
+    }
+
+    void DropHandCard(Card card)
+    {
+        //TODO: A lot of cleaning here to do. Anim is ugly
+        card.isDropping = true;
+        card.gameObject.GetComponent<TrailRenderer>().enabled = true;
+        card.gameObject.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
+        card.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        card.gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 30.0f)));                // Every card in hand has random direction for discard effect
+        card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
+        card.originHighY = card.gameObject.transform.position.y;
+        playingCard.Add(card);
+
+        lastFrameMouseOn = -1;
+        m_focusOnCard = -1;
+        mouseClickCard = -1;
+        card.gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
+        handCards.Remove(card);
         ReArrangeCard();
         UpdateCardAngle();
         CalCardsTransform(true);
