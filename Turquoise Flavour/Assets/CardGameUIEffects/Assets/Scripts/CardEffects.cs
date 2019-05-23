@@ -145,6 +145,8 @@ public class CardEffects : TurquoiseEvent {
      protected bool m_hasValidTarget;
     [SerializeField]
     protected bool m_discarding;
+    [SerializeField]
+    protected bool m_noTargetSkill;
 
     public void Awake()
     {
@@ -413,10 +415,9 @@ public class CardEffects : TurquoiseEvent {
         focusOnPlayer = null;
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         m_hasValidTarget = false;
-        if (hit.collider != null && (m_focusOnCard != -1 || m_focusOnActive))
+        m_noTargetSkill = false;
+        if (m_focusOnCard != -1 || m_focusOnActive)
         {
-            GameObject go = hit.collider.gameObject;
-            var team = GetETeams(go);
             ETarget abilityTarget = ETarget.None;
             if (m_focusOnCard != -1)
             {
@@ -426,30 +427,36 @@ public class CardEffects : TurquoiseEvent {
             {
                 abilityTarget = Player.GetPlayerInstance().GetCurrentCreature().GetActiveAbility().GetTargetType();
             }
-            if ((team == Turquoise.ETeams.Enemy && abilityTarget == ETarget.Enemy) ||
-            (team == Turquoise.ETeams.Ally && abilityTarget == ETarget.Self) ||
-            ((team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally) && abilityTarget == ETarget.Creature))
+            if (abilityTarget != ETarget.None && hit.collider != null)
+            {
+                GameObject go = hit.collider.gameObject;
+                var team = GetETeams(go);
+                if ((team == Turquoise.ETeams.Enemy && abilityTarget == ETarget.Enemy) ||
+                (team == Turquoise.ETeams.Ally && abilityTarget == ETarget.Self) ||
+                ((team == Turquoise.ETeams.Enemy || team == Turquoise.ETeams.Ally) && abilityTarget == ETarget.Creature))
+                {
+                    m_hasValidTarget = true;
+                    focusOnPlayer = go;
+                    // Update arrow's color during touching characters
+                    for (int i = 0; i < arrowsNum; ++i)
+                    {
+                        var arrow = arrows[i];
+                        arrow.GetComponent<SpriteRenderer>().sprite = (team == Turquoise.ETeams.Enemy ? arrowBodyRedSprite : arrowBodyGreenSprite);
+                        if (i == arrowsNum - 1)
+                        {
+                            arrow.GetComponent<SpriteRenderer>().sprite = (team == Turquoise.ETeams.Enemy ? arrowHeadRedSprite : arrowHeadGreenSprite);
+                        }
+                    }
+                    return;
+                }
+            }
+            else if (abilityTarget == ETarget.None)
             {
                 m_hasValidTarget = true;
-                focusOnPlayer = go;
-                // Update arrow's color during touching characters
-                for (int i = 0; i < arrowsNum; ++i)
-                {
-                    var arrow = arrows[i];
-                    arrow.GetComponent<SpriteRenderer>().sprite = (team == Turquoise.ETeams.Enemy ? arrowBodyRedSprite : arrowBodyGreenSprite);
-                    if (i == arrowsNum - 1)
-                    {
-                        arrow.GetComponent<SpriteRenderer>().sprite = (team == Turquoise.ETeams.Enemy ? arrowHeadRedSprite : arrowHeadGreenSprite);
-                    }
-                }
-                return;
-            }
-            //ToDo: Neutral cards
-            else if (team == Turquoise.ETeams.None)
-            {
-                //m_hasValidTarget = true;
+                m_noTargetSkill = true;
             }
         }
+
         // Default color of arrow
         for (int i = 0; i < arrowsNum; i++)
         {
@@ -475,7 +482,7 @@ public class CardEffects : TurquoiseEvent {
     // This function is called when the arrow touches the character and the mouse has been clicked
     void PlayCard()
     {
-        if(m_focusOnCard != -1 && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
+        if(m_focusOnCard != -1 && (focusOnPlayer != null || m_noTargetSkill) && Input.GetMouseButtonUp(0) && HasValidTarget())
         {
             if (!m_player.TryPlayCard(handCards[m_focusOnCard]))
             {
@@ -489,7 +496,13 @@ public class CardEffects : TurquoiseEvent {
             m_focusOnCard = -1;
             mouseClickCard = -1;
             HideArrows();
+            m_noTargetSkill = false;
         }
+    }
+
+    protected bool HasValidTarget()
+    {
+        return (m_hasValidTarget || m_noTargetSkill);
     }
 
     void HideArrows()
@@ -505,7 +518,7 @@ public class CardEffects : TurquoiseEvent {
 
     void PlayAbility()
     {
-        if (m_focusOnActive && focusOnPlayer != null && Input.GetMouseButtonUp(0) && m_hasValidTarget)
+        if (m_focusOnActive && focusOnPlayer != null && Input.GetMouseButtonUp(0) && HasValidTarget())
         {
             if (!m_player.CanPlayActiveAbility())
             {
@@ -1228,7 +1241,7 @@ public class CardEffects : TurquoiseEvent {
     // The joint direction of the arrow can be calculated by the vector from this joint to last joint
     void UpdateArrows()
     {
-        if (m_focusOnCard != -1 || m_focusOnActive)
+        if ((m_focusOnCard != -1 || m_focusOnActive) && !m_noTargetSkill)
         {
             var mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float mouse_x = mouse_pos.x;
