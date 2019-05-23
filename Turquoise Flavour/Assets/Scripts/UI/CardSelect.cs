@@ -47,7 +47,7 @@ public class CardSelect : MonoBehaviour
 
     protected void Discard()
     {
-        if ((m_selectedCards.Count == m_amountToDiscard) || CardEffects.GetCardEffectsInstance().CardHandCount() == 0)
+        if ((m_selectedCards.Count == m_amountToDiscard) || CardEffects.GetCardEffectsInstance().CardHandCount() == m_selectedCards.Count)
         {
             Debug.Log("Discarding X card");
             CardEffects.GetCardEffectsInstance().DiscardCardList(m_selectedCards);
