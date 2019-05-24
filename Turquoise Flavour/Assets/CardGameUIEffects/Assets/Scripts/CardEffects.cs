@@ -80,6 +80,7 @@ public class CardEffects : TurquoiseEvent {
     public Button m_nextTurnBtn;
     public Text drawPileText;
     public Text discardPileText;
+    public Text exhaustPileText;
     public Text toast;
     [SerializeField]
     protected CardSelect m_cardSelectUI;
@@ -138,6 +139,7 @@ public class CardEffects : TurquoiseEvent {
 
     private const string DRAW_PILE_NUM_TEXT = "Draw Pile: ";
     private const string DISCARD_PILE_NUM_TEXT = "Discard Pile: ";
+    private const string EXHAUST_PILE_NUM_TEXT = "Exhaust Pile: ";
     private const string FRIEND_CHARA_NAME = "GoodEgg";
     private const string ENEMY_CHARA_NAME = "BadEgg";
     private const int HAND_CARD_LIMIT = 10;
@@ -146,7 +148,9 @@ public class CardEffects : TurquoiseEvent {
      [SerializeField]
      protected bool m_hasValidTarget;
     [SerializeField]
-    protected bool m_discarding;
+    protected bool m_discardingCards;
+    [SerializeField]
+    protected bool m_exhaustingCards;
     [SerializeField]
     protected bool m_noTargetSkill;
 
@@ -210,7 +214,7 @@ public class CardEffects : TurquoiseEvent {
             {
                 CalCardsTransform();
             }
-            if (m_discarding)
+            if (m_discardingCards || m_exhaustingCards)
             {
                 CheckCardSelect();
                 return;
@@ -316,6 +320,12 @@ public class CardEffects : TurquoiseEvent {
     {
         discardPileCards.Enqueue(card);
         discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count().ToString();
+    }
+
+    void AddExhaustPileCard(Card card)
+    {
+        exhaustPileCards.Enqueue(card);
+        exhaustPileText.text = EXHAUST_PILE_NUM_TEXT + exhaustPileCards.Count().ToString();
     }
 
     void AddDrawPileCard(Card card)
@@ -577,6 +587,10 @@ public class CardEffects : TurquoiseEvent {
                 }
                 */
                 //Apply skill effects
+                if (card.isExhausting || card.isDropping)
+                {
+                    continue;
+                }
                 if (card.targetPlayer != null)
                 {
                     var selectedCreature = card.targetPlayer.GetComponent<CreatureUIComp>();
@@ -604,7 +618,23 @@ public class CardEffects : TurquoiseEvent {
                         {
                             m_cardSelectUI.gameObject.SetActive(true);
                             m_cardSelectUI.StartDiscarding(effect.m_value);
-                            m_discarding = true;
+                            m_discardingCards = true;
+                        }
+                    }
+                    if (effect.m_effect == ECardEffect.Exhaust)
+                    {
+                        if (effect.m_targetType == ETarget.Card)
+                        {
+                            if (m_cardSelectUI != null)
+                            {
+                                m_cardSelectUI.gameObject.SetActive(true);
+                                m_cardSelectUI.StartExhausting(effect.m_value);
+                                m_exhaustingCards = true;
+                            }
+                        }
+                        else if (effect.m_targetType == ETarget.None)
+                        {
+                            ExhaustSelf(card);
                         }
                     }
                 }
@@ -620,13 +650,34 @@ public class CardEffects : TurquoiseEvent {
         return handCards.Count;
     }
 
-    public void DiscardCardList(List<Card> cards)
+    public void SelectCardList(List<Card> cards)
     {
         foreach (var card in cards)
         {
-            DropHandCard(card);
+            if (m_discardingCards)
+            {
+                DropHandCard(card);
+            }
+            else if (m_exhaustingCards)
+            {
+                ExhaustCard(card);
+            }
+            else
+            {
+                Debug.Log("We have a problem, card selected without exhausting or discarding cards");
+            }
         }
-        m_discarding = false;
+        m_discardingCards = false;
+        m_exhaustingCards = false;
+    }
+
+    public void ExhaustCardList(List<Card> cards)
+    {
+        foreach (var card in cards)
+        {
+            ExhaustCard(card);
+        }
+        m_exhaustingCards = false;
     }
 
     // Card shuffling effect
@@ -691,7 +742,7 @@ public class CardEffects : TurquoiseEvent {
             {
                 card.totalDistance = 0.1f;
             }
-            if (card.isDropping == true)
+            if (card.isDropping || card.isExhausting)
             {
                 // Calculate the card motion path by clear card curve 
                 var x_distance = dropCardPile.position.x - (card.gameObject.transform.position.x + delta_x);
@@ -710,7 +761,14 @@ public class CardEffects : TurquoiseEvent {
             {
                 // Card reached the discard pile will be destroyed
                 card.gameObject.SetActive(false);
-                AddDiscardPileCard(card);
+                if (card.isExhausting)
+                {
+                    AddExhaustPileCard(card);
+                }
+                else
+                {
+                    AddDiscardPileCard(card);
+                }
                 playingCard[i] = null;
                 var all_destroyed = true;
                 for(int j = 0; j < playingCard.Count; ++j)
@@ -942,14 +1000,7 @@ public class CardEffects : TurquoiseEvent {
         for (int i = 0; i < handCards.Count; i++)
         {
             var card = handCards[i];
-            card.isDropping = true;
-            card.gameObject.GetComponent<TrailRenderer>().enabled = true;
-            card.gameObject.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
-            card.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            card.gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 30.0f)));                // Every card in hand has random direction for discard effect
-            card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
-            card.originHighY = card.gameObject.transform.position.y;
-            playingCard.Add(handCards[i]);
+            DiscardCard(card);
         }
         while(handCards.Count > 0)
         {
@@ -959,6 +1010,18 @@ public class CardEffects : TurquoiseEvent {
         mouseClickCard = -1;
         HideArrows();
         ChangeTurn();
+    }
+
+    void DiscardCard(Card card)
+    {
+        card.isDropping = true;
+        card.gameObject.GetComponent<TrailRenderer>().enabled = true;
+        card.gameObject.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
+        card.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        card.gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 30.0f)));                // Every card in hand has random direction for discard effect
+        card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
+        card.originHighY = card.gameObject.transform.position.y;
+        playingCard.Add(card);
     }
 
     // This function is called for preparing to drop card after playing effect
@@ -982,14 +1045,42 @@ public class CardEffects : TurquoiseEvent {
     void DropHandCard(Card card)
     {
         //TODO: A lot of cleaning here to do. Anim is ugly
-        card.isDropping = true;
-        card.gameObject.GetComponent<TrailRenderer>().enabled = true;
-        card.gameObject.transform.localScale = new Vector3(miniCardScale, miniCardScale, miniCardScale);
-        card.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        card.gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(0.0f, 30.0f)));                // Every card in hand has random direction for discard effect
-        card.totalDistance = Mathf.Abs(card.gameObject.transform.position.x - dropCardPile.position.x);
-        card.originHighY = card.gameObject.transform.position.y;
-        playingCard.Add(card);
+        DiscardCard(card);
+
+        lastFrameMouseOn = -1;
+        m_focusOnCard = -1;
+        mouseClickCard = -1;
+        card.gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
+        handCards.Remove(card);
+        ReArrangeCard();
+        UpdateCardAngle();
+        CalCardsTransform(true);
+    }
+
+    void ExhaustCard(Card card)
+    {
+        //TODO: A lot of cleaning here to do. Anim is ugly
+        DiscardCard(card);
+        card.isDropping = false;
+        card.isExhausting = true;
+
+        lastFrameMouseOn = -1;
+        m_focusOnCard = -1;
+        mouseClickCard = -1;
+        card.gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
+        handCards.Remove(card);
+        ReArrangeCard();
+        UpdateCardAngle();
+        CalCardsTransform(true);
+    }
+
+    void ExhaustSelf(Card card)
+    {
+        //TODO: A lot of cleaning here to do. Anim is ugly
+        DiscardCard(card);
+        card.isDropping = false;
+        playingCard.Remove(card);
+        card.isExhausting = true;
 
         lastFrameMouseOn = -1;
         m_focusOnCard = -1;

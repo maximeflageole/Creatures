@@ -14,6 +14,8 @@ namespace Cards
         BuffArmor,
         BuffDamage,
         Discard,
+        ExhaustSelf,
+        ExhaustOther,
         Count
     }
 }

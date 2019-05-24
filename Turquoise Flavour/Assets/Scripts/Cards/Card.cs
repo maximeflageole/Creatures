@@ -44,6 +44,8 @@ namespace Cards
         Debuff,
         Draw,
         Discard,
+        Exhaust,
+        Consume,
         Other
     }
 
@@ -99,6 +101,7 @@ public class Card : MonoBehaviour
     public float originHighY = 0.0f;
     public bool isPlaying = false;
     public bool isDropping = false;
+    public bool isExhausting = false;
     public float dropDisplayTime;
     public Dictionary<string, int> info;  // Record card's info here
     public GameObject targetPlayer;       // Record character the card skilled on
@@ -118,6 +121,7 @@ public class Card : MonoBehaviour
     {
         isPlaying = false;
         isDropping = false;
+        isExhausting = false;
         targetPlayer = null;
         info = null;
         totalDistance = 0.0f;
