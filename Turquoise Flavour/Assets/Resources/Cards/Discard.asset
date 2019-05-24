@@ -17,13 +17,14 @@ MonoBehaviour:
   description: Discard a card
   artwork: {fileID: 21300004, guid: 58f09bf0c0f92554cb00207ce103e8b0, type: 3}
   manaCost: 1
-  targetType: 0
+  targetType: 4
   effects:
   - m_effect: 5
     m_subtype: 
-    m_value: 1
+    m_value: 2
     m_targetType: 3
     m_chances: 0
-  cardType: 1
+  cardGenre: 0
+  damageType: 0
   rarity: 0
   creaturePart: 3

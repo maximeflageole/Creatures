@@ -12,7 +12,8 @@ public class CardData : ScriptableObject
     public int manaCost;
     public Cards.ETarget targetType;
     public List<SAbilityEffect> effects;
-    public Cards.ECardType cardType;
+    public Cards.ECardGenre cardGenre;
+    public Cards.ECardType damageType;
     public Cards.ERarity rarity;
     public Cards.ECreaturePart creaturePart;
 }

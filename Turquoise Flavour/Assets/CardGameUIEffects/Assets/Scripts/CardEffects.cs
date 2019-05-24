@@ -125,9 +125,11 @@ public class CardEffects : TurquoiseEvent {
     private List<Card> handCards = new List<Card>();
     private List<GameObject> arrows = new List<GameObject>();
     [SerializeField]
-    private Queue<Card> drawPileCards = new Queue<Card>();
+    protected Pile drawPileCards = new Pile();
     [SerializeField]
-    private Queue<Card> discardPileCards = new Queue<Card>();
+    protected Pile discardPileCards = new Pile();
+    [SerializeField]
+    protected Pile exhaustPileCards = new Pile();
     [SerializeField]
     protected Player m_player;
     protected int m_turnCount = 0;
@@ -312,7 +314,7 @@ public class CardEffects : TurquoiseEvent {
     void AddDiscardPileCard(Card card)
     {
         discardPileCards.Enqueue(card);
-        discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
+        discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count().ToString();
     }
 
     void AddDrawPileCard(Card card)
@@ -320,15 +322,15 @@ public class CardEffects : TurquoiseEvent {
         //card.info = cardInfo;
         card.gameObject.SetActive(false);
         drawPileCards.Enqueue(card);
-        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
+        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count().ToString();
     }
 
     Card GetCardFromDrawPile()
     {
-        var card = drawPileCards.Dequeue();
+        var card = drawPileCards.Draw();
         card.Reset();
         card.gameObject.SetActive(true);
-        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
+        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count().ToString();
         return card;
     }
 
@@ -359,39 +361,25 @@ public class CardEffects : TurquoiseEvent {
     void RefreshDrawPile()
     {
         // All cards will be sent from discard pile to draw pile
-        while (discardPileCards.Count > 0)
+        while (discardPileCards.Count() > 0)
         {
-            var card = discardPileCards.Dequeue();
+            var card = discardPileCards.Draw();
             AddDrawPileCard(card);
         }
         ShuffleDrawPile();
-        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count.ToString();
-        discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count.ToString();
+        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count().ToString();
+        discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count().ToString();
     }
 
     void ShuffleDrawPile()
     {
-        Card[] drawPileArray = drawPileCards.ToArray();
-        List<Card> drawPileList = new List<Card>();
-        foreach (var card in drawPileArray)
-        {
-            drawPileList.Add(card);
-        }
-        Queue<Card> shuffledDrawPile = new Queue<Card>();
-        for (int i = drawPileList.Count; i > 0; i--)
-        {
-            int randomInt = Random.Range(0, i);
-            shuffledDrawPile.Enqueue(drawPileList[randomInt]);
-            drawPileList.RemoveAt(randomInt);
-        }
-        drawPileCards.Clear();
-        drawPileCards = shuffledDrawPile;
+        drawPileCards.ShufflePile();
     }
 
     IEnumerator SendHandCards()
     {
         RefreshDrawPile();
-        int cardsToDraw = Mathf.Min(drawPileCards.Count, 5);
+        int cardsToDraw = Mathf.Min(drawPileCards.Count(), 5);
         for (int i = 0; i < cardsToDraw; ++i)
         {
             yield return new WaitForSeconds(0.2f);
@@ -401,7 +389,7 @@ public class CardEffects : TurquoiseEvent {
 
     IEnumerator SendHandCards(int amount)
     {
-        int cardsToDraw = Mathf.Min(drawPileCards.Count + discardPileCards.Count, amount);
+        int cardsToDraw = Mathf.Min(drawPileCards.Count() + discardPileCards.Count(), amount);
         for (int i = 0; i < cardsToDraw; ++i)
         {
             yield return new WaitForSeconds(0.2f);
@@ -731,7 +719,7 @@ public class CardEffects : TurquoiseEvent {
                 if (all_destroyed)
                 {
                     // Play shuffle animation when the number of cards in the draw pile is 0
-                    if (drawPileCards.Count == 0)
+                    if (drawPileCards.Count() == 0)
                     {
                         ShuffleCardAnimation();
                     }
@@ -908,11 +896,11 @@ public class CardEffects : TurquoiseEvent {
     void AddHandCard()
     {
         if (shufflingCard == true) return;
-        if (drawPileCards.Count == 0)
+        if (drawPileCards.Count() == 0)
         {
             RefreshDrawPile();
         }
-        if (drawPileCards.Count == 0)
+        if (drawPileCards.Count() == 0)
         {
             var text = (Text)toast.GetComponent<Text>();
             if (text.enabled == false) text.enabled = true;

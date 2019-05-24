@@ -13,7 +13,7 @@ namespace Cards
         Card,
         None
     }
-    public enum ECardType
+    public enum ECardGenre
     {
         Attack,
         Power,
@@ -45,6 +45,18 @@ namespace Cards
         Draw,
         Discard,
         Other
+    }
+
+    public enum ECardType
+    {
+        Physical,
+        Fire,
+        Frost,
+        Electric,
+        Poison,
+        Piercing,
+        Arcane,
+        None
     }
 }
 
@@ -131,7 +143,7 @@ public class Card : MonoBehaviour
 
     protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature)
     {
-        selectedCreature.ApplyEffect(effect);
+        selectedCreature.ApplyEffect(effect, m_cardData.damageType);
     }
 }
 

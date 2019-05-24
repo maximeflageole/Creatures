@@ -29,6 +29,7 @@ MonoBehaviour:
     m_value: 2
     m_targetType: 0
     m_chances: 0
-  cardType: 1
+  cardGenre: 0
+  damageType: 1
   rarity: 3
   creaturePart: 0

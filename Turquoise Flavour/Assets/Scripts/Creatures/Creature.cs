@@ -4,6 +4,7 @@ using TMPro;
 using Turquoise;
 using UnityEngine;
 using Creatures;
+using Cards;
 
 namespace Turquoise
 {
@@ -116,7 +117,7 @@ public class Creature : MonoBehaviour
         gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SAbilityEffect cardEffect)
+    public void ApplyEffect(SAbilityEffect cardEffect, Cards.ECardType damageType = Cards.ECardType.None)
     {
         switch(cardEffect.m_effect)
         {
@@ -129,7 +130,7 @@ public class Creature : MonoBehaviour
                 }
                 break;
             case Cards.ECardEffect.Damage:
-                ApplyDamage(cardEffect.m_value);
+                ApplyDamage(cardEffect.m_value, damageType);
                 break;
             case Cards.ECardEffect.Debuff:
                 print("Debuff" + cardEffect.m_value);
@@ -141,7 +142,7 @@ public class Creature : MonoBehaviour
                 print("Draw" + cardEffect.m_value);
                 break;
             case Cards.ECardEffect.Healing:
-                ApplyDamage(-cardEffect.m_value);
+                ApplyDamage(-cardEffect.m_value, damageType);
                 break;
             case Cards.ECardEffect.Other:
                 print("Other" + cardEffect.m_value);
@@ -174,11 +175,14 @@ public class Creature : MonoBehaviour
         }
     }
 
-    protected void ApplyDamage(int damage)
+    protected void ApplyDamage(int damage, ECardType damageType)
     {
+        float calculatedDamage = CalculateDamage(damage, damageType);
+        int intFinalDamage = Mathf.RoundToInt(calculatedDamage);
+
         if (m_armor > 0)
         {
-            m_armor -= damage;
+            m_armor -= intFinalDamage;
             if (m_armor < 0)
             {
                 m_health += m_armor;
@@ -187,12 +191,140 @@ public class Creature : MonoBehaviour
         }
         else
         {
-            m_health -= damage;
+            m_health -= intFinalDamage;
         }
         if (m_health <= 0)
         {
             DieEvent();
         }
+    }
+
+    protected float CalculateDamage(int damage, ECardType damageType)
+    {
+        float typeMultiplier = GetTypeMultiplier(m_primaryType, damageType);
+        float calculatedDamage = damage * typeMultiplier;
+        calculatedDamage += CalculateArmorPiercingDamage(calculatedDamage, m_armor, damageType);
+
+        return calculatedDamage;
+    }
+
+    public static float CalculateArmorPiercingDamage(float initialDamage, int armor, ECardType damageType)
+    {
+        float additionalDamage = 0.0f;
+        if (damageType != ECardType.Piercing)
+        {
+            return additionalDamage;
+        }
+        if (initialDamage >= armor/2.0f)
+        {
+            additionalDamage = armor / 2.0f;
+        }
+        else if (initialDamage < armor/2.0f)
+        {
+            additionalDamage = initialDamage;
+        }
+        return additionalDamage;
+    }
+
+    public static float GetTypeMultiplier(ECreatureType creatureType, ECardType damageType)
+    {
+        switch (creatureType)
+        {
+            case ECreatureType.Aquatic:
+                if (damageType == ECardType.Electric ||
+                    damageType == ECardType.Poison)
+                {
+                    return 2.0f;
+                }
+                else if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Frost)
+                {
+                    return 0.5f;
+                }
+                break;
+            case ECreatureType.Automaton:
+                if (damageType == ECardType.Piercing)
+                {
+                    return 2.0f;
+                }
+                else if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Physical)
+                {
+                    return 0.5f;
+                }
+                break;
+            case ECreatureType.Beast:
+                if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Poison)
+                {
+                    return 2.0f;
+                }
+                else if (damageType == ECardType.Arcane)
+                {
+                    return 0.5f;
+                }
+                break;
+            case ECreatureType.Dark:
+                if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Electric)
+                {
+                    return 2.0f;
+                }
+                else if (damageType == ECardType.Poison ||
+                    damageType == ECardType.Arcane)
+                {
+                    return 0.5f;
+                }
+                break;
+            case ECreatureType.Electric:
+                break;
+            case ECreatureType.Ice:
+                if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Arcane)
+                {
+                    return 2.0f;
+                }
+                else if (damageType == ECardType.Frost ||
+                    damageType == ECardType.Poison)
+                {
+                    return 0.5f;
+                }
+                break;
+            case ECreatureType.Magic:
+                break;
+            case ECreatureType.Mineral:
+                if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Electric ||
+                    damageType == ECardType.Physical ||
+                    damageType == ECardType.Poison)
+                {
+                    return 0.5f;
+                }
+                else if (damageType == ECardType.Piercing ||
+                        damageType == ECardType.Arcane)
+                {
+                    return 2.0f;
+                }
+                break;
+            case ECreatureType.Plant:
+                if (damageType == ECardType.Fire ||
+                    damageType == ECardType.Frost)
+                {
+                    return 2.0f;
+                }
+                else if (damageType == ECardType.Poison ||
+                        damageType == ECardType.Piercing ||
+                        damageType == ECardType.Arcane)
+                {
+                    return 0.5f;
+                }
+                break;
+            case ECreatureType.None:
+                break;
+            default:
+                break;
+        }
+        return 1.0f;
     }
 
     public int GetCurrentMana()
