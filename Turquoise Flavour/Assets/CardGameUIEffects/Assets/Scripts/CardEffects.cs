@@ -308,6 +308,7 @@ public class CardEffects : TurquoiseEvent {
                     AddDrawPileCard(cardInstance);
                 }
             }
+            drawPileCards.ShufflePile();
         }
     }
 
