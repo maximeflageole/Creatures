@@ -15,4 +15,7 @@ public class CreatureData : ScriptableObject
     public Sprite sprite;
     public List<Cards.ECard> baseDeck;
     public ActiveAbilityData activeAbilityData;
+    public int level;
+    public int experience;
+    public Creatures.ELevelSpeed levelSpeed;
 }

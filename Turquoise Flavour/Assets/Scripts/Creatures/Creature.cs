@@ -69,6 +69,8 @@ public class Creature : MonoBehaviour
     protected Sprite m_sprite;
     [SerializeField]
     protected ActiveAbility m_activeAbility;
+    [SerializeField]
+    protected int m_experience;
 
     public CreatureSaveable GetSaveableCreature()
     {
