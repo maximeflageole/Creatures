@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Experience;
 
 public class ExperienceManager : MonoBehaviour
 {
@@ -28,12 +29,15 @@ public class ExperienceManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public enum ELevelSpeed
+namespace Experience
 {
-    Fast,
-    Normal,
-    Slow,
-    UltraSlow,
-    Count
+    [System.Serializable]
+    public enum ELevelSpeed
+    {
+        Fast,
+        Normal,
+        Slow,
+        UltraSlow,
+        Count
+    }
 }
