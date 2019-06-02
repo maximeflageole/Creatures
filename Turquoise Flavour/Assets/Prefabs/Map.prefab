@@ -335,9 +335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f0ab2d265521843aa5a9cf7807de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventType: 3
+  m_eventType: 4
   m_isCompleted: 0
-  m_nodeData: {fileID: 0}
+  m_nodeData: {fileID: 11400000, guid: edb5e93ab3a450842a8d6ba86c0140c5, type: 2}
   m_nodeId: 4
 --- !u!1 &5447027914079151246
 GameObject:
