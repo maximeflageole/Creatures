@@ -70,7 +70,7 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected ActiveAbility m_activeAbility;
     [SerializeField]
-    protected int m_experience;
+    protected CreatureExperience m_experience;
 
     public CreatureSaveable GetSaveableCreature()
     {
@@ -88,6 +88,9 @@ public class Creature : MonoBehaviour
 
     public void CreateFromCreatureData(CreatureData creatureData, List<Cards.ECard> deck, int level = 1)
     {
+        m_experience.level = level;
+        m_experience.levelSpeed = Experience.ELevelSpeed.Fast;
+        m_experience.experiencePoints = 0;
         m_eCreature = creatureData.eCreature;
         m_level = level;
         m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_level);
@@ -155,6 +158,11 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public void EndBattle()
+    {
+        ExperienceManager.AddExperience(50, ref m_experience);
+    }
+
     public void IncrementArmor(int incrementValue)
     {
         m_armor += incrementValue;
@@ -174,6 +182,10 @@ public class Creature : MonoBehaviour
         if (m_manaTextMesh != null)
         {
             m_manaTextMesh.text = "Mana: " + m_currentMana + "/" + m_baseMaxMana;
+        }
+        if (Input.GetKeyDown("x"))
+        {
+            ExperienceManager.AddExperience(50, ref m_experience);
         }
     }
 

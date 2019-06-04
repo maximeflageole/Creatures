@@ -5,8 +5,20 @@ using Experience;
 
 public class ExperienceManager : MonoBehaviour
 {
+    public static int MAXLEVEL = 20;
     public static int GetNextLevelXp(ELevelSpeed levelSpeed, float currentLevel)
     {
+        float coefficient = GetXpCoefficient(levelSpeed);
+        if (currentLevel == MAXLEVEL)
+        {
+            return -1;
+        }
+        return (int)((Mathf.Pow(currentLevel, 2.0f)*(coefficient-currentLevel) + 500)/10);
+    }
+
+    public static float GetXpCoefficient(ELevelSpeed levelSpeed)
+    {
+        
         float coefficient = 0.0f;
         switch (levelSpeed)
         {
@@ -25,7 +37,25 @@ public class ExperienceManager : MonoBehaviour
             default:
                 break;
         }
-        return Mathf.RoundToInt(coefficient * Mathf.Pow(1.04f, currentLevel+1));
+        return coefficient;
+    }
+
+    public static void AddExperience(int experience, ref CreatureExperience creatureExperience)
+    {
+        if (creatureExperience.level < MAXLEVEL)
+        {
+            int nextLvlXp = GetNextLevelXp(creatureExperience.levelSpeed, creatureExperience.level);
+            if (nextLvlXp > creatureExperience.experiencePoints + experience)
+            {
+                creatureExperience.experiencePoints += experience;
+                return;
+            }
+            //TODO: Level up
+            creatureExperience.level++;
+            int rest = experience - (nextLvlXp - creatureExperience.experiencePoints);
+            creatureExperience.experiencePoints = 0;
+            AddExperience(rest, ref creatureExperience);
+        }
     }
 }
 
@@ -40,4 +70,12 @@ namespace Experience
         UltraSlow,
         Count
     }
+}
+
+[System.Serializable]
+public struct CreatureExperience
+{
+    public int level;
+    public int experiencePoints;
+    public ELevelSpeed levelSpeed;
 }

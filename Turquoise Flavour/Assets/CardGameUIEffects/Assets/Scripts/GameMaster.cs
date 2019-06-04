@@ -53,6 +53,12 @@ public class GameMaster : MonoBehaviour
             m_cardList = Instantiate(m_cardListPrefab, transform).GetComponent<CardList>();
         }
         Player.GetPlayerInstance().LoadGame();
+        int i = 0;
+        while (i<21)
+        {
+            Debug.Log("Xp: " + ExperienceManager.GetNextLevelXp(Experience.ELevelSpeed.Fast, i) + "   Level: " + i);
+            i++;
+        }
     }
 
     public void EndCurrentEvent(bool success = false)
