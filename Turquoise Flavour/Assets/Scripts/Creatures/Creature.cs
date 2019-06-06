@@ -23,14 +23,16 @@ public struct CreatureSaveable
     public int m_level;
     public List<Cards.ECard> m_deck;
     public int m_currentHealth;
+    public int m_experience;
 
 
-    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth)
+    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth, int experience)
     {
         m_eCreature = eCreature;
         m_level = level;
         m_deck = deck.m_cards;
         m_currentHealth = currentHealth;
+        m_experience = experience;
     }
 }
 
@@ -74,7 +76,7 @@ public class Creature : MonoBehaviour
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_level, m_deck, m_health);
+        return new CreatureSaveable(m_eCreature, m_level, m_deck, m_health, m_experience.experiencePoints);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
@@ -82,17 +84,16 @@ public class Creature : MonoBehaviour
         m_level = creatureSave.m_level;
         m_eCreature = creatureSave.m_eCreature;
         m_health = creatureSave.m_currentHealth;
+        m_experience.level = creatureSave.m_level;
+        m_experience.experiencePoints = creatureSave.m_experience;
         CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
         CreateFromCreatureData(creatureData, creatureSave.m_deck, creatureSave.m_level);
     }
 
-    public void CreateFromCreatureData(CreatureData creatureData, List<Cards.ECard> deck, int level = 1)
+    public void CreateFromCreatureData(CreatureData creatureData, List<Cards.ECard> deck, int level = 1, int experience = 0)
     {
-        m_experience.level = level;
-        m_experience.levelSpeed = Experience.ELevelSpeed.Fast;
-        m_experience.experiencePoints = 0;
+        m_experience.levelSpeed = creatureData.levelSpeed;
         m_eCreature = creatureData.eCreature;
-        m_level = level;
         m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_level);
         m_health = m_maxHealth;
         m_primaryType = creatureData.creatureType;
