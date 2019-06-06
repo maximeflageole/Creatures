@@ -56,13 +56,7 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected int m_currentMaxMana = m_baseMaxMana;
     [SerializeField]
-    protected TextMeshPro m_manaTextMesh;
-    [SerializeField]
-    protected TextMesh m_healthText;
-    [SerializeField]
-    protected TextMesh m_armorText;
-    [SerializeField]
-    protected TextMesh m_ConditionsText;
+    protected CreatureUIComp m_creatureUIComp;
     [SerializeField]
     protected Deck m_deck;
     [SerializeField]
@@ -73,6 +67,8 @@ public class Creature : MonoBehaviour
     protected ActiveAbility m_activeAbility;
     [SerializeField]
     protected CreatureExperience m_experience;
+    [SerializeField]
+    protected bool m_inBattle;
 
     public CreatureSaveable GetSaveableCreature()
     {
@@ -162,6 +158,7 @@ public class Creature : MonoBehaviour
     public void EndBattle()
     {
         ExperienceManager.AddExperience(50, ref m_experience);
+        m_inBattle = false;
     }
 
     public void IncrementArmor(int incrementValue)
@@ -171,22 +168,16 @@ public class Creature : MonoBehaviour
 
     public void Update()
     {
-        if (m_healthText != null)
+        if (m_inBattle)
         {
-            m_healthText.text = m_health.ToString() + " / " + m_maxHealth.ToString();
-        }
-        if (m_armorText != null)
-        {
-            m_armorText.gameObject.SetActive(m_armor != 0);
-            m_armorText.text = m_armor.ToString();
-        }
-        if (m_manaTextMesh != null)
-        {
-            m_manaTextMesh.text = "Mana: " + m_currentMana + "/" + m_baseMaxMana;
-        }
-        if (Input.GetKeyDown("x"))
-        {
-            ExperienceManager.AddExperience(50, ref m_experience);
+            if (m_creatureUIComp != null)
+            {
+                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_armor, m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level));
+            }
+            if (Input.GetKeyDown("x"))
+            {
+                ExperienceManager.AddExperience(50, ref m_experience);
+            }
         }
     }
 
@@ -381,19 +372,15 @@ public class Creature : MonoBehaviour
 
     public void SendCreatureToBattle(CreatureUIComp creatureUI)
     {
-        m_manaTextMesh = creatureUI.m_manaTextMesh;
-        m_healthText = creatureUI.m_healthText;
-        m_armorText = creatureUI.m_armorText;
-        m_ConditionsText = creatureUI.m_ConditionsText;
+        m_creatureUIComp = creatureUI;
+        m_inBattle = true;
         creatureUI.GetComponent<SpriteRenderer>().sprite = m_sprite;
     }
 
     public void ReturnCreatureFromBattle()
     {
-        m_manaTextMesh = null;
-        m_healthText = null;
-        m_armorText = null;
-        m_ConditionsText = null;
+        m_creatureUIComp = null;
+        m_inBattle = false;
     }
 }
 

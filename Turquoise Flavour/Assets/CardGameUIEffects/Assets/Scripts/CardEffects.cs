@@ -268,8 +268,8 @@ public class CardEffects : TurquoiseEvent {
 
     public void ChangePlayerCreature(Creature creature, bool battleStart = false)
     {
-        creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
         creature = Player.GetPlayerInstance().GetCurrentCreature();
+        creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
         creature.RefreshMana();
 
         if (creature.GetActiveAbility() != null)
