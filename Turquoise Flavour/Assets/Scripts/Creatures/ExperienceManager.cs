@@ -40,7 +40,7 @@ public class ExperienceManager : MonoBehaviour
         return coefficient;
     }
 
-    public static void AddExperience(int experience, ref CreatureExperience creatureExperience)
+    public static void AddExperience(int experience, ref CreatureExperience creatureExperience, Creature creature)
     {
         if (creatureExperience.level < MAXLEVEL)
         {
@@ -52,9 +52,10 @@ public class ExperienceManager : MonoBehaviour
             }
             //TODO: Level up
             creatureExperience.level++;
+            creature.OnLevelUp();
             int rest = experience - (nextLvlXp - creatureExperience.experiencePoints);
             creatureExperience.experiencePoints = 0;
-            AddExperience(rest, ref creatureExperience);
+            AddExperience(rest, ref creatureExperience, creature);
         }
     }
 }

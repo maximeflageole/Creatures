@@ -72,12 +72,11 @@ public class Creature : MonoBehaviour
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_level, m_deck, m_health, m_experience.experiencePoints);
+        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
     {
-        m_level = creatureSave.m_level;
         m_eCreature = creatureSave.m_eCreature;
         m_health = creatureSave.m_currentHealth;
         m_experience.level = creatureSave.m_level;
@@ -90,7 +89,7 @@ public class Creature : MonoBehaviour
     {
         m_experience.levelSpeed = creatureData.levelSpeed;
         m_eCreature = creatureData.eCreature;
-        m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_level);
+        m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_experience.level);
         m_health = m_maxHealth;
         m_primaryType = creatureData.creatureType;
         m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
@@ -157,7 +156,7 @@ public class Creature : MonoBehaviour
 
     public void EndBattle()
     {
-        ExperienceManager.AddExperience(50, ref m_experience);
+        ExperienceManager.AddExperience(50, ref m_experience, this);
         m_inBattle = false;
     }
 
@@ -176,7 +175,7 @@ public class Creature : MonoBehaviour
             }
             if (Input.GetKeyDown("x"))
             {
-                ExperienceManager.AddExperience(50, ref m_experience);
+                ExperienceManager.AddExperience(50, ref m_experience, this);
             }
         }
     }
@@ -381,6 +380,14 @@ public class Creature : MonoBehaviour
     {
         m_creatureUIComp = null;
         m_inBattle = false;
+    }
+
+    public void OnLevelUp()
+    {
+        CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
+        float healthRatio = m_health / m_maxHealth;
+        m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_experience.level);
+        m_health = (int)(m_maxHealth * healthRatio);
     }
 }
 
