@@ -41,6 +41,8 @@ public class Creature : MonoBehaviour
     public static int m_baseMaxMana = 3;
 
     [SerializeField]
+    protected GameObject m_abilityTreePrefab;
+    [SerializeField]
     protected ECreature m_eCreature;
     public ETeams m_team = ETeams.None;
     [SerializeField]
@@ -67,6 +69,7 @@ public class Creature : MonoBehaviour
     protected CreatureExperience m_experience;
     [SerializeField]
     protected bool m_inBattle;
+    
 
     public CreatureSaveable GetSaveableCreature()
     {
@@ -383,9 +386,13 @@ public class Creature : MonoBehaviour
     public void OnLevelUp()
     {
         CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
-        float healthRatio = m_health / m_maxHealth;
+        float healthRatio = (float)m_health / (float)m_maxHealth;
         m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_experience.level);
         m_health = (int)(m_maxHealth * healthRatio);
+
+        //TODO: Leveling is fucked up right now. Needs work and more importantly, design
+        //var abilityTree = Instantiate(m_abilityTreePrefab);
+        //abilityTree.GetComponent<AbilityTree>().CreateAbilityTree(GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature));
     }
 }
 
