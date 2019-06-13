@@ -60,8 +60,6 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected Deck m_deck;
     [SerializeField]
-    protected int m_level;
-    [SerializeField]
     protected Sprite m_sprite;
     [SerializeField]
     protected ActiveAbility m_activeAbility;
