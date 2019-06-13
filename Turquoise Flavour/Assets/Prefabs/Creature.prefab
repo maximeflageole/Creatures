@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b47367d1640446489488776026d759f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_abilityTreePrefab: {fileID: 4463325862097863401, guid: 20edd9d7dac4a2e45b5d8c2a92b9f589,
+    type: 3}
   m_eCreature: 0
   m_team: 2
   m_primaryType: 0
@@ -51,10 +53,13 @@ MonoBehaviour:
   m_armor: 0
   m_currentMana: 0
   m_currentMaxMana: 3
-  m_manaTextMesh: {fileID: 0}
-  m_healthText: {fileID: 0}
-  m_armorText: {fileID: 0}
-  m_ConditionsText: {fileID: 0}
+  m_creatureUIComp: {fileID: 0}
   m_deck: {fileID: 0}
   m_level: 0
   m_sprite: {fileID: 0}
+  m_activeAbility: {fileID: 0}
+  m_experience:
+    level: 0
+    experiencePoints: 0
+    levelSpeed: 0
+  m_inBattle: 0

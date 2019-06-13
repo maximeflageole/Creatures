@@ -18,8 +18,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c2a7d94e9601ed041a180d1afc7fe385, type: 2}
     - {fileID: 11400000, guid: 53897873fdd34974fbcf4cb4b838ddbc, type: 2}
     - {fileID: 11400000, guid: 9b05b404a6937c34aa9188edcdb32085, type: 2}
-  - level: 0
-    levelAbilities: []
+  - level: 2
+    levelAbilities:
+    - {fileID: 11400000, guid: 9b05b404a6937c34aa9188edcdb32085, type: 2}
+    - {fileID: 11400000, guid: 9b05b404a6937c34aa9188edcdb32085, type: 2}
   - level: 0
     levelAbilities: []
   - level: 0

@@ -168,7 +168,7 @@ public class GameMasterInspector : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        if (GUI.Button(new Rect(20, 800, 100, 30), new GUIContent("Reset Save")))
+        if (GUI.Button(new Rect(20, 400, 100, 30), new GUIContent("Reset Save")))
             GameMaster.ResetSave();
     }
 }
