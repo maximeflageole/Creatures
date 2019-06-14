@@ -69,6 +69,8 @@ public class Creature : MonoBehaviour
     protected CreatureExperience m_experience;
     [SerializeField]
     protected bool m_inBattle;
+    [SerializeField]
+    protected int m_speed;
     
 
     public CreatureSaveable GetSaveableCreature()
@@ -393,6 +395,11 @@ public class Creature : MonoBehaviour
         //TODO: Leveling is fucked up right now. Needs work and more importantly, design
         //var abilityTree = Instantiate(m_abilityTreePrefab);
         //abilityTree.GetComponent<AbilityTree>().CreateAbilityTree(GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature));
+    }
+
+    public int GetSpeed()
+    {
+        return m_speed;
     }
 }
 

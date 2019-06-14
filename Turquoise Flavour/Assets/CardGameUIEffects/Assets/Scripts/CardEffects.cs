@@ -153,6 +153,8 @@ public class CardEffects : TurquoiseEvent {
     protected bool m_exhaustingCards;
     [SerializeField]
     protected bool m_noTargetSkill;
+    [SerializeField]
+    protected bool m_isPlayerTurn;
 
     public void Awake()
     {
@@ -164,6 +166,22 @@ public class CardEffects : TurquoiseEvent {
     {
     }
 
+    public Turquoise.ETeams GetFastestCreatureTeam()
+    {
+        int enemySpeed = m_enemyCreature.GetComponent<Creature>().GetSpeed();
+        Debug.Log("Enemy Speed = " + enemySpeed);
+
+        int playerSpeed = m_player.GetCurrentCreature().GetSpeed();
+        Debug.Log("Player Speed = " + playerSpeed);
+
+
+        if (enemySpeed > playerSpeed)
+        {
+            return m_enemyCreature.GetComponent<Creature>().m_team;
+        }
+        return m_player.GetCurrentCreature().m_team;
+    }
+
     public static CardEffects GetCardEffectsInstance()
     {
         return m_cardEffectInstance;
@@ -172,11 +190,6 @@ public class CardEffects : TurquoiseEvent {
     public void Initialization()
     {
         m_player = Player.GetPlayerInstance();
-        Creature creature = m_player.GetCurrentCreature();
-        if (creature == null)
-        {
-            Debug.Log("CardEffects::Initialization : Creature Index Invalid!");
-        }
 
         // Add button click events
         drawBtn.GetComponent<Button>().onClick.AddListener(delegate ()
@@ -199,10 +212,19 @@ public class CardEffects : TurquoiseEvent {
             arrow.transform.position = Vector3.zero;
             arrows.Add(arrow);
         }
+    }
 
-        // Play shuffle card animation
-        ShuffleCardAnimation();
-        ChangePlayerCreature(creature, true);
+    public void StartCreatureTurn(bool isPlayerTurn)
+    {
+        if (isPlayerTurn)
+        {
+            // Play shuffle card animation
+            ShuffleCardAnimation();
+        }
+        else
+        {
+
+        }
     }
 
     void Update()
@@ -266,6 +288,57 @@ public class CardEffects : TurquoiseEvent {
         CardPlaying();
     }
 
+    public void SendCreatureToBattle(Creature creature, bool isPlayer = true)
+    {
+        if (isPlayer)
+        {
+            if (m_playerCreature != null && m_playerCreature.GetComponent<Creature>() != null)
+            {
+                m_playerCreature.GetComponent<Creature>().ReturnCreatureFromBattle();
+            }
+            creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
+        }
+
+        if (creature.GetActiveAbility() != null)
+        {
+            creature.GetActiveAbility().LoadAbilityUI(m_playerCreature.GetComponent<ActiveAbilityUI>());
+        }
+
+        if (isPlayer)
+        {
+            drawPileCards.Clear();
+            playingCard.Clear();
+            discardPileCards.Clear();
+            creature.RefreshMana();
+
+            Deck deck = creature.GetDeck();
+            if (deck != null)
+            {
+                CardList cardList = FindObjectOfType<CardList>();
+                if (cardList == null)
+                {
+                    Debug.Log("Found no card list in the scene");
+                    return;
+                }
+                if (deck.m_cards == null || deck.m_cards.Count == 0)
+                {
+                    return;
+                }
+                foreach (var cardName in deck.m_cards)
+                {
+                    CardData cardData = cardList.GetCardDataFromCardName(cardName);
+                    if (cardData != null)
+                    {
+                        Card cardInstance = Instantiate(cardPrefabs[0].GetComponent<Card>());
+                        cardInstance.SetCardData(cardData);
+                        AddDrawPileCard(cardInstance);
+                    }
+                }
+                drawPileCards.ShufflePile();
+            }
+        }
+    }
+
     public void ChangePlayerCreature(Creature creature, bool battleStart = false)
     {
         creature = Player.GetPlayerInstance().GetCurrentCreature();
@@ -279,7 +352,7 @@ public class CardEffects : TurquoiseEvent {
 
         if (battleStart)
         {
-            ChangeTurn();
+            //ChangeTurn();
         }
         else
         {
@@ -1009,6 +1082,7 @@ public class CardEffects : TurquoiseEvent {
         m_focusOnCard = -1;
         mouseClickCard = -1;
         HideArrows();
+        m_isPlayerTurn = !m_isPlayerTurn;
         ChangeTurn();
     }
 
@@ -1386,20 +1460,34 @@ public class CardEffects : TurquoiseEvent {
         }
     }
 
+    public void StartFirstTurn()
+    {
+        Turquoise.ETeams team = GetFastestCreatureTeam();
+        if (team == m_player.GetCurrentCreature().m_team)
+        {
+            m_isPlayerTurn = true;
+        }
+        else
+        {
+            m_isPlayerTurn = false;
+        }
+        ChangeTurn();
+    }
+
     public void ChangeTurn()
     {
         m_turnCount++;
-        if (m_turnCount % 2 == 0)
-        {
-            print("Begin Enemy's turn");
-            m_player.TurnEnd();
-        }
-        else
+        if (m_isPlayerTurn)
         {
             print("Begin player's turn");
             m_player.TurnBegin();
             shuffleBegin = Time.time;
             shufflingCard = true;
+        }
+        else
+        {
+            print("Begin Enemy's turn");
+            m_player.TurnEnd();
         }
     }
 

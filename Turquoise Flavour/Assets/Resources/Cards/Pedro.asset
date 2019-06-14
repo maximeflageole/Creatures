@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
+  m_Name: Pedro
+  m_EditorClassIdentifier: 
+  cardName: Pedro
+  cardEnumValue: 8
+  description: Pedro is beautiful, so he heals you
+  artwork: {fileID: 21300000, guid: 0c109deb67441d14a8a30e672c218e6d, type: 3}
+  manaCost: 1
+  targetType: 0
+  effects:
+  - m_effect: 1
+    m_subtype: 
+    m_value: 5
+    m_targetType: 0
+    m_chances: 0
+  cardGenre: 1
+  damageType: 0
+  rarity: 2
+  creaturePart: 5

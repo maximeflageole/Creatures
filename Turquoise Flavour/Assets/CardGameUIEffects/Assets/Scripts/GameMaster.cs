@@ -156,7 +156,7 @@ public class GameMaster : MonoBehaviour
         }
         if (scene.name == "Demo")
         {
-            CardEffects.GetCardEffectsInstance().Initialization();
+            BattleStateMachine battleStateMachine = gameObject.AddComponent(typeof(BattleStateMachine)) as BattleStateMachine;
         }
     }
 }

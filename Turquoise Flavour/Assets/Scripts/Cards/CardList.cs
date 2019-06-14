@@ -16,6 +16,7 @@ namespace Cards
         Discard,
         ExhaustSelf,
         ExhaustOther,
+        PedroHeal,
         Count
     }
 }

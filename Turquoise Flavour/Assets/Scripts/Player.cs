@@ -127,6 +127,7 @@ public class Player : MonoBehaviour
 
     public void SwapCreature()
     {
+        /*
         if (m_creatures.Count > 1)
         {
             m_currentCreature.ReturnCreatureFromBattle();
@@ -134,6 +135,7 @@ public class Player : MonoBehaviour
             m_currentCreature = m_creatures[m_currentCreatureIndex];
             CardEffects.GetCardEffectsInstance().ChangePlayerCreature(m_currentCreature);
         }
+        */
     }
 
     public void CaptureCreature(CreatureData creatureData, int level)
