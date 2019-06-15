@@ -43,17 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa68ff4c7325b9f4b8c35592430f8c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventTypes:
-  - eventType: 0
-    eventPrefab: {fileID: 2147587399352060765, guid: 28ba2e474fc01bb45b9c3403a88e5ee8,
-      type: 3}
-  - eventType: 1
-    eventPrefab: {fileID: 0}
-  - eventType: 2
-    eventPrefab: {fileID: 0}
-  - eventType: 3
-    eventPrefab: {fileID: 0}
   m_currentEvent: {fileID: 0}
+  m_rewardEvent: {fileID: 2147587399352060765, guid: 28ba2e474fc01bb45b9c3403a88e5ee8,
+    type: 3}
   m_cardList: {fileID: 0}
   m_cardListPrefab: {fileID: 8525656888715335837, guid: 687a99139b2a3ea4bbc6827ceccfdc77,
     type: 3}
@@ -61,3 +53,4 @@ MonoBehaviour:
   m_creatureListPrefab: {fileID: 6123648333561893009, guid: 8faa2ace27f161c488a27f4493fb6606,
     type: 3}
   m_completedNodes: 
+  m_currentNodeIndex: -1

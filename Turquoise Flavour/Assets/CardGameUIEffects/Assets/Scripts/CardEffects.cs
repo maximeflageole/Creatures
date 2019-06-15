@@ -8,8 +8,6 @@ public class CardEffects : TurquoiseEvent {
 
     public GameObject m_playerCreature;
     public GameObject m_enemyCreature;
-    [SerializeField]
-    protected GameObject m_rewardEvent;
     [Tooltip("The angle between two neighbor cards in hand, this will be changed with different card numbers")]
     public float rotateAngle = 30.0f;
     [Tooltip("The angle between two neighbor cards will be changed with different card numbers, define card number here")]
@@ -164,6 +162,16 @@ public class CardEffects : TurquoiseEvent {
 
     public void Start()
     {
+    }
+
+    public Creature GetPlayerCreature()
+    {
+        return m_player.GetCurrentCreature();
+    }
+
+    public Creature GetEnmeyCreature()
+    {
+        return m_enemyCreature.GetComponent<Creature>();
     }
 
     public Turquoise.ETeams GetFastestCreatureTeam()
@@ -1488,20 +1496,6 @@ public class CardEffects : TurquoiseEvent {
         {
             print("Begin Enemy's turn");
             m_player.TurnEnd();
-        }
-    }
-
-    public void DieEvent(Creature deadCreature)
-    {
-        if (deadCreature.m_team == Turquoise.ETeams.Enemy)
-        {
-            Instantiate(m_rewardEvent);
-            print("Yeah! Player wins");
-            Destroy(gameObject);
-        }
-        else
-        {
-            print("Oh no, you dead");
         }
     }
 }

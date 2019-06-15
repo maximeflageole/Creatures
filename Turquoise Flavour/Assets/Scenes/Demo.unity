@@ -828,7 +828,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1967,6 +1967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b47367d1640446489488776026d759f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_abilityTreePrefab: {fileID: 0}
   m_eCreature: 0
   m_team: 0
   m_primaryType: 0
@@ -1977,7 +1978,6 @@ MonoBehaviour:
   m_currentMaxMana: 3
   m_creatureUIComp: {fileID: 0}
   m_deck: {fileID: 0}
-  m_level: 0
   m_sprite: {fileID: 0}
   m_activeAbility: {fileID: 0}
   m_experience:
@@ -1985,6 +1985,7 @@ MonoBehaviour:
     experiencePoints: 0
     levelSpeed: 0
   m_inBattle: 0
+  m_speed: 0
 --- !u!114 &1043736053
 MonoBehaviour:
   m_ObjectHideFlags: 0

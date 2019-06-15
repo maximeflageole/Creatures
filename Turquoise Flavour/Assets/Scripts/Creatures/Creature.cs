@@ -163,6 +163,11 @@ public class Creature : MonoBehaviour
         m_inBattle = false;
     }
 
+    public void AddExperience(int Amount)
+    {
+        ExperienceManager.AddExperience(Amount, ref m_experience, this);
+    }
+
     public void IncrementArmor(int incrementValue)
     {
         m_armor += incrementValue;
@@ -363,7 +368,12 @@ public class Creature : MonoBehaviour
 
     public void DieEvent()
     {
-        CardEffects.GetCardEffectsInstance().DieEvent(this);
+        Debug.Log("Creature " + m_team.ToString() + " died");
+    }
+
+    public bool IsDead()
+    {
+        return m_health <= 0;
     }
 
     public bool AddCardToDeck(Cards.ECard card)

@@ -25,4 +25,9 @@ public class CreaturePickState : TurquoiseState
     {
         Debug.Log("Exits Creature Pick State");
     }
+
+    public override EBattlePhase GetNextState()
+    {
+        return EBattlePhase.BattleState;
+    }
 }

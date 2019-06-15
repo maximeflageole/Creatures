@@ -10,6 +10,8 @@ public class GameMaster : MonoBehaviour
     static GameMaster s_gmInstance;
     [SerializeField]
     protected TurquoiseEvent m_currentEvent;
+    [SerializeField]
+    protected GameObject m_rewardEvent;
     public CardList m_cardList;
     [SerializeField]
     protected GameObject m_cardListPrefab;
@@ -53,6 +55,11 @@ public class GameMaster : MonoBehaviour
             m_cardList = Instantiate(m_cardListPrefab, transform).GetComponent<CardList>();
         }
         Player.GetPlayerInstance().LoadGame();
+    }
+
+    public GameObject GetRewardPrefab()
+    {
+        return m_rewardEvent;
     }
 
     public void EndCurrentEvent(bool success = false)

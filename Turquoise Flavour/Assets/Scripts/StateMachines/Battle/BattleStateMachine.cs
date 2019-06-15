@@ -1,0 +1,123 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BattleStateMachine : MonoBehaviour
+{
+    [SerializeField]
+    protected GameObject m_rewardEvent;
+    [SerializeField]
+    protected EBattlePhase m_currentBattlePhase;
+    [SerializeField]
+    protected List<LevelUpInBattle> m_levelUpsInBattle;
+    [SerializeField]
+    protected Dictionary<EBattlePhase, TurquoiseState> BattleStates;
+    [SerializeField]
+    protected Creature m_playerCreature;
+    [SerializeField]
+    protected Creature m_enemyCreature;
+    public static BattleStateMachine s_battleStateMachine;
+    [SerializeField]
+    protected int m_turnCount;
+    [SerializeField]
+    protected bool m_battleEnded;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        BattleStates = new Dictionary<EBattlePhase, TurquoiseState>();
+
+        CreaturePickState creaturePickState = gameObject.AddComponent(typeof(CreaturePickState)) as CreaturePickState;
+        BattleState battleState = gameObject.AddComponent(typeof(BattleState)) as BattleState;
+        ExperienceDistributionState experienceDistState = gameObject.AddComponent(typeof(ExperienceDistributionState)) as ExperienceDistributionState;
+        BattleRewardState battleRewardState = gameObject.AddComponent(typeof(BattleRewardState)) as BattleRewardState;
+
+        BattleStates.Add(EBattlePhase.CreaturePick, creaturePickState);
+        BattleStates.Add(EBattlePhase.BattleState, battleState);
+        BattleStates.Add(EBattlePhase.ExperienceDistribution, experienceDistState);
+        BattleStates.Add(EBattlePhase.BattleRewards, battleRewardState);
+        
+
+        s_battleStateMachine = this;
+
+        StartBattle();
+    }
+
+    public static BattleStateMachine GetInstance()
+    {
+        return s_battleStateMachine;
+    }
+
+    public void StartBattle()
+    {
+        Debug.Log("Start Battle");
+        m_battleEnded = false;
+        m_currentBattlePhase = EBattlePhase.CreaturePick;
+        BattleStates[m_currentBattlePhase].StartState();
+        CardEffects cardEffects = CardEffects.GetCardEffectsInstance();
+        cardEffects.Initialization();
+        m_turnCount = 1;
+
+        m_playerCreature = cardEffects.GetPlayerCreature();
+        m_enemyCreature = cardEffects.GetEnmeyCreature();
+    }
+
+    public void EndBattle()
+    {
+        m_playerCreature = null;
+        m_enemyCreature = null;
+        m_battleEnded = true;
+        Destroy(CardEffects.GetCardEffectsInstance().gameObject);
+        Instantiate(GameMaster.GetInstance().GetRewardPrefab());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (m_battleEnded)
+        {
+            return;
+        }
+        TurquoiseState currentState = BattleStates[m_currentBattlePhase];
+        currentState.UpdateState();
+
+        if (currentState.VerifyOutConditions())
+        {
+            BattleStates[m_currentBattlePhase].EndState();
+            m_currentBattlePhase = BattleStates[m_currentBattlePhase].GetNextState();
+            if (m_currentBattlePhase == EBattlePhase.None)
+            {
+                EndBattle();
+            }
+            else
+            {
+                BattleStates[m_currentBattlePhase].StartState();
+            }
+        }
+    }
+
+    public bool IsACreatureDead()
+    {
+        return (m_enemyCreature.IsDead() || m_playerCreature.IsDead());
+    }
+}
+
+public enum EBattlePhase
+{
+    CreaturePick,
+    BattleState,
+    BattleRewards,
+    ExperienceDistribution,
+    None
+}
+
+public struct LevelUpInBattle
+{
+    public Creature m_creature;
+    public int m_levelGained;
+    public LevelUpInBattle(Creature creature, int levelGained)
+    {
+        m_creature = creature;
+        m_levelGained = levelGained;
+    }
+}

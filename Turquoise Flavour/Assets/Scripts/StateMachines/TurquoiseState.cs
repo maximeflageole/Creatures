@@ -24,4 +24,9 @@ public class TurquoiseState : MonoBehaviour
     {
 
     }
+
+    public virtual EBattlePhase GetNextState()
+    {
+        return EBattlePhase.None;
+    }
 }
