@@ -76,9 +76,6 @@ public class CardEffects : TurquoiseEvent {
     //UI
     public Button drawBtn;
     public Button m_nextTurnBtn;
-    public Text drawPileText;
-    public Text discardPileText;
-    public Text exhaustPileText;
     public Text toast;
     [SerializeField]
     protected CardSelect m_cardSelectUI;
@@ -124,20 +121,17 @@ public class CardEffects : TurquoiseEvent {
     private List<Card> handCards = new List<Card>();
     private List<GameObject> arrows = new List<GameObject>();
     [SerializeField]
-    protected Pile drawPileCards = new Pile();
+    protected Pile drawPileCards;
     [SerializeField]
-    protected Pile discardPileCards = new Pile();
+    protected Pile discardPileCards;
     [SerializeField]
-    protected Pile exhaustPileCards = new Pile();
+    protected Pile exhaustPileCards;
     [SerializeField]
     protected Player m_player;
     protected int m_turnCount = 0;
 
     static CardEffects m_cardEffectInstance;
 
-    private const string DRAW_PILE_NUM_TEXT = "Draw Pile: ";
-    private const string DISCARD_PILE_NUM_TEXT = "Discard Pile: ";
-    private const string EXHAUST_PILE_NUM_TEXT = "Exhaust Pile: ";
     private const string FRIEND_CHARA_NAME = "GoodEgg";
     private const string ENEMY_CHARA_NAME = "BadEgg";
     private const int HAND_CARD_LIMIT = 10;
@@ -339,7 +333,7 @@ public class CardEffects : TurquoiseEvent {
                     {
                         Card cardInstance = Instantiate(cardPrefabs[0].GetComponent<Card>());
                         cardInstance.SetCardData(cardData);
-                        AddDrawPileCard(cardInstance);
+                        drawPileCards.AddCard(cardInstance);
                     }
                 }
                 drawPileCards.ShufflePile();
@@ -390,31 +384,11 @@ public class CardEffects : TurquoiseEvent {
                 {
                     Card cardInstance = Instantiate(cardPrefabs[0].GetComponent<Card>());
                     cardInstance.SetCardData(cardData);
-                    AddDrawPileCard(cardInstance);
+                    drawPileCards.AddCard(cardInstance);
                 }
             }
             drawPileCards.ShufflePile();
         }
-    }
-
-    void AddDiscardPileCard(Card card)
-    {
-        discardPileCards.Enqueue(card);
-        discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count().ToString();
-    }
-
-    void AddExhaustPileCard(Card card)
-    {
-        exhaustPileCards.Enqueue(card);
-        exhaustPileText.text = EXHAUST_PILE_NUM_TEXT + exhaustPileCards.Count().ToString();
-    }
-
-    void AddDrawPileCard(Card card)
-    {
-        //card.info = cardInfo;
-        card.gameObject.SetActive(false);
-        drawPileCards.Enqueue(card);
-        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count().ToString();
     }
 
     Card GetCardFromDrawPile()
@@ -422,7 +396,6 @@ public class CardEffects : TurquoiseEvent {
         var card = drawPileCards.Draw();
         card.Reset();
         card.gameObject.SetActive(true);
-        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count().ToString();
         return card;
     }
 
@@ -456,11 +429,9 @@ public class CardEffects : TurquoiseEvent {
         while (discardPileCards.Count() > 0)
         {
             var card = discardPileCards.Draw();
-            AddDrawPileCard(card);
+            drawPileCards.AddCard(card);
         }
         ShuffleDrawPile();
-        drawPileText.text = DRAW_PILE_NUM_TEXT + drawPileCards.Count().ToString();
-        discardPileText.text = DISCARD_PILE_NUM_TEXT + discardPileCards.Count().ToString();
     }
 
     void ShuffleDrawPile()
@@ -844,11 +815,11 @@ public class CardEffects : TurquoiseEvent {
                 card.gameObject.SetActive(false);
                 if (card.isExhausting)
                 {
-                    AddExhaustPileCard(card);
+                    exhaustPileCards.AddCard(card);
                 }
                 else
                 {
-                    AddDiscardPileCard(card);
+                    discardPileCards.AddCard(card);
                 }
                 playingCard[i] = null;
                 var all_destroyed = true;

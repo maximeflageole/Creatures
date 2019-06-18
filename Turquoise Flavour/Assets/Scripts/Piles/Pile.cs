@@ -1,11 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class Pile
+public class Pile: MonoBehaviour
 {
+    [SerializeField]
+    protected TextMeshPro m_text;
     protected Queue<Card> m_queuedPile = new Queue<Card>();
 
+    private void Update()
+    {
+        if (m_text != null)
+        {
+            m_text.text = m_queuedPile.Count.ToString();
+        }
+    }
     public List<Card> GetPileAsList()
     {
         var arrayPile = m_queuedPile.ToArray();
@@ -59,5 +69,12 @@ public class Pile
     public int Count()
     {
         return m_queuedPile.Count;
+    }
+
+    public void AddCard(Card card)
+    {
+        //card.info = cardInfo;
+        card.gameObject.SetActive(false);
+        Enqueue(card);
     }
 }
