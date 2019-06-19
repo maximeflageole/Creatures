@@ -137,8 +137,8 @@ public class CardEffects : TurquoiseEvent {
     private const int HAND_CARD_LIMIT = 10;
 
     //Added for Turquoise Project
-     [SerializeField]
-     protected bool m_hasValidTarget;
+    [SerializeField]
+    protected bool m_hasValidTarget;
     [SerializeField]
     protected bool m_discardingCards;
     [SerializeField]

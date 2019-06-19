@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class RewardEvent : TurquoiseEvent
 {
+    public delegate void CallbackType();
+
+    protected CallbackType m_rewardPickedCallback; // to store the function
+
     [SerializeField]
     protected List<CardData> cardsData;
     [SerializeField]
@@ -49,7 +53,8 @@ public class RewardEvent : TurquoiseEvent
     {
         Player.GetPlayerInstance().AddCardToCreatureDeck(card.GetCardData().cardEnumValue);
         DisableCards();
-        GameMaster.GetInstance().EndCurrentEvent(true);
+        m_rewardPickedCallback();
+        Destroy(gameObject);
     }
 
     protected void DisableCards()
@@ -58,5 +63,10 @@ public class RewardEvent : TurquoiseEvent
         {
             card.GetComponent<BoxCollider2D>().enabled = false;
         }
+    }
+
+    public void SetCallback(CallbackType callbackType)
+    {
+        m_rewardPickedCallback = callbackType;
     }
 }

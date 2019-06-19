@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BattleRewardState : TurquoiseState
 {
+    [SerializeField]
+    protected bool m_rewardChosen;
+    [SerializeField]
+    protected Creature m_levelingCreature;
+
     public override void UpdateState()
     {
 
@@ -11,12 +16,20 @@ public class BattleRewardState : TurquoiseState
 
     public override bool VerifyOutConditions()
     {
-        //Debug.Log("Battle Reward out conditions are true");
-        return true;
+        return m_rewardChosen;
     }
 
     public override void StartState()
     {
+        m_rewardChosen = false;
+        PickNextCreature();
+        if (m_levelingCreature == null)
+        {
+            m_rewardChosen = true;
+            return;
+        }
+        GameObject reward = Instantiate(GameMaster.GetInstance().GetRewardPrefab());
+        reward.GetComponent<RewardEvent>().SetCallback(RewardPickedCallback);
         Debug.Log("Starts Battle Reward State");
     }
 
@@ -28,5 +41,28 @@ public class BattleRewardState : TurquoiseState
     public override EBattlePhase GetNextState()
     {
         return EBattlePhase.None;
+    }
+
+    public void RewardPickedCallback()
+    {
+        PickNextCreature();
+        if (m_levelingCreature == null)
+        {
+            m_rewardChosen = true;
+        }
+        else
+        {
+            GameObject reward = Instantiate(GameMaster.GetInstance().GetRewardPrefab());
+            reward.GetComponent<RewardEvent>().SetCallback(RewardPickedCallback);
+        }
+    }
+
+    protected void PickNextCreature()
+    {
+        m_levelingCreature = BattleStateMachine.GetInstance().GetNextLevelUp();
+        if (m_levelingCreature != null)
+        {
+            return;
+        }
     }
 }

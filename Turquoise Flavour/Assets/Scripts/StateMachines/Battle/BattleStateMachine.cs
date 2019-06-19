@@ -5,11 +5,9 @@ using UnityEngine;
 public class BattleStateMachine : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject m_rewardEvent;
-    [SerializeField]
     protected EBattlePhase m_currentBattlePhase;
     [SerializeField]
-    protected List<LevelUpInBattle> m_levelUpsInBattle;
+    protected Queue<Creature> m_levelUpsInBattle = new Queue<Creature>();
     [SerializeField]
     protected Dictionary<EBattlePhase, TurquoiseState> BattleStates;
     [SerializeField]
@@ -43,6 +41,15 @@ public class BattleStateMachine : MonoBehaviour
         StartBattle();
     }
 
+    public Creature GetNextLevelUp()
+    {
+        if (m_levelUpsInBattle.Count != 0)
+        {
+            return m_levelUpsInBattle.Dequeue();
+        }
+        return null;
+    }
+
     public static BattleStateMachine GetInstance()
     {
         return s_battleStateMachine;
@@ -64,11 +71,12 @@ public class BattleStateMachine : MonoBehaviour
 
     public void EndBattle()
     {
+        Debug.Log("End Battle");
         m_playerCreature = null;
         m_enemyCreature = null;
         m_battleEnded = true;
         Destroy(CardEffects.GetCardEffectsInstance().gameObject);
-        Instantiate(GameMaster.GetInstance().GetRewardPrefab());
+        GameMaster.GetInstance().EndCurrentEvent(true);
     }
 
     // Update is called once per frame
@@ -109,15 +117,4 @@ public enum EBattlePhase
     BattleRewards,
     ExperienceDistribution,
     None
-}
-
-public struct LevelUpInBattle
-{
-    public Creature m_creature;
-    public int m_levelGained;
-    public LevelUpInBattle(Creature creature, int levelGained)
-    {
-        m_creature = creature;
-        m_levelGained = levelGained;
-    }
 }
