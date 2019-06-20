@@ -108,6 +108,11 @@ public class BattleStateMachine : MonoBehaviour
     {
         return (m_enemyCreature.IsDead() || m_playerCreature.IsDead());
     }
+
+    public void AddLeveledUpCreature(Creature creature)
+    {
+        m_levelUpsInBattle.Enqueue(creature);
+    }
 }
 
 public enum EBattlePhase

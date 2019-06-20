@@ -34,7 +34,11 @@ public class ExperienceDistributionState : TurquoiseState
         int iTenth = m_xpAmount / 10;
         for (int i = m_xpAmount; i > 0; i -= iTenth)
         {
-            Player.GetPlayerInstance().GetCurrentCreature().AddExperience(iTenth);
+            bool hasLeveledUp = Player.GetPlayerInstance().GetCurrentCreature().AddExperience(iTenth);
+            if (hasLeveledUp)
+            {
+                BattleStateMachine.GetInstance().AddLeveledUpCreature(Player.GetPlayerInstance().GetCurrentCreature());
+            }
             yield return new WaitForSeconds(0.1f);
         }
         m_isXpDistributed = true;

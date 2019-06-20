@@ -7,6 +7,6 @@ public class LevelUpAbility : MonoBehaviour
 {
     public string m_levelUpString;
     public Text m_levelUpText;
-    public List<Button> m_levelUpButtons;
+    public Button m_levelUpButton;
 }
 

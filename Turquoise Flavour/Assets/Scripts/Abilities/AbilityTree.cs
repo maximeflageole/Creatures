@@ -15,17 +15,17 @@ public class AbilityTree : MonoBehaviour
 
     public void CreateAbilityTree(CreatureData creatureData)
     {
-        CreateUI(creatureData.abilityTree.levelUpData.Count);
-        for (int i = 0; i < creatureData.abilityTree.levelUpData.Count && i < m_levelUpAbilities.Count; i++)
+        CreateUI(creatureData.abilityTree.abilities.Count);
+        for (int i = 0; i < creatureData.abilityTree.abilities.Count && i < m_levelUpAbilities.Count; i++)
         {
-            LevelUpData data = creatureData.abilityTree.levelUpData[i];
-            m_levelUpAbilities[i].m_levelUpText.text = "lvl " + data.level;
-            for (int j = 0; j < m_levelUpAbilities[i].m_levelUpButtons.Count && j < data.levelAbilities.Count; j++)
-            {
-                Button btn = m_levelUpAbilities[i].m_levelUpButtons[j];
-                btn.image.sprite = data.levelAbilities[j].sprite;
-                btn.GetComponentInChildren<Text>().text = data.levelAbilities[j].text;
-            }
+            /*
+            LevelUpAbilityData data = creatureData.abilityTree.abilities[i];
+            m_levelUpAbilities[i].m_levelUpText.text = "lvl " + (i + 1);
+
+            Button btn = m_levelUpAbilities[i].m_levelUpButton;
+            btn.image.sprite = data.sprite;
+            btn.GetComponentInChildren<Text>().text = data.text;
+            */
         }
     }
 

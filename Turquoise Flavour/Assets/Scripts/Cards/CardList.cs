@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cards;
+using Turquoise;
 using System.IO; 
 
-namespace Cards
+namespace Turquoise
 {
     public enum ECard
     {
@@ -50,6 +50,6 @@ public class CardList: MonoBehaviour
 [System.Serializable]
 public struct CardDataTuplet
 {
-    public Cards.ECard cardName;
+    public Turquoise.ECard cardName;
     public CardData cardData;
 }

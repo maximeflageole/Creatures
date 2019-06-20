@@ -1,4 +1,4 @@
-﻿using Cards;
+﻿using Turquoise;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +38,7 @@ public class ActiveAbility : MonoBehaviour
         return true;
     }
 
-    public Cards.ETarget GetTargetType()
+    public Turquoise.ETarget GetTargetType()
     {
         return m_abilityData.targetType;
     }

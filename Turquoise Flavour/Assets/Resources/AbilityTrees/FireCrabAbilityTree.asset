@@ -12,49 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463d6977545bf24498e347ac00a342a6, type: 3}
   m_Name: FireCrabAbilityTree
   m_EditorClassIdentifier: 
-  levelUpData:
-  - level: 1
-    levelAbilities:
-    - {fileID: 11400000, guid: c2a7d94e9601ed041a180d1afc7fe385, type: 2}
-    - {fileID: 11400000, guid: 53897873fdd34974fbcf4cb4b838ddbc, type: 2}
-    - {fileID: 11400000, guid: 9b05b404a6937c34aa9188edcdb32085, type: 2}
-  - level: 2
-    levelAbilities:
-    - {fileID: 11400000, guid: 9b05b404a6937c34aa9188edcdb32085, type: 2}
-    - {fileID: 11400000, guid: 9b05b404a6937c34aa9188edcdb32085, type: 2}
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
-  - level: 0
-    levelAbilities: []
+  abilities: 0000000001000000040000000500000000000000000000000300000004000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  commonCards: 000000000300000002000000
+  rareCards: 0400000001000000
+  epicCards: 
+  legendaryCards: 

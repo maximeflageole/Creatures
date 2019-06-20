@@ -30,6 +30,7 @@ public class BattleRewardState : TurquoiseState
         }
         GameObject reward = Instantiate(GameMaster.GetInstance().GetRewardPrefab());
         reward.GetComponent<RewardEvent>().SetCallback(RewardPickedCallback);
+        reward.GetComponent<RewardEvent>().SetRewardedCreature(m_levelingCreature);
         Debug.Log("Starts Battle Reward State");
     }
 

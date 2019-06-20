@@ -13,7 +13,7 @@ public class CreatureData : ScriptableObject
     public int healthPerLevel;
     public int initialMana;
     public Sprite sprite;
-    public List<Cards.ECard> baseDeck;
+    public List<Turquoise.ECard> baseDeck;
     public ActiveAbilityData activeAbilityData;
     public int level;
     public int experience;

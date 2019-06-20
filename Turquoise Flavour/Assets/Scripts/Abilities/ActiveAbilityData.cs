@@ -11,7 +11,7 @@ public class ActiveAbilityData : ScriptableObject
     public Sprite ManaCostArtwork;
     public Sprite CooldownArtwork;
     public int manaCost;
-    public Cards.ETarget targetType;
+    public Turquoise.ETarget targetType;
     public List<SAbilityEffect> effects;
     public bool repeatable;
     public int cooldown;

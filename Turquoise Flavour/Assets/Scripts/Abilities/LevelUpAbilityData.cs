@@ -8,4 +8,5 @@ public class LevelUpAbilityData : ScriptableObject
 {
     public Sprite sprite;
     public string text;
+    public Turquoise.ERewardType rewardType;
 }

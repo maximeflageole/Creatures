@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe24a85ea89ee1f45b441fc78f394667, type: 3}
-  m_Name: GetArmorUp
+  m_Name: GetLegendaryCard
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9126eff5161743640abb4e690ca0f296, type: 3}
-  text: Get Armor Up
+  sprite: {fileID: 21300000, guid: 6873c007dbc96ce4fbd80ed07466c7d6, type: 3}
+  text: Get legendary card
+  rewardType: 3

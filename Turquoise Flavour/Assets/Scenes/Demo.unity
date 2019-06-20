@@ -1628,9 +1628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Change Creature
-
-'
+  m_Text: Change Creature
 --- !u!222 &821836062
 CanvasRenderer:
   m_ObjectHideFlags: 0

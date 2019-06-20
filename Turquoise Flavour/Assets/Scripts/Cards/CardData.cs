@@ -6,14 +6,14 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public string cardName;
-    public Cards.ECard cardEnumValue;
+    public Turquoise.ECard cardEnumValue;
     public string description;
     public Sprite artwork;
     public int manaCost;
-    public Cards.ETarget targetType;
+    public Turquoise.ETarget targetType;
     public List<SAbilityEffect> effects;
-    public Cards.ECardGenre cardGenre;
-    public Cards.ECardType damageType;
-    public Cards.ERarity rarity;
-    public Cards.ECreaturePart creaturePart;
+    public Turquoise.ECardGenre cardGenre;
+    public Turquoise.ECardType damageType;
+    public Turquoise.ERarity rarity;
+    public Turquoise.ECreaturePart creaturePart;
 }

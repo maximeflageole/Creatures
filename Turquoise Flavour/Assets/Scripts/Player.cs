@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
         m_currentCreature.TurnBegin();
     }
 
-    public bool AddCardToCreatureDeck(Cards.ECard card)
+    public bool AddCardToCreatureDeck(Turquoise.ECard card)
     {
         if (m_currentCreature == null)
         {

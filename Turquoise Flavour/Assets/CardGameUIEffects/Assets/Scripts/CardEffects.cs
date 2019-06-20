@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Cards;
+using Turquoise;
 
 public class CardEffects : TurquoiseEvent {
 

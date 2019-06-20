@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Cards;
+using Turquoise;
 using UnityEngine;
 
-namespace Cards
+namespace Turquoise
 {
     public enum ETarget
     {
@@ -22,6 +22,7 @@ namespace Cards
     public enum ERarity
     {
         Common,
+        Rare,
         Epic,
         Legendary,
         FireCrab,
@@ -77,13 +78,13 @@ public class Card : MonoBehaviour
         return m_cardData;
     }
 
-    public Cards.ETarget GetTarget()
+    public Turquoise.ETarget GetTarget()
     {
         if (m_cardData != null)
         {
             return m_cardData.targetType;
         }
-        return Cards.ETarget.None;
+        return Turquoise.ETarget.None;
     }
     
     // States for card's transform and interaction

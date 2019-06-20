@@ -52,5 +52,8 @@ MonoBehaviour:
   m_creatureList: {fileID: 0}
   m_creatureListPrefab: {fileID: 6123648333561893009, guid: 8faa2ace27f161c488a27f4493fb6606,
     type: 3}
+  m_levelUpList: {fileID: 0}
+  m_levelUpListPrefab: {fileID: 7211916790889076469, guid: 3a7a0f4f5cbb2464985f929a694b166c,
+    type: 3}
   m_completedNodes: 
   m_currentNodeIndex: -1

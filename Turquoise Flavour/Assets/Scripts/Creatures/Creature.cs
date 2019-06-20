@@ -4,7 +4,7 @@ using TMPro;
 using Turquoise;
 using UnityEngine;
 using Creatures;
-using Cards;
+using Turquoise;
 
 namespace Turquoise
 {
@@ -21,7 +21,7 @@ public struct CreatureSaveable
 {
     public ECreature m_eCreature;
     public int m_level;
-    public List<Cards.ECard> m_deck;
+    public List<ECard> m_deck;
     public int m_currentHealth;
     public int m_experience;
 
@@ -71,6 +71,8 @@ public class Creature : MonoBehaviour
     protected bool m_inBattle;
     [SerializeField]
     protected int m_speed;
+    [SerializeField]
+    protected CreatureData m_creatureData;
     
 
     public CreatureSaveable GetSaveableCreature()
@@ -84,11 +86,11 @@ public class Creature : MonoBehaviour
         m_health = creatureSave.m_currentHealth;
         m_experience.level = creatureSave.m_level;
         m_experience.experiencePoints = creatureSave.m_experience;
-        CreatureData creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
-        CreateFromCreatureData(creatureData, creatureSave.m_deck, creatureSave.m_level);
+        m_creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
+        CreateFromCreatureData(m_creatureData, creatureSave.m_deck, creatureSave.m_level);
     }
 
-    public void CreateFromCreatureData(CreatureData creatureData, List<Cards.ECard> deck, int level = 1, int experience = 0)
+    public void CreateFromCreatureData(CreatureData creatureData, List<Turquoise.ECard> deck, int level = 1, int experience = 0)
     {
         m_experience.levelSpeed = creatureData.levelSpeed;
         m_eCreature = creatureData.eCreature;
@@ -98,6 +100,7 @@ public class Creature : MonoBehaviour
         m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
         m_sprite = creatureData.sprite;
         m_deck.m_cards = deck;
+        m_creatureData = creatureData;
         if (m_activeAbility == null)
         {
             m_activeAbility = gameObject.AddComponent<ActiveAbility>();
@@ -121,11 +124,11 @@ public class Creature : MonoBehaviour
         gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SAbilityEffect cardEffect, Cards.ECardType damageType = Cards.ECardType.None)
+    public void ApplyEffect(SAbilityEffect cardEffect, Turquoise.ECardType damageType = Turquoise.ECardType.None)
     {
         switch(cardEffect.m_effect)
         {
-            case Cards.ECardEffect.Buff:
+            case Turquoise.ECardEffect.Buff:
                 print("Buff " + cardEffect.m_value + " " + cardEffect.m_subtype);
                 var condComponent = GetComponent<ConditionsComponent>();
                 if (condComponent != null)
@@ -133,22 +136,22 @@ public class Creature : MonoBehaviour
                     condComponent.TryAddBuff(cardEffect.m_subtype, cardEffect.m_value, 1);
                 }
                 break;
-            case Cards.ECardEffect.Damage:
+            case Turquoise.ECardEffect.Damage:
                 ApplyDamage(cardEffect.m_value, damageType);
                 break;
-            case Cards.ECardEffect.Debuff:
+            case Turquoise.ECardEffect.Debuff:
                 print("Debuff" + cardEffect.m_value);
                 break;
-            case Cards.ECardEffect.Discard:
+            case Turquoise.ECardEffect.Discard:
                 print("Discard" + cardEffect.m_value);
                 break;
-            case Cards.ECardEffect.Draw:
+            case Turquoise.ECardEffect.Draw:
                 print("Draw" + cardEffect.m_value);
                 break;
-            case Cards.ECardEffect.Healing:
+            case Turquoise.ECardEffect.Healing:
                 ApplyDamage(-cardEffect.m_value, damageType);
                 break;
-            case Cards.ECardEffect.Other:
+            case Turquoise.ECardEffect.Other:
                 print("Other" + cardEffect.m_value);
                 break;
             default:
@@ -163,9 +166,11 @@ public class Creature : MonoBehaviour
         m_inBattle = false;
     }
 
-    public void AddExperience(int Amount)
+    public bool AddExperience(int Amount)
     {
+        int level = m_experience.level;
         ExperienceManager.AddExperience(Amount, ref m_experience, this);
+        return (level != m_experience.level);
     }
 
     public void IncrementArmor(int incrementValue)
@@ -376,7 +381,7 @@ public class Creature : MonoBehaviour
         return m_health <= 0;
     }
 
-    public bool AddCardToDeck(Cards.ECard card)
+    public bool AddCardToDeck(Turquoise.ECard card)
     {
         m_deck.AddCard(card);
         return true;
@@ -410,6 +415,16 @@ public class Creature : MonoBehaviour
     public int GetSpeed()
     {
         return m_speed;
+    }
+
+    public ERewardType GetNextLevelUpReward()
+    {
+        return m_creatureData.abilityTree.abilities[m_experience.level];
+    }
+
+    public List<ECard> GetNextLevelUpCards(ERarity rarity, int amount)
+    {
+        return m_creatureData.abilityTree.GetCardsByRarity(rarity, amount, true);
     }
 }
 

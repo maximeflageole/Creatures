@@ -18,6 +18,9 @@ public class GameMaster : MonoBehaviour
     public CreatureList m_creatureList;
     [SerializeField]
     protected GameObject m_creatureListPrefab;
+    public LevelUpList m_levelUpList;
+    [SerializeField]
+    protected GameObject m_levelUpListPrefab;
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
     protected int m_currentNodeIndex = -1;
@@ -53,6 +56,10 @@ public class GameMaster : MonoBehaviour
         if (m_cardListPrefab != null)
         {
             m_cardList = Instantiate(m_cardListPrefab, transform).GetComponent<CardList>();
+        }
+        if (m_levelUpListPrefab != null)
+        {
+            m_levelUpList = Instantiate(m_levelUpListPrefab, transform).GetComponent<LevelUpList>();
         }
         Player.GetPlayerInstance().LoadGame();
     }

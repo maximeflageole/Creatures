@@ -12,11 +12,24 @@ public class RewardEvent : TurquoiseEvent
     [SerializeField]
     protected List<CardData> cardsData;
     [SerializeField]
-    protected List<Card> cardRewards;
+    protected List<Card> cardRewards = new List<Card>();
+    [SerializeField]
+    protected Creature m_creatureRewarded;
 
     void Update()
     {
         CheckMouseClickCard();
+    }
+
+    public void SetRewardedCreature(Creature creatureRewarded)
+    {
+        m_creatureRewarded = creatureRewarded;
+        //TODO: Change this, this is temporary
+        List<Turquoise.ECard> cards = creatureRewarded.GetNextLevelUpCards(Turquoise.ERarity.Common, 3);
+        for (int i = 0; i < cardRewards.Count; i++)
+        {
+            cardRewards[i].SetCardData(GameMaster.GetInstance().m_cardList.GetCardDataFromCardName(cards[i]));
+        }
     }
 
     void Start()
@@ -26,10 +39,12 @@ public class RewardEvent : TurquoiseEvent
             print("Not as many card data as card prefabs");
             return;
         }
+        /*
         for (int i = 0; i < cardsData.Count; i++)
         {
             cardRewards[i].SetCardData(cardsData[i]);
         }
+        */
     }
     // This function is called to check if the mouse has clicked on a card
     void CheckMouseClickCard()
@@ -68,5 +83,20 @@ public class RewardEvent : TurquoiseEvent
     public void SetCallback(CallbackType callbackType)
     {
         m_rewardPickedCallback = callbackType;
+    }
+}
+
+namespace Turquoise
+{
+    [System.Serializable]
+    public enum ERewardType
+    {
+        AddCardCommon,
+        AddCardRare,
+        AddCardEpic,
+        AddCardLegendary,
+        UpgradeCard,
+        RemoveCard,
+        None
     }
 }
