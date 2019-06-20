@@ -26,7 +26,7 @@ public class CreatureUIComp : MonoBehaviour
         }
         if (m_manaTextMesh != null)
         {
-            m_manaTextMesh.text = "Mana: " + mana + "/" + baseMana;
+            m_manaTextMesh.text = mana + "/" + baseMana;
         }
         if (m_levelText != null)
         {
