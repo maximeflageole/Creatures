@@ -50,6 +50,6 @@ public class CardList: MonoBehaviour
 [System.Serializable]
 public struct CardDataTuplet
 {
-    public Turquoise.ECard cardName;
+    public ECard cardName;
     public CardData cardData;
 }

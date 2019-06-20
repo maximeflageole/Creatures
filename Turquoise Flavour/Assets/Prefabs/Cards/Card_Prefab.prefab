@@ -1985,7 +1985,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_manaCost: 1
   m_effects: []
-  m_owner: 0
   m_cardData: {fileID: 11400000, guid: d21893938d49c474d9151046641effef, type: 2}
   scaleSpeed: 1
   targetAngle: 0
@@ -2001,6 +2000,7 @@ MonoBehaviour:
   originHighY: 0
   isPlaying: 0
   isDropping: 0
+  isExhausting: 0
   dropDisplayTime: 0
   targetPlayer: {fileID: 0}
 --- !u!61 &1806076085297407194
@@ -2166,9 +2166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nameText: {fileID: 6789634588335043809}
-  m_image: {fileID: 6789634587587071339}
+  m_sprite: {fileID: 6789634587587071339}
   m_descriptionText: {fileID: 6789634586787339758}
   m_manaText: {fileID: 6789634588031647888}
+  m_image: {fileID: 0}
 --- !u!1 &6789634588335043808
 GameObject:
   m_ObjectHideFlags: 0
