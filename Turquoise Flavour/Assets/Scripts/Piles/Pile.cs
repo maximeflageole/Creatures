@@ -8,12 +8,24 @@ public class Pile: MonoBehaviour
     [SerializeField]
     protected TextMeshPro m_text;
     protected Queue<Card> m_queuedPile = new Queue<Card>();
+    protected bool m_isDisplayed = false;
 
     private void Update()
     {
         if (m_text != null)
         {
             m_text.text = m_queuedPile.Count.ToString();
+        }
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider != null && hit.collider.gameObject == gameObject && !m_isDisplayed)
+        {
+            List<Card> cardList = new List<Card>();
+            foreach (var card in m_queuedPile)
+            {
+                cardList.Add(card);
+            }
+            GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, true);
+            m_isDisplayed = true;
         }
     }
     public List<Card> GetPileAsList()

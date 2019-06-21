@@ -96,7 +96,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 100, y: 160}
   m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d11c3773d75ee8439dc93f2421ee1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cardList: 000000000000000001000000090000000800000003000000
-  m_cardUIPrefab: {fileID: 6091736641554529593, guid: 12a1355434351b24ba2e415fee533fdf,
+  m_cardsData: []
+  m_cardsGO: []
+  m_cardUIPrefab: {fileID: 3938760904952852225, guid: 3188f974e8ec4464795452711d0b1bc4,
     type: 3}

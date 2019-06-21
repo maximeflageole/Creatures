@@ -6,8 +6,6 @@ using Turquoise;
 public class CardPileUI : MonoBehaviour
 {
     [SerializeField]
-    protected List<ECard> m_cards;
-    [SerializeField]
     protected List<CardData> m_cardsData;
     [SerializeField]
     protected List<GameObject> m_cardsGO;
@@ -17,16 +15,33 @@ public class CardPileUI : MonoBehaviour
     public void DisplayCardPile(List<ECard> cardList, bool orderAlpha)
     {
         m_cardsGO.Clear();
+        m_cardsData.Clear();
         foreach (var card in cardList)
         {
             AddCard(card);
         }
+        DisplayCards(orderAlpha);
+    }
+
+    public void DisplayCardPile(List<Card> cardList, bool orderAlpha)
+    {
+        m_cardsGO.Clear();
+        m_cardsData.Clear();
+        foreach (var card in cardList)
+        {
+            AddCard(card);
+        }
+        DisplayCards(orderAlpha);
+    }
+
+    void DisplayCards(bool orderAlpha)
+    {
         List<CardData> cardsToShow = m_cardsData;
         if (orderAlpha)
         {
             cardsToShow = OrganizeAlpha(m_cardsData);
         }
-        for (int i = 0; i < cardList.Count; i++)
+        for (int i = 0; i < cardsToShow.Count; i++)
         {
             m_cardsGO[i].GetComponent<CardUI>().InitCardUI2D(cardsToShow[i].cardName, cardsToShow[i].description, cardsToShow[i].manaCost.ToString(), cardsToShow[i].artwork);
         }
@@ -40,9 +55,12 @@ public class CardPileUI : MonoBehaviour
         m_cardsData.Add(data);
     }
 
-    public void Start()
+    void AddCard(Card card)
     {
-        DisplayCardPile(m_cards, false);
+        GameObject cardInstance = Instantiate(m_cardUIPrefab, transform);
+        m_cardsGO.Add(cardInstance);
+        CardData data = card.GetCardData();
+        m_cardsData.Add(data);
     }
 
     public List<CardData> OrganizeAlpha(List<CardData> initialCardList)

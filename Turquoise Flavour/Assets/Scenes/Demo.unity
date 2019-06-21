@@ -393,6 +393,11 @@ PrefabInstance:
       propertyPath: m_cardSelectUI
       value: 
       objectReference: {fileID: 294904525}
+    - target: {fileID: 3448666264204063590, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_mainCanvas
+      value: 
+      objectReference: {fileID: 77810400}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3, type: 3}
 --- !u!1 &389615272
@@ -825,6 +830,7 @@ GameObject:
   - component: {fileID: 540900267}
   - component: {fileID: 540900266}
   - component: {fileID: 540900265}
+  - component: {fileID: 540900270}
   m_Layer: 0
   m_Name: ExhaustCardPile
   m_TagString: Untagged
@@ -964,6 +970,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &540900270
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540900264}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.048235416, y: 0.17686462}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 3, y: 5.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.45333, y: 2.6462708}
+  m_EdgeRadius: 0
 --- !u!114 &555767199 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1797007720602566422, guid: 3b18304c3f69f034480e7dfaf1ae17e0,
@@ -1432,6 +1464,7 @@ GameObject:
   - component: {fileID: 727351492}
   - component: {fileID: 727351494}
   - component: {fileID: 727351495}
+  - component: {fileID: 727351496}
   m_Layer: 0
   m_Name: DropCardPile
   m_TagString: Untagged
@@ -1558,6 +1591,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 1884741770}
+--- !u!61 &727351496
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727351491}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.048235416, y: 0.17686462}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 3, y: 5.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.45333, y: 2.6462708}
+  m_EdgeRadius: 0
 --- !u!1 &821836059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +1970,7 @@ MonoBehaviour:
     levelSpeed: 0
   m_inBattle: 0
   m_speed: 0
+  m_creatureData: {fileID: 0}
 --- !u!114 &1043736053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,6 +2946,7 @@ GameObject:
   - component: {fileID: 1468525363}
   - component: {fileID: 1468525365}
   - component: {fileID: 1468525366}
+  - component: {fileID: 1468525367}
   m_Layer: 0
   m_Name: GetCardPile
   m_TagString: Untagged
@@ -3012,6 +3073,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 2140232282}
+--- !u!61 &1468525367
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468525362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.048235416, y: 0.17686462}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 3, y: 5.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.45333, y: 2.6462708}
+  m_EdgeRadius: 0
 --- !u!1 &1614706549
 GameObject:
   m_ObjectHideFlags: 0

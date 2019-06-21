@@ -21,6 +21,11 @@ public class GameMaster : MonoBehaviour
     public LevelUpList m_levelUpList;
     [SerializeField]
     protected GameObject m_levelUpListPrefab;
+    public CardPileUI m_cardPileUI;
+    [SerializeField]
+    protected GameObject m_cardPileUIPrefab;
+    [SerializeField]
+    protected Canvas m_mainCanvas;
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
     protected int m_currentNodeIndex = -1;
@@ -60,6 +65,10 @@ public class GameMaster : MonoBehaviour
         if (m_levelUpListPrefab != null)
         {
             m_levelUpList = Instantiate(m_levelUpListPrefab, transform).GetComponent<LevelUpList>();
+        }
+        if (m_cardPileUIPrefab != null)
+        {
+            m_cardPileUI = Instantiate(m_cardPileUIPrefab, m_mainCanvas.transform).GetComponent<CardPileUI>();
         }
         Player.GetPlayerInstance().LoadGame();
     }
