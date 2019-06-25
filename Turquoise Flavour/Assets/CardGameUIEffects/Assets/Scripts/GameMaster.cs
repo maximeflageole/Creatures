@@ -68,6 +68,10 @@ public class GameMaster : MonoBehaviour
         }
         if (m_cardPileUIPrefab != null)
         {
+            if (m_mainCanvas == null)
+            {
+                m_mainCanvas = FindObjectOfType<Canvas>();
+            }
             m_cardPileUI = Instantiate(m_cardPileUIPrefab, m_mainCanvas.transform).GetComponent<CardPileUI>();
         }
         Player.GetPlayerInstance().LoadGame();

@@ -16,16 +16,25 @@ public class Pile: MonoBehaviour
         {
             m_text.text = m_queuedPile.Count.ToString();
         }
+        //TODO: Put this in a pretty OnClick event
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider != null && hit.collider.gameObject == gameObject && !m_isDisplayed)
+        if (hit.collider != null && hit.collider.gameObject == gameObject)
         {
-            List<Card> cardList = new List<Card>();
-            foreach (var card in m_queuedPile)
+            if (!m_isDisplayed)
             {
-                cardList.Add(card);
+                List<Card> cardList = new List<Card>();
+                foreach (var card in m_queuedPile)
+                {
+                    cardList.Add(card);
+                }
+                GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, true);
+                m_isDisplayed = true;
             }
-            GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, true);
-            m_isDisplayed = true;
+        }
+        else if (m_isDisplayed)
+        {
+            GameMaster.GetInstance().m_cardPileUI.ClearCards();
+            m_isDisplayed = false;
         }
     }
     public List<Card> GetPileAsList()

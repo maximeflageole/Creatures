@@ -14,8 +14,7 @@ public class CardPileUI : MonoBehaviour
 
     public void DisplayCardPile(List<ECard> cardList, bool orderAlpha)
     {
-        m_cardsGO.Clear();
-        m_cardsData.Clear();
+        ClearCards();
         foreach (var card in cardList)
         {
             AddCard(card);
@@ -25,13 +24,22 @@ public class CardPileUI : MonoBehaviour
 
     public void DisplayCardPile(List<Card> cardList, bool orderAlpha)
     {
-        m_cardsGO.Clear();
-        m_cardsData.Clear();
+        ClearCards();
         foreach (var card in cardList)
         {
             AddCard(card);
         }
         DisplayCards(orderAlpha);
+    }
+
+    public void ClearCards()
+    {
+        foreach (var card in m_cardsGO)
+        {
+            Destroy(card.gameObject);
+        }
+        m_cardsGO.Clear();
+        m_cardsData.Clear();
     }
 
     void DisplayCards(bool orderAlpha)
