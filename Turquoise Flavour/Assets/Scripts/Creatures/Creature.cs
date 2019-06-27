@@ -73,7 +73,9 @@ public class Creature : MonoBehaviour
     protected int m_speed;
     [SerializeField]
     protected CreatureData m_creatureData;
-    
+    [SerializeField]
+    protected ConditionsComponent m_conditionsComponent;
+
 
     public CreatureSaveable GetSaveableCreature()
     {
@@ -121,43 +123,45 @@ public class Creature : MonoBehaviour
     private void Awake()
     {
         m_deck = gameObject.AddComponent<Deck>();
-        gameObject.AddComponent<ConditionsComponent>();
+        m_conditionsComponent = gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SAbilityEffect cardEffect, Turquoise.ECardType damageType = Turquoise.ECardType.None)
+    public void ApplyEffect(SAbilityEffect cardEffect, ECardType damageType = ECardType.None)
     {
-        switch(cardEffect.m_effect)
+        if (m_conditionsComponent != null)
         {
-            case Turquoise.ECardEffect.Buff:
-                print("Buff " + cardEffect.m_value + " " + cardEffect.m_subtype);
-                var condComponent = GetComponent<ConditionsComponent>();
-                if (condComponent != null)
-                {
-                    condComponent.TryAddBuff(cardEffect.m_subtype, cardEffect.m_value, 1);
-                }
-                break;
-            case Turquoise.ECardEffect.Damage:
+            m_conditionsComponent.TryAddCondition(cardEffect);
+        }
+
+        switch (cardEffect.m_effect)
+        {
+            case ECardEffect.Damage:
                 ApplyDamage(cardEffect.m_value, damageType);
                 break;
-            case Turquoise.ECardEffect.Debuff:
-                print("Debuff" + cardEffect.m_value);
-                break;
-            case Turquoise.ECardEffect.Discard:
-                print("Discard" + cardEffect.m_value);
-                break;
-            case Turquoise.ECardEffect.Draw:
-                print("Draw" + cardEffect.m_value);
-                break;
-            case Turquoise.ECardEffect.Healing:
+            case ECardEffect.Healing:
                 ApplyDamage(-cardEffect.m_value, damageType);
                 break;
-            case Turquoise.ECardEffect.Other:
-                print("Other" + cardEffect.m_value);
-                break;
             default:
-                print("Defaut effect type, not supposed to happen");
                 break;
         }
+    }
+
+    public List<ECardEffect> GetBuffs()
+    {
+        if (m_conditionsComponent != null)
+        {
+            return m_conditionsComponent.GetBuffs();
+        }
+        return null;
+    }
+
+    public List<ECardEffect> GetDebuffs()
+    {
+        if (m_conditionsComponent != null)
+        {
+            return m_conditionsComponent.GetDebuffs();
+        }
+        return null;
     }
 
     public void EndBattle()
@@ -173,9 +177,13 @@ public class Creature : MonoBehaviour
         return (level != m_experience.level);
     }
 
-    public void IncrementArmor(int incrementValue)
+    public int GetArmor()
     {
-        m_armor += incrementValue;
+        if (m_conditionsComponent != null)
+        {
+            return m_conditionsComponent.GetArmor();
+        }
+        return 0;
     }
 
     public void Update()
@@ -184,7 +192,7 @@ public class Creature : MonoBehaviour
         {
             if (m_creatureUIComp != null)
             {
-                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_armor, m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level));
+                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, GetArmor(), m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level));
             }
             if (Input.GetKeyDown("x"))
             {

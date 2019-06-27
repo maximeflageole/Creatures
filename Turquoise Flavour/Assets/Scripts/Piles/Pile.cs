@@ -27,7 +27,7 @@ public class Pile: MonoBehaviour
                 {
                     cardList.Add(card);
                 }
-                GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, true);
+                GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, true, 0);
                 m_isDisplayed = true;
             }
         }

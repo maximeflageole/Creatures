@@ -11,10 +11,13 @@ public class CardPileUI : MonoBehaviour
     protected List<GameObject> m_cardsGO;
     [SerializeField]
     protected GameObject m_cardUIPrefab;
+    [SerializeField]
+    protected int m_cardsToPick;
 
-    public void DisplayCardPile(List<ECard> cardList, bool orderAlpha)
+    public void DisplayCardPile(List<ECard> cardList, bool orderAlpha, int cardsToPick)
     {
         ClearCards();
+        m_cardsToPick = cardsToPick;
         foreach (var card in cardList)
         {
             AddCard(card);
@@ -22,9 +25,10 @@ public class CardPileUI : MonoBehaviour
         DisplayCards(orderAlpha);
     }
 
-    public void DisplayCardPile(List<Card> cardList, bool orderAlpha)
+    public void DisplayCardPile(List<Card> cardList, bool orderAlpha, int cardsToPick)
     {
         ClearCards();
+        m_cardsToPick = cardsToPick;
         foreach (var card in cardList)
         {
             AddCard(card);

@@ -41,12 +41,12 @@ namespace Turquoise
     {
         Damage,
         Healing,
-        Buff,
-        Debuff,
         Draw,
         Discard,
         Exhaust,
         Consume,
+        Bleed,
+        Armor,
         Other
     }
 
@@ -156,8 +156,7 @@ public class Card : MonoBehaviour
 public struct SAbilityEffect
 {
     public ECardEffect m_effect;
-    public string m_subtype;
     public int m_value;
     public ETarget m_targetType;
-    public float m_chances;
+    public List<EConditionType> m_conditions;
 }

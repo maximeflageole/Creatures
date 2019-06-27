@@ -19,11 +19,10 @@ MonoBehaviour:
   manaCost: 1
   targetType: 4
   effects:
-  - m_effect: 6
-    m_subtype: 
+  - m_effect: 4
     m_value: 0
     m_targetType: 4
-    m_chances: 0
+    m_conditions: 
   cardGenre: 0
   damageType: 0
   rarity: 0

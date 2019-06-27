@@ -17,6 +17,7 @@ namespace Turquoise
         ExhaustSelf,
         ExhaustOther,
         PedroHeal,
+        BloodBite,
         Count
     }
 }

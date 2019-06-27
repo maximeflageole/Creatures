@@ -20,15 +20,13 @@ MonoBehaviour:
   targetType: 0
   effects:
   - m_effect: 0
-    m_subtype: Fire
     m_value: 8
     m_targetType: 0
-    m_chances: 0
-  - m_effect: 4
-    m_subtype: 
+    m_conditions: 
+  - m_effect: 3
     m_value: 2
     m_targetType: 0
-    m_chances: 0
+    m_conditions: 
   cardGenre: 0
   damageType: 1
   rarity: 3

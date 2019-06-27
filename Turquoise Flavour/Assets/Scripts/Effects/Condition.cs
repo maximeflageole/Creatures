@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Turquoise;
 
 public class Condition : MonoBehaviour
 {
@@ -11,36 +12,15 @@ public class Condition : MonoBehaviour
     [SerializeField]
     protected int m_intensity;
     public int GetIntensity() { return m_intensity; }
-}
 
-public class Buff : Condition
-{
     [SerializeField]
-    protected EBuffType m_buffType;
+    protected ECardEffect m_cardEffect;
+    public ECardEffect GetCardEffect() { return m_cardEffect; }
 
-    public EBuffType GetBuffType() { return m_buffType; } 
-}
-
-public class Debuff : Condition
-{
-    [SerializeField]
-    protected EDebuffType m_debuffType;
-
-    public EDebuffType GetDebuffType() { return m_debuffType; }
-}
-
-public enum EBuffType
-{
-    Damage,
-    Armor,
-    Random,
-    None
-}
-
-public enum EDebuffType
-{
-    Damage,
-    Armor,
-    Random,
-    None
+    public Condition(ECardEffect cardEffect, int duration, int intensity)
+    {
+        m_cardEffect = cardEffect;
+        m_duration = duration;
+        m_intensity = intensity;
+    }
 }

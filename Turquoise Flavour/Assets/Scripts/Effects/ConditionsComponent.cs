@@ -1,41 +1,76 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Turquoise;
 
 public class ConditionsComponent : MonoBehaviour
 {
     [SerializeField]
-    protected List<Buff> m_buffs;
-    [SerializeField]
-    public List<Debuff> m_debuffs;
+    protected List<ECardEffect> m_conditions = new List<ECardEffect>();
 
-    public void TryAddBuff(Buff buff)
+    public void TryAddCondition(SAbilityEffect cardEffect)
     {
-        switch(buff.GetBuffType())
+        if (IsBuff(cardEffect.m_effect))
         {
-            case EBuffType.Armor:
-                GetComponent<Creature>().IncrementArmor(buff.GetIntensity());
-                break;
-            case EBuffType.Damage:
-                break;
-            case EBuffType.Random:
-                break;
-            case EBuffType.None:
-                break;
+            m_conditions.Add(cardEffect.m_effect);
         }
     }
 
-    public void TryAddDebuff(Debuff debuff)
+    public List<ECardEffect> GetBuffs()
     {
-
+        List<ECardEffect> buffs = new List<ECardEffect>();
+        foreach (var condition in m_conditions)
+        {
+            if (IsBuff(condition))
+            {
+                buffs.Add(condition);
+            }
+        }
+        return buffs;
     }
 
-    //WE PROBABLY WANT TO REDO ALL OF THIS FOR THE METHODS ABOVE
-    public void TryAddBuff(string buff, int intensity, int duration)
+    public List<ECardEffect> GetDebuffs()
     {
-        if (buff == "Armor")
+        List<ECardEffect> debuffs = new List<ECardEffect>();
+        foreach (var condition in m_conditions)
         {
-            GetComponent<Creature>().IncrementArmor(intensity);
+            if (IsDebuff(condition))
+            {
+                debuffs.Add(condition);
+            }
         }
+        return debuffs;
+    }
+
+    public static bool IsBuff(ECardEffect cardEffect)
+    {
+        switch (cardEffect)
+        {
+            case ECardEffect.Armor:
+                return true;
+        }
+        return false;
+    }
+
+    public static bool IsDebuff(ECardEffect cardEffect)
+    {
+        switch (cardEffect)
+        {
+            case ECardEffect.Bleed:
+                return true;
+        }
+        return false;
+    }
+
+    public int GetArmor()
+    {
+        foreach (var condition in m_conditions)
+        {
+            if (condition == ECardEffect.Armor)
+            {
+                return 1;
+            }
+        }
+        return 0;
     }
 }
