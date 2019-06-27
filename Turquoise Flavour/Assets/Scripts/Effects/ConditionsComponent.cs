@@ -6,13 +6,13 @@ using Turquoise;
 public class ConditionsComponent : MonoBehaviour
 {
     [SerializeField]
-    protected List<ECardEffect> m_conditions = new List<ECardEffect>();
+    protected List<Condition> m_conditions = new List<Condition>();
 
-    public void TryAddCondition(SAbilityEffect cardEffect)
+    public void TryAddCondition(SAbilityEffect cardEffect, int duration = 1)
     {
         if (IsBuff(cardEffect.m_effect))
         {
-            m_conditions.Add(cardEffect.m_effect);
+            m_conditions.Add(new Condition(cardEffect.m_effect, duration, cardEffect.m_value));
         }
     }
 
@@ -21,9 +21,9 @@ public class ConditionsComponent : MonoBehaviour
         List<ECardEffect> buffs = new List<ECardEffect>();
         foreach (var condition in m_conditions)
         {
-            if (IsBuff(condition))
+            if (IsBuff(condition.GetCardEffect()))
             {
-                buffs.Add(condition);
+                buffs.Add(condition.GetCardEffect());
             }
         }
         return buffs;
@@ -34,9 +34,9 @@ public class ConditionsComponent : MonoBehaviour
         List<ECardEffect> debuffs = new List<ECardEffect>();
         foreach (var condition in m_conditions)
         {
-            if (IsDebuff(condition))
+            if (IsDebuff(condition.GetCardEffect()))
             {
-                debuffs.Add(condition);
+                debuffs.Add(condition.GetCardEffect());
             }
         }
         return debuffs;
@@ -66,9 +66,9 @@ public class ConditionsComponent : MonoBehaviour
     {
         foreach (var condition in m_conditions)
         {
-            if (condition == ECardEffect.Armor)
+            if (condition.GetCardEffect() == ECardEffect.Armor)
             {
-                return 1;
+                return condition.GetIntensity();
             }
         }
         return 0;
