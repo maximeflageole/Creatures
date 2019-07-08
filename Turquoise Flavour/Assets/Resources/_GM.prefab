@@ -55,8 +55,12 @@ MonoBehaviour:
   m_levelUpList: {fileID: 0}
   m_levelUpListPrefab: {fileID: 7211916790889076469, guid: 3a7a0f4f5cbb2464985f929a694b166c,
     type: 3}
-  m_cardPileUIPrefab: {fileID: 1006915056015631222, guid: 04d01f541a9cc4b4fa6e2163421c507c,
+  m_boonList: {fileID: 0}
+  m_boonListPrefab: {fileID: 8933381520838533673, guid: b21a87ef83da61045ac9c701cbda54f4,
     type: 3}
   m_cardPileUI: {fileID: 0}
+  m_cardPileUIPrefab: {fileID: 1006915056015631222, guid: 04d01f541a9cc4b4fa6e2163421c507c,
+    type: 3}
+  m_mainCanvas: {fileID: 0}
   m_completedNodes: 
   m_currentNodeIndex: -1

@@ -21,6 +21,9 @@ public class GameMaster : MonoBehaviour
     public LevelUpList m_levelUpList;
     [SerializeField]
     protected GameObject m_levelUpListPrefab;
+    public BoonsList m_boonList;
+    [SerializeField]
+    protected GameObject m_boonListPrefab;
     public CardPileUI m_cardPileUI;
     [SerializeField]
     protected GameObject m_cardPileUIPrefab;
@@ -65,6 +68,10 @@ public class GameMaster : MonoBehaviour
         if (m_levelUpListPrefab != null)
         {
             m_levelUpList = Instantiate(m_levelUpListPrefab, transform).GetComponent<LevelUpList>();
+        }
+        if (m_boonListPrefab != null)
+        {
+            m_boonList = Instantiate(m_boonListPrefab, transform).GetComponent<BoonsList>();
         }
         if (m_cardPileUIPrefab != null)
         {

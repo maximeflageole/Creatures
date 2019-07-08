@@ -4,7 +4,6 @@ using TMPro;
 using Turquoise;
 using UnityEngine;
 using Creatures;
-using Turquoise;
 
 namespace Turquoise
 {
