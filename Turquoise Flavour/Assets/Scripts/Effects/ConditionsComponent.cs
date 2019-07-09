@@ -10,7 +10,7 @@ public class ConditionsComponent : MonoBehaviour
 
     public void TryAddCondition(SAbilityEffect cardEffect, int duration = 1)
     {
-        if (IsBuff(cardEffect.m_effect))
+        if (IsBuff(cardEffect.m_effect) || IsDebuff(cardEffect.m_effect))
         {
             m_conditions.Add(new Condition(cardEffect.m_effect, duration, cardEffect.m_value));
         }
@@ -72,5 +72,10 @@ public class ConditionsComponent : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    public List<Condition> GetConditions()
+    {
+        return m_conditions;
     }
 }

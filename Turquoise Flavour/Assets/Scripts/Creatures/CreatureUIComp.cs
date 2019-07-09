@@ -12,8 +12,9 @@ public class CreatureUIComp : MonoBehaviour
     public TextMesh m_levelText;
     public TextMesh m_experienceText;
     public Turquoise.ETeams m_team;
+    public BoonsUI m_boonsUI;
 
-    public void UpdateUI(int health, int maxHealth, int armor, int mana, int baseMana, int level, int experience, int nextLvlExp)
+    public void UpdateUI(int health, int maxHealth, int armor, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
     {
         if (m_healthText != null)
         {
@@ -35,6 +36,10 @@ public class CreatureUIComp : MonoBehaviour
         if (m_experienceText != null)
         {
             m_experienceText.text = "Exp: " + experience + " / " + nextLvlExp;
+        }
+        if (m_boonsUI != null)
+        {
+            m_boonsUI.UpdateUI(conditions);
         }
     }
 }

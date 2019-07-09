@@ -17,10 +17,15 @@ public class Condition : MonoBehaviour
     protected ECardEffect m_cardEffect;
     public ECardEffect GetCardEffect() { return m_cardEffect; }
 
-    public Condition(ECardEffect cardEffect, int duration, int intensity)
+    [SerializeField]
+    protected Sprite m_sprite;
+    public Sprite GetSprite() { return m_sprite; }
+
+    public Condition(ECardEffect cardEffect, int duration, int intensity, Sprite sprite = null)
     {
         m_cardEffect = cardEffect;
         m_duration = duration;
         m_intensity = intensity;
+        m_sprite = sprite;
     }
 }
