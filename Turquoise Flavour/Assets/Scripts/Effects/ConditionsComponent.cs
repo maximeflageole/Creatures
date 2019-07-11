@@ -8,12 +8,41 @@ public class ConditionsComponent : MonoBehaviour
     [SerializeField]
     protected List<Condition> m_conditions = new List<Condition>();
 
-    public void TryAddCondition(SAbilityEffect cardEffect, int duration = 1)
+    public void TryAddCondition(ConditionData conditionData, int stacks = 1)
     {
-        if (IsBuff(cardEffect.m_effect) || IsDebuff(cardEffect.m_effect))
+        if (IsBuff(conditionData) || IsDebuff(conditionData))
         {
-            m_conditions.Add(new Condition(cardEffect.m_effect, duration, cardEffect.m_value));
+            int i = GetConditionIndex(conditionData);
+            if (i != -1)
+            {
+                m_conditions[i].IncrementIntensity(stacks);
+                return;
+            }
+            Condition condition = gameObject.AddComponent(typeof(Condition)) as Condition;
+            condition.OnCreate(conditionData, stacks);
+            m_conditions.Add(condition);
         }
+    }
+
+    public void TryAddCondition(SAbilityEffect cardEffect)
+    {
+        ConditionData conditionData = GameMaster.GetInstance().m_boonList.GetBoonDataFromCardEffect(cardEffect.m_effect);
+        if (conditionData != null)
+        {
+            TryAddCondition(conditionData, cardEffect.m_value);
+        }
+    }
+
+    public int GetConditionIndex(ConditionData data)
+    {
+        for (int i = 0; i< m_conditions.Count; i++)
+        {
+            if (m_conditions[i].GetData().cardEffect == data.cardEffect)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public List<ECardEffect> GetBuffs()
@@ -21,9 +50,9 @@ public class ConditionsComponent : MonoBehaviour
         List<ECardEffect> buffs = new List<ECardEffect>();
         foreach (var condition in m_conditions)
         {
-            if (IsBuff(condition.GetCardEffect()))
+            if (IsBuff(condition.GetData()))
             {
-                buffs.Add(condition.GetCardEffect());
+                buffs.Add(condition.GetData().cardEffect);
             }
         }
         return buffs;
@@ -34,12 +63,17 @@ public class ConditionsComponent : MonoBehaviour
         List<ECardEffect> debuffs = new List<ECardEffect>();
         foreach (var condition in m_conditions)
         {
-            if (IsDebuff(condition.GetCardEffect()))
+            if (IsDebuff(condition.GetData().cardEffect))
             {
-                debuffs.Add(condition.GetCardEffect());
+                debuffs.Add(condition.GetData().cardEffect);
             }
         }
         return debuffs;
+    }
+
+    public static bool IsBuff(ConditionData conditionData)
+    {
+        return IsBuff(conditionData.cardEffect);
     }
 
     public static bool IsBuff(ECardEffect cardEffect)
@@ -52,6 +86,10 @@ public class ConditionsComponent : MonoBehaviour
         return false;
     }
 
+    public static bool IsDebuff(ConditionData conditionData)
+    {
+        return IsDebuff(conditionData.cardEffect);
+    }
     public static bool IsDebuff(ECardEffect cardEffect)
     {
         switch (cardEffect)
@@ -66,7 +104,7 @@ public class ConditionsComponent : MonoBehaviour
     {
         foreach (var condition in m_conditions)
         {
-            if (condition.GetCardEffect() == ECardEffect.Armor)
+            if (condition.GetData().cardEffect == ECardEffect.Armor)
             {
                 return condition.GetIntensity();
             }

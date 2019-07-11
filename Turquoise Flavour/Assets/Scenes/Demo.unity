@@ -139,6 +139,7 @@ MonoBehaviour:
   m_boonUIPrefab: {fileID: 2296116287042847938, guid: 51ca7e47be8150d4a86035a693086e6f,
     type: 3}
   m_currentBoons: []
+  m_currentConditions: []
 --- !u!1 &77810397
 GameObject:
   m_ObjectHideFlags: 0
