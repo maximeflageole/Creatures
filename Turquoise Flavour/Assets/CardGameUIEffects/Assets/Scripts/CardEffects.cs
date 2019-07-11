@@ -658,6 +658,7 @@ public class CardEffects : TurquoiseEvent {
                         }
                     }
                 }
+                //TODO: See card.ApplyEffects: Need to have similar, unified verifications for conditions
                 foreach (var effect in card.m_effects)
                 {
                     if (effect.m_effect == ECardEffect.Draw)

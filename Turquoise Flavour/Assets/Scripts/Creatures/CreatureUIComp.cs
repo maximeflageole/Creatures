@@ -7,7 +7,6 @@ public class CreatureUIComp : MonoBehaviour
 {
     public TextMeshPro m_manaTextMesh;
     public TextMesh m_healthText;
-    public TextMesh m_armorText;
     public TextMesh m_ConditionsText;
     public TextMesh m_levelText;
     public TextMesh m_experienceText;
@@ -19,11 +18,6 @@ public class CreatureUIComp : MonoBehaviour
         if (m_healthText != null)
         {
             m_healthText.text = health.ToString() + " / " + maxHealth.ToString();
-        }
-        if (m_armorText != null)
-        {
-            m_armorText.gameObject.SetActive(armor != 0);
-            m_armorText.text = armor.ToString();
         }
         if (m_manaTextMesh != null)
         {

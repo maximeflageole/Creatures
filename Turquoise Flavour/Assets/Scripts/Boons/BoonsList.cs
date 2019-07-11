@@ -10,7 +10,7 @@ public class BoonsList : MonoBehaviour
 
     public static string boonsRessourcesFolder = "Assets/Resources/Boons/";
 
-    public static string GetBoonAssetPath(EConditionType condition)
+    public static string GetBoonAssetPath(ECardEffect condition)
     {
         return (boonsRessourcesFolder + condition.ToString() + ".asset");
     }

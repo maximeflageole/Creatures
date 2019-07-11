@@ -163,6 +163,15 @@ public class Creature : MonoBehaviour
         return null;
     }
 
+    public List<ECardEffect> GetBoons()
+    {
+        if (m_conditionsComponent != null)
+        {
+            return m_conditionsComponent.GetBoons();
+        }
+        return null;
+    }
+
     public void EndBattle()
     {
         ExperienceManager.AddExperience(50, ref m_experience, this);
@@ -180,7 +189,7 @@ public class Creature : MonoBehaviour
     {
         if (m_conditionsComponent != null)
         {
-            return m_conditionsComponent.GetArmor();
+            return m_conditionsComponent.GetBoonStacks(ECardEffect.Armor);
         }
         return 0;
     }

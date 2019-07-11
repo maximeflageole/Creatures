@@ -15,7 +15,7 @@ public class ConditionsComponent : MonoBehaviour
             int i = GetConditionIndex(conditionData);
             if (i != -1)
             {
-                m_conditions[i].IncrementIntensity(stacks);
+                m_conditions[i].IncrementStacks(stacks);
                 return;
             }
             Condition condition = gameObject.AddComponent(typeof(Condition)) as Condition;
@@ -71,6 +71,14 @@ public class ConditionsComponent : MonoBehaviour
         return debuffs;
     }
 
+    public List<ECardEffect> GetBoons()
+    {
+        List < ECardEffect > concat = new List<ECardEffect>();
+        concat.AddRange(GetDebuffs());
+        concat.AddRange(GetBuffs());
+        return concat;
+    }
+
     public static bool IsBuff(ConditionData conditionData)
     {
         return IsBuff(conditionData.cardEffect);
@@ -100,16 +108,21 @@ public class ConditionsComponent : MonoBehaviour
         return false;
     }
 
-    public int GetArmor()
+    public int GetBoonStacks(ECardEffect cardEffect)
     {
-        foreach (var condition in m_conditions)
+        foreach (var boon in m_conditions)
         {
-            if (condition.GetData().cardEffect == ECardEffect.Armor)
+            if (boon.GetData().cardEffect == cardEffect)
             {
-                return condition.GetIntensity();
+                return boon.GetStacks();
             }
         }
         return 0;
+    }
+
+    public bool HasBoon(ECardEffect cardEffect)
+    {
+        return (GetBoonStacks(cardEffect) > 0);
     }
 
     public List<Condition> GetConditions()

@@ -6,17 +6,17 @@ using Turquoise;
 public class Condition : MonoBehaviour
 {
     [SerializeField]
-    protected int m_intensity;
-    public int GetIntensity() { return m_intensity; }
-    public void IncrementIntensity(int increment) { m_intensity += increment; }
+    protected int m_stacks;
+    public int GetStacks() { return m_stacks; }
+    public void IncrementStacks(int increment) { m_stacks += increment; }
 
     [SerializeField]
     protected ConditionData m_conditionData;
     public ConditionData GetData() { return m_conditionData; }
 
-    public void OnCreate(ConditionData conditionData, int intensity)
+    public void OnCreate(ConditionData conditionData, int stacks)
     {
         m_conditionData = conditionData;
-        m_intensity = intensity;
+        m_stacks = stacks;
     }
 }

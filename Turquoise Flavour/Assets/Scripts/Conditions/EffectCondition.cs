@@ -8,21 +8,12 @@ public class EffectCondition : MonoBehaviour
     [SerializeField]
     protected int m_quantity;
     [SerializeField]
-    protected EConditionType m_condition;
+    protected ECardEffect m_boon;
     [SerializeField]
     protected GameObject m_target;
 
     public virtual bool VerifyCondition(GameObject m_target)
     {
         return false;
-    }
-}
-
-namespace Turquoise
-{
-    public enum EConditionType
-    {
-        Bleeds,
-        Count
     }
 }

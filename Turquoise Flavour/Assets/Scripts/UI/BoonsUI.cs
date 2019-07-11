@@ -17,11 +17,10 @@ public class BoonsUI : MonoBehaviour
     {
         if (CompareLists(m_currentConditions, boons))
         {
-            Debug.Log("Boons unchanged");
             UpdateStacks(boons);
             return;
         }
-        Debug.Log("Boons are achanging");
+
         foreach (var boon in m_currentBoons)
         {
             Destroy(boon);
@@ -34,7 +33,7 @@ public class BoonsUI : MonoBehaviour
             m_currentBoons.Add(instance);
             instance.GetComponent<Image>().sprite = boon.GetData().sprite;
             m_currentConditions.Add(boon);
-            instance.GetComponentInChildren<TextMeshProUGUI>().text = boon.GetIntensity().ToString();
+            instance.GetComponentInChildren<TextMeshProUGUI>().text = boon.GetStacks().ToString();
         }
     }
 
@@ -42,7 +41,7 @@ public class BoonsUI : MonoBehaviour
     {
         for (int i = 0; i<boons.Count; i++)
         {
-            m_currentBoons[i].GetComponentInChildren<TextMeshProUGUI>().text = boons[i].GetIntensity().ToString();
+            m_currentBoons[i].GetComponentInChildren<TextMeshProUGUI>().text = boons[i].GetStacks().ToString();
         }
     }
 

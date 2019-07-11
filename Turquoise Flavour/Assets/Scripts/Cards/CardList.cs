@@ -18,6 +18,7 @@ namespace Turquoise
         ExhaustOther,
         PedroHeal,
         BloodBite,
+        IfBleedsDeals10,
         Count
     }
 }

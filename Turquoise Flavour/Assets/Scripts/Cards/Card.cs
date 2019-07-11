@@ -47,7 +47,8 @@ namespace Turquoise
         Consume,
         Bleed,
         Armor,
-        Other
+        Other,
+        Count
     }
 
     public enum ECardType
@@ -135,11 +136,16 @@ public class Card : MonoBehaviour
     {
         foreach (var cardEffect in m_effects)
         {
-            if (cardEffect.m_effect == ECardEffect.Draw)
+            bool conditionsVerified = true;
+            foreach (var condition in cardEffect.m_conditions)
             {
-
+                if (!ConditionHasBoon.VerifyCondition(selectedCreature, condition))
+                {
+                    conditionsVerified = false;
+                    break;
+                }
             }
-            else
+            if (conditionsVerified)
             {
                 ApplyEffect(cardEffect, selectedCreature);
             }
@@ -158,5 +164,5 @@ public struct SAbilityEffect
     public ECardEffect m_effect;
     public int m_value;
     public ETarget m_targetType;
-    public List<EConditionType> m_conditions;
+    public List<ECardEffect> m_conditions;
 }
