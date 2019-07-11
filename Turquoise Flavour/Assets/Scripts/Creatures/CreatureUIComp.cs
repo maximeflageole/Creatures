@@ -13,7 +13,7 @@ public class CreatureUIComp : MonoBehaviour
     public Turquoise.ETeams m_team;
     public BoonsUI m_boonsUI;
 
-    public void UpdateUI(int health, int maxHealth, int armor, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
+    public void UpdateUI(int health, int maxHealth, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
     {
         if (m_healthText != null)
         {

@@ -2016,7 +2016,7 @@ MonoBehaviour:
   m_armor: 0
   m_currentMana: 0
   m_currentMaxMana: 3
-  m_creatureUIComp: {fileID: 0}
+  m_creatureUIComp: {fileID: 1043736054}
   m_deck: {fileID: 0}
   m_sprite: {fileID: 0}
   m_activeAbility: {fileID: 0}
@@ -2024,7 +2024,7 @@ MonoBehaviour:
     level: 0
     experiencePoints: 0
     levelSpeed: 0
-  m_inBattle: 0
+  m_inBattle: 1
   m_speed: 0
   m_creatureData: {fileID: 0}
   m_conditionsComponent: {fileID: 0}
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_levelText: {fileID: 0}
   m_experienceText: {fileID: 0}
   m_team: 0
-  m_boonsUI: {fileID: 0}
+  m_boonsUI: {fileID: 882671814}
 --- !u!1 &1143981314
 GameObject:
   m_ObjectHideFlags: 0

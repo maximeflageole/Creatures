@@ -185,15 +185,6 @@ public class Creature : MonoBehaviour
         return (level != m_experience.level);
     }
 
-    public int GetArmor()
-    {
-        if (m_conditionsComponent != null)
-        {
-            return m_conditionsComponent.GetBoonStacks(ECardEffect.Armor);
-        }
-        return 0;
-    }
-
     public List<Condition> GetConditions()
     {
         if (m_conditionsComponent != null)
@@ -209,7 +200,7 @@ public class Creature : MonoBehaviour
         {
             if (m_creatureUIComp != null)
             {
-                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, GetArmor(), m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
+                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
             }
             if (Input.GetKeyDown("x"))
             {
