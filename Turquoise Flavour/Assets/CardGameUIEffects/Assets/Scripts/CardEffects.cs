@@ -265,7 +265,7 @@ public class CardEffects : TurquoiseEvent {
                 Card card = hit.collider.GetComponent<Card>();
                 if (card != null)
                 {
-                    m_cardSelectUI.AddCard(card);
+                    m_cardSelectUI.SelectCard(card);
                 }
             }
         }
@@ -397,6 +397,7 @@ public class CardEffects : TurquoiseEvent {
     Card GetCardFromDrawPile()
     {
         var card = drawPileCards.Draw();
+        card.SetCardInSelection(false);
         card.Reset();
         card.gameObject.SetActive(true);
         return card;
@@ -851,6 +852,10 @@ public class CardEffects : TurquoiseEvent {
         for (int i = 0; i < handCards.Count; ++i)
         {
             Card card = handCards[i];
+            if (card.GetCardInSelection())
+            {
+                continue;
+            }
             Transform transform = card.gameObject.transform;
             if (Mathf.Abs(card.curAngle - card.targetAngle) <= Time.fixedDeltaTime * rotateSpeed)
             {
@@ -876,6 +881,10 @@ public class CardEffects : TurquoiseEvent {
         for (int i = 0; i < handCards.Count; i++)
         {
             Card card = handCards[i];
+            if (card.GetCardInSelection())
+            {
+                continue;
+            }
             Transform transform = card.gameObject.transform;
             transform.position = new Vector3(transform.position.x, transform.position.y, card.targetPosition.z);
             if ((transform.position - card.targetPosition).magnitude <= Time.fixedDeltaTime * card.moveSpeed)
@@ -1307,7 +1316,7 @@ public class CardEffects : TurquoiseEvent {
     void MouseOnCard(int idx)
     {
         Card card = handCards[idx];
-        GameObject cardgo = card.gameObject;
+        //GameObject cardgo = card.gameObject;
         //card.sortOrder = cardgo.GetComponent<SpriteRenderer>().sortingOrder;
         //cardgo.GetComponent<SpriteRenderer>().sortingOrder = 100;   // Move to the topest layer when a card is checking by the player
         card.targetScale = cardBigScale;
