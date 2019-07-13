@@ -63,7 +63,7 @@ public class BattleStateMachine : MonoBehaviour
         m_battleEnded = false;
         m_currentBattlePhase = EBattlePhase.CreaturePick;
         BattleStates[m_currentBattlePhase].StartState();
-        CardEffects cardEffects = CardEffects.GetCardEffectsInstance();
+        CardEffects cardEffects = CardEffects.GetInstance();
         cardEffects.Initialization();
         m_turnCount = 1;
 
@@ -78,7 +78,7 @@ public class BattleStateMachine : MonoBehaviour
         m_playerCreature = null;
         m_enemyCreature = null;
         m_battleEnded = true;
-        Destroy(CardEffects.GetCardEffectsInstance().gameObject);
+        Destroy(CardEffects.GetInstance().gameObject);
         GameMaster.GetInstance().EndCurrentEvent(true);
     }
 

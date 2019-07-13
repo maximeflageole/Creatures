@@ -187,7 +187,7 @@ public class CardEffects : TurquoiseEvent {
         return GetEnemyCreature();
     }
 
-    public static CardEffects GetCardEffectsInstance()
+    public static CardEffects GetInstance()
     {
         return m_cardEffectInstance;
     }
@@ -1472,6 +1472,14 @@ public class CardEffects : TurquoiseEvent {
         {
             print("Begin Enemy's turn");
             m_player.TurnEnd();
+        }
+    }
+
+    public void EndBattleState()
+    {
+        foreach (var card in handCards)
+        {
+            card.gameObject.SetActive(false);
         }
     }
 }

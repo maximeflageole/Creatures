@@ -49,9 +49,9 @@ public class CardSelect : MonoBehaviour
 
     protected void Discard()
     {
-        if ((m_selectedCards.Count == m_amountToSelect) || CardEffects.GetCardEffectsInstance().CardHandCount() == m_selectedCards.Count)
+        if ((m_selectedCards.Count == m_amountToSelect) || CardEffects.GetInstance().CardHandCount() == m_selectedCards.Count)
         {
-            CardEffects.GetCardEffectsInstance().SelectCardList(m_selectedCards);
+            CardEffects.GetInstance().SelectCardList(m_selectedCards);
             m_selectedCards.Clear();
         }
         gameObject.SetActive(false);
