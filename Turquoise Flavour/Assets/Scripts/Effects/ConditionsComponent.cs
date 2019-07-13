@@ -90,6 +90,8 @@ public class ConditionsComponent : MonoBehaviour
         {
             case ECardEffect.Armor:
                 return true;
+            case ECardEffect.DamageBuff:
+                return true;
         }
         return false;
     }
@@ -169,6 +171,17 @@ public class ConditionsComponent : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EndBattle()
+    {
+        for (int i = 0; i<m_boons.Count; i++)
+        {
+            Destroy(m_boons[i]);
+            m_boons.Remove(m_boons[i]);
+            i--;
+        }
+        m_boons.Clear();
     }
 }
 

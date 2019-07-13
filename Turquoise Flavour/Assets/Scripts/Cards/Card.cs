@@ -47,6 +47,7 @@ namespace Turquoise
         Consume,
         Bleed,
         Armor,
+        DamageBuff,
         Other,
         Count
     }

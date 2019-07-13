@@ -75,6 +75,7 @@ public class BattleStateMachine : MonoBehaviour
     public void EndBattle()
     {
         Debug.Log("End Battle");
+        m_playerCreature.QuitBattle();
         m_playerCreature = null;
         m_enemyCreature = null;
         m_battleEnded = true;

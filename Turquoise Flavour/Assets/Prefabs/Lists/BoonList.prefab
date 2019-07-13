@@ -48,3 +48,5 @@ MonoBehaviour:
     boonData: {fileID: 11400000, guid: 9758779cc7b83584cadc4057d318077e, type: 2}
   - cardEffect: 7
     boonData: {fileID: 11400000, guid: 1cdf1d40aef9132429589094a357f293, type: 2}
+  - cardEffect: 8
+    boonData: {fileID: 11400000, guid: 5a1e82ee7c5f4a844b300f6b45b53d27, type: 2}

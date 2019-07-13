@@ -1481,5 +1481,7 @@ public class CardEffects : TurquoiseEvent {
         {
             card.gameObject.SetActive(false);
         }
+        GetEnemyCreature().EndBattle();
+        GetPlayerCreature().EndBattle();
     }
 }
