@@ -233,6 +233,22 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public void StartTurn()
+    {
+        if (m_conditionsComponent != null)
+        {
+            m_conditionsComponent.StartTurn();
+        }
+    }
+
+    public void EndTurn()
+    {
+        if (m_conditionsComponent != null)
+        {
+            m_conditionsComponent.EndTurn();
+        }
+    }
+
     protected float CalculateDamage(int damage, ECardType damageType)
     {
         float typeMultiplier = GetTypeMultiplier(m_primaryType, damageType);

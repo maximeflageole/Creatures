@@ -6,7 +6,7 @@ using Turquoise;
 public class ConditionsComponent : MonoBehaviour
 {
     [SerializeField]
-    protected List<Condition> m_conditions = new List<Condition>();
+    protected List<Condition> m_boons = new List<Condition>();
 
     public void TryAddCondition(ConditionData conditionData, int stacks = 1)
     {
@@ -15,12 +15,12 @@ public class ConditionsComponent : MonoBehaviour
             int i = GetConditionIndex(conditionData);
             if (i != -1)
             {
-                m_conditions[i].IncrementStacks(stacks);
+                m_boons[i].IncrementStacks(stacks);
                 return;
             }
             Condition condition = gameObject.AddComponent(typeof(Condition)) as Condition;
             condition.OnCreate(conditionData, stacks);
-            m_conditions.Add(condition);
+            m_boons.Add(condition);
         }
     }
 
@@ -35,9 +35,9 @@ public class ConditionsComponent : MonoBehaviour
 
     public int GetConditionIndex(ConditionData data)
     {
-        for (int i = 0; i< m_conditions.Count; i++)
+        for (int i = 0; i< m_boons.Count; i++)
         {
-            if (m_conditions[i].GetData().cardEffect == data.cardEffect)
+            if (m_boons[i].GetData().cardEffect == data.cardEffect)
             {
                 return i;
             }
@@ -48,7 +48,7 @@ public class ConditionsComponent : MonoBehaviour
     public List<ECardEffect> GetBuffs()
     {
         List<ECardEffect> buffs = new List<ECardEffect>();
-        foreach (var condition in m_conditions)
+        foreach (var condition in m_boons)
         {
             if (IsBuff(condition.GetData()))
             {
@@ -61,7 +61,7 @@ public class ConditionsComponent : MonoBehaviour
     public List<ECardEffect> GetDebuffs()
     {
         List<ECardEffect> debuffs = new List<ECardEffect>();
-        foreach (var condition in m_conditions)
+        foreach (var condition in m_boons)
         {
             if (IsDebuff(condition.GetData().cardEffect))
             {
@@ -110,7 +110,7 @@ public class ConditionsComponent : MonoBehaviour
 
     public int GetBoonStacks(ECardEffect cardEffect)
     {
-        foreach (var boon in m_conditions)
+        foreach (var boon in m_boons)
         {
             if (boon.GetData().cardEffect == cardEffect)
             {
@@ -127,6 +127,64 @@ public class ConditionsComponent : MonoBehaviour
 
     public List<Condition> GetConditions()
     {
-        return m_conditions;
+        return m_boons;
+    }
+
+    public void StartTurn()
+    {
+        DecayBoons(EBoonDecayTime.OnTurnStart);
+    }
+
+    public void EndTurn()
+    {
+        DecayBoons(EBoonDecayTime.OnTurnEnd);
+    }
+
+    void DecayBoons(EBoonDecayTime decayTime)
+    {
+        for (int i = 0; i < m_boons.Count; i++)
+        {
+            var boon = m_boons[i];
+            var boonData = boon.GetData();
+            if (boonData.boonDecayTime == decayTime)
+            {
+                switch (boonData.boonDecayType)
+                {
+                    case EBoonDecayType.All:
+                        m_boons.Remove(boon);
+                        Destroy(boon);
+                        i--;
+                        break;
+                    case EBoonDecayType.Turn:
+                        boon.IncrementStacks(-1);
+                        if (boon.GetStacks() <= 0)
+                        {
+                            m_boons.Remove(boon);
+                            Destroy(boon);
+                            i--;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
+
+namespace Turquoise
+{
+    public enum EBoonDecayType
+    {
+        None,
+        Turn,
+        All
+    }
+
+    public enum EBoonDecayTime
+    {
+        None,
+        OnTurnStart,
+        OnTurnEnd
     }
 }

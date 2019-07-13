@@ -14,6 +14,8 @@ public class BattleStateMachine : MonoBehaviour
     protected Creature m_playerCreature;
     [SerializeField]
     protected Creature m_enemyCreature;
+    [SerializeField]
+    protected Creature m_currentCreature;
     public static BattleStateMachine s_battleStateMachine;
     [SerializeField]
     protected int m_turnCount;
@@ -66,7 +68,8 @@ public class BattleStateMachine : MonoBehaviour
         m_turnCount = 1;
 
         m_playerCreature = cardEffects.GetPlayerCreature();
-        m_enemyCreature = cardEffects.GetEnmeyCreature();
+        m_enemyCreature = cardEffects.GetEnemyCreature();
+        m_currentCreature = cardEffects.GetFastestCreature();
     }
 
     public void EndBattle()
@@ -112,6 +115,20 @@ public class BattleStateMachine : MonoBehaviour
     public void AddLeveledUpCreature(Creature creature)
     {
         m_levelUpsInBattle.Enqueue(creature);
+    }
+
+    public void ChangeTurn()
+    {
+        m_currentCreature.EndTurn();
+        if (m_currentCreature == m_enemyCreature)
+        {
+            m_currentCreature = m_playerCreature;
+        }
+        else
+        {
+            m_currentCreature = m_enemyCreature;
+        }
+        m_currentCreature.StartTurn();
     }
 }
 

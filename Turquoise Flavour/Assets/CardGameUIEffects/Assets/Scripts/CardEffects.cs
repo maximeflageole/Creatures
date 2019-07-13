@@ -163,25 +163,28 @@ public class CardEffects : TurquoiseEvent {
         return m_player.GetCurrentCreature();
     }
 
-    public Creature GetEnmeyCreature()
+    public Creature GetEnemyCreature()
     {
         return m_enemyCreature.GetComponent<Creature>();
     }
 
-    public Turquoise.ETeams GetFastestCreatureTeam()
+    public ETeams GetFastestCreatureTeam()
     {
         int enemySpeed = m_enemyCreature.GetComponent<Creature>().GetSpeed();
-        Debug.Log("Enemy Speed = " + enemySpeed);
-
         int playerSpeed = m_player.GetCurrentCreature().GetSpeed();
-        Debug.Log("Player Speed = " + playerSpeed);
-
 
         if (enemySpeed > playerSpeed)
         {
             return m_enemyCreature.GetComponent<Creature>().m_team;
         }
         return m_player.GetCurrentCreature().m_team;
+    }
+
+    public Creature GetFastestCreature()
+    {
+        if (GetFastestCreatureTeam() == ETeams.Ally)
+            return GetPlayerCreature();
+        return GetEnemyCreature();
     }
 
     public static CardEffects GetCardEffectsInstance()
@@ -1064,6 +1067,7 @@ public class CardEffects : TurquoiseEvent {
         HideArrows();
         m_isPlayerTurn = !m_isPlayerTurn;
         ChangeTurn();
+        BattleStateMachine.GetInstance().ChangeTurn();
     }
 
     void DiscardCard(Card card)
@@ -1442,7 +1446,7 @@ public class CardEffects : TurquoiseEvent {
 
     public void StartFirstTurn()
     {
-        Turquoise.ETeams team = GetFastestCreatureTeam();
+        ETeams team = GetFastestCreatureTeam();
         if (team == m_player.GetCurrentCreature().m_team)
         {
             m_isPlayerTurn = true;
