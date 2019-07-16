@@ -27,7 +27,7 @@ public class Pile: MonoBehaviour
                 {
                     cardList.Add(card);
                 }
-                GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, true, 0);
+                GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(cardList, !CardEffects.GetInstance().m_hasPeekInOrderBuff, 0);
                 m_isDisplayed = true;
             }
         }
@@ -113,7 +113,14 @@ public class Pile: MonoBehaviour
 
     public void InsertAtBottom(Card card)
     {
-        //TODO: Insert at bottom
-        //m_queuedPile.
+        List<Card> cardList = GetPileAsList();
+        cardList.Remove(card);
+        cardList.Add(card);
+        m_queuedPile.Clear();
+
+        foreach (var cardInPile in cardList)
+        {
+            m_queuedPile.Enqueue(cardInPile);
+        }
     }
 }

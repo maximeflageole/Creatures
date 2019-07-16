@@ -149,6 +149,7 @@ public class CardEffects : TurquoiseEvent {
     protected bool m_isPlayerTurn;
     [SerializeField]
     protected bool m_isSelectingCards;
+    public bool m_hasPeekInOrderBuff;
 
     public void Awake()
     {
@@ -254,6 +255,12 @@ public class CardEffects : TurquoiseEvent {
             PlayCard();
             PlayAbility();
             GetMouseOnCharacter();
+        }
+        //CHEAT to display cards in order
+        if (Input.GetKeyDown("k"))
+        {
+            m_hasPeekInOrderBuff = !m_hasPeekInOrderBuff;
+            print("Cheat " + m_hasPeekInOrderBuff);
         }
     }
 
@@ -726,8 +733,7 @@ public class CardEffects : TurquoiseEvent {
             }
             else
             {
-                //TODO: THIS OMG
-                //SendCardAtBottomOfPile(handCards.)
+                drawPileCards.InsertAtBottom(drawPileCards.Draw());
             }
         }
         //StartCoroutine(SendHandCards(selectedCardList.Count));

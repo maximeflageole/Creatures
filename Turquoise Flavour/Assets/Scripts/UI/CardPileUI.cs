@@ -127,7 +127,7 @@ public class CardPileUI : MonoBehaviour
                 indexList.Add(m_selectedCards.IndexOf(card));
             }
         }
-        CardEffects.GetInstance().CardSelectionCallback(indexList, m_cardsToPick);
+        CardEffects.GetInstance().CardSelectionCallback(indexList, m_cardsData.Count);
     }
 
     public bool Validate()
