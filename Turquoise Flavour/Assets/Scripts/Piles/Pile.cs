@@ -103,7 +103,7 @@ public class Pile: MonoBehaviour
     {
         List<Card> listCard = GetPileAsList();
         List<Card> returnList = new List<Card>();
-        for (int i = 0; i < number || i >= listCard.Count; i++)
+        for (int i = 0; i < number && i < listCard.Count; i++)
         {
             returnList.Add(listCard[i]);
         }
