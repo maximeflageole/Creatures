@@ -147,6 +147,8 @@ public class CardEffects : TurquoiseEvent {
     protected bool m_noTargetSkill;
     [SerializeField]
     protected bool m_isPlayerTurn;
+    [SerializeField]
+    protected bool m_isSelectingCards;
 
     public void Awake()
     {
@@ -235,7 +237,7 @@ public class CardEffects : TurquoiseEvent {
     void Update()
     {
         // Shuffle animation has the highest priority to display
-        if (shufflingCard == false)
+        if (shufflingCard == false && m_isSelectingCards == false)
         {
             if (mouseClickCard == -1)
             {
@@ -278,7 +280,7 @@ public class CardEffects : TurquoiseEvent {
 
     private void FixedUpdate()
     {
-        if (shufflingCard == false)
+        if (shufflingCard == false && m_isSelectingCards == false)
         {
             CardRotate();
             CardMove();
@@ -652,11 +654,11 @@ public class CardEffects : TurquoiseEvent {
                     var selectedCreature = card.targetPlayer.GetComponent<CreatureUIComp>();
                     if (selectedCreature != null)
                     {
-                        if (selectedCreature.m_team == Turquoise.ETeams.Ally)
+                        if (selectedCreature.m_team == ETeams.Ally)
                         {
                             card.ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
                         }
-                        else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
+                        else if (selectedCreature.m_team == ETeams.Enemy)
                         {
                             card.ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
                         }
@@ -694,12 +696,42 @@ public class CardEffects : TurquoiseEvent {
                             ExhaustSelf(card);
                         }
                     }
+                    if (effect.m_effect == ECardEffect.Find)
+                    {
+                        List<Card> cardList = drawPileCards.Peek(effect.m_value);
+                        List<ECard> foundCards = new List<ECard>();
+                        for (int j = 0; j < cardList.Count; j++)
+                        {
+                            foundCards.Add(cardList[j].GetCardData().cardEnumValue);
+                        }
+                        GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(foundCards, false, 1);
+                        m_isSelectingCards = true;
+                    }
                 }
                 return;
             }
             card.gameObject.transform.position = Vector3.MoveTowards(card.gameObject.transform.position, dstPos, Time.fixedDeltaTime * cardPlaySpeed);
             card.dropDisplayTime = Time.time;
         }
+    }
+
+    public void CardSelectionCallback(List<int> selectedCardIndex, int totalCards)
+    {
+        m_isSelectingCards = false;
+        for (int i = 0; i < totalCards; i++)
+        {
+            if (selectedCardIndex.Contains(i))
+            {
+                StartCoroutine(SendHandCards(1));
+            }
+            else
+            {
+                //TODO: THIS OMG
+                //SendCardAtBottomOfPile(handCards.)
+            }
+        }
+        //StartCoroutine(SendHandCards(selectedCardList.Count));
+        GameMaster.GetInstance().m_cardPileUI.ClearCards();
     }
 
     public int CardHandCount()

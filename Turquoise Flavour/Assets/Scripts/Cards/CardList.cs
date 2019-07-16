@@ -19,6 +19,7 @@ namespace Turquoise
         PedroHeal,
         BloodBite,
         IfBleedsDeals10,
+        Find3Draw1,
         Count
     }
 }

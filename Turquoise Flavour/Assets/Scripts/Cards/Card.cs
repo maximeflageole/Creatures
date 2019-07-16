@@ -48,6 +48,8 @@ namespace Turquoise
         Bleed,
         Armor,
         DamageBuff,
+        Find,
+        Pick,
         Other,
         Count
     }

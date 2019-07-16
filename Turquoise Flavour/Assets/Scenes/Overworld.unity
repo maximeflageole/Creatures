@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 3
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1000,6 +1000,12 @@ PrefabInstance:
       propertyPath: m_eventTypes.Array.data[4].eventPrefab
       value: 
       objectReference: {fileID: 5738706847192654584, guid: 84d1e38097ef85a49a8184f344f784c3,
+        type: 3}
+    - target: {fileID: 3448666264204063590, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_cardPileUIPrefab
+      value: 
+      objectReference: {fileID: 466190491834326420, guid: 04d01f541a9cc4b4fa6e2163421c507c,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3, type: 3}

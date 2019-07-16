@@ -22,6 +22,8 @@ public class CardUI : MonoBehaviour
     protected TextMeshProUGUI m_descriptionText2D;
     [SerializeField]
     protected TextMeshProUGUI m_manaText2D;
+    [SerializeField]
+    protected CardData m_cardData;
 
 
     public void InitCardUI(string name, string description, string mana, Sprite sprite)
@@ -32,11 +34,25 @@ public class CardUI : MonoBehaviour
         m_sprite.sprite = sprite;
     }
 
-    public void InitCardUI2D(string name, string description, string mana, Sprite sprite)
+    public void InitCardUI2D(CardData cardData)
     {
-        m_nameText2D.text = name;
-        m_descriptionText2D.text = description;
-        m_manaText2D.text = mana;
-        m_image2D.sprite = sprite;
+        m_cardData = cardData;
+        m_nameText2D.text = cardData.cardName;
+        m_descriptionText2D.text = cardData.description;
+        m_manaText2D.text = cardData.manaCost.ToString();
+        m_image2D.sprite = cardData.artwork;
+    }
+
+    public void OnClick()
+    {
+        GetComponentInParent<CardPileUI>().OnCardSelect(this);
+    }
+
+    public void OnCardSelected(bool selected)
+    {
+        if (selected)
+            transform.localScale *= 1.1f;
+        else
+            transform.localScale /= 1.1f;
     }
 }
