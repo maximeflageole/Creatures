@@ -24,6 +24,7 @@ public class CardUI : MonoBehaviour
     protected TextMeshProUGUI m_manaText2D;
     [SerializeField]
     protected CardData m_cardData;
+    public CardData GetCardData() { return m_cardData; }
 
 
     public void InitCardUI(string name, string description, string mana, Sprite sprite)

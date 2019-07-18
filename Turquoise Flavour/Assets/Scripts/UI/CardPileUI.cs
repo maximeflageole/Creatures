@@ -124,7 +124,7 @@ public class CardPileUI : MonoBehaviour
         {
             foreach(var card in m_selectedCards)
             {
-                indexList.Add(m_selectedCards.IndexOf(card));
+                indexList.Add(m_cardsData.IndexOf(card.GetCardData()));
             }
         }
         CardEffects.GetInstance().CardSelectionCallback(indexList, m_cardsData.Count);
