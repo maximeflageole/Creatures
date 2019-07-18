@@ -736,7 +736,6 @@ public class CardEffects : TurquoiseEvent {
             if (selectedCardIndex.Contains(i))
             {
                 Debug.Log("Card choice is " + i);
-                //StartCoroutine(SendHandCards(1));
                 AddHandCard();
             }
             else
