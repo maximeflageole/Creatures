@@ -113,6 +113,7 @@ public class CardEffects : TurquoiseEvent {
     [SerializeField]
     private List<Card> playingCard = new List<Card>();
     private List<Card> shuffleCardsEffects = new List<Card>();
+    public bool IsShuffleCardEmpty() { return shuffleCardsEffects.Count == 0; }
     private List<float> shuffleCardDelay = new List<float>();
     private float shuffleBegin;
     private GameObject focusOnPlayer = null;
@@ -124,6 +125,7 @@ public class CardEffects : TurquoiseEvent {
     protected Pile drawPileCards;
     [SerializeField]
     protected Pile discardPileCards;
+    public bool IsDiscardPileEmpty() { return discardPileCards.Count() == 0; }
     [SerializeField]
     protected Pile exhaustPileCards;
     [SerializeField]
@@ -137,6 +139,8 @@ public class CardEffects : TurquoiseEvent {
     private const int HAND_CARD_LIMIT = 10;
 
     //Added for Turquoise Project
+    [SerializeField]
+    protected List<Action> m_actionPile;
     [SerializeField]
     protected bool m_hasValidTarget;
     [SerializeField]
@@ -237,6 +241,7 @@ public class CardEffects : TurquoiseEvent {
 
     void Update()
     {
+        UpdateActions();
         // Shuffle animation has the highest priority to display
         if (shufflingCard == false && m_isSelectingCards == false)
         {
@@ -445,6 +450,9 @@ public class CardEffects : TurquoiseEvent {
             drawPileCards.AddCard(card);
         }
         ShuffleDrawPile();
+        ActionShuffling actionShuffling = gameObject.AddComponent<ActionShuffling>();
+        Debug.Log("Shuffle Card Animation is supposed to trigger");
+        m_actionPile.Insert(0, actionShuffling);
     }
 
     void ShuffleDrawPile()
@@ -1530,5 +1538,23 @@ public class CardEffects : TurquoiseEvent {
         }
         GetEnemyCreature().EndBattle();
         GetPlayerCreature().EndBattle();
+    }
+
+    public void UpdateActions()
+    {
+        if (m_actionPile.Count != 0)
+        {
+            Action currentAction = m_actionPile[0];
+            if (!currentAction.m_actionStarted)
+            {
+                currentAction.StartAction();
+            }
+            currentAction.UpdateAction();
+            if (currentAction.m_actionEnded)
+            {
+                Destroy(m_actionPile[0]);
+                m_actionPile.RemoveAt(0);
+            }
+        }
     }
 }
