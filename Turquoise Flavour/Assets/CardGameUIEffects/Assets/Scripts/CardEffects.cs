@@ -123,6 +123,7 @@ public class CardEffects : TurquoiseEvent {
     private List<GameObject> arrows = new List<GameObject>();
     [SerializeField]
     protected Pile drawPileCards;
+    public Pile GetDrawPile() { return drawPileCards; }
     [SerializeField]
     protected Pile discardPileCards;
     public bool IsDiscardPileEmpty() { return discardPileCards.Count() == 0; }
@@ -151,8 +152,7 @@ public class CardEffects : TurquoiseEvent {
     protected bool m_noTargetSkill;
     [SerializeField]
     protected bool m_isPlayerTurn;
-    [SerializeField]
-    protected bool m_isSelectingCards;
+    public bool m_isSelectingCards;
     public bool m_hasPeekInOrderBuff;
 
     public void Awake()
@@ -443,21 +443,20 @@ public class CardEffects : TurquoiseEvent {
 
     void RefreshDrawPile()
     {
+        ShufflePile(discardPileCards);
         // All cards will be sent from discard pile to draw pile
         while (discardPileCards.Count() > 0)
         {
             var card = discardPileCards.Draw();
             drawPileCards.AddCard(card);
         }
-        ShuffleDrawPile();
         ActionShuffling actionShuffling = gameObject.AddComponent<ActionShuffling>();
-        Debug.Log("Shuffle Card Animation is supposed to trigger");
         m_actionPile.Insert(0, actionShuffling);
     }
 
-    void ShuffleDrawPile()
+    void ShufflePile(Pile pile)
     {
-        drawPileCards.ShufflePile();
+        pile.ShufflePile();
     }
 
     IEnumerator SendHandCards()
@@ -713,14 +712,13 @@ public class CardEffects : TurquoiseEvent {
                     }
                     if (effect.m_effect == ECardEffect.Find)
                     {
-                        List<Card> cardList = drawPileCards.Peek(effect.m_value);
-                        List<ECard> foundCards = new List<ECard>();
-                        for (int j = 0; j < cardList.Count; j++)
+                        if (drawPileCards.Count() < effect.m_value)
                         {
-                            foundCards.Add(cardList[j].GetCardData().cardEnumValue);
+                            RefreshDrawPile();
                         }
-                        GameMaster.GetInstance().m_cardPileUI.DisplayCardPile(foundCards, false, 1);
-                        m_isSelectingCards = true;
+                        ActionPickCards actionPickCards = gameObject.AddComponent<ActionPickCards>();
+                        actionPickCards.SetAction(1, effect.m_value);
+                        m_actionPile.Add(actionPickCards);
                     }
                 }
                 return;
@@ -744,7 +742,6 @@ public class CardEffects : TurquoiseEvent {
                 drawPileCards.InsertAtBottom(drawPileCards.Draw());
             }
         }
-        //StartCoroutine(SendHandCards(selectedCardList.Count));
         GameMaster.GetInstance().m_cardPileUI.ClearCards();
     }
 
