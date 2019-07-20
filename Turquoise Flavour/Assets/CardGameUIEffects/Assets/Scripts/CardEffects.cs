@@ -262,10 +262,15 @@ public class CardEffects : TurquoiseEvent {
             GetMouseOnCharacter();
         }
         //CHEAT to display cards in order
-        if (Input.GetKeyDown("k"))
+        if (Input.GetKeyDown("p"))
         {
             m_hasPeekInOrderBuff = !m_hasPeekInOrderBuff;
-            print("Cheat " + m_hasPeekInOrderBuff);
+            print("Peek cheat " + m_hasPeekInOrderBuff);
+        }
+        if (Input.GetKeyDown("k"))
+        {
+            GetEnemyCreature().InstantKill();
+            print("instant Kill enemy cheat ");
         }
     }
 

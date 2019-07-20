@@ -416,6 +416,11 @@ public class Creature : MonoBehaviour
         return m_health <= 0;
     }
 
+    public void InstantKill()
+    {
+        m_health = 0;
+    }
+
     public bool AddCardToDeck(Turquoise.ECard card)
     {
         m_deck.AddCard(card);
