@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardEffect: 7
   conditionName: Armor
-  sprite: {fileID: 21300000, guid: 234ca728926ffe3489ea84367accaac1, type: 3}
+  sprite: {fileID: 21300000, guid: 21c2f40e5d84489488e87cf0831d9871, type: 3}
   boonDecayType: 2
   boonDecayTime: 1
+  boonEffectTime: 0

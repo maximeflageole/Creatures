@@ -134,15 +134,42 @@ public class ConditionsComponent : MonoBehaviour
 
     public void StartTurn()
     {
-        DecayBoons(EBoonDecayTime.OnTurnStart);
+        ApplyBoons(EBoonTime.OnTurnStart);
+        DecayBoons(EBoonTime.OnTurnStart);
     }
 
     public void EndTurn()
     {
-        DecayBoons(EBoonDecayTime.OnTurnEnd);
+        ApplyBoons(EBoonTime.OnTurnEnd);
+        DecayBoons(EBoonTime.OnTurnEnd);
     }
 
-    void DecayBoons(EBoonDecayTime decayTime)
+    void ApplyBoons(EBoonTime effectTime)
+    {
+        for (int i = 0; i < m_boons.Count; i++)
+        {
+            var boon = m_boons[i];
+            var boonData = boon.GetData();
+            if (boonData.boonEffectTime == effectTime)
+            {
+                SufferBoon(boon);
+            }
+        }
+    }
+
+    void SufferBoon(Condition condition)
+    {
+        switch (condition.GetData().cardEffect)
+        {
+            case ECardEffect.Bleed:
+                GetComponentInParent<Creature>().ApplyDamage(condition.GetStacks(), EDamageType.True);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void DecayBoons(EBoonTime decayTime)
     {
         for (int i = 0; i < m_boons.Count; i++)
         {
@@ -194,7 +221,7 @@ namespace Turquoise
         All
     }
 
-    public enum EBoonDecayTime
+    public enum EBoonTime
     {
         None,
         OnTurnStart,

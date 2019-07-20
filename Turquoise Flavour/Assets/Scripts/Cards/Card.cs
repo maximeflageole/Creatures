@@ -54,7 +54,7 @@ namespace Turquoise
         Count
     }
 
-    public enum ECardType
+    public enum EDamageType
     {
         Physical,
         Fire,
@@ -63,6 +63,7 @@ namespace Turquoise
         Poison,
         Piercing,
         Arcane,
+        True,
         None
     }
 }

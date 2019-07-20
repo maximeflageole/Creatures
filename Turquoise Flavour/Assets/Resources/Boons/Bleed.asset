@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardEffect: 6
   conditionName: Bleed
-  sprite: {fileID: 21300000, guid: 8d50d5fc3b53c5a4ca745e3c97659630, type: 3}
+  sprite: {fileID: 21300000, guid: 252984ab03a1d3f449f1f39663255989, type: 3}
   boonDecayType: 1
   boonDecayTime: 2
+  boonEffectTime: 1

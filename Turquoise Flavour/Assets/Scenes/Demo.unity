@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_eCreature: 0
   m_team: 0
   m_primaryType: 0
-  m_health: 4
+  m_health: 20
   m_maxHealth: 100
   m_armor: 0
   m_currentMana: 0

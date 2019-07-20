@@ -125,7 +125,7 @@ public class Creature : MonoBehaviour
         m_conditionsComponent = gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SAbilityEffect cardEffect, ECardType damageType = ECardType.None)
+    public void ApplyEffect(SAbilityEffect cardEffect, EDamageType damageType = EDamageType.None)
     {
         if (m_conditionsComponent != null)
         {
@@ -212,12 +212,12 @@ public class Creature : MonoBehaviour
         }
     }
 
-    protected void ApplyDamage(int damage, ECardType damageType)
+    public void ApplyDamage(int damage, EDamageType damageType)
     {
         float calculatedDamage = CalculateDamage(damage, damageType);
         int intFinalDamage = Mathf.RoundToInt(calculatedDamage);
 
-        if (m_armor > 0)
+        if (m_armor > 0 && damageType != EDamageType.True)
         {
             m_armor -= intFinalDamage;
             if (m_armor < 0)
@@ -252,7 +252,7 @@ public class Creature : MonoBehaviour
         }
     }
 
-    protected float CalculateDamage(int damage, ECardType damageType)
+    protected float CalculateDamage(int damage, EDamageType damageType)
     {
         float typeMultiplier = GetTypeMultiplier(m_primaryType, damageType);
         float calculatedDamage = damage * typeMultiplier;
@@ -261,10 +261,10 @@ public class Creature : MonoBehaviour
         return calculatedDamage;
     }
 
-    public static float CalculateArmorPiercingDamage(float initialDamage, int armor, ECardType damageType)
+    public static float CalculateArmorPiercingDamage(float initialDamage, int armor, EDamageType damageType)
     {
         float additionalDamage = 0.0f;
-        if (damageType != ECardType.Piercing)
+        if (damageType != EDamageType.Piercing)
         {
             return additionalDamage;
         }
@@ -279,52 +279,52 @@ public class Creature : MonoBehaviour
         return additionalDamage;
     }
 
-    public static float GetTypeMultiplier(ECreatureType creatureType, ECardType damageType)
+    public static float GetTypeMultiplier(ECreatureType creatureType, EDamageType damageType)
     {
         switch (creatureType)
         {
             case ECreatureType.Aquatic:
-                if (damageType == ECardType.Electric ||
-                    damageType == ECardType.Poison)
+                if (damageType == EDamageType.Electric ||
+                    damageType == EDamageType.Poison)
                 {
                     return 2.0f;
                 }
-                else if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Frost)
+                else if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Frost)
                 {
                     return 0.5f;
                 }
                 break;
             case ECreatureType.Automaton:
-                if (damageType == ECardType.Piercing)
+                if (damageType == EDamageType.Piercing)
                 {
                     return 2.0f;
                 }
-                else if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Physical)
+                else if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Physical)
                 {
                     return 0.5f;
                 }
                 break;
             case ECreatureType.Beast:
-                if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Poison)
+                if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Poison)
                 {
                     return 2.0f;
                 }
-                else if (damageType == ECardType.Arcane)
+                else if (damageType == EDamageType.Arcane)
                 {
                     return 0.5f;
                 }
                 break;
             case ECreatureType.Dark:
-                if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Electric)
+                if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Electric)
                 {
                     return 2.0f;
                 }
-                else if (damageType == ECardType.Poison ||
-                    damageType == ECardType.Arcane)
+                else if (damageType == EDamageType.Poison ||
+                    damageType == EDamageType.Arcane)
                 {
                     return 0.5f;
                 }
@@ -332,13 +332,13 @@ public class Creature : MonoBehaviour
             case ECreatureType.Electric:
                 break;
             case ECreatureType.Ice:
-                if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Arcane)
+                if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Arcane)
                 {
                     return 2.0f;
                 }
-                else if (damageType == ECardType.Frost ||
-                    damageType == ECardType.Poison)
+                else if (damageType == EDamageType.Frost ||
+                    damageType == EDamageType.Poison)
                 {
                     return 0.5f;
                 }
@@ -346,28 +346,28 @@ public class Creature : MonoBehaviour
             case ECreatureType.Magic:
                 break;
             case ECreatureType.Mineral:
-                if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Electric ||
-                    damageType == ECardType.Physical ||
-                    damageType == ECardType.Poison)
+                if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Electric ||
+                    damageType == EDamageType.Physical ||
+                    damageType == EDamageType.Poison)
                 {
                     return 0.5f;
                 }
-                else if (damageType == ECardType.Piercing ||
-                        damageType == ECardType.Arcane)
+                else if (damageType == EDamageType.Piercing ||
+                        damageType == EDamageType.Arcane)
                 {
                     return 2.0f;
                 }
                 break;
             case ECreatureType.Plant:
-                if (damageType == ECardType.Fire ||
-                    damageType == ECardType.Frost)
+                if (damageType == EDamageType.Fire ||
+                    damageType == EDamageType.Frost)
                 {
                     return 2.0f;
                 }
-                else if (damageType == ECardType.Poison ||
-                        damageType == ECardType.Piercing ||
-                        damageType == ECardType.Arcane)
+                else if (damageType == EDamageType.Poison ||
+                        damageType == EDamageType.Piercing ||
+                        damageType == EDamageType.Arcane)
                 {
                     return 0.5f;
                 }

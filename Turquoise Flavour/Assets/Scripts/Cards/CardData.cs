@@ -13,7 +13,7 @@ public class CardData : ScriptableObject
     public Turquoise.ETarget targetType;
     public List<SAbilityEffect> effects;
     public Turquoise.ECardGenre cardGenre;
-    public Turquoise.ECardType damageType;
+    public Turquoise.EDamageType damageType;
     public Turquoise.ERarity rarity;
     public Turquoise.ECreaturePart creaturePart;
 }

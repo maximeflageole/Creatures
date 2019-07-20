@@ -9,5 +9,6 @@ public class ConditionData : ScriptableObject
     public string conditionName;
     public Sprite sprite;
     public Turquoise.EBoonDecayType boonDecayType;
-    public Turquoise.EBoonDecayTime boonDecayTime;
+    public Turquoise.EBoonTime boonDecayTime;
+    public Turquoise.EBoonTime boonEffectTime;
 }
