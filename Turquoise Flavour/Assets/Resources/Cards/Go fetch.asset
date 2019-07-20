@@ -10,20 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
-  m_Name: BuffDamage
+  m_Name: Go fetch
   m_EditorClassIdentifier: 
-  cardName: Buff Damage
-  cardEnumValue: 4
-  description: Buff your damage by +2 this round
-  artwork: {fileID: 21300000, guid: a2daa2b12f9264443886c9ec12717bc3, type: 3}
-  manaCost: 1
+  cardName: 
+  cardEnumValue: 0
+  description: 
+  artwork: {fileID: 0}
+  manaCost: 0
   targetType: 0
-  effects:
-  - m_effect: 8
-    m_value: 2
-    m_targetType: 0
-    m_conditions: 
-  cardGenre: 1
+  effects: []
+  cardGenre: 0
   damageType: 0
   rarity: 0
-  creaturePart: 3
+  creaturePart: 0

@@ -48,3 +48,5 @@ MonoBehaviour:
     creatureData: {fileID: 11400000, guid: ae1db9a7a35eb4e40bb7a9bc6ba6d488, type: 2}
   - creatureName: 2
     creatureData: {fileID: 11400000, guid: 77d124370de9c4c469275f467041f5d2, type: 2}
+  - creatureName: 3
+    creatureData: {fileID: 11400000, guid: 015c35aeb31828d419930b432c5f80b5, type: 2}

@@ -8,18 +8,36 @@ namespace Turquoise
 {
     public enum ECard
     {
-        Slash,
+        Slash,                          // 0
         Overheat,
         SteamJet,
         BuffArmor,
         BuffDamage,
-        Discard,
+        Discard,                        // 5
         ExhaustSelf,
         ExhaustOther,
         PedroHeal,
         BloodBite,
-        IfBleedsDeals10,
+        IfBleedsDeals10,                // 10
         Find3Draw1,
+        Slam,
+        DualClaws,
+        Bite,
+        VampiricBite,                   // 15
+        QuickAttack,
+        DeepWounds,
+        HeAttacks,
+        HeProtects,
+        OpenWounds,                     // 20
+        Howl,
+        StunningGrowl,
+        Woof,
+        ScareAway,
+        ShakeItOff,                     // 25
+        GoFetch,
+        LickWounds,
+        FindWeakness,
+        DefensiveStance,                // 29
         Count
     }
 }

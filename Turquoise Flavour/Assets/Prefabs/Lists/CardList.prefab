@@ -68,3 +68,37 @@ MonoBehaviour:
     cardData: {fileID: 11400000, guid: 229911e6b422c2745a8841d7eb31a3b7, type: 2}
   - cardName: 11
     cardData: {fileID: 11400000, guid: a5ed38945685e174e846ceb953c9d2b7, type: 2}
+  - cardName: 12
+    cardData: {fileID: 11400000, guid: 867b32dcba61b1f45a99aa1f51c3b4e6, type: 2}
+  - cardName: 13
+    cardData: {fileID: 11400000, guid: b35c707f40e15d145aa5fcc6502fc76d, type: 2}
+  - cardName: 14
+    cardData: {fileID: 11400000, guid: eda8bdf1cc11acc439012a063265d4c5, type: 2}
+  - cardName: 15
+    cardData: {fileID: 11400000, guid: 7accefc5d44d2964f8cc85aa8430dd52, type: 2}
+  - cardName: 16
+    cardData: {fileID: 11400000, guid: 56f0a704e0e7afd448fa599652990376, type: 2}
+  - cardName: 17
+    cardData: {fileID: 11400000, guid: a4046b6f1fe23064a9227b50ab9600ff, type: 2}
+  - cardName: 18
+    cardData: {fileID: 11400000, guid: c51fc41b379300b418ec681c8d49064c, type: 2}
+  - cardName: 19
+    cardData: {fileID: 11400000, guid: b7ee0679d88f7b64991392cd792e0409, type: 2}
+  - cardName: 20
+    cardData: {fileID: 11400000, guid: 08647d918b8d15b43bdfd84ec173c680, type: 2}
+  - cardName: 21
+    cardData: {fileID: 11400000, guid: 2143777a9c9640242af97ca805082433, type: 2}
+  - cardName: 22
+    cardData: {fileID: 11400000, guid: 09de4e5a01bdb3f459913349a3b0e371, type: 2}
+  - cardName: 23
+    cardData: {fileID: 11400000, guid: 43a7f63a5d316d9449b5bbefa8f063df, type: 2}
+  - cardName: 24
+    cardData: {fileID: 11400000, guid: 9ad6b943f829f3e438bc4b0dc6c85516, type: 2}
+  - cardName: 25
+    cardData: {fileID: 11400000, guid: 69be73a1aedac544eb3ca9342952ff7a, type: 2}
+  - cardName: 26
+    cardData: {fileID: 11400000, guid: 4377a905f5637d24195b699e817c5272, type: 2}
+  - cardName: 27
+    cardData: {fileID: 11400000, guid: 427b05fe60dbd2e42ac154598872bcf9, type: 2}
+  - cardName: 28
+    cardData: {fileID: 11400000, guid: c55105c231869ea4891b3ba5ac50a7a9, type: 2}

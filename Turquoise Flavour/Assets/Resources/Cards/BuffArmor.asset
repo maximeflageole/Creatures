@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
   m_Name: BuffArmor
   m_EditorClassIdentifier: 
-  cardName: BuffArmor
+  cardName: Buff Armor
   cardEnumValue: 3
   description: Gain 5 armor this round
   artwork: {fileID: 21300000, guid: 234ca728926ffe3489ea84367accaac1, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
   m_Name: BloodBite
   m_EditorClassIdentifier: 
-  cardName: BloodBite
+  cardName: Blood Bite
   cardEnumValue: 9
   description: Inflicts 4 damage. Inflicts 2 bleed
   artwork: {fileID: 21300000, guid: 8d50d5fc3b53c5a4ca745e3c97659630, type: 3}

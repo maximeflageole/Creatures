@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cda87c80a53c91d4a908b444eee9d35b, type: 3}
-  m_Name: FireCrab
+  m_Name: Doggo
   m_EditorClassIdentifier: 
-  eCreature: 0
-  creatureName: Ignis Carcinos
-  creatureType: 5
-  initialHealth: 50
-  healthPerLevel: 9
+  eCreature: 3
+  creatureName: Doggo
+  creatureType: 1
+  initialHealth: 45
+  healthPerLevel: 7
   initialMana: 3
-  sprite: {fileID: 21300000, guid: 1404fbd094deed84bba271d460d6d597, type: 3}
-  baseDeck: 00000000000000000000000000000000030000000300000003000000020000000200000001000000
-  activeAbilityData: {fileID: 11400000, guid: c6c56fc37dd496447877646fc20c4f16, type: 2}
+  sprite: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
+  baseDeck: 09000000090000001d0000001d0000000e0000000e0000000e0000001b0000001d0000001d000000
+  activeAbilityData: {fileID: 11400000, guid: 3d6d59fc37cbab340a9124f9312d6351, type: 2}
   level: 0
   experience: 0
-  levelSpeed: 2
+  levelSpeed: 0
   abilityTree: {fileID: 11400000, guid: f6476787307250f4588df08e9a31b83b, type: 2}

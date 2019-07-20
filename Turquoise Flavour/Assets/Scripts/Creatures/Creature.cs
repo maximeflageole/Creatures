@@ -473,9 +473,10 @@ namespace Creatures
     [System.Serializable]
     public enum ECreature
     {
-        FireCrab,
+        FireCrab,                   // 0
         Dragon,
         FrostOwl,
+        Doggo,
         Count
     }
 }
