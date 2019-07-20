@@ -174,7 +174,14 @@ public class Creature : MonoBehaviour
 
     public void EndBattle()
     {
-        ExperienceManager.AddExperience(50, ref m_experience, this);
+        if (m_conditionsComponent != null)
+        {
+            m_conditionsComponent.EndBattle();
+        }
+    }
+
+    public void QuitBattle()
+    {
         m_inBattle = false;
     }
 
@@ -202,10 +209,6 @@ public class Creature : MonoBehaviour
             {
                 m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
             }
-            if (Input.GetKeyDown("x"))
-            {
-                ExperienceManager.AddExperience(50, ref m_experience, this);
-            }
         }
     }
 
@@ -230,6 +233,22 @@ public class Creature : MonoBehaviour
         if (m_health <= 0)
         {
             DieEvent();
+        }
+    }
+
+    public void StartTurn()
+    {
+        if (m_conditionsComponent != null)
+        {
+            m_conditionsComponent.StartTurn();
+        }
+    }
+
+    public void EndTurn()
+    {
+        if (m_conditionsComponent != null)
+        {
+            m_conditionsComponent.EndTurn();
         }
     }
 

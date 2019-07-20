@@ -47,6 +47,9 @@ namespace Turquoise
         Consume,
         Bleed,
         Armor,
+        DamageBuff,
+        Find,
+        Pick,
         Other,
         Count
     }
@@ -74,12 +77,17 @@ public class Card : MonoBehaviour
     [SerializeField]
     protected CardData m_cardData;
 
+    [SerializeField]
+    protected bool m_cardInSelection;
+    public bool GetCardInSelection() { return m_cardInSelection; }
+    public void SetCardInSelection(bool cardInHand) { m_cardInSelection = cardInHand; } 
+
     public CardData GetCardData()
     {
         return m_cardData;
     }
 
-    public Turquoise.ETarget GetTarget()
+    public ETarget GetTarget()
     {
         if (m_cardData != null)
         {
@@ -121,6 +129,7 @@ public class Card : MonoBehaviour
 
     public void Reset()
     {
+        m_cardInSelection = false;
         isPlaying = false;
         isDropping = false;
         isExhausting = false;

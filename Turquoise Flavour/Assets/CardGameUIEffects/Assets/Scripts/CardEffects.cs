@@ -113,6 +113,7 @@ public class CardEffects : TurquoiseEvent {
     [SerializeField]
     private List<Card> playingCard = new List<Card>();
     private List<Card> shuffleCardsEffects = new List<Card>();
+    public bool IsShuffleCardEmpty() { return shuffleCardsEffects.Count == 0; }
     private List<float> shuffleCardDelay = new List<float>();
     private float shuffleBegin;
     private GameObject focusOnPlayer = null;
@@ -122,8 +123,10 @@ public class CardEffects : TurquoiseEvent {
     private List<GameObject> arrows = new List<GameObject>();
     [SerializeField]
     protected Pile drawPileCards;
+    public Pile GetDrawPile() { return drawPileCards; }
     [SerializeField]
     protected Pile discardPileCards;
+    public bool IsDiscardPileEmpty() { return discardPileCards.Count() == 0; }
     [SerializeField]
     protected Pile exhaustPileCards;
     [SerializeField]
@@ -138,6 +141,8 @@ public class CardEffects : TurquoiseEvent {
 
     //Added for Turquoise Project
     [SerializeField]
+    protected List<Action> m_actionPile;
+    [SerializeField]
     protected bool m_hasValidTarget;
     [SerializeField]
     protected bool m_discardingCards;
@@ -147,6 +152,8 @@ public class CardEffects : TurquoiseEvent {
     protected bool m_noTargetSkill;
     [SerializeField]
     protected bool m_isPlayerTurn;
+    public bool m_isSelectingCards;
+    public bool m_hasPeekInOrderBuff;
 
     public void Awake()
     {
@@ -163,19 +170,15 @@ public class CardEffects : TurquoiseEvent {
         return m_player.GetCurrentCreature();
     }
 
-    public Creature GetEnmeyCreature()
+    public Creature GetEnemyCreature()
     {
         return m_enemyCreature.GetComponent<Creature>();
     }
 
-    public Turquoise.ETeams GetFastestCreatureTeam()
+    public ETeams GetFastestCreatureTeam()
     {
         int enemySpeed = m_enemyCreature.GetComponent<Creature>().GetSpeed();
-        Debug.Log("Enemy Speed = " + enemySpeed);
-
         int playerSpeed = m_player.GetCurrentCreature().GetSpeed();
-        Debug.Log("Player Speed = " + playerSpeed);
-
 
         if (enemySpeed > playerSpeed)
         {
@@ -184,7 +187,14 @@ public class CardEffects : TurquoiseEvent {
         return m_player.GetCurrentCreature().m_team;
     }
 
-    public static CardEffects GetCardEffectsInstance()
+    public Creature GetFastestCreature()
+    {
+        if (GetFastestCreatureTeam() == ETeams.Ally)
+            return GetPlayerCreature();
+        return GetEnemyCreature();
+    }
+
+    public static CardEffects GetInstance()
     {
         return m_cardEffectInstance;
     }
@@ -231,8 +241,9 @@ public class CardEffects : TurquoiseEvent {
 
     void Update()
     {
+        UpdateActions();
         // Shuffle animation has the highest priority to display
-        if (shufflingCard == false)
+        if (shufflingCard == false && m_isSelectingCards == false)
         {
             if (mouseClickCard == -1)
             {
@@ -250,6 +261,12 @@ public class CardEffects : TurquoiseEvent {
             PlayAbility();
             GetMouseOnCharacter();
         }
+        //CHEAT to display cards in order
+        if (Input.GetKeyDown("k"))
+        {
+            m_hasPeekInOrderBuff = !m_hasPeekInOrderBuff;
+            print("Cheat " + m_hasPeekInOrderBuff);
+        }
     }
 
     protected void CheckCardSelect()
@@ -262,7 +279,7 @@ public class CardEffects : TurquoiseEvent {
                 Card card = hit.collider.GetComponent<Card>();
                 if (card != null)
                 {
-                    m_cardSelectUI.AddCard(card);
+                    m_cardSelectUI.SelectCard(card);
                 }
             }
         }
@@ -275,7 +292,7 @@ public class CardEffects : TurquoiseEvent {
 
     private void FixedUpdate()
     {
-        if (shufflingCard == false)
+        if (shufflingCard == false && m_isSelectingCards == false)
         {
             CardRotate();
             CardMove();
@@ -394,6 +411,7 @@ public class CardEffects : TurquoiseEvent {
     Card GetCardFromDrawPile()
     {
         var card = drawPileCards.Draw();
+        card.SetCardInSelection(false);
         card.Reset();
         card.gameObject.SetActive(true);
         return card;
@@ -425,18 +443,20 @@ public class CardEffects : TurquoiseEvent {
 
     void RefreshDrawPile()
     {
+        ShufflePile(discardPileCards);
         // All cards will be sent from discard pile to draw pile
         while (discardPileCards.Count() > 0)
         {
             var card = discardPileCards.Draw();
             drawPileCards.AddCard(card);
         }
-        ShuffleDrawPile();
+        ActionShuffling actionShuffling = gameObject.AddComponent<ActionShuffling>();
+        m_actionPile.Insert(0, actionShuffling);
     }
 
-    void ShuffleDrawPile()
+    void ShufflePile(Pile pile)
     {
-        drawPileCards.ShufflePile();
+        pile.ShufflePile();
     }
 
     IEnumerator SendHandCards()
@@ -648,11 +668,11 @@ public class CardEffects : TurquoiseEvent {
                     var selectedCreature = card.targetPlayer.GetComponent<CreatureUIComp>();
                     if (selectedCreature != null)
                     {
-                        if (selectedCreature.m_team == Turquoise.ETeams.Ally)
+                        if (selectedCreature.m_team == ETeams.Ally)
                         {
                             card.ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
                         }
-                        else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
+                        else if (selectedCreature.m_team == ETeams.Enemy)
                         {
                             card.ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
                         }
@@ -690,12 +710,40 @@ public class CardEffects : TurquoiseEvent {
                             ExhaustSelf(card);
                         }
                     }
+                    if (effect.m_effect == ECardEffect.Find)
+                    {
+                        if (drawPileCards.Count() < effect.m_value)
+                        {
+                            RefreshDrawPile();
+                        }
+                        ActionPickCards actionPickCards = gameObject.AddComponent<ActionPickCards>();
+                        actionPickCards.SetAction(1, effect.m_value);
+                        m_actionPile.Add(actionPickCards);
+                    }
                 }
                 return;
             }
             card.gameObject.transform.position = Vector3.MoveTowards(card.gameObject.transform.position, dstPos, Time.fixedDeltaTime * cardPlaySpeed);
             card.dropDisplayTime = Time.time;
         }
+    }
+
+    public void CardSelectionCallback(List<int> selectedCardIndex, int totalCards)
+    {
+        m_isSelectingCards = false;
+        for (int i = 0; i < totalCards; i++)
+        {
+            if (selectedCardIndex.Contains(i))
+            {
+                Debug.Log("Card choice is " + i);
+                AddHandCard();
+            }
+            else
+            {
+                drawPileCards.InsertAtBottom(drawPileCards.Draw());
+            }
+        }
+        GameMaster.GetInstance().m_cardPileUI.ClearCards();
     }
 
     public int CardHandCount()
@@ -848,6 +896,10 @@ public class CardEffects : TurquoiseEvent {
         for (int i = 0; i < handCards.Count; ++i)
         {
             Card card = handCards[i];
+            if (card.GetCardInSelection())
+            {
+                continue;
+            }
             Transform transform = card.gameObject.transform;
             if (Mathf.Abs(card.curAngle - card.targetAngle) <= Time.fixedDeltaTime * rotateSpeed)
             {
@@ -873,6 +925,10 @@ public class CardEffects : TurquoiseEvent {
         for (int i = 0; i < handCards.Count; i++)
         {
             Card card = handCards[i];
+            if (card.GetCardInSelection())
+            {
+                continue;
+            }
             Transform transform = card.gameObject.transform;
             transform.position = new Vector3(transform.position.x, transform.position.y, card.targetPosition.z);
             if ((transform.position - card.targetPosition).magnitude <= Time.fixedDeltaTime * card.moveSpeed)
@@ -1064,6 +1120,7 @@ public class CardEffects : TurquoiseEvent {
         HideArrows();
         m_isPlayerTurn = !m_isPlayerTurn;
         ChangeTurn();
+        BattleStateMachine.GetInstance().ChangeTurn();
     }
 
     void DiscardCard(Card card)
@@ -1303,7 +1360,7 @@ public class CardEffects : TurquoiseEvent {
     void MouseOnCard(int idx)
     {
         Card card = handCards[idx];
-        GameObject cardgo = card.gameObject;
+        //GameObject cardgo = card.gameObject;
         //card.sortOrder = cardgo.GetComponent<SpriteRenderer>().sortingOrder;
         //cardgo.GetComponent<SpriteRenderer>().sortingOrder = 100;   // Move to the topest layer when a card is checking by the player
         card.targetScale = cardBigScale;
@@ -1442,7 +1499,7 @@ public class CardEffects : TurquoiseEvent {
 
     public void StartFirstTurn()
     {
-        Turquoise.ETeams team = GetFastestCreatureTeam();
+        ETeams team = GetFastestCreatureTeam();
         if (team == m_player.GetCurrentCreature().m_team)
         {
             m_isPlayerTurn = true;
@@ -1468,6 +1525,34 @@ public class CardEffects : TurquoiseEvent {
         {
             print("Begin Enemy's turn");
             m_player.TurnEnd();
+        }
+    }
+
+    public void EndBattleState()
+    {
+        foreach (var card in handCards)
+        {
+            card.gameObject.SetActive(false);
+        }
+        GetEnemyCreature().EndBattle();
+        GetPlayerCreature().EndBattle();
+    }
+
+    public void UpdateActions()
+    {
+        if (m_actionPile.Count != 0)
+        {
+            Action currentAction = m_actionPile[0];
+            if (!currentAction.m_actionStarted)
+            {
+                currentAction.StartAction();
+            }
+            currentAction.UpdateAction();
+            if (currentAction.m_actionEnded)
+            {
+                Destroy(m_actionPile[0]);
+                m_actionPile.RemoveAt(0);
+            }
         }
     }
 }

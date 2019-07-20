@@ -8,4 +8,6 @@ public class ConditionData : ScriptableObject
     public Turquoise.ECardEffect cardEffect;
     public string conditionName;
     public Sprite sprite;
+    public Turquoise.EBoonDecayType boonDecayType;
+    public Turquoise.EBoonDecayTime boonDecayTime;
 }

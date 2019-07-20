@@ -19,7 +19,7 @@ public class BattleState : TurquoiseState
     public override void StartState()
     {
         Debug.Log("Start BattleState");
-        CardEffects cardEffects = CardEffects.GetCardEffectsInstance();
+        CardEffects cardEffects = CardEffects.GetInstance();
 
         if(!m_isBattleStarted)
         {
@@ -30,6 +30,7 @@ public class BattleState : TurquoiseState
 
     public override void EndState()
     {
+        CardEffects.GetInstance().EndBattleState();
         Debug.Log("Exits BattleState");
     }
 

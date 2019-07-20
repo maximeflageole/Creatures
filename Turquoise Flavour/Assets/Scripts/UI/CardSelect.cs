@@ -34,27 +34,40 @@ public class CardSelect : MonoBehaviour
         }
         foreach (var card in m_selectedCards)
         {
-            card.transform.position = m_anchor;
+            card.transform.position = m_anchor + new Vector3(2.0f * m_selectedCards.IndexOf(card), 0.0f, 0.0f);
         }
     }
 
-    public void AddCard(Card card)
+    public void SelectCard(Card card)
     {
-        if (m_selectedCards.Count < m_amountToSelect)
+        if (m_selectedCards.Contains(card))
         {
+            m_selectedCards.Remove(card);
+            card.SetCardInSelection(false);
+        }
+        else if (m_selectedCards.Count < m_amountToSelect)
+        {
+            if (m_selectedCards.Contains(card))
+            {
+                return;
+            }
             m_selectedCards.Add(card);
-            card.transform.position = m_anchor;
+            card.SetCardInSelection(true);
         }
     }
 
     protected void Discard()
     {
-        if ((m_selectedCards.Count == m_amountToSelect) || CardEffects.GetCardEffectsInstance().CardHandCount() == m_selectedCards.Count)
+        if ((m_selectedCards.Count == m_amountToSelect) || CardEffects.GetInstance().CardHandCount() == m_selectedCards.Count)
         {
-            CardEffects.GetCardEffectsInstance().SelectCardList(m_selectedCards);
+            CardEffects.GetInstance().SelectCardList(m_selectedCards);
+            foreach (var card in m_selectedCards)
+            {
+                card.SetCardInSelection(false);
+            }
             m_selectedCards.Clear();
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
     }
 
     protected void SelectButton()

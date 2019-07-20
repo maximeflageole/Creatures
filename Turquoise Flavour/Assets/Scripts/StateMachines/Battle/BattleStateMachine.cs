@@ -14,6 +14,8 @@ public class BattleStateMachine : MonoBehaviour
     protected Creature m_playerCreature;
     [SerializeField]
     protected Creature m_enemyCreature;
+    [SerializeField]
+    protected Creature m_currentCreature;
     public static BattleStateMachine s_battleStateMachine;
     [SerializeField]
     protected int m_turnCount;
@@ -61,21 +63,23 @@ public class BattleStateMachine : MonoBehaviour
         m_battleEnded = false;
         m_currentBattlePhase = EBattlePhase.CreaturePick;
         BattleStates[m_currentBattlePhase].StartState();
-        CardEffects cardEffects = CardEffects.GetCardEffectsInstance();
+        CardEffects cardEffects = CardEffects.GetInstance();
         cardEffects.Initialization();
         m_turnCount = 1;
 
         m_playerCreature = cardEffects.GetPlayerCreature();
-        m_enemyCreature = cardEffects.GetEnmeyCreature();
+        m_enemyCreature = cardEffects.GetEnemyCreature();
+        m_currentCreature = cardEffects.GetFastestCreature();
     }
 
     public void EndBattle()
     {
         Debug.Log("End Battle");
+        m_playerCreature.QuitBattle();
         m_playerCreature = null;
         m_enemyCreature = null;
         m_battleEnded = true;
-        Destroy(CardEffects.GetCardEffectsInstance().gameObject);
+        Destroy(CardEffects.GetInstance().gameObject);
         GameMaster.GetInstance().EndCurrentEvent(true);
     }
 
@@ -112,6 +116,20 @@ public class BattleStateMachine : MonoBehaviour
     public void AddLeveledUpCreature(Creature creature)
     {
         m_levelUpsInBattle.Enqueue(creature);
+    }
+
+    public void ChangeTurn()
+    {
+        m_currentCreature.EndTurn();
+        if (m_currentCreature == m_enemyCreature)
+        {
+            m_currentCreature = m_playerCreature;
+        }
+        else
+        {
+            m_currentCreature = m_enemyCreature;
+        }
+        m_currentCreature.StartTurn();
     }
 }
 

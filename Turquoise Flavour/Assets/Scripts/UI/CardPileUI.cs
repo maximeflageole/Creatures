@@ -13,6 +13,10 @@ public class CardPileUI : MonoBehaviour
     protected GameObject m_cardUIPrefab;
     [SerializeField]
     protected int m_cardsToPick;
+    [SerializeField]
+    protected RectTransform m_cardsAnchorTransform;
+    [SerializeField]
+    protected List<CardUI> m_selectedCards;
 
     public void DisplayCardPile(List<ECard> cardList, bool orderAlpha, int cardsToPick)
     {
@@ -44,6 +48,8 @@ public class CardPileUI : MonoBehaviour
         }
         m_cardsGO.Clear();
         m_cardsData.Clear();
+        gameObject.SetActive(false);
+        m_selectedCards.Clear();
     }
 
     void DisplayCards(bool orderAlpha)
@@ -55,13 +61,14 @@ public class CardPileUI : MonoBehaviour
         }
         for (int i = 0; i < cardsToShow.Count; i++)
         {
-            m_cardsGO[i].GetComponent<CardUI>().InitCardUI2D(cardsToShow[i].cardName, cardsToShow[i].description, cardsToShow[i].manaCost.ToString(), cardsToShow[i].artwork);
+            m_cardsGO[i].GetComponent<CardUI>().InitCardUI2D(cardsToShow[i]);
         }
+        gameObject.SetActive(true);
     }
 
     void AddCard(ECard card)
     {
-        GameObject cardInstance = Instantiate(m_cardUIPrefab, transform);
+        GameObject cardInstance = Instantiate(m_cardUIPrefab, m_cardsAnchorTransform);
         m_cardsGO.Add(cardInstance);
         CardData data = GameMaster.GetInstance().m_cardList.GetCardDataFromCardName(card);
         m_cardsData.Add(data);
@@ -69,7 +76,7 @@ public class CardPileUI : MonoBehaviour
 
     void AddCard(Card card)
     {
-        GameObject cardInstance = Instantiate(m_cardUIPrefab, transform);
+        GameObject cardInstance = Instantiate(m_cardUIPrefab, m_cardsAnchorTransform);
         m_cardsGO.Add(cardInstance);
         CardData data = card.GetCardData();
         m_cardsData.Add(data);
@@ -94,5 +101,37 @@ public class CardPileUI : MonoBehaviour
             initialCardList.Remove(firstAlpha);
         }
         return organizedList;
+    }
+
+    public void OnCardSelect(CardUI cardUI)
+    {
+        if (!m_selectedCards.Contains(cardUI) && m_selectedCards.Count < m_cardsToPick)
+        {
+            m_selectedCards.Add(cardUI);
+            cardUI.OnCardSelected(true);
+        }
+        else if (m_selectedCards.Contains(cardUI))
+        {
+            m_selectedCards.Remove(cardUI);
+            cardUI.OnCardSelected(false);
+        }
+    }
+
+    public void OnButtonSelect()
+    {
+        List<int> indexList = new List<int>();
+        if (m_selectedCards.Count == m_cardsToPick)
+        {
+            foreach(var card in m_selectedCards)
+            {
+                indexList.Add(m_cardsData.IndexOf(card.GetCardData()));
+            }
+            CardEffects.GetInstance().CardSelectionCallback(indexList, m_cardsData.Count);
+        }
+    }
+
+    public bool Validate()
+    {
+        return false;
     }
 }

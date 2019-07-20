@@ -18,7 +18,7 @@ public class CreaturePickState : TurquoiseState
     public override void StartState()
     {
         Debug.Log("Start Creature Pick State");
-        CardEffects.GetCardEffectsInstance().SendCreatureToBattle(Player.GetPlayerInstance().GetCurrentCreature());
+        CardEffects.GetInstance().SendCreatureToBattle(Player.GetPlayerInstance().GetCurrentCreature());
     }
 
     public override void EndState()
