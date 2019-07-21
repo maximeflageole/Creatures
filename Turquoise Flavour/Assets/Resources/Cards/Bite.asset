@@ -22,12 +22,15 @@ MonoBehaviour:
   - m_effect: 0
     m_value: 8
     m_targetType: 1
+    m_chancesOfEffectOnHundred: 0
     m_conditions: 
   - m_effect: 0
-    m_value: 0
+    m_value: 8
     m_targetType: 1
+    m_chancesOfEffectOnHundred: 30
     m_conditions: 
   cardGenre: 0
   damageType: 0
   rarity: 0
   creaturePart: 1
+  chancesOnHundred: 0

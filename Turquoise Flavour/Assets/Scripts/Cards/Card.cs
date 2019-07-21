@@ -144,8 +144,16 @@ public class Card : MonoBehaviour
 
     public void ApplyEffects(Creature selectedCreature)
     {
+        if (!GetIsLucky(m_cardData.chancesOnHundred))
+        {
+            return;
+        }
         foreach (var cardEffect in m_effects)
         {
+            if (!GetIsLucky(cardEffect.m_chancesOfEffectOnHundred))
+            {
+                continue;
+            }
             bool conditionsVerified = true;
             foreach (var condition in cardEffect.m_conditions)
             {
@@ -166,6 +174,20 @@ public class Card : MonoBehaviour
     {
         selectedCreature.ApplyEffect(effect, m_cardData.damageType);
     }
+
+    bool GetIsLucky(int odds)
+    {
+        bool chances = (odds == 0 || odds == 100);
+        if (!chances)
+        {
+            int randomNumber = Random.Range(0, 100);
+            if (randomNumber < odds)
+            {
+                chances = true;
+            }
+        }
+        return chances;
+    }
 }
 
 [System.Serializable]
@@ -174,5 +196,6 @@ public struct SAbilityEffect
     public ECardEffect m_effect;
     public int m_value;
     public ETarget m_targetType;
+    public int m_chancesOfEffectOnHundred;
     public List<ECardEffect> m_conditions;
 }
