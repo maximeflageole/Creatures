@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Defensive stance
   cardEnumValue: 29
   description: Gain 4 armor
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
   manaCost: 1
   targetType: 0
   effects:
