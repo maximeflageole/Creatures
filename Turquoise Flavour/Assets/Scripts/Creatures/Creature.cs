@@ -125,7 +125,7 @@ public class Creature : MonoBehaviour
         m_conditionsComponent = gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SAbilityEffect cardEffect, EDamageType damageType = EDamageType.None)
+    public void ApplyEffect(SAbilityEffect cardEffect, Creature cardPlayingCreature, EDamageType damageType = EDamageType.None)
     {
         if (m_conditionsComponent != null)
         {
@@ -135,7 +135,9 @@ public class Creature : MonoBehaviour
         switch (cardEffect.m_effect)
         {
             case ECardEffect.Damage:
-                ApplyDamage(cardEffect.m_value, damageType);
+                //TODO: This is taking the damage buff from the damage receiving creature... Needs a refactor
+                int calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(cardEffect.m_value);
+                ApplyDamage(calculatedDamage, damageType);
                 break;
             case ECardEffect.Healing:
                 ApplyDamage(-cardEffect.m_value, damageType);

@@ -607,16 +607,17 @@ public class CardEffects : TurquoiseEvent {
 
             if (focusOnPlayer != null)
             {
+                Creature cardPlayingCreature = GetPlayerCreature();
                 var selectedCreature = focusOnPlayer.GetComponent<CreatureUIComp>();
                 if (selectedCreature != null)
                 {
                     if (selectedCreature.m_team == Turquoise.ETeams.Ally)
                     {
-                        m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
+                        m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(GetPlayerCreature(), cardPlayingCreature);
                     }
                     else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
                     {
-                        m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
+                        m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(GetEnemyCreature(), cardPlayingCreature);
                     }
                 }
             }
@@ -670,16 +671,17 @@ public class CardEffects : TurquoiseEvent {
                 }
                 if (card.targetPlayer != null)
                 {
+                    var cardPlayingCreature = GetPlayerCreature();
                     var selectedCreature = card.targetPlayer.GetComponent<CreatureUIComp>();
                     if (selectedCreature != null)
                     {
                         if (selectedCreature.m_team == ETeams.Ally)
                         {
-                            card.ApplyEffects(Player.GetPlayerInstance().GetCurrentCreature());
+                            card.ApplyEffects(GetPlayerCreature(), cardPlayingCreature);
                         }
                         else if (selectedCreature.m_team == ETeams.Enemy)
                         {
-                            card.ApplyEffects(selectedCreature.gameObject.GetComponent<Creature>());
+                            card.ApplyEffects(GetEnemyCreature(), cardPlayingCreature);
                         }
                     }
                 }

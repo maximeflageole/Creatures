@@ -50,3 +50,9 @@ MonoBehaviour:
     boonData: {fileID: 11400000, guid: 1cdf1d40aef9132429589094a357f293, type: 2}
   - cardEffect: 8
     boonData: {fileID: 11400000, guid: 5a1e82ee7c5f4a844b300f6b45b53d27, type: 2}
+  - cardEffect: 13
+    boonData: {fileID: 11400000, guid: 5799237aac528dd49bb235600de67579, type: 2}
+  - cardEffect: 14
+    boonData: {fileID: 11400000, guid: df895862ed2e26e40919bab49140dc8c, type: 2}
+  - cardEffect: 12
+    boonData: {fileID: 11400000, guid: 9dd9daf14aed8b74daf33549b682b94c, type: 2}

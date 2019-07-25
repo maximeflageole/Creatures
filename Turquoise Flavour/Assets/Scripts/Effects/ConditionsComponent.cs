@@ -157,6 +157,18 @@ public class ConditionsComponent : MonoBehaviour
         }
     }
 
+    public int GetCalculatedDamage(int initialDamage)
+    {
+        int calculatedDamage = initialDamage;
+        foreach (var boon in m_boons)
+        {
+            if (boon.GetData().cardEffect == ECardEffect.DamageBuff)
+            {
+                calculatedDamage += boon.GetStacks();
+            }
+        }
+        return calculatedDamage;
+    }
     void SufferBoon(Condition condition)
     {
         switch (condition.GetData().cardEffect)

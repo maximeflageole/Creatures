@@ -51,6 +51,9 @@ namespace Turquoise
         Find,
         Pick,
         Other,
+        Confusion,
+        Fear,
+        Stun,
         Count
     }
 
@@ -142,7 +145,7 @@ public class Card : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
     }
 
-    public void ApplyEffects(Creature selectedCreature)
+    public void ApplyEffects(Creature selectedCreature, Creature cardPlayingCreature)
     {
         if (!GetIsLucky(m_cardData.chancesOnHundred))
         {
@@ -165,14 +168,14 @@ public class Card : MonoBehaviour
             }
             if (conditionsVerified)
             {
-                ApplyEffect(cardEffect, selectedCreature);
+                ApplyEffect(cardEffect, selectedCreature, cardPlayingCreature);
             }
         }
     }
 
-    protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature)
+    protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature, Creature cardPlayingCreature)
     {
-        selectedCreature.ApplyEffect(effect, m_cardData.damageType);
+        selectedCreature.ApplyEffect(effect, cardPlayingCreature, m_cardData.damageType);
     }
 
     bool GetIsLucky(int odds)

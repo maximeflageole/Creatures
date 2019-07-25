@@ -43,7 +43,7 @@ public class ActiveAbility : MonoBehaviour
         return m_abilityData.targetType;
     }
 
-    public void ApplyEffects(Creature selectedCreature)
+    public void ApplyEffects(Creature selectedCreature, Creature cardPlayingCreature)
     {
         foreach (var effect in m_abilityData.effects)
         {
@@ -53,14 +53,14 @@ public class ActiveAbility : MonoBehaviour
             }
             else
             {
-                ApplyEffect(effect, selectedCreature);
+                ApplyEffect(effect, selectedCreature, cardPlayingCreature);
             }
         }
     }
 
-    protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature)
+    protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature, Creature cardPlayingCreature)
     {
-        selectedCreature.ApplyEffect(effect);
+        selectedCreature.ApplyEffect(effect, cardPlayingCreature);
     }
 
 }
