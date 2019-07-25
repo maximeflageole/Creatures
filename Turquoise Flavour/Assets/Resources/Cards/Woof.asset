@@ -20,7 +20,7 @@ MonoBehaviour:
   targetType: 2
   effects:
   - m_effect: 13
-    m_value: 2
+    m_value: 4
     m_targetType: 2
     m_chancesOfEffectOnHundred: 0
     m_conditions: 

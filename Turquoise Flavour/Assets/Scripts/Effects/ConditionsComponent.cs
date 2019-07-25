@@ -237,6 +237,44 @@ public class ConditionsComponent : MonoBehaviour
         }
         m_boons.Clear();
     }
+
+    public void ClearDebuffs(int clearAmount)
+    {
+        int debuffsStacks = 0;
+        foreach (var boon in m_boons)
+        {
+            if (IsDebuff(boon.GetData()))
+            {
+                debuffsStacks += boon.GetStacks();
+            }
+        }
+
+        for (int i = 0; i < debuffsStacks && i < clearAmount; i++)
+        {
+            int randNumber = Random.Range(0, debuffsStacks);
+            for (int j = 0; j < m_boons.Count; j++)
+            {
+                Condition boon = m_boons[j];
+                if (IsDebuff(boon.GetData()))
+                {
+                    randNumber -= boon.GetStacks();
+                    if (randNumber < 0)
+                    {
+                        boon.IncrementStacks(-1);
+                        if (boon.GetStacks() <= 0)
+                        {
+                            m_boons.Remove(boon);
+                            Destroy(boon);
+                        }
+                        debuffsStacks--;
+                        clearAmount--;
+                        i--;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 namespace Turquoise

@@ -127,10 +127,12 @@ public class Creature : MonoBehaviour
 
     public void ApplyEffect(SAbilityEffect cardEffect, Creature cardPlayingCreature, EDamageType damageType = EDamageType.None)
     {
-        if (m_conditionsComponent != null)
+        if (m_conditionsComponent == null)
         {
-            m_conditionsComponent.TryAddCondition(cardEffect);
+            Debug.LogError("Creature has no conditions component!");
+            return;
         }
+        m_conditionsComponent.TryAddCondition(cardEffect);
 
         switch (cardEffect.m_effect)
         {
@@ -141,6 +143,9 @@ public class Creature : MonoBehaviour
                 break;
             case ECardEffect.Healing:
                 ApplyDamage(-cardEffect.m_value, damageType);
+                break;
+            case ECardEffect.Clears:
+                m_conditionsComponent.ClearDebuffs(cardEffect.m_value);
                 break;
             default:
                 break;

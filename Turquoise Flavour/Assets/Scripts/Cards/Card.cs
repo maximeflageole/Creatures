@@ -54,6 +54,7 @@ namespace Turquoise
         Confusion,
         Fear,
         Stun,
+        Clears,
         Count
     }
 
