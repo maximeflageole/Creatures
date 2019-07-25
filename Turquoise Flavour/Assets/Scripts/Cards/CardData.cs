@@ -9,7 +9,7 @@ public class CardData : ScriptableObject
     public Turquoise.ECard cardEnumValue;
     public string description;
     public Sprite artwork;
-    public int manaCost;
+    public int energyCost;
     public Turquoise.ETarget targetType;
     public List<SAbilityEffect> effects;
     public Turquoise.ECardGenre cardGenre;

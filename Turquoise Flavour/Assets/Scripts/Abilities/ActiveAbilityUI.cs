@@ -39,7 +39,7 @@ public class ActiveAbilityUI : MonoBehaviour
         m_spriteRenderer.sprite = data.artwork;
         m_manaCostSpriteRenderer.sprite = data.ManaCostArtwork;
         m_cooldownSpriteRenderer.sprite = data.CooldownArtwork;
-        m_manaCostText.text = data.manaCost.ToString();
+        m_manaCostText.text = data.energyCost.ToString();
         if (data.cooldown == 0)
         {
             m_cooldownText.text = "-";

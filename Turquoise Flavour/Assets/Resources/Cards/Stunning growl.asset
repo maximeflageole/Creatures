@@ -16,7 +16,7 @@ MonoBehaviour:
   cardEnumValue: 22
   description: Inflicts 2 stuns
   artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
-  manaCost: 2
+  energyCost: 2
   targetType: 1
   effects:
   - m_effect: 14

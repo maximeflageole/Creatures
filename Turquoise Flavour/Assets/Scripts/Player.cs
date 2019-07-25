@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
     public bool TryPlayCard(Card card)
     {
         //Verify mana
-        if (card.GetCardData().manaCost > m_currentCreature.GetCurrentMana())
+        if (card.GetCardData().energyCost > m_currentCreature.GetCurrentMana())
         {
             print("Not enough mana to play this card");
             return false;

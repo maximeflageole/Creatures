@@ -333,7 +333,7 @@ public class CardEffects : TurquoiseEvent {
             drawPileCards.Clear();
             playingCard.Clear();
             discardPileCards.Clear();
-            creature.RefreshMana();
+            creature.RefreshEnergy();
 
             Deck deck = creature.GetDeck();
             if (deck != null)
@@ -367,7 +367,7 @@ public class CardEffects : TurquoiseEvent {
     {
         creature = Player.GetPlayerInstance().GetCurrentCreature();
         creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
-        creature.RefreshMana();
+        creature.RefreshEnergy();
 
         if (creature.GetActiveAbility() != null)
         {
@@ -611,11 +611,11 @@ public class CardEffects : TurquoiseEvent {
                 var selectedCreature = focusOnPlayer.GetComponent<CreatureUIComp>();
                 if (selectedCreature != null)
                 {
-                    if (selectedCreature.m_team == Turquoise.ETeams.Ally)
+                    if (selectedCreature.m_team == ETeams.Ally)
                     {
                         m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(GetPlayerCreature(), cardPlayingCreature);
                     }
-                    else if (selectedCreature.m_team == Turquoise.ETeams.Enemy)
+                    else if (selectedCreature.m_team == ETeams.Enemy)
                     {
                         m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(GetEnemyCreature(), cardPlayingCreature);
                     }
@@ -688,6 +688,20 @@ public class CardEffects : TurquoiseEvent {
                 //TODO: See card.ApplyEffects: Need to have similar, unified verifications for conditions
                 foreach (var effect in card.m_effects)
                 {
+                    bool conditionVerified = true;
+                    foreach (var condition in effect.m_conditions)
+                    {
+                        //TODO: Target is supposed to be selected creature, not enemy creature
+                        if (!ConditionHasBoon.VerifyCondition(GetEnemyCreature(), condition))
+                        {
+                            conditionVerified = false;
+                            break;
+                        }
+                    }
+                    if (!conditionVerified)
+                    {
+                        continue;
+                    }
                     if (effect.m_effect == ECardEffect.Draw)
                     {
                         StartCoroutine(SendHandCards(effect.m_value));
@@ -726,6 +740,10 @@ public class CardEffects : TurquoiseEvent {
                         ActionPickCards actionPickCards = gameObject.AddComponent<ActionPickCards>();
                         actionPickCards.SetAction(1, effect.m_value);
                         m_actionPile.Add(actionPickCards);
+                    }
+                    if (effect.m_effect == ECardEffect.EnergyGain)
+                    {
+                        GetPlayerCreature().IncrementEnergy(effect.m_value);
                     }
                 }
                 return;

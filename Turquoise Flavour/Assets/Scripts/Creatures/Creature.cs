@@ -53,7 +53,7 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected int m_armor = 0;
     [SerializeField]
-    protected int m_currentMana = 0;
+    protected int m_currentEnergy = 0;
     [SerializeField]
     protected int m_currentMaxMana = m_baseMaxMana;
     [SerializeField]
@@ -137,7 +137,6 @@ public class Creature : MonoBehaviour
         switch (cardEffect.m_effect)
         {
             case ECardEffect.Damage:
-                //TODO: This is taking the damage buff from the damage receiving creature... Needs a refactor
                 int calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(cardEffect.m_value);
                 ApplyDamage(calculatedDamage, damageType);
                 break;
@@ -146,6 +145,9 @@ public class Creature : MonoBehaviour
                 break;
             case ECardEffect.Clears:
                 m_conditionsComponent.ClearDebuffs(cardEffect.m_value);
+                break;
+            case ECardEffect.EnergyGain:
+                IncrementEnergy(cardEffect.m_value);
                 break;
             default:
                 break;
@@ -214,7 +216,7 @@ public class Creature : MonoBehaviour
         {
             if (m_creatureUIComp != null)
             {
-                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_currentMana, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
+                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_currentEnergy, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
             }
         }
     }
@@ -390,28 +392,33 @@ public class Creature : MonoBehaviour
 
     public int GetCurrentMana()
     {
-        return m_currentMana;
+        return m_currentEnergy;
     }
 
     public void PlayCard(Card card)
     {
-        m_currentMana -= card.GetCardData().manaCost;
+        m_currentEnergy -= card.GetCardData().energyCost;
+    }
+
+    public void IncrementEnergy(int increment)
+    {
+        m_currentEnergy += increment;
     }
 
     public void PlayActiveAbility()
     {
-        m_currentMana -= m_activeAbility.GetData().manaCost;
+        m_currentEnergy -= m_activeAbility.GetData().energyCost;
     }
 
     public void TurnBegin()
     {
-        RefreshMana();
+        RefreshEnergy();
         m_armor = 0;
     }
 
-    public void RefreshMana()
+    public void RefreshEnergy()
     {
-        m_currentMana = m_currentMaxMana;
+        m_currentEnergy = m_currentMaxMana;
     }
 
     public void DieEvent()

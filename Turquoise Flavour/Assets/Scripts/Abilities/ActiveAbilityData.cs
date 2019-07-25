@@ -10,7 +10,7 @@ public class ActiveAbilityData : ScriptableObject
     public Sprite artwork;
     public Sprite ManaCostArtwork;
     public Sprite CooldownArtwork;
-    public int manaCost;
+    public int energyCost;
     public Turquoise.ETarget targetType;
     public List<SAbilityEffect> effects;
     public bool repeatable;

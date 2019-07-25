@@ -16,7 +16,7 @@ MonoBehaviour:
   cardEnumValue: 27
   description: Heals up to 14 damage. Remove 2 conditions at random
   artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
-  manaCost: 2
+  energyCost: 2
   targetType: 0
   effects:
   - m_effect: 1

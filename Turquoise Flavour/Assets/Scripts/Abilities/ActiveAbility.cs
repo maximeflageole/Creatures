@@ -27,7 +27,7 @@ public class ActiveAbility : MonoBehaviour
 
     public bool CanCast(int playerMana)
     {
-        if (playerMana < m_abilityData.manaCost)
+        if (playerMana < m_abilityData.energyCost)
         {
             return false;
         }

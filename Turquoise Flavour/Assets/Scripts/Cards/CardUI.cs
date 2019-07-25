@@ -40,7 +40,7 @@ public class CardUI : MonoBehaviour
         m_cardData = cardData;
         m_nameText2D.text = cardData.cardName;
         m_descriptionText2D.text = cardData.description;
-        m_manaText2D.text = cardData.manaCost.ToString();
+        m_manaText2D.text = cardData.energyCost.ToString();
         m_image2D.sprite = cardData.artwork;
     }
 
