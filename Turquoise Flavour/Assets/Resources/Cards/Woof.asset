@@ -17,11 +17,11 @@ MonoBehaviour:
   description: Inflicts 2 fear
   artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
   manaCost: 2
-  targetType: 1
+  targetType: 2
   effects:
   - m_effect: 13
     m_value: 2
-    m_targetType: 1
+    m_targetType: 2
     m_chancesOfEffectOnHundred: 0
     m_conditions: 
   cardGenre: 1

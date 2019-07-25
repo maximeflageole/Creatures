@@ -73,6 +73,8 @@ namespace Turquoise
 
 public class Card : MonoBehaviour
 {
+    public static int FEAR_CHANCES_ON_HUNDRED = 25;
+
     [SerializeField]
     protected uint m_manaCost = 0;
 
@@ -149,6 +151,12 @@ public class Card : MonoBehaviour
     {
         if (!GetIsLucky(m_cardData.chancesOnHundred))
         {
+            Debug.Log("Card not played because of chances/100");
+            return;
+        }
+        if (DoesFearTrigger(cardPlayingCreature))
+        {
+            Debug.Log("Fear triggers. Card skipped");
             return;
         }
         foreach (var cardEffect in m_effects)
@@ -173,6 +181,22 @@ public class Card : MonoBehaviour
         }
     }
 
+    protected bool DoesFearTrigger(Creature creature)
+    {
+        var conditionComp = creature.GetConditionsComponent();
+        if (conditionComp == null)
+        {
+            Debug.LogError("Creature has no condition component!");
+            return false;
+        }
+        int fearStacks = conditionComp.GetBoonStacks(ECardEffect.Fear);
+        if (fearStacks > 0)
+        {
+            return GetIsLucky(FEAR_CHANCES_ON_HUNDRED);
+        }
+        return false;
+    }
+
     protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature, Creature cardPlayingCreature)
     {
         selectedCreature.ApplyEffect(effect, cardPlayingCreature, m_cardData.damageType);
@@ -189,6 +213,7 @@ public class Card : MonoBehaviour
                 chances = true;
             }
         }
+        Debug.Log("Is lucky return: " + chances);
         return chances;
     }
 }

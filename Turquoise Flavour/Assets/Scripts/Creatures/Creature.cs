@@ -74,7 +74,7 @@ public class Creature : MonoBehaviour
     protected CreatureData m_creatureData;
     [SerializeField]
     protected ConditionsComponent m_conditionsComponent;
-
+    public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }
 
     public CreatureSaveable GetSaveableCreature()
     {
