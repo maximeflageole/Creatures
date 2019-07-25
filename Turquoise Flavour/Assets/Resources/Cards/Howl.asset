@@ -12,14 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
   m_Name: Howl
   m_EditorClassIdentifier: 
-  cardName: 
-  cardEnumValue: 0
-  description: 
-  artwork: {fileID: 0}
-  manaCost: 0
-  targetType: 0
-  effects: []
-  cardGenre: 0
+  cardName: Howl
+  cardEnumValue: 21
+  description: Inflicts 1 stun
+  artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
+  manaCost: 1
+  targetType: 2
+  effects:
+  - m_effect: 14
+    m_value: 1
+    m_targetType: 2
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
+  cardGenre: 1
   damageType: 0
-  rarity: 0
-  creaturePart: 0
+  rarity: 1
+  creaturePart: 1
+  chancesOnHundred: 0

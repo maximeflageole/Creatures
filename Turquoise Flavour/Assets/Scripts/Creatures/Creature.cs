@@ -256,6 +256,7 @@ public class Creature : MonoBehaviour
 
     protected float CalculateDamage(int damage, EDamageType damageType)
     {
+        //TODO: CalculateDamage seems bugged AF. Seems like a good idea to treat everything as floats until the very end
         float typeMultiplier = GetTypeMultiplier(m_primaryType, damageType);
         float calculatedDamage = damage * typeMultiplier;
         calculatedDamage += CalculateArmorPiercingDamage(calculatedDamage, m_armor, damageType);

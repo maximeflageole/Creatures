@@ -106,6 +106,12 @@ public class ConditionsComponent : MonoBehaviour
         {
             case ECardEffect.Bleed:
                 return true;
+            case ECardEffect.Stun:
+                return true;
+            case ECardEffect.Fear:
+                return true;
+            case ECardEffect.Confusion:
+                return true;
         }
         return false;
     }
@@ -167,6 +173,15 @@ public class ConditionsComponent : MonoBehaviour
                 calculatedDamage += boon.GetStacks();
             }
         }
+        // This is not a mistake, we want to apply damage buffs and debuffs before multipliers
+        foreach (var boon in m_boons)
+        {
+            if (boon.GetData().cardEffect == ECardEffect.Stun)
+            {
+                calculatedDamage = (int)((float)calculatedDamage * 0.66);
+            }
+        }
+        Debug.Log("Calculated damage: " + calculatedDamage);
         return calculatedDamage;
     }
     void SufferBoon(Condition condition)
