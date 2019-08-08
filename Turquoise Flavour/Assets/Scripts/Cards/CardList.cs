@@ -37,7 +37,8 @@ namespace Turquoise
         GoFetch,
         LickWounds,
         FindWeakness,
-        DefensiveStance,                // 29
+        DefensiveStance,
+        HealthPotion,                   // 30
         Count
     }
 }

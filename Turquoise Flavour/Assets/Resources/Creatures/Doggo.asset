@@ -24,4 +24,4 @@ MonoBehaviour:
   level: 0
   experience: 0
   levelSpeed: 0
-  abilityTree: {fileID: 11400000, guid: f6476787307250f4588df08e9a31b83b, type: 2}
+  abilityTree: {fileID: 11400000, guid: 8b7130e9980a7634a9c5dd9fe7fbed70, type: 2}

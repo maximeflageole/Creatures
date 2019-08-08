@@ -149,6 +149,12 @@ public class Creature : MonoBehaviour
             case ECardEffect.EnergyGain:
                 IncrementEnergy(cardEffect.m_value);
                 break;
+            case ECardEffect.HealingPercent:
+                ApplyDamagePercent(-cardEffect.m_value);
+                break;
+            case ECardEffect.DamagePercent:
+                ApplyDamagePercent(cardEffect.m_value);
+                break;
             default:
                 break;
         }
@@ -243,6 +249,16 @@ public class Creature : MonoBehaviour
         {
             DieEvent();
         }
+    }
+
+    public void ApplyDamagePercent(int damagePercent)
+    {
+        float damagePercentFloat = (float)damagePercent;
+        damagePercentFloat /= 100.0f;
+        float calculatedDamage = damagePercentFloat * m_maxHealth;
+
+        m_health -= (int)calculatedDamage;
+        m_health = Mathf.Clamp(m_health, 0, m_maxHealth);
     }
 
     public void StartTurn()
@@ -436,10 +452,15 @@ public class Creature : MonoBehaviour
         m_health = 0;
     }
 
-    public bool AddCardToDeck(Turquoise.ECard card)
+    public bool AddCardToDeck(ECard card)
     {
         m_deck.AddCard(card);
         return true;
+    }
+
+    public bool RemoveCardFromDeck(ECard card)
+    {
+        return m_deck.RemoveCard(card);
     }
 
     public void SendCreatureToBattle(CreatureUIComp creatureUI)

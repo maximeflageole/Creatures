@@ -665,7 +665,7 @@ public class CardEffects : TurquoiseEvent {
                 }
                 */
                 //Apply skill effects
-                if (card.isExhausting || card.isDropping)
+                if (card.isExhausting || card.isDropping || card.isConsumed)
                 {
                     continue;
                 }
@@ -744,6 +744,11 @@ public class CardEffects : TurquoiseEvent {
                     if (effect.m_effect == ECardEffect.EnergyGain)
                     {
                         GetPlayerCreature().IncrementEnergy(effect.m_value);
+                    }
+                    if (effect.m_effect == ECardEffect.Consume)
+                    {
+                        GetPlayerCreature().RemoveCardFromDeck(card.GetCardData().cardEnumValue);
+                        ConsumeSelf(card);
                     }
                 }
                 return;
@@ -890,6 +895,10 @@ public class CardEffects : TurquoiseEvent {
                 if (card.isExhausting)
                 {
                     exhaustPileCards.AddCard(card);
+                }
+                else if (card.isConsumed)
+                {
+                    //Card is simply removed
                 }
                 else
                 {
@@ -1217,6 +1226,24 @@ public class CardEffects : TurquoiseEvent {
         card.isDropping = false;
         playingCard.Remove(card);
         card.isExhausting = true;
+
+        lastFrameMouseOn = -1;
+        m_focusOnCard = -1;
+        mouseClickCard = -1;
+        card.gameObject.GetComponent<BoxCollider2D>().enabled = false;  // Can not be touched anymore
+        handCards.Remove(card);
+        ReArrangeCard();
+        UpdateCardAngle();
+        CalCardsTransform(true);
+    }
+
+    void ConsumeSelf(Card card)
+    {
+        //TODO: A lot of cleaning here to do. Anim is ugly
+        DiscardCard(card);
+        card.isDropping = false;
+        playingCard.Remove(card);
+        card.isConsumed = true;
 
         lastFrameMouseOn = -1;
         m_focusOnCard = -1;

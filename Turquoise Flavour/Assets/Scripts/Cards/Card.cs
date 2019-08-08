@@ -56,6 +56,8 @@ namespace Turquoise
         Stun,
         Clears,
         EnergyGain,
+        HealingPercent,
+        DamagePercent,
         Count
     }
 
@@ -120,6 +122,7 @@ public class Card : MonoBehaviour
     public bool isPlaying = false;
     public bool isDropping = false;
     public bool isExhausting = false;
+    public bool isConsumed = false;
     public float dropDisplayTime;
     public Dictionary<string, int> info;  // Record card's info here
     public GameObject targetPlayer;       // Record character the card skilled on

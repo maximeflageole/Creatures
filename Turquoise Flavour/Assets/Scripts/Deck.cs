@@ -12,4 +12,13 @@ public class Deck : MonoBehaviour
         m_cards.Add(card);
         return true;
     }
+    public bool RemoveCard(Turquoise.ECard card)
+    {
+        if (m_cards.Contains(card))
+        {
+            m_cards.Remove(card);
+            return true;
+        }
+        return false;
+    }
 }
