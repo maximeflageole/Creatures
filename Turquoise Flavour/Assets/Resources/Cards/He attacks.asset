@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
   m_Name: He attacks
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: He attacks
   cardEnumValue: 0
   description: 
   artwork: {fileID: 0}
-  manaCost: 0
+  energyCost: 0
   targetType: 0
   effects: []
   cardGenre: 0
   damageType: 0
   rarity: 0
   creaturePart: 0
+  chancesOnHundred: 0
