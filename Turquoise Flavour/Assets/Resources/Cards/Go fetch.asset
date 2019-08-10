@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
   m_Name: Go fetch
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Go fetch
   cardEnumValue: 26
   description: 'Draw 3 cards. Pick 1 and send the others at the bottom of your draw
     pile '
