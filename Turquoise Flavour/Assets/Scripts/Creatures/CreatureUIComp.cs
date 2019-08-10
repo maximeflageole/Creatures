@@ -12,6 +12,8 @@ public class CreatureUIComp : MonoBehaviour
     public TextMesh m_experienceText;
     public Turquoise.ETeams m_team;
     public BoonsUI m_boonsUI;
+    public float m_xMaskValue;
+    public Transform m_maskTransform;
 
     public void UpdateUI(int health, int maxHealth, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
     {
@@ -34,6 +36,11 @@ public class CreatureUIComp : MonoBehaviour
         if (m_boonsUI != null)
         {
             m_boonsUI.UpdateUI(conditions);
+        }
+        if (m_maskTransform != null)
+        {
+            float healthPercent = (float)health / (float)maxHealth;
+            m_maskTransform.localPosition = new Vector3(m_xMaskValue * healthPercent, m_maskTransform.localPosition.y, m_maskTransform.localPosition.z);
         }
     }
 }
