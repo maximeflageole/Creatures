@@ -199,6 +199,21 @@ public class CardEffects : TurquoiseEvent {
         return m_cardEffectInstance;
     }
 
+    public void ExecuteEnemyCard(CardData card)
+    {
+        foreach (SAbilityEffect effect in card.effects)
+        {
+            if (effect.m_targetType == ETarget.Enemy)
+            {
+                GetPlayerCreature().ApplyEffect(effect, GetEnemyCreature(), card.damageType);
+            }
+            if (effect.m_targetType == ETarget.Self)
+            {
+                GetEnemyCreature().ApplyEffect(effect, GetEnemyCreature(), card.damageType);
+            }
+        }
+    }
+
     public void Initialization()
     {
         m_player = Player.GetPlayerInstance();
@@ -374,10 +389,6 @@ public class CardEffects : TurquoiseEvent {
             creature.GetActiveAbility().LoadAbilityUI(m_playerCreature.GetComponent<ActiveAbilityUI>());
         }
 
-        if (battleStart)
-        {
-            //ChangeTurn();
-        }
         else
         {
             EndPlayerTurn();
@@ -545,14 +556,14 @@ public class CardEffects : TurquoiseEvent {
         }
     }
 
-    protected Turquoise.ETeams GetETeams(GameObject gameObj)
+    protected ETeams GetETeams(GameObject gameObj)
     {
         var creatureUI = gameObj.GetComponent<CreatureUIComp>();
         if (creatureUI != null)
         {
             return creatureUI.m_team;
         }
-        return Turquoise.ETeams.None;
+        return ETeams.None;
     }
 
     // This function is called when the arrow touches the character and the mouse has been clicked
@@ -1577,6 +1588,7 @@ public class CardEffects : TurquoiseEvent {
         {
             print("Begin Enemy's turn");
             m_player.TurnEnd();
+            GetEnemyCreature().GetComponent<EnemyAI>().BeginTurn();
         }
     }
 

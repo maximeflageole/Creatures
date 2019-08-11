@@ -40,6 +40,7 @@ public class CreatureUIComp : MonoBehaviour
         if (m_maskTransform != null)
         {
             float healthPercent = (float)health / (float)maxHealth;
+            healthPercent = Mathf.Clamp(healthPercent, 0.0f, 1.0f);
             m_maskTransform.localPosition = new Vector3(m_xMaskValue * healthPercent, m_maskTransform.localPosition.y, m_maskTransform.localPosition.z);
         }
     }

@@ -70,6 +70,12 @@ public class BattleStateMachine : MonoBehaviour
         m_playerCreature = cardEffects.GetPlayerCreature();
         m_enemyCreature = cardEffects.GetEnemyCreature();
         m_currentCreature = cardEffects.GetFastestCreature();
+
+        var ai = m_enemyCreature.GetComponent<EnemyAI>();
+        if (ai != null)
+        {
+            ai.GetNextAction();
+        }
     }
 
     public void EndBattle()
@@ -124,6 +130,11 @@ public class BattleStateMachine : MonoBehaviour
         if (m_currentCreature == m_enemyCreature)
         {
             m_currentCreature = m_playerCreature;
+            var ai = m_enemyCreature.GetComponent<EnemyAI>();
+            if (ai != null)
+            {
+                ai.GetNextAction();
+            }
         }
         else
         {

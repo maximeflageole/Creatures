@@ -27,6 +27,9 @@ public class GameMaster : MonoBehaviour
     public CardPileUI m_cardPileUI;
     [SerializeField]
     protected GameObject m_cardPileUIPrefab;
+    public AIManager m_aiManager;
+    [SerializeField]
+    protected GameObject m_aiManagerPrefab;
     [SerializeField]
     protected Canvas m_mainCanvas;
     public List<int> m_completedNodes = new List<int>();
@@ -80,6 +83,10 @@ public class GameMaster : MonoBehaviour
                 m_mainCanvas = FindObjectOfType<Canvas>();
             }
             m_cardPileUI = Instantiate(m_cardPileUIPrefab, m_mainCanvas.transform).GetComponent<CardPileUI>();
+        }
+        if (m_aiManagerPrefab != null)
+        {
+            m_aiManager = Instantiate(m_aiManagerPrefab, transform).GetComponent<AIManager>();
         }
         Player.GetPlayerInstance().LoadGame();
     }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315f5c0dbc20ced489a6f407f18a2214, type: 3}
+  m_Name: BasicAiActions
+  m_EditorClassIdentifier: 
+  actionToEffects:
+  - action: 0
+    cardData: {fileID: 11400000, guid: 867b32dcba61b1f45a99aa1f51c3b4e6, type: 2}
+  - action: 1
+    cardData: {fileID: 11400000, guid: 99b9b7280030cd3479bfa274d482e0e8, type: 2}
+  - action: 2
+    cardData: {fileID: 11400000, guid: 427b05fe60dbd2e42ac154598872bcf9, type: 2}
+  - action: 3
+    cardData: {fileID: 11400000, guid: 09de4e5a01bdb3f459913349a3b0e371, type: 2}
+  combatActions: 0000000001000000030000000200000000000000
