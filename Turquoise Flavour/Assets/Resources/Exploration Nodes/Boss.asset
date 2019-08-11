@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableSprite: {fileID: 21300000, guid: 4d8259a4cb6d7f54e9d19e9acb685d5f, type: 3}
   completedSprite: {fileID: 21300000, guid: a2daa2b12f9264443886c9ec12717bc3, type: 3}
+  discoveredSprite: {fileID: 21300000, guid: 2194e5a17191faa4781ca4229b59c21d, type: 3}
   nodeName: Boss
   eventType: 2

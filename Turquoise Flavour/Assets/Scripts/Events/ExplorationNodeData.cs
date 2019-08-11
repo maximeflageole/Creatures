@@ -7,6 +7,7 @@ public class ExplorationNodeData : ScriptableObject
 {
     public Sprite availableSprite;
     public Sprite completedSprite;
+    public Sprite discoveredSprite;
     public string nodeName;
     public Exploration.EEventType eventType;
 }

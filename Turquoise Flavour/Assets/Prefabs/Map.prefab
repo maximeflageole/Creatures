@@ -111,8 +111,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_eventType: 1
   m_isCompleted: 0
+  m_isAvailable: 0
+  m_isDiscovered: 0
   m_nodeData: {fileID: 0}
   m_nodeId: 3
+  m_connectedNodes:
+  - {fileID: 5447027914079151247}
+  - {fileID: 5447027913453748710}
+  - {fileID: 5447027913523575341}
 --- !u!1 &5447027913453748709
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,8 +230,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_eventType: 1
   m_isCompleted: 0
+  m_isAvailable: 0
+  m_isDiscovered: 0
   m_nodeData: {fileID: 0}
   m_nodeId: 2
+  m_connectedNodes:
+  - {fileID: 5447027914925931989}
+  - {fileID: 5447027913402443698}
 --- !u!1 &5447027913523575340
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,8 +348,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_eventType: 4
   m_isCompleted: 0
-  m_nodeData: {fileID: 11400000, guid: edb5e93ab3a450842a8d6ba86c0140c5, type: 2}
+  m_isAvailable: 0
+  m_isDiscovered: 0
+  m_nodeData: {fileID: 0}
   m_nodeId: 4
+  m_connectedNodes:
+  - {fileID: 5447027913402443698}
 --- !u!1 &5447027914079151246
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,8 +465,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_eventType: 1
   m_isCompleted: 0
+  m_isAvailable: 1
+  m_isDiscovered: 1
   m_nodeData: {fileID: 0}
   m_nodeId: 1
+  m_connectedNodes:
+  - {fileID: 5447027914925931989}
+  - {fileID: 5447027913402443698}
 --- !u!1 &5447027914167447910
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,5 +631,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_eventType: 0
   m_isCompleted: 0
+  m_isAvailable: 1
+  m_isDiscovered: 1
   m_nodeData: {fileID: 0}
   m_nodeId: 0
+  m_connectedNodes:
+  - {fileID: 5447027914079151247}
+  - {fileID: 5447027913453748710}
