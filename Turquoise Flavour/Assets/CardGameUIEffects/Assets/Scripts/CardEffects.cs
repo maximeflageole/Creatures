@@ -1164,8 +1164,8 @@ public class CardEffects : TurquoiseEvent {
         mouseClickCard = -1;
         HideArrows();
         m_isPlayerTurn = !m_isPlayerTurn;
-        ChangeTurn();
         BattleStateMachine.GetInstance().ChangeTurn();
+        ChangeTurn();
     }
 
     void DiscardCard(Card card)
