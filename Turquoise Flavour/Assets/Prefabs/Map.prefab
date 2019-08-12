@@ -520,6 +520,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95e24065de870146bf490d3ad9f55dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_linePrefab: {fileID: 7988078858802912586, guid: 89236de7967f6704680bf6944e2231f9,
+    type: 3}
+  m_explorationNodes:
+  - {fileID: 5447027914925931989}
+  - {fileID: 5447027914079151247}
+  - {fileID: 5447027913453748710}
+  - {fileID: 5447027913402443698}
+  - {fileID: 5447027913523575341}
 --- !u!1 &5447027914925931985
 GameObject:
   m_ObjectHideFlags: 0

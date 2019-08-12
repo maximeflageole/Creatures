@@ -17,6 +17,7 @@ public class ExplorationNode : MonoBehaviour
     public int m_nodeId;
     [SerializeField]
     protected List<ExplorationNode> m_connectedNodes = new List<ExplorationNode>();
+    public List<ExplorationNode> GetConnectedNodes() { return m_connectedNodes; }
 
     // Start is called before the first frame update
     void Awake()

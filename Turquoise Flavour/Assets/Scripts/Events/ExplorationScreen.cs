@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class ExplorationScreen : MonoBehaviour
 {
+    [SerializeField]
+    protected GameObject m_linePrefab;
+    [SerializeField]
+    protected List<ExplorationNode> m_explorationNodes;
+
+    void Start()
+    {
+        foreach (var node in GetComponentsInChildren<ExplorationNode>())
+        {
+            m_explorationNodes.Add(node);
+        }
+        foreach (var node in m_explorationNodes)
+        {
+            foreach (var connectedNode in node.GetConnectedNodes())
+            {
+                GameObject line = Instantiate(m_linePrefab);
+                LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
+                lineRenderer.SetPosition(0, node.transform.position);
+                lineRenderer.SetPosition(1, connectedNode.transform.position);
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
