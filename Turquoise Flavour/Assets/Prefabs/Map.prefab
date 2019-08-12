@@ -114,6 +114,7 @@ MonoBehaviour:
   m_isAvailable: 0
   m_isDiscovered: 0
   m_nodeData: {fileID: 0}
+  m_isConnected: 0
   m_nodeId: 3
   m_connectedNodes:
   - {fileID: 5447027914079151247}
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_isAvailable: 0
   m_isDiscovered: 0
   m_nodeData: {fileID: 0}
+  m_isConnected: 0
   m_nodeId: 2
   m_connectedNodes:
   - {fileID: 5447027914925931989}
@@ -351,6 +353,7 @@ MonoBehaviour:
   m_isAvailable: 0
   m_isDiscovered: 0
   m_nodeData: {fileID: 0}
+  m_isConnected: 0
   m_nodeId: 4
   m_connectedNodes:
   - {fileID: 5447027913402443698}
@@ -468,6 +471,7 @@ MonoBehaviour:
   m_isAvailable: 1
   m_isDiscovered: 1
   m_nodeData: {fileID: 0}
+  m_isConnected: 0
   m_nodeId: 1
   m_connectedNodes:
   - {fileID: 5447027914925931989}
@@ -520,6 +524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95e24065de870146bf490d3ad9f55dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_exploratorPrefab: {fileID: 4737151576662908097, guid: 54f7d733238f43a42b6cdda6feec3442,
+    type: 3}
+  m_explorator: {fileID: 0}
+  m_exploratorNodeOffset: {x: 0.3, y: -0.3, z: 0}
   m_linePrefab: {fileID: 7988078858802912586, guid: 89236de7967f6704680bf6944e2231f9,
     type: 3}
   m_explorationNodes:
@@ -528,6 +536,9 @@ MonoBehaviour:
   - {fileID: 5447027913453748710}
   - {fileID: 5447027913402443698}
   - {fileID: 5447027913523575341}
+  m_availableColor: {r: 1, g: 1, b: 1, a: 1}
+  m_unavailableColor: {r: 0.8018868, g: 0.056737266, b: 0.056737266, a: 1}
+  m_undiscoveredColor: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 0}
 --- !u!1 &5447027914925931985
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +653,7 @@ MonoBehaviour:
   m_isAvailable: 1
   m_isDiscovered: 1
   m_nodeData: {fileID: 0}
+  m_isConnected: 0
   m_nodeId: 0
   m_connectedNodes:
   - {fileID: 5447027914079151247}

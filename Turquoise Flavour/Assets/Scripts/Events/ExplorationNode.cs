@@ -10,10 +10,13 @@ public class ExplorationNode : MonoBehaviour
     protected bool m_isCompleted;
     [SerializeField]
     protected bool m_isAvailable;
+    public bool GetIsAvailable() { return m_isAvailable; }
     [SerializeField]
     protected bool m_isDiscovered;
+    public bool GetIsDiscovered() { return m_isDiscovered; }
     [SerializeField]
     protected ExplorationNodeData m_nodeData;
+    public bool m_isConnected = false;
     public int m_nodeId;
     [SerializeField]
     protected List<ExplorationNode> m_connectedNodes = new List<ExplorationNode>();
@@ -27,6 +30,11 @@ public class ExplorationNode : MonoBehaviour
         {
             MakeNodeAvailable();
         }
+    }
+
+    public void ConnectNode()
+    {
+        m_isConnected = true;
     }
 
     public void Update()

@@ -5,9 +5,21 @@ using UnityEngine;
 public class ExplorationScreen : MonoBehaviour
 {
     [SerializeField]
+    protected GameObject m_exploratorPrefab;
+    [SerializeField]
+    protected GameObject m_explorator;
+    [SerializeField]
+    protected Vector3 m_exploratorNodeOffset;
+    [SerializeField]
     protected GameObject m_linePrefab;
     [SerializeField]
     protected List<ExplorationNode> m_explorationNodes;
+    [SerializeField]
+    protected Color m_availableColor;
+    [SerializeField]
+    protected Color m_unavailableColor;
+    [SerializeField]
+    protected Color m_undiscoveredColor;
 
     void Start()
     {
@@ -17,14 +29,36 @@ public class ExplorationScreen : MonoBehaviour
         }
         foreach (var node in m_explorationNodes)
         {
+            node.ConnectNode();
             foreach (var connectedNode in node.GetConnectedNodes())
             {
-                GameObject line = Instantiate(m_linePrefab);
+                if (connectedNode.m_isConnected)
+                {
+                    continue;
+                }
+                GameObject line = Instantiate(m_linePrefab, transform);
                 LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
                 lineRenderer.SetPosition(0, node.transform.position);
                 lineRenderer.SetPosition(1, connectedNode.transform.position);
+                if (node.GetIsAvailable() && connectedNode.GetIsAvailable())
+                {
+                    lineRenderer.startColor= m_availableColor;
+                    lineRenderer.endColor = m_availableColor;
+                }
+                else if ((node.GetIsDiscovered() && connectedNode.GetIsDiscovered()) && (node.GetIsAvailable() || connectedNode.GetIsAvailable()))
+                {
+                    lineRenderer.startColor = m_unavailableColor;
+                    lineRenderer.endColor = m_unavailableColor;
+                }
+                else
+                {
+                    lineRenderer.startColor = m_undiscoveredColor;
+                    lineRenderer.endColor = m_undiscoveredColor;
+                }
             }
         }
+        m_explorator = Instantiate(m_exploratorPrefab, transform);
+        m_explorator.transform.position = m_explorationNodes[0].transform.position + m_exploratorNodeOffset;
     }
 
     // Update is called once per frame
