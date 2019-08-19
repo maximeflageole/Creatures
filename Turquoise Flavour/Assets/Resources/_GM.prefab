@@ -61,6 +61,8 @@ MonoBehaviour:
   m_cardPileUI: {fileID: 0}
   m_cardPileUIPrefab: {fileID: 1006915056015631222, guid: 04d01f541a9cc4b4fa6e2163421c507c,
     type: 3}
+  m_aiManager: {fileID: 0}
+  m_aiManagerPrefab: {fileID: 0}
   m_mainCanvas: {fileID: 0}
   m_completedNodes: 
   m_currentNodeIndex: -1

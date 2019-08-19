@@ -12,6 +12,8 @@ public class Overworld : MonoBehaviour
     protected Dictionary<EEventType, GameObject> m_eventTypeDictionary = new Dictionary<EEventType, GameObject>();
     [SerializeField]
     protected GameObject MapPrefab;
+    [SerializeField]
+    protected MapData m_mapData;
 
     public static Overworld GetInstance()
     {
@@ -83,6 +85,7 @@ public class Overworld : MonoBehaviour
         {
             m_eventTypeDictionary.Add(eventPair.eventType, eventPair.eventPrefab);
         }
+        MapGenerator.Generator(m_mapData);
     }
 }
 
