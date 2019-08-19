@@ -45,7 +45,7 @@ public class ExplorationScreen : MonoBehaviour
                     lineRenderer.startColor= m_availableColor;
                     lineRenderer.endColor = m_availableColor;
                 }
-                else if ((node.GetIsDiscovered() && connectedNode.GetIsDiscovered()) && (node.GetIsAvailable() || connectedNode.GetIsAvailable()))
+                else if ((node.GetIsDiscovered() && connectedNode.GetIsDiscovered()) && (node.GetIsAvailable() || connectedNode.GetIsAvailable())) 
                 {
                     lineRenderer.startColor = m_unavailableColor;
                     lineRenderer.endColor = m_unavailableColor;
@@ -58,7 +58,7 @@ public class ExplorationScreen : MonoBehaviour
             }
         }
         m_explorator = Instantiate(m_exploratorPrefab, transform);
-        m_explorator.transform.position = m_explorationNodes[0].transform.position + m_exploratorNodeOffset;
+        MoveExplorator(m_explorationNodes[0]);
     }
 
     // Update is called once per frame
@@ -73,11 +73,24 @@ public class ExplorationScreen : MonoBehaviour
                 ExplorationNode node = go.GetComponent<ExplorationNode>();
                 if (node != null && !node.GetIsCompleted() && node.IsAvailable())
                 {
-                    GameMaster.GetInstance().StartEvent(node);
-                    hit.collider.enabled = false;
+                    if (m_explorator.GetComponent<Explorator>().IsNodeSelected(node))
+                    {
+                        GameMaster.GetInstance().StartEvent(node);
+                        hit.collider.enabled = false;
+                    }
+                    else
+                    {
+                        MoveExplorator(node);
+                        m_explorator.GetComponent<Explorator>().SelectNode(node);
+                    }
                 }
             }
         }
+    }
+
+    void MoveExplorator(ExplorationNode node)
+    {
+        m_explorator.transform.position = node.transform.position + m_exploratorNodeOffset;
     }
 }
 
