@@ -11,6 +11,8 @@ public class ExplorationScreen : MonoBehaviour
     [SerializeField]
     protected Vector3 m_exploratorNodeOffset;
     [SerializeField]
+    protected GameObject m_nodePrefab;
+    [SerializeField]
     protected GameObject m_linePrefab;
     [SerializeField]
     protected List<ExplorationNode> m_explorationNodes;
@@ -20,9 +22,17 @@ public class ExplorationScreen : MonoBehaviour
     protected Color m_unavailableColor;
     [SerializeField]
     protected Color m_undiscoveredColor;
+    [SerializeField]
+    protected MapData m_mapData;
 
     void Start()
     {
+        foreach (var node in m_mapData.explorationNodes)
+        {
+            Vector3 vec = new Vector3(node.location.x, node.location.y, 0);
+            GameObject gameObject = Instantiate(m_nodePrefab, vec, Quaternion.identity, transform);
+            gameObject.GetComponent<ExplorationNode>().SetData(node.explorationNode);
+        }
         foreach (var node in GetComponentsInChildren<ExplorationNode>())
         {
             m_explorationNodes.Add(node);

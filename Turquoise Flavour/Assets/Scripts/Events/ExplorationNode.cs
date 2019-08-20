@@ -16,6 +16,10 @@ public class ExplorationNode : MonoBehaviour
     public bool GetIsDiscovered() { return m_isDiscovered; }
     [SerializeField]
     protected ExplorationNodeData m_nodeData;
+    public void SetData(ExplorationNodeData nodeData)
+    {
+        m_nodeData = nodeData;
+    }
     public bool m_isConnected = false;
     public int m_nodeId;
     [SerializeField]
@@ -25,7 +29,6 @@ public class ExplorationNode : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        m_nodeData = Overworld.GetExplorationNodeDataFromEventType(m_eventType);
         if (m_isAvailable)
         {
             MakeNodeAvailable();

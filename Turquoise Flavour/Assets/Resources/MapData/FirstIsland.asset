@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79ac5ce3072eff4392f2c262f9a64c9, type: 3}
   m_Name: FirstIsland
   m_EditorClassIdentifier: 
-  m_wildBattleMin: 4
-  m_wildBattleMax: 6
-  m_trainerBattleMin: 2
-  m_trainerBattleMax: 3
-  m_treasureMin: 2
-  m_treasureMax: 3
+  explorationNodes:
+  - explorationNode: {fileID: 11400000, guid: cd9f15d52bf3c534e8ea2dcc6ad1ad12, type: 2}
+    location: {x: 1, y: 1}
+  - explorationNode: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
+    location: {x: 0, y: 0}
+  - explorationNode: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
+    location: {x: 1, y: 2}
+  - explorationNode: {fileID: 11400000, guid: 41e9bcb8adae15e4cb724728ce5ade45, type: 2}
+    location: {x: 2, y: 2}
