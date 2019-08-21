@@ -26,7 +26,7 @@ public class Overworld : MonoBehaviour
 
     public GameObject GetObjectFromNode(ExplorationNode explorationNode)
     {
-        EEventType eventType = explorationNode.m_eventType;
+        EEventType eventType = explorationNode.GetEventType();
         return m_eventTypeDictionary[eventType];
     }
 
@@ -37,10 +37,6 @@ public class Overworld : MonoBehaviour
 
     public void StartExploration(List<int> completedNodes)
     {
-
-        
-         // TODELETE: TEMPORARY REMOVAL: Redoing this system entirely
-         // Redoing this in ExplorationScreen.cs
         if (MapPrefab != null)
         {
             var map = Instantiate(MapPrefab);
@@ -50,6 +46,7 @@ public class Overworld : MonoBehaviour
         {
             explorationNodes.Add(element);
         }
+        //TODO: Node completion is fucked because it is now instantiated differently
         for (int i = 0; i < explorationNodes.Count; i++)
         {
             if (completedNodes.Contains(explorationNodes[i].m_nodeId))

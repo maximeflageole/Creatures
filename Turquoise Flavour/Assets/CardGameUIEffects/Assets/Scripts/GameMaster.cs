@@ -117,7 +117,7 @@ public class GameMaster : MonoBehaviour
 
         m_currentNodeIndex = explorationNode.m_nodeId;
 
-        switch (explorationNode.m_eventType)
+        switch (explorationNode.GetEventType())
         {
             case EEventType.Boss:
                 break;

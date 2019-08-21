@@ -5,7 +5,7 @@ using Exploration;
 
 public class ExplorationNode : MonoBehaviour
 {
-    public EEventType m_eventType;
+    public EEventType GetEventType() { return m_nodeData.eventType; }
     [SerializeField]
     protected bool m_isCompleted;
     [SerializeField]
