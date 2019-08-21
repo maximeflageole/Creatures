@@ -42,7 +42,13 @@ public class Overworld : MonoBehaviour
         if (MapPrefab != null)
         {
             m_explorationScreen = Instantiate(MapPrefab, transform).GetComponent<ExplorationScreen>();
+            m_explorationScreen.Init();
+            EndInit(completedNodes);
         }
+    }
+
+    public void EndInit(List<int> completedNodes)
+    {
         var explorationNodes = new List<ExplorationNode>();
         foreach (var element in FindObjectsOfType<ExplorationNode>())
         {

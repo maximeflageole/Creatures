@@ -29,6 +29,11 @@ public class ExplorationScreen : MonoBehaviour
 
     void Start()
     {
+
+    }
+
+    public void Init()
+    {
         int i = 0;
         foreach (var node in m_mapData.explorationNodes)
         {
@@ -56,10 +61,10 @@ public class ExplorationScreen : MonoBehaviour
                 lineRenderer.SetPosition(1, connectedNode.transform.position);
                 if (node.GetIsAvailable() && connectedNode.GetIsAvailable())
                 {
-                    lineRenderer.startColor= m_availableColor;
+                    lineRenderer.startColor = m_availableColor;
                     lineRenderer.endColor = m_availableColor;
                 }
-                else if ((node.GetIsDiscovered() && connectedNode.GetIsDiscovered()) && (node.GetIsAvailable() || connectedNode.GetIsAvailable())) 
+                else if ((node.GetIsDiscovered() && connectedNode.GetIsDiscovered()) && (node.GetIsAvailable() || connectedNode.GetIsAvailable()))
                 {
                     lineRenderer.startColor = m_unavailableColor;
                     lineRenderer.endColor = m_unavailableColor;
