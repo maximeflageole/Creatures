@@ -32,8 +32,8 @@ public class ExplorationScreen : MonoBehaviour
         {
             Vector3 vec = new Vector3(node.location.x, node.location.y, 0);
             GameObject gameObject = Instantiate(m_nodePrefab, vec, Quaternion.identity, transform);
-            gameObject.GetComponent<ExplorationNode>().SetData(node.explorationNode);
             gameObject.GetComponent<ExplorationNode>().m_nodeId = i;
+            gameObject.GetComponent<ExplorationNode>().SetData(node.explorationNode, m_mapData);
             i++;
         }
         foreach (var node in GetComponentsInChildren<ExplorationNode>())

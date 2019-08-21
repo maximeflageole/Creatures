@@ -16,14 +16,12 @@ public class ExplorationNode : MonoBehaviour
     public bool GetIsDiscovered() { return m_isDiscovered; }
     [SerializeField]
     protected ExplorationNodeData m_nodeData;
-    public void SetData(ExplorationNodeData nodeData)
-    {
-        m_nodeData = nodeData;
-    }
     public bool m_isConnected = false;
     public int m_nodeId;
     [SerializeField]
     protected List<ExplorationNode> m_connectedNodes = new List<ExplorationNode>();
+    [SerializeField]
+    protected List<int> m_connectedNodesIds = new List<int>();
     public List<ExplorationNode> GetConnectedNodes() { return m_connectedNodes; }
 
     // Start is called before the first frame update
@@ -38,6 +36,12 @@ public class ExplorationNode : MonoBehaviour
     public void ConnectNode()
     {
         m_isConnected = true;
+    }
+
+    public void SetData(ExplorationNodeData nodeData, MapData mapData)
+    {
+        m_nodeData = nodeData;
+        m_connectedNodesIds = mapData.GetConnectedNodes(m_nodeId);
     }
 
     public void Update()
