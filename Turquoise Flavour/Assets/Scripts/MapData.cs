@@ -8,7 +8,7 @@ public class MapData : ScriptableObject
     public List<NodeDataAndLocation> explorationNodes;
     public List<NodeLink> nodeLinks;
 
-    public List<int> GetConnectedNodes(int id)
+    public List<int> GetConnectedNodesIds(int id)
     {
         List<int> connectedNodes = new List<int>();
         foreach (var link in nodeLinks)

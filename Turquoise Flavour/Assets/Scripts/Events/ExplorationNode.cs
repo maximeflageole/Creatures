@@ -20,8 +20,6 @@ public class ExplorationNode : MonoBehaviour
     public int m_nodeId;
     [SerializeField]
     protected List<ExplorationNode> m_connectedNodes = new List<ExplorationNode>();
-    [SerializeField]
-    protected List<int> m_connectedNodesIds = new List<int>();
     public List<ExplorationNode> GetConnectedNodes() { return m_connectedNodes; }
 
     // Start is called before the first frame update
@@ -38,10 +36,23 @@ public class ExplorationNode : MonoBehaviour
         m_isConnected = true;
     }
 
-    public void SetData(ExplorationNodeData nodeData, MapData mapData)
+    public void SetData(ExplorationNodeData nodeData)
     {
         m_nodeData = nodeData;
-        m_connectedNodesIds = mapData.GetConnectedNodes(m_nodeId);
+    }
+
+    public void InitializeConnections()
+    {
+        foreach (int nodeId in Overworld.GetInstance().GetCurrentMapData().GetConnectedNodesIds(m_nodeId))
+        {
+           foreach (var node in Overworld.GetInstance().GetExplorationScreen().GetExplorationNodes())
+            {
+                if (node.m_nodeId == nodeId)
+                {
+                    m_connectedNodes.Add(node);
+                }
+            }
+        }
     }
 
     public void Update()

@@ -12,6 +12,8 @@ public class Overworld : MonoBehaviour
     protected Dictionary<EEventType, GameObject> m_eventTypeDictionary = new Dictionary<EEventType, GameObject>();
     [SerializeField]
     protected GameObject MapPrefab;
+    protected ExplorationScreen m_explorationScreen;
+    public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
 
     public static Overworld GetInstance()
     {
@@ -39,7 +41,7 @@ public class Overworld : MonoBehaviour
     {
         if (MapPrefab != null)
         {
-            var map = Instantiate(MapPrefab);
+            m_explorationScreen = Instantiate(MapPrefab, transform).GetComponent<ExplorationScreen>();
         }
         var explorationNodes = new List<ExplorationNode>();
         foreach (var element in FindObjectsOfType<ExplorationNode>())
@@ -84,6 +86,11 @@ public class Overworld : MonoBehaviour
         {
             m_eventTypeDictionary.Add(eventPair.eventType, eventPair.eventPrefab);
         }
+    }
+
+    public MapData GetCurrentMapData()
+    {
+        return m_explorationScreen.GetMapData();
     }
 }
 
