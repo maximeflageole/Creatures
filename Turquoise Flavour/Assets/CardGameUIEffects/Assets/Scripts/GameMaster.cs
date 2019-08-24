@@ -30,6 +30,9 @@ public class GameMaster : MonoBehaviour
     public AIManager m_aiManager;
     [SerializeField]
     protected GameObject m_aiManagerPrefab;
+    public InventoryManager m_inventoryManager;
+    [SerializeField]
+    protected GameObject m_inventoryManagerPrefab;
     [SerializeField]
     protected Canvas m_mainCanvas;
     public List<int> m_completedNodes = new List<int>();
@@ -87,6 +90,10 @@ public class GameMaster : MonoBehaviour
         if (m_aiManagerPrefab != null)
         {
             m_aiManager = Instantiate(m_aiManagerPrefab, transform).GetComponent<AIManager>();
+        }
+        if (m_inventoryManagerPrefab != null)
+        {
+            m_inventoryManager = Instantiate(m_inventoryManagerPrefab, transform).GetComponent<InventoryManager>();
         }
         Player.GetPlayerInstance().LoadGame();
     }
@@ -168,6 +175,11 @@ public class GameMaster : MonoBehaviour
         }
         m_completedNodes.Clear();
         m_completedNodes = saveData.completedNodes;
+        if (m_inventoryManager != null)
+        {
+            Debug.Log("INVENTORY MANAGER EXISTS!!");
+            m_inventoryManager.SetInventoryItems(saveData.inventoryItems);
+        }
     }
 
     public void CompleteNode(int nodeIndex)

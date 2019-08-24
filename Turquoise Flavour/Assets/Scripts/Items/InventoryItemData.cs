@@ -10,4 +10,6 @@ public class InventoryItemData : ScriptableObject
     public string description;
     public int cost;
     public Turquoise.ERarity rarity;
+    public Turquoise.EItemTypes type;
+    public Turquoise.EItem item;
 }

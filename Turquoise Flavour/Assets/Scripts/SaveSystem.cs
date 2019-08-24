@@ -41,6 +41,10 @@ public static class SaveSystem
         {
             data.completedNodes.Add(completedNode);
         }
+        foreach (var item in InventoryManager.GetInstance().GetInventoryItems())
+        {
+            data.inventoryItems.Add(item);
+        }
         formatter.Serialize(stream, data);
         stream.Close();
         Debug.Log("End saving");
@@ -94,4 +98,5 @@ public class SaveData
 {
     public List<CreatureSaveable> creaturesSave = new List<CreatureSaveable>();
     public List<int> completedNodes = new List<int>();
+    public List<sTupleItemInventory> inventoryItems= new List<sTupleItemInventory>();
 }
