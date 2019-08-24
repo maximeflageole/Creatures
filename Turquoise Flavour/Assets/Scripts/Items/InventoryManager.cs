@@ -33,16 +33,22 @@ public class InventoryManager : MonoBehaviour
     {
         int itemToDestroyIndex = -1;
         EItemTypes itemType = inventoryItemData.type;
+        bool itemAdded = false;
         foreach (var item in m_inventoryItemsTuples)
         {
             if (GetItemFromEnum(item.itemEnum).type == itemType)
             {
                 item.AddItemQty(amount);
-                if (item.itemQuantity == 0)
+                itemAdded = true;
+                if (item.itemQuantity <= 0)
                 {
                     itemToDestroyIndex = m_inventoryItemsTuples.IndexOf(item);
                 }
             }
+        }
+        if (!itemAdded)
+        {
+            m_inventoryItemsTuples.Add(new sTupleItemInventory(inventoryItemData.item, amount));
         }
         if (itemToDestroyIndex != -1)
         {
@@ -95,6 +101,11 @@ public struct sTupleItemInventory
 {
     public EItem itemEnum;
     public int itemQuantity;
+    public sTupleItemInventory(EItem item, int qty)
+    {
+        itemEnum = item;
+        itemQuantity = qty;
+    }
     public void AddItemQty(int qty)
     {
         itemQuantity += qty;

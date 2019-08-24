@@ -177,7 +177,6 @@ public class GameMaster : MonoBehaviour
         m_completedNodes = saveData.completedNodes;
         if (m_inventoryManager != null)
         {
-            Debug.Log("INVENTORY MANAGER EXISTS!!");
             m_inventoryManager.SetInventoryItems(saveData.inventoryItems);
         }
     }
