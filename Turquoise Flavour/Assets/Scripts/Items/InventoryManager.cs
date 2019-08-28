@@ -54,6 +54,7 @@ public class InventoryManager : MonoBehaviour
         {
             m_inventoryItemsTuples.RemoveAt(itemToDestroyIndex);
         }
+        SaveSystem.SaveGame();
     }
 
     public void RemoveInventoryItem(InventoryItemData inventoryItemData, int amount)
