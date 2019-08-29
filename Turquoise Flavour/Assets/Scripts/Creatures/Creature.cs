@@ -109,6 +109,16 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public string GetName()
+    {
+        return m_creatureData.creatureName;
+    }
+
+    public Sprite GetSprite()
+    {
+        return m_creatureData.sprite;
+    }
+
     public ActiveAbility GetActiveAbility()
     {
         return m_activeAbility;

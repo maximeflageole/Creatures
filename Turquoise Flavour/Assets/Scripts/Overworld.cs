@@ -15,6 +15,7 @@ public class Overworld : MonoBehaviour
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
     public GameObject m_inventoryUI;
+    public GameObject m_creatureUI;
 
     public static Overworld GetInstance()
     {
@@ -34,6 +35,14 @@ public class Overworld : MonoBehaviour
             if (m_inventoryUI != null)
             {
                 m_inventoryUI.SetActive(!m_inventoryUI.activeSelf);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (m_creatureUI != null)
+            {
+                m_creatureUI.SetActive(!m_creatureUI.activeSelf);
+                m_creatureUI.GetComponent<CreaturesPanelUI>().OpenMenu(Player.GetPlayerInstance().GetCreatures());
             }
         }
     }
