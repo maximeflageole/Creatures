@@ -12,10 +12,18 @@ public class InventoryItemUI : MonoBehaviour
     protected TextMeshProUGUI m_textMeshProUGUI;
     [SerializeField]
     protected Image m_image;
+    [SerializeField]
+    protected InventoryItemData m_itemData;
 
     public void SetUI(InventoryItemData itemData, int qty)
     {
+        m_itemData = itemData;
         m_image.sprite = itemData.sprite;
         m_textMeshProUGUI.text = itemData.name + " * " + qty;
+    }
+
+    public void OnCLick()
+    {
+        GetComponentInParent<InventoryUI>().OnClickItem(m_itemData);
     }
 }

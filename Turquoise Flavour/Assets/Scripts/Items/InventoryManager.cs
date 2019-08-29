@@ -139,4 +139,12 @@ namespace Turquoise
         public EItem item;
         public InventoryItemData itemData;
     }
+
+    public enum EItemInteraction
+    {
+        Use,
+        Give,
+        Toss,
+        Count
+    }
 }

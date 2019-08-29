@@ -17,6 +17,9 @@ public class InventoryUI : MonoBehaviour
     protected List<sTupleItemInventory> m_currentItems = new List<sTupleItemInventory>();
     [SerializeField]
     protected List<InventoryItemUI> m_itemUis = new List<InventoryItemUI>();
+    [SerializeField]
+    protected GameObject m_actionPanelUIPrefab;
+    protected ActionPanelUI m_actionPanelUIInstance;
 
     public void SelectTms()
     {
@@ -61,5 +64,15 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         SelectTms();
+    }
+
+    public void OnClickItem(InventoryItemData itemData)
+    {
+        if (m_actionPanelUIInstance != null)
+        {
+            Destroy(m_actionPanelUIInstance.gameObject);
+        }
+        m_actionPanelUIInstance = Instantiate(m_actionPanelUIPrefab, transform).GetComponent<ActionPanelUI>() ;
+        m_actionPanelUIInstance.CreateMenu(itemData.type);
     }
 }
