@@ -14,6 +14,7 @@ public class Overworld : MonoBehaviour
     protected GameObject MapPrefab;
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
+    public GameObject m_inventoryUI;
 
     public static Overworld GetInstance()
     {
@@ -24,6 +25,17 @@ public class Overworld : MonoBehaviour
             return go.GetComponent<Overworld>();
         }
         return s_OverworldInstance;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (m_inventoryUI != null)
+            {
+                m_inventoryUI.SetActive(!m_inventoryUI.activeSelf);
+            }
+        }
     }
 
     public GameObject GetObjectFromNode(ExplorationNode explorationNode)
