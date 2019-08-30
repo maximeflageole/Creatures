@@ -18,6 +18,7 @@ public class CreaturePanelUI : MonoBehaviour
     public void Reset()
     {
         m_childTransform.gameObject.SetActive(false);
+        m_creature = null;
     }
 
     public void OnOpenMenu(Creature creature)

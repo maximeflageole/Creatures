@@ -36,8 +36,11 @@ public class CreaturesPanelUI : MonoBehaviour
         {
             Destroy(m_actionPanelUIInstance.gameObject);
         }
-        m_actionPanelUIInstance = Instantiate(m_actionPanelUIPrefab, transform).GetComponent<ActionPanelUI>();
-        m_actionPanelUIInstance.CreatureMenu();
+        if (creature != null)
+        {
+            m_actionPanelUIInstance = Instantiate(m_actionPanelUIPrefab, transform).GetComponent<ActionPanelUI>();
+            m_actionPanelUIInstance.CreatureMenu();
+        }
 
         m_currentCreature = creature;
     }
