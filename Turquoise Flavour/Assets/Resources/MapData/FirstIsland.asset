@@ -19,6 +19,10 @@ MonoBehaviour:
     location: {x: 0, y: 0}
   - explorationNode: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
     location: {x: 1, y: 2}
+  - explorationNode: {fileID: 11400000, guid: 613bcef23ce563c4dbe95425c4e01114, type: 2}
+    location: {x: -2, y: 2}
+  - explorationNode: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
+    location: {x: -2, y: -2}
   nodeLinks:
   - firstNodeId: 0
     secondNodeId: 1
@@ -26,3 +30,7 @@ MonoBehaviour:
     secondNodeId: 2
   - firstNodeId: 1
     secondNodeId: 2
+  - firstNodeId: 3
+    secondNodeId: 2
+  - firstNodeId: 4
+    secondNodeId: 3

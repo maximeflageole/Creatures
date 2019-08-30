@@ -21,7 +21,7 @@ public class Overworld : MonoBehaviour
     {
         if (s_OverworldInstance == null)
         {
-            var gameMaster = new GameObject("Overworld");
+            new GameObject("Overworld");
             var go = Instantiate(Resources.Load("Overworld")) as GameObject;
             return go.GetComponent<Overworld>();
         }

@@ -12,12 +12,24 @@ public class CreaturePanelUI : MonoBehaviour
     protected Image m_image;
     [SerializeField]
     protected TextMeshProUGUI m_name;
+    [SerializeField]
+    protected RectTransform m_childTransform;
 
+    public void Reset()
+    {
+        m_childTransform.gameObject.SetActive(false);
+    }
 
     public void OnOpenMenu(Creature creature)
     {
+        m_childTransform.gameObject.SetActive(true);
         m_creature = creature;
         m_name.text = creature.GetName();
         m_image.sprite = creature.GetSprite();
+    }
+
+    public void OnClick()
+    {
+        GetComponentInParent<CreaturesPanelUI>().OnSubMenuClicked(m_creature);
     }
 }
