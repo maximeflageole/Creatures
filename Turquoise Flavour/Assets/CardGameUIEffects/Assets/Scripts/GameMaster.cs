@@ -4,6 +4,7 @@ using UnityEngine;
 using Exploration;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using Turquoise;
 
 public class GameMaster : MonoBehaviour
 {
@@ -130,7 +131,8 @@ public class GameMaster : MonoBehaviour
                 break;
             case EEventType.CardReward:
                 break;
-            case EEventType.Treasure:
+            case EEventType.ItemReward:
+                
                 break;
             case EEventType.WildEncounter:
                 SceneManager.LoadScene("Demo", LoadSceneMode.Single);
@@ -210,6 +212,16 @@ public class GameMaster : MonoBehaviour
         {
             BattleStateMachine battleStateMachine = gameObject.AddComponent(typeof(BattleStateMachine)) as BattleStateMachine;
         }
+    }
+
+    public ECard GetRandomUnlockedCard()
+    {
+        ECard card = ECard.Count;
+        if (m_cardList != null)
+        {
+            card = m_cardList.GetRandomCard();
+        }
+        return card;
     }
 }
 

@@ -67,6 +67,12 @@ public class CardList: MonoBehaviour
         Debug.Log("Card " + card + "could not be found in CardList! Are you sure you added it?");
         return null;
     }
+
+    public ECard GetRandomCard()
+    {
+        int i = Random.Range(0, (int)ECard.Count);
+        return (ECard)i;
+    }
 }
 
 [System.Serializable]

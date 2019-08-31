@@ -121,6 +121,7 @@ namespace Turquoise
         Consumables,
         Trinkets,
         Neutral,
+        Gold,
         Count
     }
 

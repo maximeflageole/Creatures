@@ -120,7 +120,7 @@ namespace Exploration
         CardReward,
         WildEncounter,
         Boss,
-        Treasure,
+        ItemReward,
         CreaturePick,
         Count
     }

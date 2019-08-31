@@ -9,9 +9,4 @@ public class TurquoiseEvent : MonoBehaviour
     {
         
     }
-
-    protected void OnCardClick()
-    {
-
-    }
 }
