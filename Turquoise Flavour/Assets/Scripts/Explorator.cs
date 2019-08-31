@@ -7,18 +7,6 @@ public class Explorator : MonoBehaviour
     [SerializeField]
     protected ExplorationNode m_currentNode;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SelectNode(ExplorationNode node)
     {
         m_currentNode = node;

@@ -53,7 +53,8 @@ namespace Turquoise
         Switch,
         Infos,
         ChangeTrinket,
-        GiveItem,
+        Give,
+        Use,
         Count
     }
 }

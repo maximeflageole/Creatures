@@ -67,7 +67,7 @@ public class ActionPanelUI : MonoBehaviour
     {
         List<ECreatureInteraction> creatureInteractions = new List<ECreatureInteraction>();
         creatureInteractions.Add(ECreatureInteraction.Infos);
-        creatureInteractions.Add(ECreatureInteraction.GiveItem);
+        creatureInteractions.Add(ECreatureInteraction.Give);
         creatureInteractions.Add(ECreatureInteraction.ChangeTrinket);
 
         foreach (var interaction in creatureInteractions)

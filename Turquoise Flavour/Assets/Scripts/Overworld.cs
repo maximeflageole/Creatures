@@ -85,7 +85,7 @@ public class Overworld : MonoBehaviour
         }
     }
 
-    public static ExplorationNodeData GetExplorationNodeDataFromEventType(Exploration.EEventType eventType)
+    public static ExplorationNodeData GetExplorationNodeDataFromEventType(EEventType eventType)
     {
         if (s_OverworldInstance == null)
         {
