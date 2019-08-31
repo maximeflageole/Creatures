@@ -198,8 +198,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_image2D: {fileID: 3938760905933723238}
   m_descriptionText2D: {fileID: 3938760905585291082}
   m_manaText2D: {fileID: 3938760904413328785}
+  m_cardData: {fileID: 0}
 --- !u!114 &2515678381768929043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +501,7 @@ RectTransform:
   m_GameObject: {fileID: 3938760905933723240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75064164, y: 0.75064164, z: 0.75064164}
   m_Children: []
   m_Father: {fileID: 3938760904952852224}
   m_RootOrder: 0

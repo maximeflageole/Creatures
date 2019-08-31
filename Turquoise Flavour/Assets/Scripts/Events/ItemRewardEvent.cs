@@ -6,6 +6,8 @@ using Turquoise;
 public class ItemRewardEvent : TurquoiseEvent
 {
     [SerializeField]
+    List<EItemTypes> m_itemTypes = new List<EItemTypes>();
+    [SerializeField]
     protected EItemRewardType m_itemRewardType;
     [SerializeField]
     protected List<RewardObjectPanel> m_rewardObjectPanel;
@@ -15,6 +17,8 @@ public class ItemRewardEvent : TurquoiseEvent
     protected GameObject m_itemRewardPrefab;
     [SerializeField]
     protected GameObject m_cardRewardPrefab;
+    [SerializeField]
+    protected GameObject m_goldRewardPrefab;
 
     // Start is called before the first frame update
     void BeginReward(EItemRewardType itemRewardType)
@@ -30,15 +34,15 @@ public class ItemRewardEvent : TurquoiseEvent
     public void GenerateRewards()
     {
         int amount = Random.Range(1, 4);
-        List<EItemTypes> itemTypes = new List<EItemTypes>();
+        m_itemTypes.Clear();
         for (int j = 0; j<amount; j++)
         {
             EItemTypes randomType = (EItemTypes)Random.Range(0, (int)EItemTypes.Count);
-            itemTypes.Add(randomType);
+            m_itemTypes.Add(randomType);
         }
         ResetItemPanels();
         int i = 0;
-        foreach (var itemType in itemTypes)
+        foreach (var itemType in m_itemTypes)
         {
             m_rewardObjectPanel[i].gameObject.SetActive(true);
             m_rewardObjectPanel[i].AssignChild(Instantiate(m_unknownRewardPrefab, m_rewardObjectPanel[i].transform));
@@ -57,28 +61,29 @@ public class ItemRewardEvent : TurquoiseEvent
 
     public void OnChildClicked(int index)
     {
-        //Temp
+        m_rewardObjectPanel[index].DestroyChild();
 
-
-        //EndTemp
-        /* TODO: this
-        switch (itemType)
+        switch (m_itemTypes[index])
         {
             case EItemTypes.Gold:
+                int goldAmount = Random.Range(10, 50);
+                m_rewardObjectPanel[index].AssignChild(Instantiate(m_goldRewardPrefab, m_rewardObjectPanel[index].transform));
                 break;
             case EItemTypes.Consumables:
+                m_rewardObjectPanel[index].AssignChild(Instantiate(m_itemRewardPrefab, m_rewardObjectPanel[index].transform));
                 break;
             case EItemTypes.Neutral:
+                m_rewardObjectPanel[index].AssignChild(Instantiate(m_itemRewardPrefab, m_rewardObjectPanel[index].transform));
                 break;
             case EItemTypes.TMs:
+                m_rewardObjectPanel[index].AssignChild(Instantiate(m_cardRewardPrefab, m_rewardObjectPanel[index].transform));
                 break;
             case EItemTypes.Trinkets:
+                m_rewardObjectPanel[index].AssignChild(Instantiate(m_itemRewardPrefab, m_rewardObjectPanel[index].transform));
                 break;
             default:
                 break;
         }
-        */
-        m_rewardObjectPanel[index].DestroyChild();
     }
 
     void Update()
