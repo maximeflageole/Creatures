@@ -6,24 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    /*
-    public static void SaveGame(Deck deck)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/playerDeck";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        SaveData data = new SaveData();
-        foreach (var card in deck.m_cards)
-        {
-            data.deck.Add(card.ToString());
-        }
-
-        formatter.Serialize(stream, data);
-        stream.Close();
-    }
-    */
-
     public static void SaveGame()
     {
         Debug.Log("Start saving");

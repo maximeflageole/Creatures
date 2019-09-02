@@ -13,6 +13,8 @@ public class GameMaster : MonoBehaviour
     protected TurquoiseEvent m_currentEvent;
     [SerializeField]
     protected GameObject m_rewardEvent;
+    [SerializeField]
+    protected ItemRewardEvent m_itemRewardEvent;
     public CardList m_cardList;
     [SerializeField]
     protected GameObject m_cardListPrefab;
@@ -132,7 +134,7 @@ public class GameMaster : MonoBehaviour
             case EEventType.CardReward:
                 break;
             case EEventType.ItemReward:
-                
+                m_itemRewardEvent.BeginReward();
                 break;
             case EEventType.WildEncounter:
                 SceneManager.LoadScene("Demo", LoadSceneMode.Single);

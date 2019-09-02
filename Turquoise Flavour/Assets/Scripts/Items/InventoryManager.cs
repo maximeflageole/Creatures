@@ -55,7 +55,6 @@ public class InventoryManager : MonoBehaviour
             m_inventoryItemsTuples.RemoveAt(itemToDestroyIndex);
         }
         SaveSystem.SaveGame();
-        Debug.Log("Item added to inventory");
     }
 
     public void RemoveInventoryItem(InventoryItemData inventoryItemData, int amount)

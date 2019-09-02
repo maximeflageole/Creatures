@@ -132,6 +132,7 @@ public class ItemRewardEvent : TurquoiseEvent
             InventoryManager.GetInstance().AddInventoryItem(itemReward.data, itemReward.qty);
         }
         gameObject.SetActive(false);
+        GameMaster.GetInstance().EndCurrentEvent(true);
     }
 
     public struct sItemReward
