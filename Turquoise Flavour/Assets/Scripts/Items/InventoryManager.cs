@@ -55,6 +55,7 @@ public class InventoryManager : MonoBehaviour
             m_inventoryItemsTuples.RemoveAt(itemToDestroyIndex);
         }
         SaveSystem.SaveGame();
+        Debug.Log("Item added to inventory");
     }
 
     public void RemoveInventoryItem(InventoryItemData inventoryItemData, int amount)
@@ -95,6 +96,25 @@ public class InventoryManager : MonoBehaviour
     {
         return m_itemDictionnary[item];
     }
+
+    public InventoryItemData GetRandomItem(EItemTypes itemType)
+    {
+        List<InventoryItemData> itemDatas = new List<InventoryItemData>();
+        foreach (var itemData in m_itemDictionnary)
+        {
+            if (itemData.Value.type == itemType)
+            {
+                itemDatas.Add(itemData.Value);
+            }
+        }
+        int randomIndex = Random.Range(0, itemDatas.Count);
+        return itemDatas[randomIndex];
+    }
+
+    public InventoryItemData GetGold()
+    {
+        return m_itemDictionnary[EItem.Gold];
+    }
 }
 
 [System.Serializable]
@@ -131,6 +151,9 @@ namespace Turquoise
         DamagePotion,
         HealthTrinket,
         NormalTrinket,
+        Gold,
+        TestTM,
+        TestNeutral,
         Count
     }
 

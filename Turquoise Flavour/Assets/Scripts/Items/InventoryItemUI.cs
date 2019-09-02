@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class InventoryItemUI : MonoBehaviour
 {
     [SerializeField]
-    protected string m_itemName;
-    [SerializeField]
     protected TextMeshProUGUI m_textMeshProUGUI;
     [SerializeField]
     protected Image m_image;
@@ -19,7 +17,14 @@ public class InventoryItemUI : MonoBehaviour
     {
         m_itemData = itemData;
         m_image.sprite = itemData.sprite;
-        m_textMeshProUGUI.text = itemData.name + " * " + qty;
+        if (qty > 1)
+        {
+            m_textMeshProUGUI.text = itemData.name + " * " + qty;
+        }
+        else
+        {
+            m_textMeshProUGUI.text = itemData.name;
+        }
     }
 
     public void OnCLick()

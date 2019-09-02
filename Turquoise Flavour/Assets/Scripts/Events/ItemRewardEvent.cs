@@ -24,6 +24,7 @@ public class ItemRewardEvent : TurquoiseEvent
     protected Button m_nextButton;
     protected int m_amountToPick;
     protected List<int> m_indexSelected = new List<int>();
+    protected List<sItemReward> m_inventoryItemDatas = new List<sItemReward>();
 
     // Start is called before the first frame update
     void BeginReward(EItemRewardType itemRewardType)
@@ -73,30 +74,41 @@ public class ItemRewardEvent : TurquoiseEvent
         {
             return;
         }
+
         m_indexSelected.Add(index);
+        int amount = 1;
         m_rewardObjectPanel[index].DestroyChild();
+        InventoryItemData data = InventoryManager.GetInstance().GetGold();
 
         switch (m_itemTypes[index])
         {
             case EItemTypes.Gold:
-                int goldAmount = Random.Range(10, 50);
+                amount = Random.Range(10, 50);
                 m_rewardObjectPanel[index].AssignChild(Instantiate(m_goldRewardPrefab, m_rewardObjectPanel[index].transform));
                 break;
             case EItemTypes.Consumables:
                 m_rewardObjectPanel[index].AssignChild(Instantiate(m_itemRewardPrefab, m_rewardObjectPanel[index].transform));
+                data = InventoryManager.GetInstance().GetRandomItem(EItemTypes.Consumables);
                 break;
             case EItemTypes.Neutral:
                 m_rewardObjectPanel[index].AssignChild(Instantiate(m_itemRewardPrefab, m_rewardObjectPanel[index].transform));
+                data = InventoryManager.GetInstance().GetRandomItem(EItemTypes.Neutral);
                 break;
             case EItemTypes.TMs:
                 m_rewardObjectPanel[index].AssignChild(Instantiate(m_cardRewardPrefab, m_rewardObjectPanel[index].transform));
+                data = InventoryManager.GetInstance().GetRandomItem(EItemTypes.TMs);
                 break;
             case EItemTypes.Trinkets:
                 m_rewardObjectPanel[index].AssignChild(Instantiate(m_itemRewardPrefab, m_rewardObjectPanel[index].transform));
+                data = InventoryManager.GetInstance().GetRandomItem(EItemTypes.Trinkets);
                 break;
             default:
                 break;
         }
+
+        m_inventoryItemDatas.Add(new sItemReward(data, amount));
+        m_rewardObjectPanel[index].AssignData(data, amount);
+
         if (m_indexSelected.Count == m_amountToPick)
         {
             m_nextButton.interactable = true;
@@ -109,6 +121,22 @@ public class ItemRewardEvent : TurquoiseEvent
         {
             GenerateRewards();
         }
+    }
+
+    public void OnClickNext()
+    {
+        foreach (var itemReward in m_inventoryItemDatas)
+        {
+            InventoryManager.GetInstance().AddInventoryItem(itemReward.data, itemReward.qty);
+        }
+        gameObject.SetActive(false);
+    }
+
+    public struct sItemReward
+    {
+        public InventoryItemData data;
+        public int qty;
+        public sItemReward(InventoryItemData d, int q) { data = d; qty = q; }
     }
 }
 

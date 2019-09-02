@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 5994388421721202180}
   - component: {fileID: 5994388421721202181}
   - component: {fileID: 5994388421721202187}
+  - component: {fileID: 865806841790687848}
   m_Layer: 5
   m_Name: ItemUI
   m_TagString: Untagged
@@ -195,6 +196,22 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &865806841790687848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5994388421721202183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c22f5f4e657bf48a3623d9dec5cdb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_itemName: 
+  m_textMeshProUGUI: {fileID: 5994388423003025664}
+  m_image: {fileID: 5994388421576541398}
+  m_itemData: {fileID: 0}
 --- !u!1 &5994388423003025667
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +306,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28.45
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

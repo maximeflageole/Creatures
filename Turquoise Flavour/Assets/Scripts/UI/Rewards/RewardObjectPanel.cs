@@ -19,4 +19,13 @@ public class RewardObjectPanel : MonoBehaviour
         DestroyChild();
         m_child = go;
     }
+
+    public void AssignData(InventoryItemData itemData, int qty)
+    {
+        var itemUI = GetComponentInChildren<InventoryItemUI>();
+        if (itemUI != null)
+        {
+            itemUI.SetUI(itemData, qty);
+        }
+    }
 }
