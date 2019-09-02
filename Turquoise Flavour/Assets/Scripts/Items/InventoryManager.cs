@@ -17,14 +17,14 @@ public class InventoryManager : MonoBehaviour
     }
 
     [SerializeField]
-    protected List<sTupleItemInventory> m_inventoryItemsTuples = new List<sTupleItemInventory>();
+    protected List<TupleItemInventory> m_inventoryItemsTuples = new List<TupleItemInventory>();
 
-    public void SetInventoryItems(List<sTupleItemInventory> inventoryItemTuples)
+    public void SetInventoryItems(List<TupleItemInventory> inventoryItemTuples)
     {
         m_inventoryItemsTuples = inventoryItemTuples;
     }
 
-    public List<sTupleItemInventory> GetInventoryItems()
+    public List<TupleItemInventory> GetInventoryItems()
     {
         return m_inventoryItemsTuples;
     }
@@ -34,21 +34,21 @@ public class InventoryManager : MonoBehaviour
         int itemToDestroyIndex = -1;
         EItemTypes itemType = inventoryItemData.type;
         bool itemAdded = false;
-        foreach (var item in m_inventoryItemsTuples)
+        for (int i = 0; i< m_inventoryItemsTuples.Count; i++)
         {
-            if (GetItemFromEnum(item.itemEnum).type == itemType)
+            if (GetItemFromEnum(m_inventoryItemsTuples[i].itemEnum).item == inventoryItemData.item)
             {
-                item.AddItemQty(amount);
+                m_inventoryItemsTuples[i].itemQuantity += amount;
                 itemAdded = true;
-                if (item.itemQuantity <= 0)
+                if (m_inventoryItemsTuples[i].itemQuantity <= 0)
                 {
-                    itemToDestroyIndex = m_inventoryItemsTuples.IndexOf(item);
+                    itemToDestroyIndex = m_inventoryItemsTuples.IndexOf(m_inventoryItemsTuples[i]);
                 }
             }
         }
         if (!itemAdded)
         {
-            m_inventoryItemsTuples.Add(new sTupleItemInventory(inventoryItemData.item, amount));
+            m_inventoryItemsTuples.Add(new TupleItemInventory(inventoryItemData.item, amount));
         }
         if (itemToDestroyIndex != -1)
         {
@@ -79,9 +79,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public List<sTupleItemInventory> GetInventoryItemsOfType(EItemTypes itemType)
+    public List<TupleItemInventory> GetInventoryItemsOfType(EItemTypes itemType)
     {
-        List<sTupleItemInventory> returnItems = new List<sTupleItemInventory>();
+        List<TupleItemInventory> returnItems = new List<TupleItemInventory>();
         foreach (var item in m_inventoryItemsTuples)
         {
             if (GetItemFromEnum(item.itemEnum).type == itemType)
@@ -118,19 +118,11 @@ public class InventoryManager : MonoBehaviour
 }
 
 [System.Serializable]
-public struct sTupleItemInventory
+public class TupleItemInventory
 {
     public EItem itemEnum;
     public int itemQuantity;
-    public sTupleItemInventory(EItem item, int qty)
-    {
-        itemEnum = item;
-        itemQuantity = qty;
-    }
-    public void AddItemQty(int qty)
-    {
-        itemQuantity += qty;
-    }
+    public TupleItemInventory(EItem i, int q) { itemEnum = i; itemQuantity = q; }
 }
 
 namespace Turquoise

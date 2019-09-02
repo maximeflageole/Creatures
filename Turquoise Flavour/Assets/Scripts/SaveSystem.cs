@@ -98,5 +98,5 @@ public class SaveData
 {
     public List<CreatureSaveable> creaturesSave = new List<CreatureSaveable>();
     public List<int> completedNodes = new List<int>();
-    public List<sTupleItemInventory> inventoryItems= new List<sTupleItemInventory>();
+    public List<TupleItemInventory> inventoryItems= new List<TupleItemInventory>();
 }

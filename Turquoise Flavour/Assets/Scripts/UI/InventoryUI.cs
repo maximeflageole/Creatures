@@ -14,7 +14,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     protected GameObject m_inventoryItemPrefab;
     [SerializeField]
-    protected List<sTupleItemInventory> m_currentItems = new List<sTupleItemInventory>();
+    protected List<TupleItemInventory> m_currentItems = new List<TupleItemInventory>();
     [SerializeField]
     protected List<InventoryItemUI> m_itemUis = new List<InventoryItemUI>();
     [SerializeField]

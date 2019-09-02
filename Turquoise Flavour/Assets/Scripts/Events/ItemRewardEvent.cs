@@ -27,8 +27,9 @@ public class ItemRewardEvent : TurquoiseEvent
     protected List<sItemReward> m_inventoryItemDatas = new List<sItemReward>();
 
     // Start is called before the first frame update
-    void BeginReward(EItemRewardType itemRewardType)
+    public void BeginReward(EItemRewardType itemRewardType = EItemRewardType.GetX)
     {
+        gameObject.SetActive(true);
         m_itemRewardType = itemRewardType;
         if (m_itemRewardType == EItemRewardType.GetX)
         {
@@ -42,6 +43,7 @@ public class ItemRewardEvent : TurquoiseEvent
         int amount = Random.Range(1, 4);
         m_amountToPick = amount;
         m_indexSelected.Clear();
+        m_inventoryItemDatas.Clear();
         m_nextButton.interactable = false;
         m_itemTypes.Clear();
         for (int j = 0; j<amount; j++)
