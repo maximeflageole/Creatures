@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Turquoise;
+using UnityEngine.UI;
 
 public class ItemRewardEvent : TurquoiseEvent
 {
@@ -19,6 +20,10 @@ public class ItemRewardEvent : TurquoiseEvent
     protected GameObject m_cardRewardPrefab;
     [SerializeField]
     protected GameObject m_goldRewardPrefab;
+    [SerializeField]
+    protected Button m_nextButton;
+    protected int m_amountToPick;
+    protected List<int> m_indexSelected = new List<int>();
 
     // Start is called before the first frame update
     void BeginReward(EItemRewardType itemRewardType)
@@ -34,6 +39,9 @@ public class ItemRewardEvent : TurquoiseEvent
     public void GenerateRewards()
     {
         int amount = Random.Range(1, 4);
+        m_amountToPick = amount;
+        m_indexSelected.Clear();
+        m_nextButton.interactable = false;
         m_itemTypes.Clear();
         for (int j = 0; j<amount; j++)
         {
@@ -61,6 +69,11 @@ public class ItemRewardEvent : TurquoiseEvent
 
     public void OnChildClicked(int index)
     {
+        if (m_indexSelected.Contains(index))
+        {
+            return;
+        }
+        m_indexSelected.Add(index);
         m_rewardObjectPanel[index].DestroyChild();
 
         switch (m_itemTypes[index])
@@ -83,6 +96,10 @@ public class ItemRewardEvent : TurquoiseEvent
                 break;
             default:
                 break;
+        }
+        if (m_indexSelected.Count == m_amountToPick)
+        {
+            m_nextButton.interactable = true;
         }
     }
 
