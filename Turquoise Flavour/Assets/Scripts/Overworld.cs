@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Exploration;
+using Turquoise;
 
 public class Overworld : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class Overworld : MonoBehaviour
             return go.GetComponent<Overworld>();
         }
         return s_OverworldInstance;
+    }
+
+    public void OpenMenuToGiveItem(EItem item)
+    {
+        m_inventoryUI.SetActive(false);
+        m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreature();
     }
 
     public void Update()

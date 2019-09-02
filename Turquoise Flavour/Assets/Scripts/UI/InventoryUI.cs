@@ -74,5 +74,6 @@ public class InventoryUI : MonoBehaviour
         }
         m_actionPanelUIInstance = Instantiate(m_actionPanelUIPrefab, transform).GetComponent<ActionPanelUI>() ;
         m_actionPanelUIInstance.CreateMenu(itemData.type);
+        m_actionPanelUIInstance.AssignItem(itemData.item);
     }
 }

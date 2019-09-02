@@ -16,6 +16,12 @@ public class InventoryManager : MonoBehaviour
         return m_instance;
     }
 
+    public void AddInventoryItemFromEItem(EItem item, int amount = 1)
+    {
+        var itemData = GetItemFromEnum(item);
+        AddInventoryItem(itemData, amount);
+    }
+
     [SerializeField]
     protected List<TupleItemInventory> m_inventoryItemsTuples = new List<TupleItemInventory>();
 
@@ -29,7 +35,7 @@ public class InventoryManager : MonoBehaviour
         return m_inventoryItemsTuples;
     }
 
-    public void AddInventoryItem(InventoryItemData inventoryItemData, int amount)
+    public void AddInventoryItem(InventoryItemData inventoryItemData, int amount = 1)
     {
         int itemToDestroyIndex = -1;
         EItemTypes itemType = inventoryItemData.type;
@@ -57,7 +63,7 @@ public class InventoryManager : MonoBehaviour
         SaveSystem.SaveGame();
     }
 
-    public void RemoveInventoryItem(InventoryItemData inventoryItemData, int amount)
+    public void RemoveInventoryItem(InventoryItemData inventoryItemData, int amount = 1)
     {
         AddInventoryItem(inventoryItemData, -amount);
     }

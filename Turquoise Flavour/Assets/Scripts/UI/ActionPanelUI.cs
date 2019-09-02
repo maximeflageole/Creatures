@@ -10,6 +10,8 @@ public class ActionPanelUI : MonoBehaviour
     protected List<GameObject> m_child;
     [SerializeField]
     protected GameObject m_menuInteractionPrefab;
+    [SerializeField]
+    protected EItem m_item;
 
     public void CreateMenu(EItemTypes itemType)
     {
@@ -19,8 +21,14 @@ public class ActionPanelUI : MonoBehaviour
             var menuInteraction = Instantiate(m_menuInteractionPrefab, transform);
             m_child.Add(menuInteraction);
             menuInteraction.GetComponentInChildren<TextMeshProUGUI>().text = interaction.ToString();
+            menuInteraction.GetComponent<ItemActionUI>().m_interaction = interaction;
         }
         GetComponent<RectTransform>().sizeDelta = new Vector2(200, 50 * m_child.Count);
+    }
+    
+    public void AssignItem(EItem item)
+    {
+        m_item = item;
     }
 
     public void OnClickItemAction(EItemInteraction action)
@@ -30,6 +38,7 @@ public class ActionPanelUI : MonoBehaviour
             case EItemInteraction.Use:
                 break;
             case EItemInteraction.Give:
+                Overworld.GetInstance().OpenMenuToGiveItem(m_item);
                 break;
             case EItemInteraction.Toss:
                 break;

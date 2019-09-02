@@ -23,15 +23,17 @@ public struct CreatureSaveable
     public List<ECard> m_deck;
     public int m_currentHealth;
     public int m_experience;
+    public EItem m_item;
 
 
-    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth, int experience)
+    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth, int experience, EItem item)
     {
         m_eCreature = eCreature;
         m_level = level;
         m_deck = deck.m_cards;
         m_currentHealth = currentHealth;
         m_experience = experience;
+        m_item = item;
     }
 }
 
@@ -75,10 +77,12 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected ConditionsComponent m_conditionsComponent;
     public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }
+    [SerializeField]
+    protected EItem m_equippedItem;
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints);
+        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints, m_equippedItem);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
@@ -511,6 +515,16 @@ public class Creature : MonoBehaviour
     public List<ECard> GetNextLevelUpCards(ERarity rarity, int amount)
     {
         return m_creatureData.abilityTree.GetCardsByRarity(rarity, amount, true);
+    }
+
+    public void EquipItem(EItem item)
+    {
+        if (m_equippedItem != EItem.Count)
+        {
+            InventoryManager.GetInstance().AddInventoryItemFromEItem(m_equippedItem);
+        }
+        InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
+        m_equippedItem = item;
     }
 }
 

@@ -17,9 +17,13 @@ public class CreaturesPanelUI : MonoBehaviour
     protected ActionPanelUI m_actionPanelUIInstance;
     [SerializeField]
     protected RectTransform m_panelTransform;
+    [SerializeField]
+    protected bool m_inCreatureSelection;
+    protected EItem m_item;
 
     public void OpenMenu(List<Creature> creatures)
     {
+        gameObject.SetActive(true);
         foreach (var creaturePanel in m_creaturePanels)
         {
             creaturePanel.Reset();
@@ -30,8 +34,26 @@ public class CreaturesPanelUI : MonoBehaviour
         }
     }
 
+    public void StartSelectCreature()
+    {
+        m_inCreatureSelection = true;
+        OpenMenu(Player.GetPlayerInstance().GetCreatures());
+    }
+
+    public void GiveItem(EItem item)
+    {
+        m_inCreatureSelection = true;
+        m_item = item;
+    }
+
     public void OnSubMenuClicked(Creature creature)
     {
+        if (m_inCreatureSelection)
+        {
+            creature.EquipItem(m_item);
+            CloseMenu();
+            return;
+        }
         if (m_actionPanelUIInstance != null)
         {
             Destroy(m_actionPanelUIInstance.gameObject);
@@ -43,6 +65,12 @@ public class CreaturesPanelUI : MonoBehaviour
         }
 
         m_currentCreature = creature;
+    }
+
+    public void CloseMenu()
+    {
+        m_inCreatureSelection = false;
+        gameObject.SetActive(false);
     }
 }
 
