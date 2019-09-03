@@ -51,7 +51,23 @@ public class CreaturesPanelUI : MonoBehaviour
     {
         if (m_item != EItem.Count && m_inCreatureSelection)
         {
-            creature.EquipItem(m_item);
+            var itemData = InventoryManager.GetInstance().GetItemFromEnum(m_item);
+            switch (itemData.type)
+            {
+                case EItemTypes.Trinkets:
+                    creature.EquipItem(m_item);
+                    break;
+                case EItemTypes.Consumables:
+                    creature.UseItem(itemData);
+                    break;
+                case EItemTypes.TMs:
+                    break;
+                case EItemTypes.Neutral:
+                    break;
+                default:
+                    break;
+            }
+
             CloseMenu();
             m_item = EItem.Count;
             return;

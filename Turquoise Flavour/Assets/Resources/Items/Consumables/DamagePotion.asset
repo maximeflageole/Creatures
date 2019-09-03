@@ -19,3 +19,9 @@ MonoBehaviour:
   rarity: 1
   type: 1
   item: 1
+  effects:
+  - m_effect: 0
+    m_value: 0
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 

@@ -36,6 +36,7 @@ public class ActionPanelUI : MonoBehaviour
         switch (action)
         {
             case EItemInteraction.Use:
+                Overworld.GetInstance().OpenMenuToGiveItem(m_item);
                 break;
             case EItemInteraction.Give:
                 Overworld.GetInstance().OpenMenuToGiveItem(m_item);

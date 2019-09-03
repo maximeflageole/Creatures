@@ -13,4 +13,5 @@ public class InventoryItemData : ScriptableObject
     public ERarity rarity;
     public EItemTypes type;
     public EItem item;
+    public List<SAbilityEffect> effects;
 }

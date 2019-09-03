@@ -242,7 +242,7 @@ public class Creature : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(int damage, EDamageType damageType)
+    public void ApplyDamage(int damage, EDamageType damageType = EDamageType.None)
     {
         float calculatedDamage = CalculateDamage(damage, damageType);
         int intFinalDamage = Mathf.RoundToInt(calculatedDamage);
@@ -263,6 +263,10 @@ public class Creature : MonoBehaviour
         if (m_health <= 0)
         {
             DieEvent();
+        }
+        if (m_health > m_maxHealth)
+        {
+            m_health = m_maxHealth;
         }
     }
 
@@ -526,6 +530,23 @@ public class Creature : MonoBehaviour
         }
         m_equippedItem = item;
         InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
+    }
+
+    public void UseItem(InventoryItemData itemData)
+    {
+        foreach (var effect in itemData.effects)
+        {
+            switch (effect.m_effect)
+            {
+                case ECardEffect.Healing:
+                    ApplyDamage(-effect.m_value);
+                    break;
+                case ECardEffect.HealingPercent:
+                    ApplyDamagePercent(-effect.m_value);
+                    break;
+            }
+        }
+        InventoryManager.GetInstance().RemoveInventoryItem(itemData, 1);
     }
 }
 
