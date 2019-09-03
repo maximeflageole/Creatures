@@ -15,7 +15,7 @@ public class Overworld : MonoBehaviour
     protected GameObject MapPrefab;
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
-    public GameObject m_inventoryUI;
+    public InventoryUI m_inventoryUI;
     public GameObject m_creatureUI;
     public ItemRewardEvent m_itemRewardEventUI;
 
@@ -32,7 +32,7 @@ public class Overworld : MonoBehaviour
 
     public void OpenMenuToGiveItem(EItem item)
     {
-        m_inventoryUI.SetActive(false);
+        m_inventoryUI.Close();
         m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
     }
 
@@ -42,7 +42,7 @@ public class Overworld : MonoBehaviour
         {
             if (m_inventoryUI != null)
             {
-                m_inventoryUI.SetActive(!m_inventoryUI.activeSelf);
+                m_inventoryUI.Toggle();
             }
         }
         if (Input.GetKeyDown(KeyCode.C))

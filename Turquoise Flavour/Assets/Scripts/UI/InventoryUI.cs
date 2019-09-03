@@ -20,6 +20,28 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     protected GameObject m_actionPanelUIPrefab;
     protected ActionPanelUI m_actionPanelUIInstance;
+    [SerializeField]
+    protected RectTransform m_parentTransform;
+
+    public void Toggle()
+    {
+        if (m_parentTransform.gameObject.activeSelf)
+            Close();
+        else
+            Open();
+    }
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
+        UpdateUI();
+        m_parentTransform.gameObject.SetActive(true);
+    }
+    public void Close()
+    {
+        gameObject.SetActive(false);
+        m_parentTransform.gameObject.SetActive(false);
+    }
 
     public void SelectTms()
     {
