@@ -93,9 +93,10 @@ public class Creature : MonoBehaviour
         m_experience.experiencePoints = creatureSave.m_experience;
         m_creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
         CreateFromCreatureData(m_creatureData, creatureSave.m_deck, creatureSave.m_level);
+        m_equippedItem = creatureSave.m_item;
     }
 
-    public void CreateFromCreatureData(CreatureData creatureData, List<Turquoise.ECard> deck, int level = 1, int experience = 0)
+    public void CreateFromCreatureData(CreatureData creatureData, List<ECard> deck, int level = 1, int experience = 0)
     {
         m_experience.levelSpeed = creatureData.levelSpeed;
         m_eCreature = creatureData.eCreature;
@@ -523,8 +524,8 @@ public class Creature : MonoBehaviour
         {
             InventoryManager.GetInstance().AddInventoryItemFromEItem(m_equippedItem);
         }
-        InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
         m_equippedItem = item;
+        InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
     }
 }
 

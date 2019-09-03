@@ -19,7 +19,7 @@ public class CreaturesPanelUI : MonoBehaviour
     protected RectTransform m_panelTransform;
     [SerializeField]
     protected bool m_inCreatureSelection;
-    protected EItem m_item;
+    protected EItem m_item = EItem.Count;
 
     public void OpenMenu(List<Creature> creatures)
     {
@@ -40,18 +40,20 @@ public class CreaturesPanelUI : MonoBehaviour
         OpenMenu(Player.GetPlayerInstance().GetCreatures());
     }
 
-    public void GiveItem(EItem item)
+    public void StartSelectCreatureForItem(EItem item)
     {
         m_inCreatureSelection = true;
         m_item = item;
+        OpenMenu(Player.GetPlayerInstance().GetCreatures());
     }
 
     public void OnSubMenuClicked(Creature creature)
     {
-        if (m_inCreatureSelection)
+        if (m_item != EItem.Count && m_inCreatureSelection)
         {
             creature.EquipItem(m_item);
             CloseMenu();
+            m_item = EItem.Count;
             return;
         }
         if (m_actionPanelUIInstance != null)

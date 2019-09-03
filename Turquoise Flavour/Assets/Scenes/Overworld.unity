@@ -443,7 +443,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 1995561706}
   m_Father: {fileID: 767726572}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1394,6 +1395,7 @@ MonoBehaviour:
   m_actionPanelUIPrefab: {fileID: 549446609664565935, guid: 2a054a696d3115d499b3c50dcc3672ab,
     type: 3}
   m_panelTransform: {fileID: 44708641}
+  m_inCreatureSelection: 0
 --- !u!1 &1524870659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,7 +2466,6 @@ RectTransform:
   m_Children:
   - {fileID: 15222338}
   - {fileID: 1496713903}
-  - {fileID: 1995561706}
   m_Father: {fileID: 345577871}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2500,14 +2501,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995561705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1524870660}
   - {fileID: 2082141127}
-  m_Father: {fileID: 1956795835}
-  m_RootOrder: 2
+  m_Father: {fileID: 195095847}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

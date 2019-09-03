@@ -33,7 +33,7 @@ public class Overworld : MonoBehaviour
     public void OpenMenuToGiveItem(EItem item)
     {
         m_inventoryUI.SetActive(false);
-        m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreature();
+        m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
     }
 
     public void Update()
