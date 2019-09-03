@@ -548,6 +548,15 @@ public class Creature : MonoBehaviour
         }
         InventoryManager.GetInstance().RemoveInventoryItem(itemData, 1);
     }
+
+    public void GiveTM(InventoryItemData itemData)
+    {
+        foreach (var card in itemData.cardsTms)
+        {
+            AddCardToDeck(card);
+        }
+        InventoryManager.GetInstance().RemoveInventoryItem(itemData, 1);
+    }
 }
 
 namespace Creatures

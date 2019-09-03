@@ -14,4 +14,5 @@ public class InventoryItemData : ScriptableObject
     public EItemTypes type;
     public EItem item;
     public List<SAbilityEffect> effects;
+    public List<ECard> cardsTms;
 }

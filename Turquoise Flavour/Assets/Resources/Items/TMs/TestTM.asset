@@ -19,3 +19,5 @@ MonoBehaviour:
   rarity: 0
   type: 0
   item: 5
+  effects: []
+  cardsTms: 0f000000

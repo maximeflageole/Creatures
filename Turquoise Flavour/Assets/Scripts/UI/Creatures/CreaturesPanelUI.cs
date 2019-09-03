@@ -61,6 +61,7 @@ public class CreaturesPanelUI : MonoBehaviour
                     creature.UseItem(itemData);
                     break;
                 case EItemTypes.TMs:
+                    creature.GiveTM(itemData);
                     break;
                 case EItemTypes.Neutral:
                     break;
