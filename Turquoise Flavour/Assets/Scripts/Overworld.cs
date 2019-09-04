@@ -39,6 +39,11 @@ public class Overworld : MonoBehaviour
         m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
     }
 
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
