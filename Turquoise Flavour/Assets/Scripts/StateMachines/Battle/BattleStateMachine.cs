@@ -59,6 +59,7 @@ public class BattleStateMachine : MonoBehaviour
 
     public void StartBattle()
     {
+        GameMaster.GetInstance().SetInBattle(true);
         Debug.Log("Start Battle");
         m_battleEnded = false;
         m_currentBattlePhase = EBattlePhase.CreaturePick;
@@ -87,6 +88,7 @@ public class BattleStateMachine : MonoBehaviour
         m_battleEnded = true;
         Destroy(CardEffects.GetInstance().gameObject);
         GameMaster.GetInstance().EndCurrentEvent(true);
+        GameMaster.GetInstance().SetInBattle(false);
     }
 
     // Update is called once per frame

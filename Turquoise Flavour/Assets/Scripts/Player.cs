@@ -125,17 +125,11 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    public void SwapCreature()
+    public void SwapCreature(Creature creature)
     {
-        /*
-        if (m_creatures.Count > 1)
-        {
-            m_currentCreature.ReturnCreatureFromBattle();
-            m_currentCreatureIndex = (m_currentCreatureIndex + 1) % m_creatures.Count;
-            m_currentCreature = m_creatures[m_currentCreatureIndex];
-            CardEffects.GetCardEffectsInstance().ChangePlayerCreature(m_currentCreature);
-        }
-        */
+        m_currentCreature.ReturnCreatureFromBattle();
+        m_currentCreature = creature;
+        CardEffects.GetInstance().ChangePlayerCreature(m_currentCreature);
     }
 
     public void CaptureCreature(CreatureData creatureData, int level)

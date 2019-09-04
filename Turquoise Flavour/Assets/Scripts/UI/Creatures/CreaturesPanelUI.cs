@@ -80,10 +80,23 @@ public class CreaturesPanelUI : MonoBehaviour
         if (creature != null)
         {
             m_actionPanelUIInstance = Instantiate(m_actionPanelUIPrefab, transform).GetComponent<ActionPanelUI>();
-            m_actionPanelUIInstance.CreatureMenu();
+            m_actionPanelUIInstance.CreateCreatureMenu();
         }
 
         m_currentCreature = creature;
+    }
+
+    public void OnCreatureActionClicked(ECreatureInteraction creatureInteraction)
+    {
+        switch (creatureInteraction)
+        {
+            case ECreatureInteraction.Swap:
+                Player.GetPlayerInstance().SwapCreature(m_currentCreature);
+                break;
+            default:
+                break;
+        }
+        CloseMenu();
     }
 
     public void CloseMenu()
@@ -97,7 +110,7 @@ namespace Turquoise
 {
     public enum ECreatureInteraction
     {
-        Switch,
+        Swap,
         Infos,
         ChangeTrinket,
         Give,

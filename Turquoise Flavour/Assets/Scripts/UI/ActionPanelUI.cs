@@ -11,6 +11,8 @@ public class ActionPanelUI : MonoBehaviour
     [SerializeField]
     protected GameObject m_menuInteractionPrefab;
     [SerializeField]
+    protected GameObject m_creaturesInteractionPrefab;
+    [SerializeField]
     protected EItem m_item;
 
     public void CreateMenu(EItemTypes itemType)
@@ -25,7 +27,37 @@ public class ActionPanelUI : MonoBehaviour
         }
         GetComponent<RectTransform>().sizeDelta = new Vector2(200, 50 * m_child.Count);
     }
-    
+
+    public void CreateCreatureMenu()
+    {
+        foreach (var interaction in GetCreaturesInteractions(GameMaster.GetInstance().GetInBattle()))
+        {
+            var creatureInteraction = Instantiate(m_creaturesInteractionPrefab, transform);
+            m_child.Add(creatureInteraction);
+            creatureInteraction.GetComponentInChildren<TextMeshProUGUI>().text = interaction.ToString();
+            creatureInteraction.GetComponent<CreaturesActionUI>().m_interaction = interaction;
+        }
+        GetComponent<RectTransform>().sizeDelta = new Vector2(200, 50 * m_child.Count);
+    }
+
+    List<ECreatureInteraction> GetCreaturesInteractions(bool inBattle)
+    {
+        List<ECreatureInteraction> creatureInteractions = new List<ECreatureInteraction>();
+        if (inBattle)
+        {
+            creatureInteractions.Add(ECreatureInteraction.Infos);
+            creatureInteractions.Add(ECreatureInteraction.Swap);
+        }
+        else
+        {
+            creatureInteractions.Add(ECreatureInteraction.Infos);
+            creatureInteractions.Add(ECreatureInteraction.ChangeTrinket);
+            creatureInteractions.Add(ECreatureInteraction.Use);
+        }
+        return creatureInteractions;
+    }
+
+
     public void AssignItem(EItem item)
     {
         m_item = item;
@@ -45,6 +77,11 @@ public class ActionPanelUI : MonoBehaviour
                 break;
         }
         Destroy(gameObject);
+    }
+
+    public void OnClickCreatureAction(ECreatureInteraction action)
+    {
+        GetComponentInParent<CreaturesPanelUI>().OnCreatureActionClicked(action);
     }
 
     public static List<EItemInteraction> GetItemInteractions(EItemTypes itemType)
@@ -71,21 +108,5 @@ public class ActionPanelUI : MonoBehaviour
             default: break;
         }
         return returnInteractions;
-    }
-
-    public void CreatureMenu()
-    {
-        List<ECreatureInteraction> creatureInteractions = new List<ECreatureInteraction>();
-        creatureInteractions.Add(ECreatureInteraction.Infos);
-        creatureInteractions.Add(ECreatureInteraction.Give);
-        creatureInteractions.Add(ECreatureInteraction.ChangeTrinket);
-
-        foreach (var interaction in creatureInteractions)
-        {
-            var menuInteraction = Instantiate(m_menuInteractionPrefab, transform);
-            m_child.Add(menuInteraction);
-            menuInteraction.GetComponentInChildren<TextMeshProUGUI>().text = interaction.ToString();
-        }
-        GetComponent<RectTransform>().sizeDelta = new Vector2(200, 50 * m_child.Count);
     }
 }

@@ -388,14 +388,10 @@ public class CardEffects : TurquoiseEvent {
         {
             creature.GetActiveAbility().LoadAbilityUI(m_playerCreature.GetComponent<ActiveAbilityUI>());
         }
-
-        else
-        {
-            EndPlayerTurn();
-            drawPileCards.Clear();
-            playingCard.Clear();
-            discardPileCards.Clear();
-        }
+        EndPlayerTurn();
+        drawPileCards.Clear();
+        playingCard.Clear();
+        discardPileCards.Clear();
 
         Deck deck = creature.GetDeck();
         if (deck != null)

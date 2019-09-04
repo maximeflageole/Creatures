@@ -8,6 +8,7 @@ using Turquoise;
 
 public class GameMaster : MonoBehaviour
 {
+    protected bool m_inBattle;
     static GameMaster s_gmInstance;
     [SerializeField]
     protected TurquoiseEvent m_currentEvent;
@@ -42,7 +43,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     protected int m_currentNodeIndex = -1;
     public InventoryUI m_inventoryUI;
-    public GameObject m_creatureUI;
+    public CreaturesPanelUI m_creatureUI;
     public ItemRewardEvent m_itemRewardEventUI;
 
     public static GameMaster GetInstance()
@@ -54,6 +55,16 @@ public class GameMaster : MonoBehaviour
             return go.GetComponent<GameMaster>();
         }
         return s_gmInstance;
+    }
+
+    public bool GetInBattle()
+    {
+        return m_inBattle;
+    }
+
+    public void SetInBattle(bool inBattle)
+    {
+        m_inBattle = inBattle;
     }
 
     void Update()
@@ -70,14 +81,14 @@ public class GameMaster : MonoBehaviour
         {
             if (m_creatureUI != null)
             {
-                m_creatureUI.SetActive(!m_creatureUI.activeSelf);
-                if (m_creatureUI.activeSelf)
+                m_creatureUI.gameObject.SetActive(!m_creatureUI.gameObject.activeSelf);
+                if (m_creatureUI.gameObject.activeSelf)
                 {
-                    m_creatureUI.GetComponent<CreaturesPanelUI>().OpenMenu(Player.GetPlayerInstance().GetCreatures());
+                    m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
                 }
                 else
                 {
-                    m_creatureUI.GetComponent<CreaturesPanelUI>().CloseMenu();
+                    m_creatureUI.CloseMenu();
                 }
             }
         }
@@ -203,7 +214,7 @@ public class GameMaster : MonoBehaviour
 
     public void ChangeCreature()
     {
-        Player.GetPlayerInstance().SwapCreature();
+        m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
     }
 
     public void LoadGame()

@@ -95,7 +95,7 @@ MonoBehaviour:
     m_Bottom: 1
   m_ChildAlignment: 0
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
@@ -114,6 +114,3 @@ MonoBehaviour:
   m_child: []
   m_menuInteractionPrefab: {fileID: 2325246005048399878, guid: 974d5af1745a86240a0c0fefc9508846,
     type: 3}
-  m_creaturesInteractionPrefab: {fileID: 2325246005048399878, guid: ac01c021c32d71947a6386c974681582,
-    type: 3}
-  m_item: 0
