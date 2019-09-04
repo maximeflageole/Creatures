@@ -102,12 +102,12 @@ public class InventoryManager : MonoBehaviour
         return m_itemDictionnary[item];
     }
 
-    public InventoryItemData GetRandomItem(EItemTypes itemType)
+    public InventoryItemData GetRandomItem(EItemTypes itemType = EItemTypes.Count)
     {
         List<InventoryItemData> itemDatas = new List<InventoryItemData>();
         foreach (var itemData in m_itemDictionnary)
         {
-            if (itemData.Value.type == itemType)
+            if (itemType == EItemTypes.Count || itemData.Value.type == itemType)
             {
                 itemDatas.Add(itemData.Value);
             }

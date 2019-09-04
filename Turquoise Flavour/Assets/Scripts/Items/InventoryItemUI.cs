@@ -13,7 +13,7 @@ public class InventoryItemUI : MonoBehaviour
     [SerializeField]
     protected InventoryItemData m_itemData;
 
-    public void SetUI(InventoryItemData itemData, int qty)
+    public void SetUI(InventoryItemData itemData, int qty = 1)
     {
         m_itemData = itemData;
         m_image.sprite = itemData.sprite;
