@@ -16,9 +16,6 @@ public class Overworld : MonoBehaviour
     protected GameObject MapPrefab;
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
-    public InventoryUI m_inventoryUI;
-    public GameObject m_creatureUI;
-    public ItemRewardEvent m_itemRewardEventUI;
     [SerializeField]
     protected TextMeshProUGUI m_goldTextMesh;
 
@@ -33,48 +30,8 @@ public class Overworld : MonoBehaviour
         return s_OverworldInstance;
     }
 
-    public void OpenMenuToGiveItem(EItem item)
-    {
-        m_inventoryUI.Close();
-        m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
-    }
-
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (m_inventoryUI != null)
-            {
-                m_inventoryUI.Toggle();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (m_creatureUI != null)
-            {
-                m_creatureUI.SetActive(!m_creatureUI.activeSelf);
-                if (m_creatureUI.activeSelf)
-                {
-                    m_creatureUI.GetComponent<CreaturesPanelUI>().OpenMenu(Player.GetPlayerInstance().GetCreatures());
-                }
-                else
-                {
-                    m_creatureUI.GetComponent<CreaturesPanelUI>().CloseMenu();
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (m_itemRewardEventUI != null)
-            {
-                m_itemRewardEventUI.BeginReward();
-            }
-        }
         m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
     }
 

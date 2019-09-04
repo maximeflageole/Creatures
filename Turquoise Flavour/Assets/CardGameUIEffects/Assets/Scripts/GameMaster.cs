@@ -41,6 +41,9 @@ public class GameMaster : MonoBehaviour
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
     protected int m_currentNodeIndex = -1;
+    public InventoryUI m_inventoryUI;
+    public GameObject m_creatureUI;
+    public ItemRewardEvent m_itemRewardEventUI;
 
     public static GameMaster GetInstance()
     {
@@ -51,6 +54,40 @@ public class GameMaster : MonoBehaviour
             return go.GetComponent<GameMaster>();
         }
         return s_gmInstance;
+    }
+
+    void Update()
+    {
+        //TODO: This should be in overworld only
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (m_inventoryUI != null)
+            {
+                m_inventoryUI.Toggle();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (m_creatureUI != null)
+            {
+                m_creatureUI.SetActive(!m_creatureUI.activeSelf);
+                if (m_creatureUI.activeSelf)
+                {
+                    m_creatureUI.GetComponent<CreaturesPanelUI>().OpenMenu(Player.GetPlayerInstance().GetCreatures());
+                }
+                else
+                {
+                    m_creatureUI.GetComponent<CreaturesPanelUI>().CloseMenu();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (m_itemRewardEventUI != null)
+            {
+                m_itemRewardEventUI.BeginReward();
+            }
+        }
     }
 
     // Start is called before the first frame update
@@ -218,12 +255,19 @@ public class GameMaster : MonoBehaviour
 
     public ECard GetRandomUnlockedCard()
     {
+        //TODO: Unlocked cards, not all cards. Also, add a rarity parameter
         ECard card = ECard.Count;
         if (m_cardList != null)
         {
             card = m_cardList.GetRandomCard();
         }
         return card;
+    }
+
+    public void OpenMenuToGiveItem(EItem item)
+    {
+        m_inventoryUI.Close();
+        m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
     }
 }
 
