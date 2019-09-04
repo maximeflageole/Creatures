@@ -80,7 +80,7 @@ public class ItemRewardEvent : TurquoiseEvent
         m_indexSelected.Add(index);
         int amount = 1;
         m_rewardObjectPanel[index].DestroyChild();
-        InventoryItemData data = InventoryManager.GetInstance().GetGold();
+        InventoryItemData data = InventoryManager.GetInstance().GetGoldItemData();
 
         switch (m_itemTypes[index])
         {

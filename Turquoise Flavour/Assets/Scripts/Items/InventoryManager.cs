@@ -116,9 +116,21 @@ public class InventoryManager : MonoBehaviour
         return itemDatas[randomIndex];
     }
 
-    public InventoryItemData GetGold()
+    public InventoryItemData GetGoldItemData()
     {
         return m_itemDictionnary[EItem.Gold];
+    }
+
+    public int GetPlayerGold()
+    {
+        foreach (var item in m_inventoryItemsTuples)
+        {
+            if (item.itemEnum == EItem.Gold)
+            {
+                return item.itemQuantity;
+            }
+        }
+        return 0;
     }
 }
 

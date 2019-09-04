@@ -38,6 +38,7 @@ public class ShopUI : MonoBehaviour
 
     public void Reset()
     {
+        m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
         foreach (var obj in m_instances)
         {
             Destroy(obj);
