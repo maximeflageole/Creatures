@@ -38,7 +38,7 @@ public class ShopUI : MonoBehaviour
 
     public void Reset()
     {
-        m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
+        ResetGold();
         foreach (var obj in m_instances)
         {
             Destroy(obj);
@@ -47,6 +47,11 @@ public class ShopUI : MonoBehaviour
         m_shopItems.Clear();
         GenerateContent();
         PopulateShop();
+    }
+
+    void ResetGold()
+    {
+        m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
     }
 
     void Update()
@@ -86,7 +91,7 @@ public class ShopUI : MonoBehaviour
             //TODO: Cards item ui
             //InventoryItemUI itemUI = Instantiate(m_cardPrefab, tmPanel.transform).GetComponent<InventoryItemUI>();
             //itemUI.SetUI(m_shopItems[i]);
-            tmPanel.AssignPrice(m_shopItems[i].cost);
+            tmPanel.AssignItemAndPrice(m_shopItems[i]);
             i++;
         }
         foreach (var consPanel in m_consumablePanels)
@@ -94,7 +99,7 @@ public class ShopUI : MonoBehaviour
             InventoryItemUI itemUI = Instantiate(m_itemPrefab, consPanel.transform).GetComponent<InventoryItemUI>();
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
-            consPanel.AssignPrice(m_shopItems[i].cost);
+            consPanel.AssignItemAndPrice(m_shopItems[i]);
             i++;
         }
         foreach (var neutralPanel in m_neutralPanels)
@@ -102,7 +107,7 @@ public class ShopUI : MonoBehaviour
             InventoryItemUI itemUI = Instantiate(m_itemPrefab, neutralPanel.transform).GetComponent<InventoryItemUI>();
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
-            neutralPanel.AssignPrice(m_shopItems[i].cost);
+            neutralPanel.AssignItemAndPrice(m_shopItems[i]);
             i++;
         }
         foreach (var trinketPanel in m_trinketPanels)
@@ -110,12 +115,24 @@ public class ShopUI : MonoBehaviour
             InventoryItemUI itemUI = Instantiate(m_itemPrefab, trinketPanel.transform).GetComponent<InventoryItemUI>();
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
-            trinketPanel.AssignPrice(m_shopItems[i].cost);
+            trinketPanel.AssignItemAndPrice(m_shopItems[i]);
             i++;
         }
         m_instances.Add(Instantiate(m_upgradePrefab, m_upgradePanel.transform));
-        m_upgradePanel.AssignPrice(50);
+        //m_upgradePanel.AssignItemAndPrice(50);
         m_instances.Add(Instantiate(m_removePrefab, m_removePanel.transform));
-        m_removePanel.AssignPrice(50);
+        //TODO: this
+        //m_removePanel.AssignItemAndPrice(50);
+    }
+
+    public void OnClick(ShopItemUI childClicked)
+    {
+        //When an item in the shop has been clicked
+        if (InventoryManager.GetInstance().TryBuyItem(childClicked.GetShopItem()))
+        {
+            childClicked.SetAvailability(false);
+            GetComponentInChildren<InventoryItemUI>().gameObject.SetActive(false);
+        }
+        ResetGold();
     }
 }

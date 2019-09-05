@@ -132,6 +132,29 @@ public class InventoryManager : MonoBehaviour
         }
         return 0;
     }
+
+    void RemoveGold(int amount)
+    {
+        foreach (var item in m_inventoryItemsTuples)
+        {
+            if (item.itemEnum == EItem.Gold)
+            {
+                item.itemQuantity -= amount;
+            }
+        }
+    }
+
+    public bool TryBuyItem(InventoryItemData item, int qty = 1)
+    {
+        int totalPrice = item.cost * qty;
+        if (totalPrice <= GetPlayerGold())
+        {
+            RemoveGold(totalPrice);
+            AddInventoryItem(item, qty);
+            return true;
+        }
+        return false;
+    }
 }
 
 [System.Serializable]
