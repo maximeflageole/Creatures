@@ -18,17 +18,17 @@ public class ShopUI : MonoBehaviour
     [SerializeField]
     protected TextMeshProUGUI m_goldTextMesh;
     [SerializeField]
-    protected List<GameObject> m_tmPanels;
+    protected List<ShopItemUI> m_tmPanels;
     [SerializeField]
-    protected List<GameObject> m_consumablePanels;
+    protected List<ShopItemUI> m_consumablePanels;
     [SerializeField]
-    protected List<GameObject> m_neutralPanels;
+    protected List<ShopItemUI> m_neutralPanels;
     [SerializeField]
-    protected List<GameObject> m_trinketPanels;
+    protected List<ShopItemUI> m_trinketPanels;
     [SerializeField]
-    protected GameObject m_upgardePanel;
+    protected ShopItemUI m_upgradePanel;
     [SerializeField]
-    protected GameObject m_removePanel;
+    protected ShopItemUI m_removePanel;
     protected List<InventoryItemData> m_shopItems = new List<InventoryItemData>();
 
     public void Start()
@@ -83,8 +83,10 @@ public class ShopUI : MonoBehaviour
         foreach (var tmPanel in m_tmPanels)
         {
             m_instances.Add(Instantiate(m_cardPrefab, tmPanel.transform));
+            //TODO: Cards item ui
             //InventoryItemUI itemUI = Instantiate(m_cardPrefab, tmPanel.transform).GetComponent<InventoryItemUI>();
             //itemUI.SetUI(m_shopItems[i]);
+            tmPanel.AssignPrice(m_shopItems[i].cost);
             i++;
         }
         foreach (var consPanel in m_consumablePanels)
@@ -92,6 +94,7 @@ public class ShopUI : MonoBehaviour
             InventoryItemUI itemUI = Instantiate(m_itemPrefab, consPanel.transform).GetComponent<InventoryItemUI>();
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
+            consPanel.AssignPrice(m_shopItems[i].cost);
             i++;
         }
         foreach (var neutralPanel in m_neutralPanels)
@@ -99,6 +102,7 @@ public class ShopUI : MonoBehaviour
             InventoryItemUI itemUI = Instantiate(m_itemPrefab, neutralPanel.transform).GetComponent<InventoryItemUI>();
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
+            neutralPanel.AssignPrice(m_shopItems[i].cost);
             i++;
         }
         foreach (var trinketPanel in m_trinketPanels)
@@ -106,9 +110,12 @@ public class ShopUI : MonoBehaviour
             InventoryItemUI itemUI = Instantiate(m_itemPrefab, trinketPanel.transform).GetComponent<InventoryItemUI>();
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
+            trinketPanel.AssignPrice(m_shopItems[i].cost);
             i++;
         }
-        m_instances.Add(Instantiate(m_upgradePrefab, m_upgardePanel.transform));
+        m_instances.Add(Instantiate(m_upgradePrefab, m_upgradePanel.transform));
+        m_upgradePanel.AssignPrice(50);
         m_instances.Add(Instantiate(m_removePrefab, m_removePanel.transform));
+        m_removePanel.AssignPrice(50);
     }
 }
