@@ -134,6 +134,11 @@ public class Creature : MonoBehaviour
         return m_deck;
     }
 
+    public float GetHealthRatio()
+    {
+        return (float)m_health / (float)m_maxHealth;
+    }
+
     private void Awake()
     {
         m_deck = gameObject.AddComponent<Deck>();

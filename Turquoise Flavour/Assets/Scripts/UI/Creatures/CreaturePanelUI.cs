@@ -14,6 +14,12 @@ public class CreaturePanelUI : MonoBehaviour
     protected TextMeshProUGUI m_name;
     [SerializeField]
     protected RectTransform m_childTransform;
+    [SerializeField]
+    protected RectTransform m_healthBar;
+    [SerializeField]
+    protected float m_healthBarMinValue;
+    [SerializeField]
+    protected float m_healthBarMaxValue;
 
     public void Reset()
     {
@@ -27,10 +33,18 @@ public class CreaturePanelUI : MonoBehaviour
         m_creature = creature;
         m_name.text = creature.GetName();
         m_image.sprite = creature.GetSprite();
+        PositionHealthBar();
     }
 
     public void OnClick()
     {
         GetComponentInParent<CreaturesPanelUI>().OnSubMenuClicked(m_creature);
+    }
+
+    void PositionHealthBar()
+    {
+        float positionX = m_healthBarMinValue * (1.0f - m_creature.GetHealthRatio()) + (m_healthBarMaxValue *m_creature.GetHealthRatio());
+        Debug.Log("Position = " + positionX + " Health ratio = " + m_creature.GetHealthRatio());
+        m_healthBar.localPosition = new Vector3(positionX, 0, 0);
     }
 }
