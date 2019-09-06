@@ -195,6 +195,10 @@ public class GameMaster : MonoBehaviour
             case EEventType.WildEncounter:
                 SceneManager.LoadScene("Demo", LoadSceneMode.Single);
                 break;
+            case EEventType.Shop:
+                m_shopEventUI.ToggleShop();
+                explorationNode.GetComponent<Collider2D>().enabled = true;
+                break;
             default:
                 break;
         }

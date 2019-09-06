@@ -31,6 +31,11 @@ public class ShopUI : MonoBehaviour
     protected ShopItemUI m_removePanel;
     protected List<InventoryItemData> m_shopItems = new List<InventoryItemData>();
 
+    public void BackButtonPressed()
+    {
+        ToggleShop();
+    }
+
     public void Awake()
     {
         Reset();

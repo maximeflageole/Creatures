@@ -23,6 +23,8 @@ MonoBehaviour:
     location: {x: -2, y: 2}
   - explorationNode: {fileID: 11400000, guid: dca38dd514322c143be760c1cf36fe3e, type: 2}
     location: {x: -2, y: -2}
+  - explorationNode: {fileID: 11400000, guid: dce348dea66492546985210001011b6e, type: 2}
+    location: {x: -3, y: -2.5}
   nodeLinks:
   - firstNodeId: 0
     secondNodeId: 1
@@ -34,3 +36,5 @@ MonoBehaviour:
     secondNodeId: 2
   - firstNodeId: 4
     secondNodeId: 3
+  - firstNodeId: 4
+    secondNodeId: 5
