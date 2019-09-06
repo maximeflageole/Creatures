@@ -84,6 +84,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            AddGold(1000);
+        }
+    }
     public List<TupleItemInventory> GetInventoryItemsOfType(EItemTypes itemType)
     {
         List<TupleItemInventory> returnItems = new List<TupleItemInventory>();
@@ -135,12 +142,23 @@ public class InventoryManager : MonoBehaviour
 
     void RemoveGold(int amount)
     {
+        AddGold(-amount);
+    }
+
+    void AddGold(int amount)
+    {
+        bool goldAdded = false;
         foreach (var item in m_inventoryItemsTuples)
         {
             if (item.itemEnum == EItem.Gold)
             {
-                item.itemQuantity -= amount;
+                goldAdded = true;
+                item.itemQuantity += amount;
             }
+        }
+        if (!goldAdded)
+        {
+            AddInventoryItemFromEItem(EItem.Gold, amount);
         }
     }
 

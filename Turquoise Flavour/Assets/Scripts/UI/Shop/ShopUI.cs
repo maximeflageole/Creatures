@@ -38,7 +38,6 @@ public class ShopUI : MonoBehaviour
 
     public void Reset()
     {
-        ResetGold();
         foreach (var obj in m_instances)
         {
             Destroy(obj);
@@ -60,6 +59,7 @@ public class ShopUI : MonoBehaviour
         {
             Reset();
         }
+        ResetGold();
     }
 
     void GenerateContent()
@@ -133,6 +133,5 @@ public class ShopUI : MonoBehaviour
             childClicked.SetAvailability(false);
             GetComponentInChildren<InventoryItemUI>().gameObject.SetActive(false);
         }
-        ResetGold();
     }
 }
