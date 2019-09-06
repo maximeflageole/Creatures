@@ -148,6 +148,10 @@ public class ShopUI : MonoBehaviour
 
     public void OnClick(ShopItemUI childClicked)
     {
+        if (childClicked.soldOut)
+        {
+            return;
+        }
         //When an item in the shop has been clicked
         if (InventoryManager.GetInstance().TryBuyItem(childClicked.GetShopItem()))
         {

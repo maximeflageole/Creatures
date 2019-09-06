@@ -13,6 +13,7 @@ public class ShopItemUI : MonoBehaviour
     protected GameObject m_soldOutPanel;
     [SerializeField]
     protected InventoryItemData m_shopItem;
+    public bool soldOut;
     public InventoryItemData GetShopItem() { return m_shopItem; }
 
     public void AssignItemAndPrice(InventoryItemData item)
@@ -33,11 +34,13 @@ public class ShopItemUI : MonoBehaviour
         {
             m_soldOutPanel.SetActive(false);
             m_shopPanel.SetActive(true);
+            soldOut = false;
         }
         else
         {
             m_soldOutPanel.SetActive(true);
             m_shopPanel.SetActive(false);
+            soldOut = true;
         }
     }
 }
