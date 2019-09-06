@@ -92,6 +92,7 @@ public class ShopUI : MonoBehaviour
             //InventoryItemUI itemUI = Instantiate(m_cardPrefab, tmPanel.transform).GetComponent<InventoryItemUI>();
             //itemUI.SetUI(m_shopItems[i]);
             tmPanel.AssignItemAndPrice(m_shopItems[i]);
+            tmPanel.SetAvailability(true);
             i++;
         }
         foreach (var consPanel in m_consumablePanels)
@@ -100,6 +101,7 @@ public class ShopUI : MonoBehaviour
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
             consPanel.AssignItemAndPrice(m_shopItems[i]);
+            consPanel.SetAvailability(true);
             i++;
         }
         foreach (var neutralPanel in m_neutralPanels)
@@ -108,6 +110,7 @@ public class ShopUI : MonoBehaviour
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
             neutralPanel.AssignItemAndPrice(m_shopItems[i]);
+            neutralPanel.SetAvailability(true);
             i++;
         }
         foreach (var trinketPanel in m_trinketPanels)
@@ -116,6 +119,7 @@ public class ShopUI : MonoBehaviour
             m_instances.Add(itemUI.gameObject);
             itemUI.SetUI(m_shopItems[i]);
             trinketPanel.AssignItemAndPrice(m_shopItems[i]);
+            trinketPanel.SetAvailability(true);
             i++;
         }
         m_instances.Add(Instantiate(m_upgradePrefab, m_upgradePanel.transform));
@@ -131,7 +135,7 @@ public class ShopUI : MonoBehaviour
         if (InventoryManager.GetInstance().TryBuyItem(childClicked.GetShopItem()))
         {
             childClicked.SetAvailability(false);
-            GetComponentInChildren<InventoryItemUI>().gameObject.SetActive(false);
+            childClicked.GetComponentInChildren<InventoryItemUI>().gameObject.SetActive(false);
         }
     }
 }
