@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12aa3bc34465f14686967ea705b9e34, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: 4d8259a4cb6d7f54e9d19e9acb685d5f, type: 3}
-  completedSprite: {fileID: 21300000, guid: a2daa2b12f9264443886c9ec12717bc3, type: 3}
-  discoveredSprite: {fileID: 21300000, guid: 2194e5a17191faa4781ca4229b59c21d, type: 3}
+  availableSprite: {fileID: 21300000, guid: 40338c677698ba74ca03bd81c488bf8a, type: 3}
+  completedSprite: {fileID: 21300000, guid: 03f9f120b0cf48b44909c98bcace0243, type: 3}
+  discoveredSprite: {fileID: 21300000, guid: 44efd54dff8af4b468f10ceaeac02934, type: 3}
   nodeName: Boss
   eventType: 2
