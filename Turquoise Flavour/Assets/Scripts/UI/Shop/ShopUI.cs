@@ -31,9 +31,21 @@ public class ShopUI : MonoBehaviour
     protected ShopItemUI m_removePanel;
     protected List<InventoryItemData> m_shopItems = new List<InventoryItemData>();
 
-    public void Start()
+    public void Awake()
     {
         Reset();
+    }
+
+    public void ToggleShop()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     public void Reset()

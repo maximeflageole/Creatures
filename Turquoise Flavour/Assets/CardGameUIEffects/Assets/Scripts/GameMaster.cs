@@ -45,6 +45,7 @@ public class GameMaster : MonoBehaviour
     public InventoryUI m_inventoryUI;
     public CreaturesPanelUI m_creatureUI;
     public ItemRewardEvent m_itemRewardEventUI;
+    public ShopUI m_shopEventUI;
 
     public static GameMaster GetInstance()
     {
@@ -97,6 +98,13 @@ public class GameMaster : MonoBehaviour
             if (m_itemRewardEventUI != null)
             {
                 m_itemRewardEventUI.BeginReward();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (m_shopEventUI != null)
+            {
+                m_shopEventUI.ToggleShop();
             }
         }
     }

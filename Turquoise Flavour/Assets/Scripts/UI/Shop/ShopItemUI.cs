@@ -15,13 +15,9 @@ public class ShopItemUI : MonoBehaviour
     protected InventoryItemData m_shopItem;
     public InventoryItemData GetShopItem() { return m_shopItem; }
 
-    public void Awake()
-    {
-        m_priceTextMesh = GetComponentInChildren<TextMeshProUGUI>();
-    }
-
     public void AssignItemAndPrice(InventoryItemData item)
     {
+        m_priceTextMesh = GetComponentInChildren<TextMeshProUGUI>();
         m_shopItem = item;
         m_priceTextMesh.text = m_shopItem.cost.ToString();
     }
