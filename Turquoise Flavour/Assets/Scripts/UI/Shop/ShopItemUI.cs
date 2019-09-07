@@ -13,7 +13,10 @@ public class ShopItemUI : MonoBehaviour
     protected GameObject m_soldOutPanel;
     [SerializeField]
     protected InventoryItemData m_shopItem;
-    public bool soldOut;
+    public bool m_soldOut;
+    public bool m_isCardRemove;
+    public bool m_isCardUpgrade;
+
     public InventoryItemData GetShopItem() { return m_shopItem; }
 
     public void AssignItemAndPrice(InventoryItemData item)
@@ -23,9 +26,15 @@ public class ShopItemUI : MonoBehaviour
         m_priceTextMesh.text = m_shopItem.cost.ToString();
     }
 
+    public void InstantiateRemovalPanel(int price)
+    {
+        m_priceTextMesh = GetComponentInChildren<TextMeshProUGUI>();
+        m_priceTextMesh.text = price.ToString();
+    }
+
     public void OnClick()
     {
-        GetComponentInParent<ShopUI>().OnClick(this);
+        GetComponentInParent<ShopUI>().OnClick(this, m_isCardRemove, m_isCardUpgrade);
     }
 
     public void SetAvailability(bool available)
@@ -34,13 +43,13 @@ public class ShopItemUI : MonoBehaviour
         {
             m_soldOutPanel.SetActive(false);
             m_shopPanel.SetActive(true);
-            soldOut = false;
+            m_soldOut = false;
         }
         else
         {
             m_soldOutPanel.SetActive(true);
             m_shopPanel.SetActive(false);
-            soldOut = true;
+            m_soldOut = true;
         }
     }
 }

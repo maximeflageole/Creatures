@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Turquoise;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
             return playerComp;
         }
         return s_playerInstance;
+    }
+
+    public List<ECard> GetCurrentCreatureDeck()
+    {
+        return m_currentCreature.GetDeck().m_cards;
     }
 
     public void Awake()

@@ -140,12 +140,12 @@ public class InventoryManager : MonoBehaviour
         return 0;
     }
 
-    void RemoveGold(int amount)
+    public void RemoveGold(int amount)
     {
         AddGold(-amount);
     }
 
-    void AddGold(int amount)
+    public void AddGold(int amount)
     {
         bool goldAdded = false;
         foreach (var item in m_inventoryItemsTuples)

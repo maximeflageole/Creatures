@@ -17,8 +17,10 @@ public class CardPileUI : MonoBehaviour
     protected RectTransform m_cardsAnchorTransform;
     [SerializeField]
     protected List<CardUI> m_selectedCards;
+    [SerializeField]
+    protected ECardPickOptions m_cardPickOptions = ECardPickOptions.Count;
 
-    public void DisplayCardPile(List<ECard> cardList, bool orderAlpha, int cardsToPick)
+    public void DisplayCardPile(List<ECard> cardList, bool orderAlpha, int cardsToPick, ECardPickOptions cardPickOptions = ECardPickOptions.Count)
     {
         ClearCards();
         m_cardsToPick = cardsToPick;
@@ -27,9 +29,10 @@ public class CardPileUI : MonoBehaviour
             AddCard(card);
         }
         DisplayCards(orderAlpha);
+        m_cardPickOptions = cardPickOptions;
     }
 
-    public void DisplayCardPile(List<Card> cardList, bool orderAlpha, int cardsToPick)
+    public void DisplayCardPile(List<Card> cardList, bool orderAlpha, int cardsToPick, ECardPickOptions cardPickOptions = ECardPickOptions.Count)
     {
         ClearCards();
         m_cardsToPick = cardsToPick;
@@ -38,6 +41,7 @@ public class CardPileUI : MonoBehaviour
             AddCard(card);
         }
         DisplayCards(orderAlpha);
+        m_cardPickOptions = cardPickOptions;
     }
 
     public void ClearCards()
@@ -50,6 +54,7 @@ public class CardPileUI : MonoBehaviour
         m_cardsData.Clear();
         gameObject.SetActive(false);
         m_selectedCards.Clear();
+        m_cardPickOptions = ECardPickOptions.Count;
     }
 
     void DisplayCards(bool orderAlpha)
@@ -120,18 +125,47 @@ public class CardPileUI : MonoBehaviour
     public void OnButtonSelect()
     {
         List<int> indexList = new List<int>();
-        if (m_selectedCards.Count == m_cardsToPick)
+        if (m_selectedCards.Count == m_cardsToPick || m_cardsData.Count == m_selectedCards.Count)
         {
             foreach(var card in m_selectedCards)
             {
                 indexList.Add(m_cardsData.IndexOf(card.GetCardData()));
+                switch (m_cardPickOptions)
+                {
+                    case ECardPickOptions.Remove:
+                        Player.GetPlayerInstance().GetCurrentCreature().GetDeck().RemoveCard(card.GetCardData().cardEnumValue);
+                        SaveSystem.SaveGame();
+                        break;
+                    default:
+                        break;
+                }
             }
-            CardEffects.GetInstance().CardSelectionCallback(indexList, m_cardsData.Count);
+            if (CardEffects.GetInstance() != null)
+            {
+                CardEffects.GetInstance().CardSelectionCallback(indexList, m_cardsData.Count);
+            }
+            else
+            {
+                ClearCards();
+            }
         }
     }
 
     public bool Validate()
     {
         return false;
+    }
+}
+
+namespace Turquoise
+{
+    public enum ECardPickOptions
+    {
+        Remove,
+        Upgrade,
+        Draw,
+        Exhaust,
+        PutOnTop,
+        Count
     }
 }

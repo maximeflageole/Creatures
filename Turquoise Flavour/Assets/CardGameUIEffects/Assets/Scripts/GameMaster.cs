@@ -107,6 +107,16 @@ public class GameMaster : MonoBehaviour
                 m_shopEventUI.ToggleShop();
             }
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            StartCardRemoval();
+        }
+    }
+
+    public void StartCardRemoval(int amount = 1)
+    {
+        m_cardPileUI.DisplayCardPile(Player.GetPlayerInstance().GetCurrentCreatureDeck(), false, amount, ECardPickOptions.Remove);
+        m_cardPileUI.gameObject.SetActive(true);
     }
 
     // Start is called before the first frame update
