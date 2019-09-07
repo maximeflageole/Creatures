@@ -146,9 +146,10 @@ public class ShopUI : MonoBehaviour
             i++;
         }
         m_upgradeInstance = Instantiate(m_upgradePrefab, m_upgradePanel.transform);
+        m_upgradePanel.SetAvailability(true);
         //m_upgradePanel.AssignItemAndPrice(50);
         m_removeInstance = Instantiate(m_removePrefab, m_removePanel.transform);
-        //TODO: this
+        m_removePanel.SetAvailability(true);
         m_removePanel.InstantiateRemovalPanel(50);
     }
 
@@ -164,9 +165,9 @@ public class ShopUI : MonoBehaviour
             {
                 InventoryManager.GetInstance().RemoveGold(50);
                 m_removeInstance.SetActive(false);
+                childClicked.SetAvailability(false);
+                GameMaster.GetInstance().StartCardRemoval();
             }
-            childClicked.SetAvailability(false);
-            GameMaster.GetInstance().StartCardRemoval();
         }
         else if (isCardUpgrade)
         {
