@@ -60,7 +60,7 @@ public class ActiveAbility : MonoBehaviour
 
     protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature, Creature cardPlayingCreature)
     {
-        selectedCreature.ApplyEffect(effect, cardPlayingCreature);
+        selectedCreature.ApplyEffect(effect, cardPlayingCreature, selectedCreature);
     }
 
 }

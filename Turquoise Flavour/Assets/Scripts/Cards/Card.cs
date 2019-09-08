@@ -58,6 +58,9 @@ namespace Turquoise
         EnergyGain,
         HealingPercent,
         DamagePercent,
+        VampiricHeal,
+        HeProtects,
+        HeAttacks,
         Count
     }
 
@@ -204,7 +207,7 @@ public class Card : MonoBehaviour
 
     protected void ApplyEffect(SAbilityEffect effect, Creature selectedCreature, Creature cardPlayingCreature)
     {
-        selectedCreature.ApplyEffect(effect, cardPlayingCreature, m_cardData.damageType);
+        selectedCreature.ApplyEffect(effect, cardPlayingCreature, selectedCreature, m_cardData.damageType);
     }
 
     bool GetIsLucky(int odds)

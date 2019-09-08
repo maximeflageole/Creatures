@@ -89,8 +89,9 @@ public class ConditionsComponent : MonoBehaviour
         switch (cardEffect)
         {
             case ECardEffect.Armor:
-                return true;
             case ECardEffect.DamageBuff:
+            case ECardEffect.HeAttacks:
+            case ECardEffect.HeProtects:
                 return true;
         }
         return false;
@@ -196,6 +197,28 @@ public class ConditionsComponent : MonoBehaviour
         }
     }
 
+    public void RemoveBuff(ECardEffect effect, int qty = 1)
+    {
+        Condition condition = GetCondition(effect);
+        if (condition != null)
+        {
+            condition.IncrementStacks(-qty);
+            VerifyBoon(condition);
+        }
+    }
+
+    Condition GetCondition(ECardEffect effect)
+    {
+        foreach (var boon in m_boons)
+        {
+            if (boon.GetData().cardEffect == effect)
+            {
+                return boon;
+            }
+        }
+        return null;
+    }
+
     void DecayBoons(EBoonTime decayTime)
     {
         for (int i = 0; i < m_boons.Count; i++)
@@ -213,10 +236,8 @@ public class ConditionsComponent : MonoBehaviour
                         break;
                     case EBoonDecayType.Turn:
                         boon.IncrementStacks(-1);
-                        if (boon.GetStacks() <= 0)
+                        if (VerifyBoon(boon))
                         {
-                            m_boons.Remove(boon);
-                            Destroy(boon);
                             i--;
                         }
                         break;
@@ -225,6 +246,17 @@ public class ConditionsComponent : MonoBehaviour
                 }
             }
         }
+    }
+
+    bool VerifyBoon(Condition boon)
+    {
+        if (boon.GetStacks() < 1)
+        {
+            m_boons.Remove(boon);
+            Destroy(boon);
+            return true;
+        }
+        return false;
     }
 
     public void EndBattle()

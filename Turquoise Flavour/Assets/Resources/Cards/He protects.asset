@@ -13,14 +13,29 @@ MonoBehaviour:
   m_Name: He protects
   m_EditorClassIdentifier: 
   cardName: He protects
-  cardEnumValue: 0
-  description: 
-  artwork: {fileID: 0}
-  energyCost: 0
+  cardEnumValue: 19
+  description: Gain 6 armor. If he attacks was played this turn, gain 6 more.
+  artwork: {fileID: 21300000, guid: 21c2f40e5d84489488e87cf0831d9871, type: 3}
+  energyCost: 1
   targetType: 0
-  effects: []
-  cardGenre: 0
+  effects:
+  - m_effect: 7
+    m_value: 6
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
+  - m_effect: 7
+    m_value: 6
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 15000000
+  - m_effect: 20
+    m_value: 1
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
+  cardGenre: 1
   damageType: 0
   rarity: 0
-  creaturePart: 0
+  creaturePart: 5
   chancesOnHundred: 0
