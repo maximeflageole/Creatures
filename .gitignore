@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Turquoise Flavour/Assets/PlayMaker/Editor/Resources/EditorStartupPrefs.asset
