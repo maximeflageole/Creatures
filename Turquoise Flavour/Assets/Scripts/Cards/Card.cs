@@ -61,6 +61,7 @@ namespace Turquoise
         VampiricHeal,
         HeProtects,
         HeAttacks,
+        BleedingAttacks,
         Count
     }
 

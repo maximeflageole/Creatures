@@ -24,12 +24,24 @@ public class ConditionsComponent : MonoBehaviour
         }
     }
 
-    public void TryAddCondition(SAbilityEffect cardEffect)
+    public void TryAddCondition(SAbilityEffect abilityEffect)
     {
-        ConditionData conditionData = GameMaster.GetInstance().m_boonList.GetBoonDataFromCardEffect(cardEffect.m_effect);
+        ConditionData conditionData = GameMaster.GetInstance().m_boonList.GetBoonDataFromCardEffect(abilityEffect.m_effect);
         if (conditionData != null)
         {
-            TryAddCondition(conditionData, cardEffect.m_value);
+            TryAddCondition(conditionData, abilityEffect.m_value);
+        }
+    }
+
+    public void TryAddCondition(ECardEffect cardEffect, int stacks = 1)
+    {
+        if (stacks != 0)
+        {
+            ConditionData conditionData = GameMaster.GetInstance().m_boonList.GetBoonDataFromCardEffect(cardEffect);
+            if (conditionData != null)
+            {
+                TryAddCondition(conditionData, stacks);
+            }
         }
     }
 
@@ -92,6 +104,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.DamageBuff:
             case ECardEffect.HeAttacks:
             case ECardEffect.HeProtects:
+            case ECardEffect.BleedingAttacks:
                 return true;
         }
         return false;

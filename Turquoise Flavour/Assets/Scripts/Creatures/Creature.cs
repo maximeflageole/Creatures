@@ -170,6 +170,7 @@ public class Creature : MonoBehaviour
             case ECardEffect.Damage:
                 int calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(cardEffect.m_value);
                 ApplyDamage(calculatedDamage, damageType);
+                m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
                 break;
             case ECardEffect.Healing:
                 ApplyDamage(-cardEffect.m_value, damageType);
