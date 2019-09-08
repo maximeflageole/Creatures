@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12aa3bc34465f14686967ea705b9e34, type: 3}
   m_Name: WildEncounter
   m_EditorClassIdentifier: 
-  availableSprite: {fileID: 21300000, guid: c901f886f1b29824190eac1523051d5d, type: 3}
-  completedSprite: {fileID: 21300000, guid: 088037ed2dd8a8641848fd9dc9c32d45, type: 3}
-  discoveredSprite: {fileID: 21300000, guid: 2194e5a17191faa4781ca4229b59c21d, type: 3}
+  availableSprite: {fileID: 21300000, guid: cc02ededfdcda734eb426f4d62c96781, type: 3}
+  completedSprite: {fileID: 21300000, guid: 90b8c314068ae3f4187ea19db24e35f4, type: 3}
+  discoveredSprite: {fileID: 21300000, guid: 44efd54dff8af4b468f10ceaeac02934, type: 3}
   nodeName: Wild Encounter
   eventType: 1

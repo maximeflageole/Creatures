@@ -94,8 +94,8 @@ public class ExplorationScreen : MonoBehaviour
                 {
                     if (m_explorator.GetComponent<Explorator>().IsNodeSelected(node))
                     {
-                        GameMaster.GetInstance().StartEvent(node);
                         hit.collider.enabled = false;
+                        GameMaster.GetInstance().StartEvent(node);
                     }
                     else
                     {
@@ -120,8 +120,9 @@ namespace Exploration
         CardReward,
         WildEncounter,
         Boss,
-        Treasure,
+        ItemReward,
         CreaturePick,
+        Shop,
         Count
     }
 }

@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_cardsToPick: 0
   m_cardsAnchorTransform: {fileID: 466190492473450955}
   m_selectedCards: []
+  m_cardPickOptions: 5
 --- !u!1 &466190492379909514
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.08343715, b: 0.08343715, a: 0}
+  m_Color: {r: 0.5283019, g: 0.52439654, b: 0.29654682, a: 0.7607843}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

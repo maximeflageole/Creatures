@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Turquoise;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
             return playerComp;
         }
         return s_playerInstance;
+    }
+
+    public List<ECard> GetCurrentCreatureDeck()
+    {
+        return m_currentCreature.GetDeck().m_cards;
     }
 
     public void Awake()
@@ -125,17 +131,11 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    public void SwapCreature()
+    public void SwapCreature(Creature creature)
     {
-        /*
-        if (m_creatures.Count > 1)
-        {
-            m_currentCreature.ReturnCreatureFromBattle();
-            m_currentCreatureIndex = (m_currentCreatureIndex + 1) % m_creatures.Count;
-            m_currentCreature = m_creatures[m_currentCreatureIndex];
-            CardEffects.GetCardEffectsInstance().ChangePlayerCreature(m_currentCreature);
-        }
-        */
+        m_currentCreature.ReturnCreatureFromBattle();
+        m_currentCreature = creature;
+        CardEffects.GetInstance().ChangePlayerCreature(m_currentCreature);
     }
 
     public void CaptureCreature(CreatureData creatureData, int level)

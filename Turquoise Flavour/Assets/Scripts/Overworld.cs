@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Exploration;
+using Turquoise;
+using TMPro;
 
 public class Overworld : MonoBehaviour
 {
@@ -14,16 +16,23 @@ public class Overworld : MonoBehaviour
     protected GameObject MapPrefab;
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
+    [SerializeField]
+    protected TextMeshProUGUI m_goldTextMesh;
 
     public static Overworld GetInstance()
     {
         if (s_OverworldInstance == null)
         {
-            var gameMaster = new GameObject("Overworld");
+            new GameObject("Overworld");
             var go = Instantiate(Resources.Load("Overworld")) as GameObject;
             return go.GetComponent<Overworld>();
         }
         return s_OverworldInstance;
+    }
+
+    public void Update()
+    {
+        m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
     }
 
     public GameObject GetObjectFromNode(ExplorationNode explorationNode)
@@ -64,7 +73,7 @@ public class Overworld : MonoBehaviour
         }
     }
 
-    public static ExplorationNodeData GetExplorationNodeDataFromEventType(Exploration.EEventType eventType)
+    public static ExplorationNodeData GetExplorationNodeDataFromEventType(EEventType eventType)
     {
         if (s_OverworldInstance == null)
         {

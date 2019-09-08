@@ -23,15 +23,17 @@ public struct CreatureSaveable
     public List<ECard> m_deck;
     public int m_currentHealth;
     public int m_experience;
+    public EItem m_item;
 
 
-    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth, int experience)
+    public CreatureSaveable(ECreature eCreature, int level, Deck deck, int currentHealth, int experience, EItem item)
     {
         m_eCreature = eCreature;
         m_level = level;
         m_deck = deck.m_cards;
         m_currentHealth = currentHealth;
         m_experience = experience;
+        m_item = item;
     }
 }
 
@@ -75,10 +77,12 @@ public class Creature : MonoBehaviour
     [SerializeField]
     protected ConditionsComponent m_conditionsComponent;
     public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }
+    [SerializeField]
+    protected EItem m_equippedItem;
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints);
+        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints, m_equippedItem);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
@@ -89,9 +93,10 @@ public class Creature : MonoBehaviour
         m_experience.experiencePoints = creatureSave.m_experience;
         m_creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
         CreateFromCreatureData(m_creatureData, creatureSave.m_deck, creatureSave.m_level);
+        m_equippedItem = creatureSave.m_item;
     }
 
-    public void CreateFromCreatureData(CreatureData creatureData, List<Turquoise.ECard> deck, int level = 1, int experience = 0)
+    public void CreateFromCreatureData(CreatureData creatureData, List<ECard> deck, int level = 1, int experience = 0)
     {
         m_experience.levelSpeed = creatureData.levelSpeed;
         m_eCreature = creatureData.eCreature;
@@ -109,6 +114,16 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public string GetName()
+    {
+        return m_creatureData.creatureName;
+    }
+
+    public Sprite GetSprite()
+    {
+        return m_creatureData.sprite;
+    }
+
     public ActiveAbility GetActiveAbility()
     {
         return m_activeAbility;
@@ -117,6 +132,11 @@ public class Creature : MonoBehaviour
     public Deck GetDeck()
     {
         return m_deck;
+    }
+
+    public float GetHealthRatio()
+    {
+        return (float)m_health / (float)m_maxHealth;
     }
 
     private void Awake()
@@ -227,7 +247,7 @@ public class Creature : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(int damage, EDamageType damageType)
+    public void ApplyDamage(int damage, EDamageType damageType = EDamageType.None)
     {
         float calculatedDamage = CalculateDamage(damage, damageType);
         int intFinalDamage = Mathf.RoundToInt(calculatedDamage);
@@ -248,6 +268,10 @@ public class Creature : MonoBehaviour
         if (m_health <= 0)
         {
             DieEvent();
+        }
+        if (m_health > m_maxHealth)
+        {
+            m_health = m_maxHealth;
         }
     }
 
@@ -501,6 +525,42 @@ public class Creature : MonoBehaviour
     public List<ECard> GetNextLevelUpCards(ERarity rarity, int amount)
     {
         return m_creatureData.abilityTree.GetCardsByRarity(rarity, amount, true);
+    }
+
+    public void EquipItem(EItem item)
+    {
+        if (m_equippedItem != EItem.Count)
+        {
+            InventoryManager.GetInstance().AddInventoryItemFromEItem(m_equippedItem);
+        }
+        m_equippedItem = item;
+        InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
+    }
+
+    public void UseItem(InventoryItemData itemData)
+    {
+        foreach (var effect in itemData.effects)
+        {
+            switch (effect.m_effect)
+            {
+                case ECardEffect.Healing:
+                    ApplyDamage(-effect.m_value);
+                    break;
+                case ECardEffect.HealingPercent:
+                    ApplyDamagePercent(-effect.m_value);
+                    break;
+            }
+        }
+        InventoryManager.GetInstance().RemoveInventoryItem(itemData, 1);
+    }
+
+    public void GiveTM(InventoryItemData itemData)
+    {
+        foreach (var card in itemData.cardsTms)
+        {
+            AddCardToDeck(card);
+        }
+        InventoryManager.GetInstance().RemoveInventoryItem(itemData, 1);
     }
 }
 

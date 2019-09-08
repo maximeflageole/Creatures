@@ -4,14 +4,18 @@ using UnityEngine;
 using Exploration;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using Turquoise;
 
 public class GameMaster : MonoBehaviour
 {
+    protected bool m_inBattle;
     static GameMaster s_gmInstance;
     [SerializeField]
     protected TurquoiseEvent m_currentEvent;
     [SerializeField]
     protected GameObject m_rewardEvent;
+    [SerializeField]
+    protected ItemRewardEvent m_itemRewardEvent;
     public CardList m_cardList;
     [SerializeField]
     protected GameObject m_cardListPrefab;
@@ -30,11 +34,18 @@ public class GameMaster : MonoBehaviour
     public AIManager m_aiManager;
     [SerializeField]
     protected GameObject m_aiManagerPrefab;
+    public InventoryManager m_inventoryManager;
+    [SerializeField]
+    protected GameObject m_inventoryManagerPrefab;
     [SerializeField]
     protected Canvas m_mainCanvas;
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
     protected int m_currentNodeIndex = -1;
+    public InventoryUI m_inventoryUI;
+    public CreaturesPanelUI m_creatureUI;
+    public ItemRewardEvent m_itemRewardEventUI;
+    public ShopUI m_shopEventUI;
 
     public static GameMaster GetInstance()
     {
@@ -45,6 +56,67 @@ public class GameMaster : MonoBehaviour
             return go.GetComponent<GameMaster>();
         }
         return s_gmInstance;
+    }
+
+    public bool GetInBattle()
+    {
+        return m_inBattle;
+    }
+
+    public void SetInBattle(bool inBattle)
+    {
+        m_inBattle = inBattle;
+    }
+
+    void Update()
+    {
+        //TODO: This should be in overworld only
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (m_inventoryUI != null)
+            {
+                m_inventoryUI.Toggle();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (m_creatureUI != null)
+            {
+                m_creatureUI.gameObject.SetActive(!m_creatureUI.gameObject.activeSelf);
+                if (m_creatureUI.gameObject.activeSelf)
+                {
+                    m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
+                }
+                else
+                {
+                    m_creatureUI.CloseMenu();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (m_itemRewardEventUI != null)
+            {
+                m_itemRewardEventUI.BeginReward();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (m_shopEventUI != null)
+            {
+                m_shopEventUI.ToggleShop();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            StartCardRemoval();
+        }
+    }
+
+    public void StartCardRemoval(int amount = 1)
+    {
+        m_cardPileUI.DisplayCardPile(Player.GetPlayerInstance().GetCurrentCreatureDeck(), false, amount, ECardPickOptions.Remove);
+        m_cardPileUI.gameObject.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -88,6 +160,10 @@ public class GameMaster : MonoBehaviour
         {
             m_aiManager = Instantiate(m_aiManagerPrefab, transform).GetComponent<AIManager>();
         }
+        if (m_inventoryManagerPrefab != null)
+        {
+            m_inventoryManager = Instantiate(m_inventoryManagerPrefab, transform).GetComponent<InventoryManager>();
+        }
         Player.GetPlayerInstance().LoadGame();
     }
 
@@ -123,10 +199,15 @@ public class GameMaster : MonoBehaviour
                 break;
             case EEventType.CardReward:
                 break;
-            case EEventType.Treasure:
+            case EEventType.ItemReward:
+                m_itemRewardEvent.BeginReward();
                 break;
             case EEventType.WildEncounter:
                 SceneManager.LoadScene("Demo", LoadSceneMode.Single);
+                break;
+            case EEventType.Shop:
+                m_shopEventUI.ToggleShop();
+                explorationNode.GetComponent<Collider2D>().enabled = true;
                 break;
             default:
                 break;
@@ -155,7 +236,7 @@ public class GameMaster : MonoBehaviour
 
     public void ChangeCreature()
     {
-        Player.GetPlayerInstance().SwapCreature();
+        m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
     }
 
     public void LoadGame()
@@ -168,6 +249,10 @@ public class GameMaster : MonoBehaviour
         }
         m_completedNodes.Clear();
         m_completedNodes = saveData.completedNodes;
+        if (m_inventoryManager != null)
+        {
+            m_inventoryManager.SetInventoryItems(saveData.inventoryItems);
+        }
     }
 
     public void CompleteNode(int nodeIndex)
@@ -199,6 +284,23 @@ public class GameMaster : MonoBehaviour
         {
             BattleStateMachine battleStateMachine = gameObject.AddComponent(typeof(BattleStateMachine)) as BattleStateMachine;
         }
+    }
+
+    public ECard GetRandomUnlockedCard()
+    {
+        //TODO: Unlocked cards, not all cards. Also, add a rarity parameter
+        ECard card = ECard.Count;
+        if (m_cardList != null)
+        {
+            card = m_cardList.GetRandomCard();
+        }
+        return card;
+    }
+
+    public void OpenMenuToGiveItem(EItem item)
+    {
+        m_inventoryUI.Close();
+        m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
     }
 }
 

@@ -6,24 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    /*
-    public static void SaveGame(Deck deck)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/playerDeck";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        SaveData data = new SaveData();
-        foreach (var card in deck.m_cards)
-        {
-            data.deck.Add(card.ToString());
-        }
-
-        formatter.Serialize(stream, data);
-        stream.Close();
-    }
-    */
-
     public static void SaveGame()
     {
         Debug.Log("Start saving");
@@ -40,6 +22,10 @@ public static class SaveSystem
         foreach (var completedNode in GameMaster.GetInstance().m_completedNodes)
         {
             data.completedNodes.Add(completedNode);
+        }
+        foreach (var item in InventoryManager.GetInstance().GetInventoryItems())
+        {
+            data.inventoryItems.Add(item);
         }
         formatter.Serialize(stream, data);
         stream.Close();
@@ -94,4 +80,5 @@ public class SaveData
 {
     public List<CreatureSaveable> creaturesSave = new List<CreatureSaveable>();
     public List<int> completedNodes = new List<int>();
+    public List<TupleItemInventory> inventoryItems= new List<TupleItemInventory>();
 }

@@ -46,7 +46,12 @@ public class CardUI : MonoBehaviour
 
     public void OnClick()
     {
-        GetComponentInParent<CardPileUI>().OnCardSelect(this);
+        var cardPileUI = GetComponentInParent<CardPileUI>();
+        if (cardPileUI != null)
+
+        {
+            cardPileUI.OnCardSelect(this);
+        }
     }
 
     public void OnCardSelected(bool selected)
