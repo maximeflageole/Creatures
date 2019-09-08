@@ -13,12 +13,33 @@ MonoBehaviour:
   m_Name: He attacks
   m_EditorClassIdentifier: 
   cardName: He attacks
-  cardEnumValue: 0
-  description: 
-  artwork: {fileID: 0}
-  energyCost: 0
-  targetType: 0
-  effects: []
+  cardEnumValue: 18
+  description: Deals 8 damage. If he protects was played this turn, inflicts 1 bleed
+    and draw a card
+  artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
+  energyCost: 1
+  targetType: 1
+  effects:
+  - m_effect: 0
+    m_value: 8
+    m_targetType: 1
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
+  - m_effect: 6
+    m_value: 1
+    m_targetType: 1
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 14000000
+  - m_effect: 2
+    m_value: 1
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 14000000
+  - m_effect: 21
+    m_value: 1
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
   cardGenre: 0
   damageType: 0
   rarity: 0

@@ -13,14 +13,24 @@ MonoBehaviour:
   m_Name: Vampiric Bite
   m_EditorClassIdentifier: 
   cardName: Vampiric bite
-  cardEnumValue: 0
-  description: 
-  artwork: {fileID: 0}
-  energyCost: 0
-  targetType: 0
-  effects: []
+  cardEnumValue: 15
+  description: Deals 14 damage. Heals for the amount of bleed on the enemy
+  artwork: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
+  energyCost: 2
+  targetType: 1
+  effects:
+  - m_effect: 0
+    m_value: 14
+    m_targetType: 1
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
+  - m_effect: 19
+    m_value: 1
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
   cardGenre: 0
   damageType: 0
-  rarity: 0
-  creaturePart: 0
+  rarity: 1
+  creaturePart: 1
   chancesOnHundred: 0

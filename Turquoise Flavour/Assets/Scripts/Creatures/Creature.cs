@@ -145,14 +145,25 @@ public class Creature : MonoBehaviour
         m_conditionsComponent = gameObject.AddComponent<ConditionsComponent>();
     }
 
-    public void ApplyEffect(SAbilityEffect cardEffect, Creature cardPlayingCreature, EDamageType damageType = EDamageType.None)
+    public void ApplyEffect(SAbilityEffect cardEffect, Creature cardPlayingCreature, Creature selectedCreature, EDamageType damageType = EDamageType.None)
     {
         if (m_conditionsComponent == null)
         {
             Debug.LogError("Creature has no conditions component!");
             return;
         }
-        m_conditionsComponent.TryAddCondition(cardEffect);
+
+        Creature targetCreature = selectedCreature;
+        //Determine target
+        switch (cardEffect.m_targetType)
+        {
+            case ETarget.Self:
+                targetCreature = cardPlayingCreature;
+                break;
+            default:
+                break;
+        }
+        targetCreature.m_conditionsComponent.TryAddCondition(cardEffect);
 
         switch (cardEffect.m_effect)
         {
@@ -174,6 +185,15 @@ public class Creature : MonoBehaviour
                 break;
             case ECardEffect.DamagePercent:
                 ApplyDamagePercent(cardEffect.m_value);
+                break;
+            case ECardEffect.VampiricHeal:
+                cardPlayingCreature.ApplyDamage(-cardEffect.m_value * selectedCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.Bleed));
+                break;
+            case ECardEffect.HeAttacks:
+                cardPlayingCreature.m_conditionsComponent.RemoveBuff(ECardEffect.HeProtects, 1);
+                break;
+            case ECardEffect.HeProtects:
+                cardPlayingCreature.m_conditionsComponent.RemoveBuff(ECardEffect.HeAttacks, 1);
                 break;
             default:
                 break;

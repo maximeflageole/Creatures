@@ -205,11 +205,11 @@ public class CardEffects : TurquoiseEvent {
         {
             if (effect.m_targetType == ETarget.Enemy)
             {
-                GetPlayerCreature().ApplyEffect(effect, GetEnemyCreature(), card.damageType);
+                GetPlayerCreature().ApplyEffect(effect, GetEnemyCreature(), GetPlayerCreature(), card.damageType);
             }
             if (effect.m_targetType == ETarget.Self)
             {
-                GetEnemyCreature().ApplyEffect(effect, GetEnemyCreature(), card.damageType);
+                GetEnemyCreature().ApplyEffect(effect, GetEnemyCreature(), GetEnemyCreature(), card.damageType);
             }
         }
     }
