@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     public bool TryPlayCard(Card card)
     {
         //Verify mana
-        if (card.GetCardData().energyCost > m_currentCreature.GetCurrentMana())
+        if (card.GetCardData().energyCost > m_currentCreature.GetCurrentEnergy())
         {
             print("Not enough mana to play this card");
             return false;
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
     public bool CanPlayActiveAbility()
     {
         ActiveAbility activeAbility = m_currentCreature.GetActiveAbility();
-        return activeAbility.CanCast(m_currentCreature.GetCurrentMana());
+        return activeAbility.CanCast(m_currentCreature.GetCurrentEnergy());
     }
 
     public void PlayActiveAbility()

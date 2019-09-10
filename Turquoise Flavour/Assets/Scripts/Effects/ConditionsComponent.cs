@@ -136,6 +136,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.ForgottenMove:
             case ECardEffect.ManaSink:
             case ECardEffect.Slow:
+            case ECardEffect.Unprepared:
                 return true;
         }
         return false;

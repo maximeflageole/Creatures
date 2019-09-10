@@ -103,7 +103,7 @@ public class Creature : MonoBehaviour
         m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_experience.level);
         m_health = m_maxHealth;
         m_primaryType = creatureData.creatureType;
-        m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
+        m_baseMaxMana = creatureData.initialMana;
         m_sprite = creatureData.sprite;
         m_deck.m_cards = deck;
         m_creatureData = creatureData;
@@ -263,9 +263,17 @@ public class Creature : MonoBehaviour
         {
             if (m_creatureUIComp != null)
             {
-                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_currentEnergy, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
+                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, GetCurrentEnergy(), GetCurrentMaxMana(), m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
             }
         }
+    }
+
+    public int GetCurrentMaxMana()
+    {
+        int returnInt = m_baseMaxMana;
+        returnInt += m_conditionsComponent.GetBoonStacks(ECardEffect.ManaSurge);
+        returnInt -= m_conditionsComponent.GetBoonStacks(ECardEffect.ManaSink);
+        return returnInt;
     }
 
     public void ApplyDamage(int damage, EDamageType damageType = EDamageType.None)
@@ -451,7 +459,7 @@ public class Creature : MonoBehaviour
         return 1.0f;
     }
 
-    public int GetCurrentMana()
+    public int GetCurrentEnergy()
     {
         return m_currentEnergy;
     }
@@ -479,7 +487,7 @@ public class Creature : MonoBehaviour
 
     public void RefreshEnergy()
     {
-        m_currentEnergy = m_currentMaxMana;
+        m_currentEnergy = GetCurrentMaxMana();
     }
 
     public void DieEvent()
