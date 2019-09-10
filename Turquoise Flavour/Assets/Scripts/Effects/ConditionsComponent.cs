@@ -227,6 +227,9 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.Vigor:
                 GetComponentInParent<Creature>().HealPercent(condition.GetStacks());
                 break;
+            case ECardEffect.Cleanse:
+                ClearDebuffs(condition.GetStacks());
+                break;
             default:
                 break;
         }

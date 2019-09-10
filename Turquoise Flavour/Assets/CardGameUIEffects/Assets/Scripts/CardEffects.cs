@@ -711,7 +711,8 @@ public class CardEffects : TurquoiseEvent {
                     }
                     if (effect.m_effect == ECardEffect.Draw)
                     {
-                        StartCoroutine(SendHandCards(effect.m_value));
+                        int additionalCards = GetPlayerCreature().GetConditionsComponent().GetBoonStacks(ECardEffect.Haste);
+                        StartCoroutine(SendHandCards(effect.m_value + additionalCards));
                     }
                     if (effect.m_effect == ECardEffect.Discard)
                     {

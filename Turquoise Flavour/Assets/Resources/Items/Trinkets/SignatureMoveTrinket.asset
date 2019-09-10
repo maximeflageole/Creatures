@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   cost: 0
   rarity: 0
-  type: 0
+  type: 2
   item: 0
   effects: []
   cardsTms: 

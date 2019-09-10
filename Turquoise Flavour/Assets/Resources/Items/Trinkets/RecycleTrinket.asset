@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Consumables only get exhausted instead of consumed
   cost: 120
   rarity: 1
-  type: 0
+  type: 2
   item: 10
   effects:
   - m_effect: 27
