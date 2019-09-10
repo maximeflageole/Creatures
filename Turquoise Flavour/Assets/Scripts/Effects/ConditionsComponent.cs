@@ -105,6 +105,16 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.HeAttacks:
             case ECardEffect.HeProtects:
             case ECardEffect.BleedingAttacks:
+            case ECardEffect.UrgencyArmor:
+            case ECardEffect.Charge:
+            case ECardEffect.Cleanse:
+            case ECardEffect.Fast:
+            case ECardEffect.Haste:
+            case ECardEffect.ManaSurge:
+            case ECardEffect.Preparation:
+            case ECardEffect.Recycle:
+            case ECardEffect.SignatureMove:
+            case ECardEffect.Vigor:
                 return true;
         }
         return false;
@@ -119,12 +129,13 @@ public class ConditionsComponent : MonoBehaviour
         switch (cardEffect)
         {
             case ECardEffect.Bleed:
-                return true;
             case ECardEffect.Stun:
-                return true;
             case ECardEffect.Fear:
-                return true;
             case ECardEffect.Confusion:
+            case ECardEffect.Charge:
+            case ECardEffect.ForgottenMove:
+            case ECardEffect.ManaSink:
+            case ECardEffect.Slow:
                 return true;
         }
         return false;
@@ -172,7 +183,7 @@ public class ConditionsComponent : MonoBehaviour
             var boonData = boon.GetData();
             if (boonData.boonEffectTime == effectTime)
             {
-                SufferBoon(boon);
+                TriggerBoon(boon);
             }
         }
     }
@@ -198,12 +209,19 @@ public class ConditionsComponent : MonoBehaviour
         Debug.Log("Calculated damage: " + calculatedDamage);
         return calculatedDamage;
     }
-    void SufferBoon(Condition condition)
+
+    void TriggerBoon(Condition condition)
     {
         switch (condition.GetData().cardEffect)
         {
             case ECardEffect.Bleed:
                 GetComponentInParent<Creature>().ApplyDamage(condition.GetStacks(), EDamageType.True);
+                break;
+            case ECardEffect.UrgencyArmor:
+                if (GetBoonStacks(ECardEffect.Armor) == 0)
+                {
+                    TryAddCondition(ECardEffect.Armor, 5 * condition.GetStacks());
+                }
                 break;
             default:
                 break;

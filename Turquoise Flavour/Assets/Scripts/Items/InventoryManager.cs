@@ -204,6 +204,16 @@ namespace Turquoise
         Gold,
         TestTM,
         TestNeutral,
+        UrgencyArmorTrinket,
+        PreparationTrinket,
+        ManaSurgeTrinket,
+        RecycleTrinket,
+        SignatureMoveTrinket,
+        FastTrinket,
+        VigorTrinket,
+        CleanseTrinket,
+        ChargeTrinket,
+        HasteTrinket,
         Count
     }
 

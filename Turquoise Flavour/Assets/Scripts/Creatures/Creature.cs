@@ -78,11 +78,11 @@ public class Creature : MonoBehaviour
     protected ConditionsComponent m_conditionsComponent;
     public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }
     [SerializeField]
-    protected EItem m_equippedItem;
+    protected EItem m_trinket = EItem.Count;
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints, m_equippedItem);
+        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints, m_trinket);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
@@ -93,7 +93,7 @@ public class Creature : MonoBehaviour
         m_experience.experiencePoints = creatureSave.m_experience;
         m_creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
         CreateFromCreatureData(m_creatureData, creatureSave.m_deck, creatureSave.m_level);
-        m_equippedItem = creatureSave.m_item;
+        m_trinket = creatureSave.m_item;
     }
 
     public void CreateFromCreatureData(CreatureData creatureData, List<ECard> deck, int level = 1, int experience = 0)
@@ -513,6 +513,22 @@ public class Creature : MonoBehaviour
         m_creatureUIComp = creatureUI;
         m_inBattle = true;
         creatureUI.GetComponent<SpriteRenderer>().sprite = m_sprite;
+        ApplyTrinketEffects();
+    }
+
+    void ApplyTrinketEffects()
+    {
+        if (m_trinket != EItem.Count)
+        {
+            var trinketData = InventoryManager.GetInstance().GetItemFromEnum(m_trinket);
+            if (trinketData.effects.Count != 0)
+            {
+                foreach(var effect in trinketData.effects)
+                {
+                    m_conditionsComponent.TryAddCondition(effect);
+                }
+            }
+        }
     }
 
     public void ReturnCreatureFromBattle()
@@ -550,11 +566,11 @@ public class Creature : MonoBehaviour
 
     public void EquipItem(EItem item)
     {
-        if (m_equippedItem != EItem.Count)
+        if (m_trinket != EItem.Count)
         {
-            InventoryManager.GetInstance().AddInventoryItemFromEItem(m_equippedItem);
+            InventoryManager.GetInstance().AddInventoryItemFromEItem(m_trinket);
         }
-        m_equippedItem = item;
+        m_trinket = item;
         InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
     }
 

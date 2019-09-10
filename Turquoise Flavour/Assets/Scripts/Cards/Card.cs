@@ -49,9 +49,9 @@ namespace Turquoise
         Armor,
         DamageBuff,
         Find,
-        Pick,
+        Pick,                                   //10
         Other,
-        Confusion,
+        Confusion,  //Card per turn -1
         Fear,
         Stun,
         Clears,
@@ -59,9 +59,22 @@ namespace Turquoise
         HealingPercent,
         DamagePercent,
         VampiricHeal,
-        HeProtects,
+        HeProtects,                             //20
         HeAttacks,
         BleedingAttacks,
+        UrgencyArmor,                   //Armor gain if armor = 0
+        Preparation,                    //Card per turn +1
+        ManaSurge,                      //Mana gain
+        ManaSink,                       //Mana debuff
+        Recycle,                        //Keep consumable objects. Exhaust them instead of throwing them away
+        SignatureMove,                  //Active cost 1 less to cast
+        ForgottenMove,                  //Active cost 1 more to cast
+        Fast,//Active cd reduced by 1          //30          
+        Slow,                           //Active cd augmented by 1
+        Vigor,                          //Heal % max pv
+        Cleanse,                        //Remove 1 debuff at the start of your turn
+        Charge,
+        Haste,                          //Draw 1 more card when using a card with the keyword "draw"
         Count
     }
 

@@ -62,3 +62,31 @@ MonoBehaviour:
     boonData: {fileID: 11400000, guid: 629abbb978e0dd147be25a89eb689321, type: 2}
   - cardEffect: 22
     boonData: {fileID: 11400000, guid: 59b0248c02b500642b61177fb6e421b3, type: 2}
+  - cardEffect: 23
+    boonData: {fileID: 11400000, guid: 13ac1d8671750d043bd1cdcdeb76fff0, type: 2}
+  - cardEffect: 24
+    boonData: {fileID: 11400000, guid: 66b33d70066fd354eb6d63b735511b2a, type: 2}
+  - cardEffect: 25
+    boonData: {fileID: 11400000, guid: 459010e8294477240a3ace4b4bb7d3c3, type: 2}
+  - cardEffect: 27
+    boonData: {fileID: 11400000, guid: 0cd4854413a355c4a84b47d799a71d2c, type: 2}
+  - cardEffect: 28
+    boonData: {fileID: 11400000, guid: 3aab1cf5a8551b84b84fed8b655ec1a0, type: 2}
+  - cardEffect: 30
+    boonData: {fileID: 11400000, guid: 90443bad24b26304d8913fda4196429f, type: 2}
+  - cardEffect: 32
+    boonData: {fileID: 11400000, guid: 8c266e37b0591d44cae7c4c682f792be, type: 2}
+  - cardEffect: 26
+    boonData: {fileID: 11400000, guid: 4408286e153c5774e80f4d144135906c, type: 2}
+  - cardEffect: 29
+    boonData: {fileID: 11400000, guid: 7181a5b72ceb6fb43a18acf67972ef55, type: 2}
+  - cardEffect: 31
+    boonData: {fileID: 11400000, guid: e58f3b19c7c7b1649b97e6d55eb18b29, type: 2}
+  - cardEffect: 32
+    boonData: {fileID: 11400000, guid: 8c266e37b0591d44cae7c4c682f792be, type: 2}
+  - cardEffect: 33
+    boonData: {fileID: 11400000, guid: 58bb45a6d1e078a459ad20ac681f7577, type: 2}
+  - cardEffect: 34
+    boonData: {fileID: 11400000, guid: 5f646608b1d342a48862663b4d52b493, type: 2}
+  - cardEffect: 35
+    boonData: {fileID: 11400000, guid: 3bcf1fd9616d4ad4f85f03eb99fcd5d8, type: 2}
