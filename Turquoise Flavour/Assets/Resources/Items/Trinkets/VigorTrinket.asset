@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04c21dc019210248889e2512dd35fcb, type: 3}
   m_Name: VigorTrinket
   m_EditorClassIdentifier: 
-  itemName: 
-  sprite: {fileID: 0}
-  description: 
-  cost: 0
-  rarity: 0
-  type: 0
-  item: 0
-  effects: []
+  itemName: Vigor trinket
+  sprite: {fileID: 21300000, guid: ba5c8a2ff88769c4ebd23f425cd4badf, type: 3}
+  description: Gain 4% of your max hp at the start of your turn
+  cost: 105
+  rarity: 1
+  type: 2
+  item: 13
+  effects:
+  - m_effect: 32
+    m_value: 4
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
   cardsTms: 

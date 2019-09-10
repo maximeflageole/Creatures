@@ -224,6 +224,9 @@ public class ConditionsComponent : MonoBehaviour
                     TryAddCondition(ECardEffect.Armor, 5 * condition.GetStacks());
                 }
                 break;
+            case ECardEffect.Vigor:
+                GetComponentInParent<Creature>().HealPercent(condition.GetStacks());
+                break;
             default:
                 break;
         }

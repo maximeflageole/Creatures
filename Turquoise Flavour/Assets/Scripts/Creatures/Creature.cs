@@ -490,6 +490,18 @@ public class Creature : MonoBehaviour
         m_currentEnergy = GetCurrentMaxMana();
     }
 
+    public void HealPercent(float percent)
+    {
+        float amountToHeal = (m_maxHealth * percent)/100.0f;
+        Heal((int)amountToHeal);
+    }
+
+    public void Heal(int healAmount)
+    {
+        m_health += healAmount;
+        Mathf.Clamp(m_health, 0, m_maxHealth);
+    }
+
     public void DieEvent()
     {
         Debug.Log("Creature " + m_team.ToString() + " died");
