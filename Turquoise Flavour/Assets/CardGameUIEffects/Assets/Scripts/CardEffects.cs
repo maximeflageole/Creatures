@@ -754,8 +754,15 @@ public class CardEffects : TurquoiseEvent {
                     }
                     if (effect.m_effect == ECardEffect.Consume)
                     {
-                        GetPlayerCreature().RemoveCardFromDeck(card.GetCardData().cardEnumValue);
-                        ConsumeSelf(card);
+                        if (GetPlayerCreature().GetConditionsComponent().GetBoonStacks(ECardEffect.Recycle) > 0)
+                        {
+                            ExhaustSelf(card);
+                        }
+                        else
+                        {
+                            GetPlayerCreature().RemoveCardFromDeck(card.GetCardData().cardEnumValue);
+                            ConsumeSelf(card);
+                        }
                     }
                 }
                 return;

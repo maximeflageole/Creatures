@@ -64,4 +64,6 @@ MonoBehaviour:
     itemData: {fileID: 11400000, guid: 2794b8a6170c400498696c92027402b2, type: 2}
   - item: 9
     itemData: {fileID: 11400000, guid: 173c2b8d4b94a0340898e5f6b6e972cd, type: 2}
+  - item: 10
+    itemData: {fileID: 11400000, guid: 65fd0b512b6fa3d42a6545f302754c27, type: 2}
   m_inventoryItemsTuples: []
