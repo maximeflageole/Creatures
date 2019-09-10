@@ -75,6 +75,7 @@ namespace Turquoise
         Cleanse,                        //Remove 1 debuff at the start of your turn
         Charge,
         Haste,                          //Draw 1 more card when using a card with the keyword "draw"
+        Unprepared,                     //Card per turn -1
         Count
     }
 

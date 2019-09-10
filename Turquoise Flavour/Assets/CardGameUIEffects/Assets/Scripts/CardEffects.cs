@@ -862,7 +862,8 @@ public class CardEffects : TurquoiseEvent {
         }
         shuffleCardsEffects.Clear();
         shufflingCard = false;
-        StartCoroutine(SendHandCards(5));
+        int cardAmount = 5 + GetPlayerCreature().GetDrawCardModifier();
+        StartCoroutine(SendHandCards(cardAmount));
     }
 
     // In card playing effect's second stage, the card dropping to the discard pile

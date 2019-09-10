@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fffdda8269b044b42a851e7d3a4cdf3d, type: 3}
-  m_Name: Preparation
+  m_Name: Unprepared
   m_EditorClassIdentifier: 
-  cardEffect: 24
-  conditionName: Preparation
-  sprite: {fileID: 21300000, guid: 3b25742e8e3eeb548916eaa666a1a100, type: 3}
+  cardEffect: 36
+  conditionName: Unprepared
+  sprite: {fileID: 21300000, guid: 92ab1040b0c293a4c938db60758aaab8, type: 3}
   boonDecayType: 0
   boonDecayTime: 0
   boonEffectTime: 0

@@ -531,6 +531,14 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public int GetDrawCardModifier()
+    {
+        int returnInt = 0;
+        returnInt += m_conditionsComponent.GetBoonStacks(ECardEffect.Preparation);
+        returnInt -= m_conditionsComponent.GetBoonStacks(ECardEffect.Unprepared);
+        return returnInt;
+    }
+
     public void ReturnCreatureFromBattle()
     {
         m_creatureUIComp = null;
