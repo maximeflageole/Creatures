@@ -137,6 +137,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.ManaSink:
             case ECardEffect.Slow:
             case ECardEffect.Unprepared:
+            case ECardEffect.Burn:
                 return true;
         }
         return false;
@@ -229,6 +230,9 @@ public class ConditionsComponent : MonoBehaviour
                 break;
             case ECardEffect.Cleanse:
                 ClearDebuffs(condition.GetStacks());
+                break;
+            case ECardEffect.Burn:
+                GetComponentInParent<Creature>().ApplyDamage(condition.GetStacks(), EDamageType.True);
                 break;
             default:
                 break;
