@@ -27,6 +27,11 @@ public static class SaveSystem
         {
             data.inventoryItems.Add(item);
         }
+        foreach (var explorator in ExploratorManager.GetInstance().m_unlockedExplorators)
+        {
+            data.unlockedExplorators.Add(explorator);
+        }
+        data.currentExplorator = Player.GetPlayerInstance().GetCurrentExploratorEnum();
         formatter.Serialize(stream, data);
         stream.Close();
         Debug.Log("End saving");
@@ -81,4 +86,6 @@ public class SaveData
     public List<CreatureSaveable> creaturesSave = new List<CreatureSaveable>();
     public List<int> completedNodes = new List<int>();
     public List<TupleItemInventory> inventoryItems= new List<TupleItemInventory>();
+    public List<Turquoise.EExplorator> unlockedExplorators = new List<Turquoise.EExplorator>();
+    public Turquoise.EExplorator currentExplorator = Turquoise.EExplorator.Count;
 }

@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     protected List<Creature> m_creatures = new List<Creature>();
+    [SerializeField]
+    protected Explorator m_explorator;
+    [SerializeField]
+    protected List<EExplorator> m_unlockedExplorators = new List<EExplorator>();
 
     [SerializeField]
     protected Creature m_currentCreature;
@@ -40,8 +44,42 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        //Instantiate explorator
+        m_explorator = Instantiate(GameMaster.GetInstance().m_exploratorPrefab, transform).GetComponent<Explorator>();
         s_playerInstance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void UnlockExplorator(EExplorator explorator)
+    {
+        if (!m_unlockedExplorators.Contains(explorator))
+        {
+            m_unlockedExplorators.Add(explorator);
+            SaveSystem.SaveGame();
+        }
+    }
+
+    public EExplorator GetCurrentExploratorEnum()
+    {
+        return m_explorator.GetCurrentExplorator();
+    }
+
+    public Explorator GetCurrentExplorator()
+    {
+        return m_explorator;
+    }
+
+    public void ChangeExplorator(EExplorator explorator)
+    {
+        if (HasUnlockedExplorator(explorator))
+        {
+            m_explorator.ChangeExplorator(explorator);
+        }
+    }
+
+    public bool HasUnlockedExplorator(EExplorator explorator)
+    {
+        return m_unlockedExplorators.Contains(explorator);
     }
 
     public void LoadGame()
@@ -51,6 +89,18 @@ public class Player : MonoBehaviour
         {
             print("Save file empty");
             return;
+        }
+
+        m_unlockedExplorators = saveData.unlockedExplorators;
+
+        if (saveData.currentExplorator == EExplorator.Count)
+        {
+            saveData.currentExplorator = EExplorator.Biologist;
+            m_explorator.ChangeExplorator(saveData.currentExplorator);
+        }
+        else if (saveData.currentExplorator != m_explorator.GetCurrentExplorator())
+        {
+            m_explorator.ChangeExplorator(saveData.currentExplorator);
         }
 
         List<CreatureSaveable> creaturesSave = saveData.creaturesSave;

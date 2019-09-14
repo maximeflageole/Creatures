@@ -5,10 +5,6 @@ using UnityEngine;
 public class ExplorationScreen : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject m_exploratorPrefab;
-    [SerializeField]
-    protected GameObject m_explorator;
-    [SerializeField]
     protected Vector3 m_exploratorNodeOffset;
     [SerializeField]
     protected GameObject m_nodePrefab;
@@ -76,7 +72,6 @@ public class ExplorationScreen : MonoBehaviour
                 }
             }
         }
-        m_explorator = Instantiate(m_exploratorPrefab, transform);
         MoveExplorator(m_explorationNodes[0]);
     }
 
@@ -92,7 +87,7 @@ public class ExplorationScreen : MonoBehaviour
                 ExplorationNode node = go.GetComponent<ExplorationNode>();
                 if (node != null && !node.GetIsCompleted() && node.IsAvailable())
                 {
-                    if (m_explorator.GetComponent<Explorator>().IsNodeSelected(node))
+                    if (Player.GetPlayerInstance().GetCurrentExplorator().IsNodeSelected(node))
                     {
                         hit.collider.enabled = false;
                         GameMaster.GetInstance().StartEvent(node);
@@ -100,7 +95,7 @@ public class ExplorationScreen : MonoBehaviour
                     else
                     {
                         MoveExplorator(node);
-                        m_explorator.GetComponent<Explorator>().SelectNode(node);
+                        Player.GetPlayerInstance().GetCurrentExplorator().SelectNode(node);
                     }
                 }
             }
@@ -109,7 +104,7 @@ public class ExplorationScreen : MonoBehaviour
 
     void MoveExplorator(ExplorationNode node)
     {
-        m_explorator.transform.position = node.transform.position + m_exploratorNodeOffset;
+        Player.GetPlayerInstance().GetCurrentExplorator().transform.position = node.transform.position + m_exploratorNodeOffset;
     }
 }
 

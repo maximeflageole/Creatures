@@ -37,8 +37,12 @@ public class GameMaster : MonoBehaviour
     public InventoryManager m_inventoryManager;
     [SerializeField]
     protected GameObject m_inventoryManagerPrefab;
+    public ExploratorManager m_exploratorManager;
+    [SerializeField]
+    protected GameObject m_exploratorManagerPrefab;
     [SerializeField]
     protected Canvas m_mainCanvas;
+    public GameObject m_exploratorPrefab;
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
     protected int m_currentNodeIndex = -1;
@@ -163,6 +167,10 @@ public class GameMaster : MonoBehaviour
         if (m_inventoryManagerPrefab != null)
         {
             m_inventoryManager = Instantiate(m_inventoryManagerPrefab, transform).GetComponent<InventoryManager>();
+        }
+        if (m_exploratorManagerPrefab != null)
+        {
+            m_exploratorManager = Instantiate(m_exploratorManagerPrefab, transform).GetComponent<ExploratorManager>();
         }
         Player.GetPlayerInstance().LoadGame();
     }
