@@ -41,7 +41,6 @@ public class BattleUI : MonoBehaviour
         else
         {
             float value = 1 + m_anim.Evaluate(m_animCurrentDuration / m_animDuration);
-            Debug.Log(value);
             m_textMeshPro.rectTransform.localScale = new Vector3(value, value, value);
             m_textMeshPro.alpha = m_alphaAnim.Evaluate(m_animCurrentDuration / m_animDuration);
         }

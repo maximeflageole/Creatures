@@ -339,7 +339,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_animDuration: 3
+  m_animDuration: 2
 --- !u!212 &132962214 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1797007720045018415, guid: 3b18304c3f69f034480e7dfaf1ae17e0,
@@ -654,7 +654,49 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_previousHealth: 0
+  m_attackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.10731676
+      value: -0.22541103
+      inSlope: -2.0998995
+      outSlope: -2.0998995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.055355713
+    - serializedVersion: 3
+      time: 0.6052179
+      value: 1.0118151
+      inSlope: 1.1021886
+      outSlope: 1.1021886
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12977159
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9991857
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_attackDuration: 0.3
 --- !u!61 &441476725 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1797007721595204686, guid: 3b18304c3f69f034480e7dfaf1ae17e0,
@@ -2362,7 +2404,49 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_previousHealth: 0
+  m_attackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.10731676
+      value: -0.22541103
+      inSlope: -2.0998995
+      outSlope: -2.0998995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.055355713
+    - serializedVersion: 3
+      time: 0.6052179
+      value: 1.0118151
+      inSlope: 1.1021886
+      outSlope: 1.1021886
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12977159
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9991857
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_attackDuration: 0.3
 --- !u!114 &1043736055
 MonoBehaviour:
   m_ObjectHideFlags: 0

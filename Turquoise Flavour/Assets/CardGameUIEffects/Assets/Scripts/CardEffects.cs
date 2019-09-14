@@ -203,6 +203,7 @@ public class CardEffects : TurquoiseEvent {
     {
         foreach (SAbilityEffect effect in card.effects)
         {
+            GetEnemyCreature().PlayAnimation(ECardGenre.Attack);
             if (effect.m_targetType == ETarget.Enemy)
             {
                 GetPlayerCreature().ApplyEffect(effect, GetEnemyCreature(), GetPlayerCreature(), card.damageType);

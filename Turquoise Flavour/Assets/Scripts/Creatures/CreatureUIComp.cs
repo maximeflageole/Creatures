@@ -14,12 +14,23 @@ public class CreatureUIComp : MonoBehaviour
     public BoonsUI m_boonsUI;
     public float m_xMaskValue;
     public Transform m_maskTransform;
+
+    //Damage text
     public GameObject m_damageTextPrefab;
     public float m_healthLagDuration;
     protected float m_healthLagCurrentDuration;
     public AnimationCurve m_healthLagAnim;
-    public float m_previousHealth;
+    protected float m_previousHealth;
     protected bool m_calculateHealth = true;
+
+    //Attack animations
+    public AnimationCurve m_attackCurve;
+    public float m_attackDuration;
+    protected float m_attackCurrentDuration = 100;
+    protected List<Turquoise.ECardGenre> m_animationStack = new List<Turquoise.ECardGenre>();
+    protected bool m_playingAnim;
+    protected Turquoise.ECardGenre m_currentAnim = Turquoise.ECardGenre.Count;
+    protected float m_initialXposition;
 
     public void UpdateUI(int health, int maxHealth, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
     {
@@ -46,6 +57,35 @@ public class CreatureUIComp : MonoBehaviour
         if (m_maskTransform != null && m_calculateHealth)
         {
             CalculateHealthLag(health, maxHealth);
+        }
+        bool mirror = m_team == Turquoise.ETeams.Enemy;
+        PlayAnimations(mirror);
+    }
+
+    void PlayAnimations(bool mirror)
+    {
+        if (m_animationStack.Count != 0 && m_playingAnim == false)
+        {
+            m_currentAnim = m_animationStack[0];
+            m_animationStack.RemoveAt(0);
+            m_playingAnim = true;
+            m_attackCurrentDuration = 0;
+        }
+        if (m_attackCurrentDuration > m_attackDuration)
+        {
+            m_playingAnim = false;
+            m_currentAnim = Turquoise.ECardGenre.Count;
+        }
+        if (m_playingAnim)
+        {
+            if (m_currentAnim == Turquoise.ECardGenre.Attack)
+            {
+                float value = m_attackCurve.Evaluate(m_attackCurrentDuration / m_attackDuration) * 3.0f;
+                if (mirror)
+                    value *= -1;
+                transform.localPosition = new Vector3(m_initialXposition + value, transform.localPosition.y, transform.localPosition.z);
+                m_attackCurrentDuration += Time.deltaTime;
+            }
         }
     }
 
@@ -74,5 +114,15 @@ public class CreatureUIComp : MonoBehaviour
         DamageUI damageUi = Instantiate(m_damageTextPrefab, transform).GetComponent<DamageUI>();
         damageUi.DisplayDamage(amount, intensity);
         m_healthLagCurrentDuration = 0;
+    }
+
+    public void PlayAnimation(Turquoise.ECardGenre animationType)
+    {
+        m_animationStack.Add(animationType);
+    }
+
+    void Start()
+    {
+        m_initialXposition = transform.position.x;
     }
 }

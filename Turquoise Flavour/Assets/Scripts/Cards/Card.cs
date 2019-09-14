@@ -17,7 +17,8 @@ namespace Turquoise
     {
         Attack,
         Power,
-        Other
+        Other,
+        Count
     }
     public enum ERarity
     {
@@ -202,6 +203,7 @@ public class Card : MonoBehaviour
             }
             if (conditionsVerified)
             {
+                cardPlayingCreature.PlayAnimation(ECardGenre.Attack);
                 ApplyEffect(cardEffect, selectedCreature, cardPlayingCreature);
             }
         }

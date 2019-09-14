@@ -276,6 +276,11 @@ public class Creature : MonoBehaviour
         return returnInt;
     }
 
+    public void PlayAnimation(ECardGenre eCardGenre)
+    {
+        m_creatureUIComp.PlayAnimation(eCardGenre);
+    }
+
     public void ApplyDamage(int damage, EDamageType damageType = EDamageType.None)
     {
         float calculatedDamage = CalculateDamage(damage, damageType);
