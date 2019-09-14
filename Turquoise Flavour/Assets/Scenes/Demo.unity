@@ -520,6 +520,41 @@ MonoBehaviour:
   m_maskTransform: {fileID: 2133740315}
   m_damageTextPrefab: {fileID: 4077241003198679031, guid: d1cf7d62850d14d40ac0cb45aa17a7fc,
     type: 3}
+  m_healthLagDuration: 0.8
+  m_healthLagAnim:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.19162151
+      value: 0.66547567
+      inSlope: 1.3382554
+      outSlope: 1.3382554
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_previousHealth: 0
 --- !u!61 &441476725 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1797007721595204686, guid: 3b18304c3f69f034480e7dfaf1ae17e0,
@@ -1952,7 +1987,7 @@ MonoBehaviour:
   m_eCreature: 0
   m_team: 0
   m_primaryType: 0
-  m_health: 20
+  m_health: 90
   m_maxHealth: 100
   m_armor: 0
   m_currentEnergy: 0
@@ -2011,6 +2046,41 @@ MonoBehaviour:
   m_maskTransform: {fileID: 638786416}
   m_damageTextPrefab: {fileID: 4077241003198679031, guid: d1cf7d62850d14d40ac0cb45aa17a7fc,
     type: 3}
+  m_healthLagDuration: 0.8
+  m_healthLagAnim:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.19162151
+      value: 0.66547567
+      inSlope: 1.3382554
+      outSlope: 1.3382554
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_previousHealth: 0
 --- !u!114 &1043736055
 MonoBehaviour:
   m_ObjectHideFlags: 0

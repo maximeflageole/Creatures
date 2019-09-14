@@ -15,6 +15,11 @@ public class CreatureUIComp : MonoBehaviour
     public float m_xMaskValue;
     public Transform m_maskTransform;
     public GameObject m_damageTextPrefab;
+    public float m_healthLagDuration;
+    protected float m_healthLagCurrentDuration;
+    public AnimationCurve m_healthLagAnim;
+    public float m_previousHealth;
+    protected bool m_calculateHealth = true;
 
     public void UpdateUI(int health, int maxHealth, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
     {
@@ -38,18 +43,36 @@ public class CreatureUIComp : MonoBehaviour
         {
             m_boonsUI.UpdateUI(conditions);
         }
-        if (m_maskTransform != null)
+        if (m_maskTransform != null && m_calculateHealth)
         {
-            float healthPercent = (float)health / (float)maxHealth;
-            healthPercent = Mathf.Clamp(healthPercent, 0.0f, 1.0f);
-            m_maskTransform.localPosition = new Vector3(m_xMaskValue * healthPercent, m_maskTransform.localPosition.y, m_maskTransform.localPosition.z);
+            CalculateHealthLag(health, maxHealth);
         }
+    }
+
+    public void CalculateHealthLag(int health, int maxHealth)
+    {
+        if (m_healthLagCurrentDuration > m_healthLagDuration)
+        {
+            m_calculateHealth = false;
+            m_healthLagCurrentDuration = 0;
+            m_previousHealth = ((float)health / (float)maxHealth);
+            return;
+        }
+        else
+        {
+            float pos = m_healthLagAnim.Evaluate(m_healthLagCurrentDuration / m_healthLagDuration);
+            float healthPercent = ((float)health / (float)maxHealth);
+            float calculatedPos = ((1-pos) * m_previousHealth) + (healthPercent * (pos));
+            m_maskTransform.localPosition = new Vector3(calculatedPos * m_xMaskValue, m_maskTransform.localPosition.y, m_maskTransform.localPosition.z);
+        }
+        m_healthLagCurrentDuration += Time.deltaTime;
     }
 
     public void ReceiveDamage(int amount, Turquoise.EDamageIntensity intensity)
     {
+        m_calculateHealth = true;
         DamageUI damageUi = Instantiate(m_damageTextPrefab, transform).GetComponent<DamageUI>();
         damageUi.DisplayDamage(amount, intensity);
-
+        m_healthLagCurrentDuration = 0;
     }
 }

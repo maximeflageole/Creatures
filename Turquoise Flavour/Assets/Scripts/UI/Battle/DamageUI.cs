@@ -41,6 +41,7 @@ public class DamageUI : MonoBehaviour
             case Turquoise.EDamageIntensity.Heal:
                 fontSize = m_fontSizes[4];
                 damageColorAndType = m_damageColorsAndTypes[4];
+                amount *= -1;
                 break;
         }
         m_textMesh.fontSize = fontSize;
