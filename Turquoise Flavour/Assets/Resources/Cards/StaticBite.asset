@@ -10,22 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ddec33511e211540821d0acabb4d13c, type: 3}
-  m_Name: Find weakness
+  m_Name: StaticBite
   m_EditorClassIdentifier: 
-  cardName: Find weakness
-  cardEnumValue: 28
-  description: Every attack you play this turn inflicts 1 bleed
-  artwork: {fileID: 21300000, guid: 8d50d5fc3b53c5a4ca745e3c97659630, type: 3}
+  cardName: Static bite
+  cardEnumValue: 34
+  description: Deals 8 electric damage. Applies 1 charge
+  artwork: {fileID: 21300000, guid: 56b73afe1c02e1a49bb8f4ac4da1b943, type: 3}
   energyCost: 1
-  targetType: 0
+  targetType: 1
   effects:
-  - m_effect: 22
-    m_value: 1
-    m_targetType: 0
+  - m_effect: 0
+    m_value: 8
+    m_targetType: 1
     m_chancesOfEffectOnHundred: 0
     m_conditions: 
-  cardGenre: 1
-  damageType: 8
-  rarity: 2
-  creaturePart: 5
+  - m_effect: 34
+    m_value: 1
+    m_targetType: 1
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
+  cardGenre: 0
+  damageType: 3
+  rarity: 0
+  creaturePart: 1
   chancesOnHundred: 0

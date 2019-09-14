@@ -10,14 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d04c21dc019210248889e2512dd35fcb, type: 3}
-  m_Name: NormalTrinket
+  m_Name: HasteTrinket
   m_EditorClassIdentifier: 
-  itemName: NormalTrinket
-  sprite: {fileID: 21300000, guid: 464a564c1396d84428d6e31355e871a4, type: 3}
-  description: At the start of your turn, heals 4% of max hp
-  cost: 110
-  rarity: 0
+  itemName: Haste trinket
+  sprite: {fileID: 21300000, guid: 3b25742e8e3eeb548916eaa666a1a100, type: 3}
+  description: Each time you play a card with the keyword "draw", draw 1 more additional
+    card
+  cost: 140
+  rarity: 2
   type: 2
-  item: 3
-  effects: []
+  item: 16
+  effects:
+  - m_effect: 35
+    m_value: 1
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
   cardsTms: 

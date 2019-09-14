@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d04c21dc019210248889e2512dd35fcb, type: 3}
-  m_Name: NormalTrinket
+  m_Name: CleanseTrinket
   m_EditorClassIdentifier: 
-  itemName: NormalTrinket
-  sprite: {fileID: 21300000, guid: 464a564c1396d84428d6e31355e871a4, type: 3}
-  description: At the start of your turn, heals 4% of max hp
-  cost: 110
+  itemName: Cleanse trinket
+  sprite: {fileID: 21300000, guid: 90709349b0c96a042bd6ae567eb0fc86, type: 3}
+  description: Remove 1 random debuff at the start of your turn
+  cost: 60
   rarity: 0
   type: 2
-  item: 3
-  effects: []
+  item: 14
+  effects:
+  - m_effect: 33
+    m_value: 1
+    m_targetType: 0
+    m_chancesOfEffectOnHundred: 0
+    m_conditions: 
   cardsTms: 

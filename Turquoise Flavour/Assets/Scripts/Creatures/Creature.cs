@@ -78,11 +78,11 @@ public class Creature : MonoBehaviour
     protected ConditionsComponent m_conditionsComponent;
     public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }
     [SerializeField]
-    protected EItem m_equippedItem;
+    protected EItem m_trinket = EItem.Count;
 
     public CreatureSaveable GetSaveableCreature()
     {
-        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints, m_equippedItem);
+        return new CreatureSaveable(m_eCreature, m_experience.level, m_deck, m_health, m_experience.experiencePoints, m_trinket);
     }
 
     public void CreateFromSave(CreatureSaveable creatureSave)
@@ -93,7 +93,7 @@ public class Creature : MonoBehaviour
         m_experience.experiencePoints = creatureSave.m_experience;
         m_creatureData = GameMaster.GetInstance().m_creatureList.GetCreatureDataFromCreatureName(m_eCreature);
         CreateFromCreatureData(m_creatureData, creatureSave.m_deck, creatureSave.m_level);
-        m_equippedItem = creatureSave.m_item;
+        m_trinket = creatureSave.m_item;
     }
 
     public void CreateFromCreatureData(CreatureData creatureData, List<ECard> deck, int level = 1, int experience = 0)
@@ -103,7 +103,7 @@ public class Creature : MonoBehaviour
         m_maxHealth = creatureData.initialHealth + (creatureData.healthPerLevel * m_experience.level);
         m_health = m_maxHealth;
         m_primaryType = creatureData.creatureType;
-        m_currentMaxMana = m_baseMaxMana = creatureData.initialMana;
+        m_baseMaxMana = creatureData.initialMana;
         m_sprite = creatureData.sprite;
         m_deck.m_cards = deck;
         m_creatureData = creatureData;
@@ -170,6 +170,7 @@ public class Creature : MonoBehaviour
             case ECardEffect.Damage:
                 int calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(cardEffect.m_value);
                 ApplyDamage(calculatedDamage, damageType);
+                m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
                 break;
             case ECardEffect.Healing:
                 ApplyDamage(-cardEffect.m_value, damageType);
@@ -262,9 +263,17 @@ public class Creature : MonoBehaviour
         {
             if (m_creatureUIComp != null)
             {
-                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, m_currentEnergy, m_currentMaxMana, m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
+                m_creatureUIComp.UpdateUI(m_health, m_maxHealth, GetCurrentEnergy(), GetCurrentMaxMana(), m_experience.level, m_experience.experiencePoints, ExperienceManager.GetNextLevelXp(m_experience.levelSpeed, m_experience.level), m_conditionsComponent.GetConditions());
             }
         }
+    }
+
+    public int GetCurrentMaxMana()
+    {
+        int returnInt = m_baseMaxMana;
+        returnInt += m_conditionsComponent.GetBoonStacks(ECardEffect.ManaSurge);
+        returnInt -= m_conditionsComponent.GetBoonStacks(ECardEffect.ManaSink);
+        return returnInt;
     }
 
     public void ApplyDamage(int damage, EDamageType damageType = EDamageType.None)
@@ -450,7 +459,7 @@ public class Creature : MonoBehaviour
         return 1.0f;
     }
 
-    public int GetCurrentMana()
+    public int GetCurrentEnergy()
     {
         return m_currentEnergy;
     }
@@ -478,7 +487,19 @@ public class Creature : MonoBehaviour
 
     public void RefreshEnergy()
     {
-        m_currentEnergy = m_currentMaxMana;
+        m_currentEnergy = GetCurrentMaxMana();
+    }
+
+    public void HealPercent(float percent)
+    {
+        float amountToHeal = (m_maxHealth * percent)/100.0f;
+        Heal((int)amountToHeal);
+    }
+
+    public void Heal(int healAmount)
+    {
+        m_health += healAmount;
+        Mathf.Clamp(m_health, 0, m_maxHealth);
     }
 
     public void DieEvent()
@@ -512,6 +533,30 @@ public class Creature : MonoBehaviour
         m_creatureUIComp = creatureUI;
         m_inBattle = true;
         creatureUI.GetComponent<SpriteRenderer>().sprite = m_sprite;
+        ApplyTrinketEffects();
+    }
+
+    void ApplyTrinketEffects()
+    {
+        if (m_trinket != EItem.Count)
+        {
+            var trinketData = InventoryManager.GetInstance().GetItemFromEnum(m_trinket);
+            if (trinketData.effects.Count != 0)
+            {
+                foreach(var effect in trinketData.effects)
+                {
+                    m_conditionsComponent.TryAddCondition(effect);
+                }
+            }
+        }
+    }
+
+    public int GetDrawCardModifier()
+    {
+        int returnInt = 0;
+        returnInt += m_conditionsComponent.GetBoonStacks(ECardEffect.Preparation);
+        returnInt -= m_conditionsComponent.GetBoonStacks(ECardEffect.Unprepared);
+        return returnInt;
     }
 
     public void ReturnCreatureFromBattle()
@@ -549,11 +594,11 @@ public class Creature : MonoBehaviour
 
     public void EquipItem(EItem item)
     {
-        if (m_equippedItem != EItem.Count)
+        if (m_trinket != EItem.Count)
         {
-            InventoryManager.GetInstance().AddInventoryItemFromEItem(m_equippedItem);
+            InventoryManager.GetInstance().AddInventoryItemFromEItem(m_trinket);
         }
-        m_equippedItem = item;
+        m_trinket = item;
         InventoryManager.GetInstance().AddInventoryItemFromEItem(item, -1);
     }
 

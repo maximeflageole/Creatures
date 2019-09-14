@@ -711,7 +711,8 @@ public class CardEffects : TurquoiseEvent {
                     }
                     if (effect.m_effect == ECardEffect.Draw)
                     {
-                        StartCoroutine(SendHandCards(effect.m_value));
+                        int additionalCards = GetPlayerCreature().GetConditionsComponent().GetBoonStacks(ECardEffect.Haste);
+                        StartCoroutine(SendHandCards(effect.m_value + additionalCards));
                     }
                     if (effect.m_effect == ECardEffect.Discard)
                     {
@@ -754,8 +755,15 @@ public class CardEffects : TurquoiseEvent {
                     }
                     if (effect.m_effect == ECardEffect.Consume)
                     {
-                        GetPlayerCreature().RemoveCardFromDeck(card.GetCardData().cardEnumValue);
-                        ConsumeSelf(card);
+                        if (GetPlayerCreature().GetConditionsComponent().GetBoonStacks(ECardEffect.Recycle) > 0)
+                        {
+                            ExhaustSelf(card);
+                        }
+                        else
+                        {
+                            GetPlayerCreature().RemoveCardFromDeck(card.GetCardData().cardEnumValue);
+                            ConsumeSelf(card);
+                        }
                     }
                 }
                 return;
@@ -862,7 +870,8 @@ public class CardEffects : TurquoiseEvent {
         }
         shuffleCardsEffects.Clear();
         shufflingCard = false;
-        StartCoroutine(SendHandCards(5));
+        int cardAmount = 5 + GetPlayerCreature().GetDrawCardModifier();
+        StartCoroutine(SendHandCards(cardAmount));
     }
 
     // In card playing effect's second stage, the card dropping to the discard pile

@@ -58,4 +58,20 @@ MonoBehaviour:
     itemData: {fileID: 11400000, guid: 9cbfee80869033f438a04154f4144807, type: 2}
   - item: 6
     itemData: {fileID: 11400000, guid: f65d190c3f2e9514e8efe4512e5ec38f, type: 2}
+  - item: 7
+    itemData: {fileID: 11400000, guid: e6fb9d174adba2b4da8a9dd9bb781961, type: 2}
+  - item: 8
+    itemData: {fileID: 11400000, guid: 2794b8a6170c400498696c92027402b2, type: 2}
+  - item: 9
+    itemData: {fileID: 11400000, guid: 173c2b8d4b94a0340898e5f6b6e972cd, type: 2}
+  - item: 10
+    itemData: {fileID: 11400000, guid: 65fd0b512b6fa3d42a6545f302754c27, type: 2}
+  - item: 13
+    itemData: {fileID: 11400000, guid: b131f463d93062142a2b6e835e47cc68, type: 2}
+  - item: 14
+    itemData: {fileID: 11400000, guid: e1c08d3a4dbb7824595f009a7471dab6, type: 2}
+  - item: 15
+    itemData: {fileID: 11400000, guid: d9893ba7c114f0b49a934577304afaed, type: 2}
+  - item: 16
+    itemData: {fileID: 11400000, guid: 9ae226e1b139c4b4dbfd7c4f134b7da2, type: 2}
   m_inventoryItemsTuples: []

@@ -39,6 +39,14 @@ namespace Turquoise
         FindWeakness,
         DefensiveStance,
         HealthPotion,                   // 30
+        FlameJet,
+        FastAsLightning,
+        ElectricTackle,
+        StaticBite,
+        FieryBite,                      // 35
+        ChillingBite,
+        RagingBite,
+        FrenziedBite,
         Count
     }
 }
