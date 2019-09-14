@@ -13,11 +13,15 @@ public class DamageUI : MonoBehaviour
     protected TextMeshPro m_textMesh;
     public float m_timeToDisplay;
     protected float m_timeDisplayed;
-    public AnimationCurve m_animCurve;
+    public AnimationCurve m_animCurveY;
+    public AnimationCurve m_animCurveX;
+    public float m_randomXPos;
     public float m_maxHeight;
+    public float m_maxXPos;
 
     public void DisplayDamage(int amount, Turquoise.EDamageIntensity intensity)
     {
+        m_randomXPos = Random.Range(-1.0f, 1.0f);
         int fontSize = 0;
         DamageColorAndType damageColorAndType = m_damageColorsAndTypes[0];
         switch (intensity)
@@ -55,7 +59,9 @@ public class DamageUI : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.localPosition = new Vector3(transform.localPosition.x, m_animCurve.Evaluate(m_timeDisplayed/m_timeToDisplay)* m_maxHeight, transform.localPosition.z);
+        float evaluationY = m_animCurveY.Evaluate(m_timeDisplayed / m_timeToDisplay);
+        float evaluationX = m_animCurveX.Evaluate(m_timeDisplayed / m_timeToDisplay);
+        transform.localPosition = new Vector3(evaluationX * m_randomXPos * m_maxXPos, evaluationY * m_maxHeight, transform.localPosition.z);
         m_timeDisplayed += Time.deltaTime;
     }
 }

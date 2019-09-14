@@ -57,8 +57,41 @@ MonoBehaviour:
     damageType: 0
   m_fontSizes: 0a0000000e000000080000000c0000000a000000
   m_textMesh: {fileID: 7538801173881868507}
-  m_timeToDisplay: 1.7
-  m_animCurve:
+  m_timeToDisplay: 1
+  m_animCurveY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 4.6006446
+      outSlope: 4.6006446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.067432374
+    - serializedVersion: 3
+      time: 0.5008287
+      value: 0.99482816
+      inSlope: 0.010071937
+      outSlope: 0.010071937
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.20815277
+      outWeight: 0.20126937
+    - serializedVersion: 3
+      time: 0.9984131
+      value: 0.20580292
+      inSlope: -4.3249297
+      outSlope: -4.3249297
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07176122
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_animCurveX:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -71,15 +104,6 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.18115762
-      value: 0.74597585
-      inSlope: 1.0126848
-      outSlope: 1.0126848
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
@@ -91,7 +115,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_maxHeight: 1.7
+  m_randomXPos: 0
+  m_maxHeight: 2.5
+  m_maxXPos: 2
 --- !u!1 &9045461569549869095
 GameObject:
   m_ObjectHideFlags: 0
