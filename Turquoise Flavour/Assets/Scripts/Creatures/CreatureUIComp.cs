@@ -14,6 +14,7 @@ public class CreatureUIComp : MonoBehaviour
     public BoonsUI m_boonsUI;
     public float m_xMaskValue;
     public Transform m_maskTransform;
+    public GameObject m_damageTextPrefab;
 
     public void UpdateUI(int health, int maxHealth, int mana, int baseMana, int level, int experience, int nextLvlExp, List<Condition> conditions)
     {
@@ -43,5 +44,12 @@ public class CreatureUIComp : MonoBehaviour
             healthPercent = Mathf.Clamp(healthPercent, 0.0f, 1.0f);
             m_maskTransform.localPosition = new Vector3(m_xMaskValue * healthPercent, m_maskTransform.localPosition.y, m_maskTransform.localPosition.z);
         }
+    }
+
+    public void ReceiveDamage(int amount, Turquoise.EDamageIntensity intensity)
+    {
+        DamageUI damageUi = Instantiate(m_damageTextPrefab, transform).GetComponent<DamageUI>();
+        damageUi.DisplayDamage(amount, intensity);
+
     }
 }

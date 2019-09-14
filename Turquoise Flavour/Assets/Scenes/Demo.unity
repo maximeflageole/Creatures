@@ -341,6 +341,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2028275263775533588, guid: a74b12431cb660947ba3036909e9162d,
         type: 3}
+    - target: {fileID: 2191074503983541157, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3, type: 3}
 --- !u!1 &407065801
@@ -427,7 +432,7 @@ Transform:
   - {fileID: 51061498}
   - {fileID: 1723949175}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &407065804
 BoxCollider2D:
@@ -513,6 +518,8 @@ MonoBehaviour:
   m_boonsUI: {fileID: 51061499}
   m_xMaskValue: 1.515
   m_maskTransform: {fileID: 2133740315}
+  m_damageTextPrefab: {fileID: 4077241003198679031, guid: d1cf7d62850d14d40ac0cb45aa17a7fc,
+    type: 3}
 --- !u!61 &441476725 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1797007721595204686, guid: 3b18304c3f69f034480e7dfaf1ae17e0,
@@ -539,7 +546,7 @@ Transform:
   m_Children:
   - {fileID: 1923566749}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &503922509 stripped
 MonoBehaviour:
@@ -634,7 +641,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -761,7 +768,7 @@ Transform:
   m_Children:
   - {fileID: 1475840329}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &540900270
 BoxCollider2D:
@@ -1047,7 +1054,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &717690988
 PrefabInstance:
@@ -1882,7 +1889,7 @@ Transform:
   - {fileID: 882671813}
   - {fileID: 974170633}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1043736050
 BoxCollider2D:
@@ -1962,6 +1969,7 @@ MonoBehaviour:
   m_speed: 0
   m_creatureData: {fileID: 0}
   m_conditionsComponent: {fileID: 0}
+  m_trinket: 17
 --- !u!114 &1043736053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,6 +2009,8 @@ MonoBehaviour:
   m_boonsUI: {fileID: 882671814}
   m_xMaskValue: 1.515
   m_maskTransform: {fileID: 638786416}
+  m_damageTextPrefab: {fileID: 4077241003198679031, guid: d1cf7d62850d14d40ac0cb45aa17a7fc,
+    type: 3}
 --- !u!114 &1043736055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3643,7 +3653,7 @@ RectTransform:
   m_LocalScale: {x: 0.18680899, y: 0.18680899, z: 0.18680899}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4207,7 +4217,7 @@ Transform:
   m_Children:
   - {fileID: 1525140419}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1931307430 stripped
 MonoBehaviour:

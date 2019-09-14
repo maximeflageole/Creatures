@@ -281,7 +281,24 @@ public class Creature : MonoBehaviour
         float calculatedDamage = CalculateDamage(damage, damageType);
         int intFinalDamage = Mathf.RoundToInt(calculatedDamage);
 
-        if (m_armor > 0 && damageType != EDamageType.True)
+        EDamageIntensity damageIntensity = EDamageIntensity.Normal;
+        float typeMultiplier = GetTypeMultiplier(m_primaryType, damageType);
+
+        if (damage <0)
+        {
+            damageIntensity = EDamageIntensity.Heal;
+        }
+        else if (typeMultiplier > 1)
+        {
+            damageIntensity = EDamageIntensity.SuperEffective;
+        }
+        else if (typeMultiplier < 1)
+        {
+            damageIntensity = EDamageIntensity.Reduced;
+        }
+        m_creatureUIComp.ReceiveDamage(intFinalDamage, damageIntensity);
+
+        if (m_armor > 0 && damageType != EDamageType.True && intFinalDamage>0)
         {
             m_armor -= intFinalDamage;
             if (m_armor < 0)
