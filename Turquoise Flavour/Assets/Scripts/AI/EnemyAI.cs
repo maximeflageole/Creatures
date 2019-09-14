@@ -44,6 +44,12 @@ public class EnemyAI : MonoBehaviour
 
     public void BeginTurn()
     {
+        StartCoroutine("BeginTurnInternal");
+    }
+
+    IEnumerator BeginTurnInternal()
+    {
+        yield return new WaitForSeconds(1.5f);
         ExecuteAction();
     }
 }
