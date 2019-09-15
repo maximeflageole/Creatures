@@ -62,3 +62,4 @@ MonoBehaviour:
     exploratorName: 7
   - data: {fileID: 11400000, guid: 7d074fe0da1d1b24299a1006bb1d692b, type: 2}
     exploratorName: 8
+  m_unlockedExplorators: 0000000001000000

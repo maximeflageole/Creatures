@@ -71,15 +71,10 @@ public class Player : MonoBehaviour
 
     public void ChangeExplorator(EExplorator explorator)
     {
-        if (HasUnlockedExplorator(explorator))
+        if (ExploratorManager.GetInstance().HasUnlockedExplorator(explorator))
         {
             m_explorator.ChangeExplorator(explorator);
         }
-    }
-
-    public bool HasUnlockedExplorator(EExplorator explorator)
-    {
-        return m_unlockedExplorators.Contains(explorator);
     }
 
     public void LoadGame()

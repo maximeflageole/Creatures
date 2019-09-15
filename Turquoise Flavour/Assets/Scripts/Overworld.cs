@@ -68,6 +68,11 @@ public class Overworld : MonoBehaviour
         m_exploratorImage.sprite = ExploratorManager.GetInstance().GetExploratorDataFromExploName(explorator).sprite;
     }
 
+    public void ClickExploratorButton()
+    {
+
+    }
+
     public void ChangeCreature(int index, CreatureData creature)
     {
         m_creatureImages[index].sprite = creature.sprite;

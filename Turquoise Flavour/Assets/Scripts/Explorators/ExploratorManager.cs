@@ -25,6 +25,11 @@ public class ExploratorManager : MonoBehaviour
     {
         return GameMaster.GetInstance().m_exploratorManager;
     }
+
+    public bool HasUnlockedExplorator(EExplorator explorator)
+    {
+        return m_unlockedExplorators.Contains(explorator);
+    }
 }
 
 [System.Serializable]
