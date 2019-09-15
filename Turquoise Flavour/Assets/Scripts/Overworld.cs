@@ -37,6 +37,7 @@ public class Overworld : MonoBehaviour
 
     public void Update()
     {
+        if (!GameMaster.GetInstance().GetInBattle())
         m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
     }
 
@@ -127,7 +128,7 @@ public class Overworld : MonoBehaviour
 
     public MapData GetCurrentMapData()
     {
-        return m_explorationScreen.GetMapData();
+        return GameMaster.GetInstance().GetMapData();
     }
 }
 

@@ -302,7 +302,6 @@ public class Creature : MonoBehaviour
         {
             damageIntensity = EDamageIntensity.Reduced;
         }
-        m_creatureUIComp.ReceiveDamage(intFinalDamage, damageIntensity);
 
         if (m_armor > 0 && damageType != EDamageType.True && intFinalDamage>0)
         {
@@ -321,10 +320,8 @@ public class Creature : MonoBehaviour
         {
             DieEvent();
         }
-        if (m_health > m_maxHealth)
-        {
-            m_health = m_maxHealth;
-        }
+        Mathf.Clamp(m_health, 0, m_maxHealth);
+        m_creatureUIComp.ReceiveDamage(intFinalDamage, damageIntensity);
     }
 
     public void ApplyDamagePercent(int damagePercent)

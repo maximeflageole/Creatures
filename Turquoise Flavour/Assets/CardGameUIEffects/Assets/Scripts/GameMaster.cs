@@ -51,6 +51,10 @@ public class GameMaster : MonoBehaviour
     public ItemRewardEvent m_itemRewardEventUI;
     public ShopUI m_shopEventUI;
 
+    [SerializeField]
+    protected MapData m_mapData;
+    public MapData GetMapData() { return m_mapData; }
+
     public static GameMaster GetInstance()
     {
         if (s_gmInstance == null)
@@ -190,7 +194,7 @@ public class GameMaster : MonoBehaviour
         SaveGame();
     }
 
-    public void StartEvent(ExplorationNode explorationNode)
+    public void StartEvent(ExplorationNode explorationNode, RaycastHit2D hit2D)
     {
         SaveGame();
         var go = Overworld.GetInstance().GetObjectFromNode(explorationNode);
@@ -204,18 +208,21 @@ public class GameMaster : MonoBehaviour
         switch (explorationNode.GetEventType())
         {
             case EEventType.Boss:
+                hit2D.collider.enabled = false;
                 break;
             case EEventType.CardReward:
+                hit2D.collider.enabled = false;
                 break;
             case EEventType.ItemReward:
+                hit2D.collider.enabled = false;
                 m_itemRewardEvent.BeginReward();
                 break;
             case EEventType.WildEncounter:
+                hit2D.collider.enabled = false;
                 SceneManager.LoadScene("Demo", LoadSceneMode.Single);
                 break;
             case EEventType.Shop:
                 m_shopEventUI.ToggleShop();
-                explorationNode.GetComponent<Collider2D>().enabled = true;
                 break;
             case EEventType.Ship:
                 //TODO: The ship is where you can manage your explorators, where you can travel from island to island and is the hub. Lots of work to do here
@@ -233,6 +240,11 @@ public class GameMaster : MonoBehaviour
         {
             Instantiate(go);
         }
+    }
+
+    public int GetCurrentNodeIndex()
+    {
+        return m_currentNodeIndex;
     }
 
     public void SaveGame()

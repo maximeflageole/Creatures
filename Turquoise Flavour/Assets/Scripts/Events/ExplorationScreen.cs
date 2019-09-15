@@ -19,9 +19,6 @@ public class ExplorationScreen : MonoBehaviour
     protected Color m_unavailableColor;
     [SerializeField]
     protected Color m_undiscoveredColor;
-    [SerializeField]
-    protected MapData m_mapData;
-    public MapData GetMapData() { return m_mapData; }
 
     void Start()
     {
@@ -31,7 +28,7 @@ public class ExplorationScreen : MonoBehaviour
     public void Init()
     {
         int i = 0;
-        foreach (var node in m_mapData.explorationNodes)
+        foreach (var node in GameMaster.GetInstance().GetMapData().explorationNodes)
         {
             Vector3 vec = new Vector3(node.location.x, node.location.y, 0);
             GameObject gameObject = Instantiate(m_nodePrefab, vec, Quaternion.identity, transform);
@@ -89,8 +86,7 @@ public class ExplorationScreen : MonoBehaviour
                 {
                     if (Player.GetPlayerInstance().GetCurrentExplorator().IsNodeSelected(node))
                     {
-                        hit.collider.enabled = false;
-                        GameMaster.GetInstance().StartEvent(node);
+                        GameMaster.GetInstance().StartEvent(node, hit);
                     }
                     else
                     {

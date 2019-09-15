@@ -163,6 +163,18 @@ public class CardEffects : TurquoiseEvent {
 
     public void Start()
     {
+        SetEnemyCreature();
+    }
+
+    void SetEnemyCreature()
+    {
+        int index = GameMaster.GetInstance().GetCurrentNodeIndex();
+        if (index != -1)
+        {
+            CreatureData creatureData = GameMaster.GetInstance().GetMapData().explorationNodes[index].creatureData;
+            GetEnemyCreature().CreateFromCreatureData(creatureData, creatureData.baseDeck);
+            SendCreatureToBattle(GetEnemyCreature(), false);
+        }
     }
 
     public Creature GetPlayerCreature()
@@ -376,6 +388,11 @@ public class CardEffects : TurquoiseEvent {
                 }
                 drawPileCards.ShufflePile();
             }
+        }
+        else
+        {
+            //This is the enemy
+            creature.SendCreatureToBattle(m_enemyCreature.GetComponent<CreatureUIComp>());
         }
     }
 
