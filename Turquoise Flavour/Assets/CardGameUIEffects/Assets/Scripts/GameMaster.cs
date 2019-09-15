@@ -217,6 +217,9 @@ public class GameMaster : MonoBehaviour
                 m_shopEventUI.ToggleShop();
                 explorationNode.GetComponent<Collider2D>().enabled = true;
                 break;
+            case EEventType.Ship:
+                //TODO: The ship is where you can manage your explorators, where you can travel from island to island and is the hub. Lots of work to do here
+                break;
             default:
                 break;
         }
@@ -290,7 +293,8 @@ public class GameMaster : MonoBehaviour
         }
         if (scene.name == "Demo")
         {
-            BattleStateMachine battleStateMachine = gameObject.AddComponent(typeof(BattleStateMachine)) as BattleStateMachine;
+            gameObject.AddComponent(typeof(BattleStateMachine));
+            Player.GetPlayerInstance().EnterOverworld(false);
         }
     }
 

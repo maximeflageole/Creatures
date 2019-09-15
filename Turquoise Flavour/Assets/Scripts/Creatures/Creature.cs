@@ -74,6 +74,7 @@ public class Creature : MonoBehaviour
     protected int m_speed;
     [SerializeField]
     protected CreatureData m_creatureData;
+    public CreatureData GetData() { return m_creatureData; }
     [SerializeField]
     protected ConditionsComponent m_conditionsComponent;
     public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }

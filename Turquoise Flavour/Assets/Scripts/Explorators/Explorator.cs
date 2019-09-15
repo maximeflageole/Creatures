@@ -27,6 +27,7 @@ public class Explorator : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = m_exploratorData.sprite;
             SaveSystem.SaveGame();
+            Overworld.GetInstance().ChangeExplorator(explorator);
         }
     }
 

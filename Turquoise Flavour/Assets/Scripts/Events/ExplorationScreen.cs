@@ -118,6 +118,7 @@ namespace Exploration
         ItemReward,
         CreaturePick,
         Shop,
+        Ship,
         Count
     }
 }

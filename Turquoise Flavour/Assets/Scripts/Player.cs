@@ -122,6 +122,17 @@ public class Player : MonoBehaviour
         m_currentCreature = m_creatures[0];
     }
 
+    public void EnterOverworld(bool entering)
+    {
+        m_explorator.GetComponent<SpriteRenderer>().enabled = entering;
+        int i = 0;
+        foreach (var creature in m_creatures)
+        {
+            Overworld.GetInstance().ChangeCreature(i, creature.GetData());
+            i++;
+        }
+    }
+
     public Creature GetCurrentCreature()
     {
         return m_currentCreature;
