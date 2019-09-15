@@ -125,11 +125,14 @@ public class Player : MonoBehaviour
     public void EnterOverworld(bool entering)
     {
         m_explorator.GetComponent<SpriteRenderer>().enabled = entering;
-        int i = 0;
-        foreach (var creature in m_creatures)
+        if (entering)
         {
-            Overworld.GetInstance().ChangeCreature(i, creature.GetData());
-            i++;
+            int i = 0;
+            foreach (var creature in m_creatures)
+            {
+                Overworld.GetInstance().ChangeCreature(i, creature.GetData());
+                i++;
+            }
         }
     }
 
