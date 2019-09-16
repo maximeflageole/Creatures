@@ -52,6 +52,7 @@ public class GameMaster : MonoBehaviour
     public ShopUI m_shopEventUI;
     public GameObject m_endGameText;
     public RewardPanel m_rewardPanel;
+    public StatsPanelUI m_statsPanel;
 
     [SerializeField]
     protected MapData m_mapData;
@@ -112,9 +113,9 @@ public class GameMaster : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (m_shopEventUI != null)
+            if (m_statsPanel != null)
             {
-                m_shopEventUI.ToggleShop();
+                m_statsPanel.DisplayStats();
             }
         }
         if (Input.GetKeyDown(KeyCode.D))
@@ -298,6 +299,10 @@ public class GameMaster : MonoBehaviour
             if (!m_completedNodes.Contains(nodeIndex))
             {
                 m_completedNodes.Add(nodeIndex);
+
+                StatisticsManager.GetInstance().IncrementStat(EStat.NodesCompletedThisRun);
+                StatisticsManager.GetInstance().IncrementStat(EStat.NodesCompletedTotal);
+
                 if (GetMapData().explorationNodes[nodeIndex].explorationNode.eventType == EEventType.Boss)
                 {
                     Instantiate(m_endGameText, GetComponentInChildren<Canvas>().transform);

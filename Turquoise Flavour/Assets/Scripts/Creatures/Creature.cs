@@ -320,6 +320,17 @@ public class Creature : MonoBehaviour
         {
             DieEvent();
         }
+        //Stat tracking
+        if(m_team == ETeams.Ally)
+        {
+            StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedThisRun, intFinalDamage);
+            StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedTotal, intFinalDamage);
+        }
+        else
+        {
+            StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedThisRun, intFinalDamage);
+            StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedTotal, intFinalDamage);
+        }
         Mathf.Clamp(m_health, 0, m_maxHealth);
         m_creatureUIComp.ReceiveDamage(intFinalDamage, damageIntensity);
     }
@@ -330,8 +341,7 @@ public class Creature : MonoBehaviour
         damagePercentFloat /= 100.0f;
         float calculatedDamage = damagePercentFloat * m_maxHealth;
 
-        m_health -= (int)calculatedDamage;
-        m_health = Mathf.Clamp(m_health, 0, m_maxHealth);
+        ApplyDamage((int)calculatedDamage, EDamageType.True);
     }
 
     public void StartTurn()
