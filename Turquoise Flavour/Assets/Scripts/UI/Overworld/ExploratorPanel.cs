@@ -16,6 +16,11 @@ public class ExploratorPanel : UIIconParent
 
     void DisplayPanel(List<EExplorator> unlockedExplorators, EExplorator currentExplorator)
     {
+        if (gameObject.activeSelf)
+        {
+            Reset();
+            return;
+        }
         Reset();
         gameObject.SetActive(true);
         m_currentExplorator = currentExplorator;

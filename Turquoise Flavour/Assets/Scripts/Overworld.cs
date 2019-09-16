@@ -38,7 +38,12 @@ public class Overworld : MonoBehaviour
     public void Update()
     {
         if (!GameMaster.GetInstance().GetInBattle())
-        m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
+        {
+            if (InventoryManager.GetInstance() != null)
+            {
+                m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
+            }
+        }
     }
 
     public GameObject GetObjectFromNode(ExplorationNode explorationNode)
@@ -66,7 +71,10 @@ public class Overworld : MonoBehaviour
 
     public void ChangeExplorator(EExplorator explorator)
     {
-        m_exploratorImage.sprite = ExploratorManager.GetInstance().GetExploratorDataFromExploName(explorator).sprite;
+        if (ExploratorManager.GetInstance() != null)
+        {
+            m_exploratorImage.sprite = ExploratorManager.GetInstance().GetExploratorDataFromExploName(explorator).sprite;
+        }
     }
 
     public void ClickExploratorButton()

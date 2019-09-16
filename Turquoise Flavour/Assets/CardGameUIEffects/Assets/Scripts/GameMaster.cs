@@ -50,6 +50,8 @@ public class GameMaster : MonoBehaviour
     public CreaturesPanelUI m_creatureUI;
     public ItemRewardEvent m_itemRewardEventUI;
     public ShopUI m_shopEventUI;
+    public GameObject m_endGameText;
+    public RewardPanel m_rewardPanel;
 
     [SerializeField]
     protected MapData m_mapData;
@@ -119,6 +121,12 @@ public class GameMaster : MonoBehaviour
         {
             StartCardRemoval();
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            List<EExplorator> expList = new List<EExplorator>();
+            expList.Add(EExplorator.Captain);
+            TheUnlocker.GetInstance().UnlockExplorators(expList);
+        }
     }
 
     public void StartCardRemoval(int amount = 1)
@@ -176,6 +184,10 @@ public class GameMaster : MonoBehaviour
         {
             m_exploratorManager = Instantiate(m_exploratorManagerPrefab, transform).GetComponent<ExploratorManager>();
         }
+    }
+
+    public void Start()
+    {
         Player.GetPlayerInstance().LoadGame();
     }
 
@@ -209,6 +221,7 @@ public class GameMaster : MonoBehaviour
         {
             case EEventType.Boss:
                 hit2D.collider.enabled = false;
+                SceneManager.LoadScene("Demo", LoadSceneMode.Single);
                 break;
             case EEventType.CardReward:
                 hit2D.collider.enabled = false;
@@ -285,6 +298,14 @@ public class GameMaster : MonoBehaviour
             if (!m_completedNodes.Contains(nodeIndex))
             {
                 m_completedNodes.Add(nodeIndex);
+                if (GetMapData().explorationNodes[nodeIndex].explorationNode.eventType == EEventType.Boss)
+                {
+                    Instantiate(m_endGameText, GetComponentInChildren<Canvas>().transform);
+
+                    List<EExplorator> expList = new List<EExplorator>();
+                    expList.Add(EExplorator.Captain);
+                    TheUnlocker.GetInstance().UnlockExplorators(expList);
+                }
             }
         }
     }
