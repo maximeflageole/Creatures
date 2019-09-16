@@ -37,8 +37,12 @@ public class GameMaster : MonoBehaviour
     public InventoryManager m_inventoryManager;
     [SerializeField]
     protected GameObject m_inventoryManagerPrefab;
+    public ExploratorManager m_exploratorManager;
+    [SerializeField]
+    protected GameObject m_exploratorManagerPrefab;
     [SerializeField]
     protected Canvas m_mainCanvas;
+    public GameObject m_exploratorPrefab;
     public List<int> m_completedNodes = new List<int>();
     [SerializeField]
     protected int m_currentNodeIndex = -1;
@@ -46,6 +50,13 @@ public class GameMaster : MonoBehaviour
     public CreaturesPanelUI m_creatureUI;
     public ItemRewardEvent m_itemRewardEventUI;
     public ShopUI m_shopEventUI;
+    public GameObject m_endGameText;
+    public RewardPanel m_rewardPanel;
+    public StatsPanelUI m_statsPanel;
+
+    [SerializeField]
+    protected MapData m_mapData;
+    public MapData GetMapData() { return m_mapData; }
 
     public static GameMaster GetInstance()
     {
@@ -102,14 +113,20 @@ public class GameMaster : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (m_shopEventUI != null)
+            if (m_statsPanel != null)
             {
-                m_shopEventUI.ToggleShop();
+                m_statsPanel.DisplayStats();
             }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             StartCardRemoval();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            List<EExplorator> expList = new List<EExplorator>();
+            expList.Add(EExplorator.Captain);
+            TheUnlocker.GetInstance().UnlockExplorators(expList);
         }
     }
 
@@ -164,6 +181,14 @@ public class GameMaster : MonoBehaviour
         {
             m_inventoryManager = Instantiate(m_inventoryManagerPrefab, transform).GetComponent<InventoryManager>();
         }
+        if (m_exploratorManagerPrefab != null)
+        {
+            m_exploratorManager = Instantiate(m_exploratorManagerPrefab, transform).GetComponent<ExploratorManager>();
+        }
+    }
+
+    public void Start()
+    {
         Player.GetPlayerInstance().LoadGame();
     }
 
@@ -182,7 +207,7 @@ public class GameMaster : MonoBehaviour
         SaveGame();
     }
 
-    public void StartEvent(ExplorationNode explorationNode)
+    public void StartEvent(ExplorationNode explorationNode, RaycastHit2D hit2D)
     {
         SaveGame();
         var go = Overworld.GetInstance().GetObjectFromNode(explorationNode);
@@ -196,18 +221,25 @@ public class GameMaster : MonoBehaviour
         switch (explorationNode.GetEventType())
         {
             case EEventType.Boss:
+                hit2D.collider.enabled = false;
+                SceneManager.LoadScene("Demo", LoadSceneMode.Single);
                 break;
             case EEventType.CardReward:
+                hit2D.collider.enabled = false;
                 break;
             case EEventType.ItemReward:
+                hit2D.collider.enabled = false;
                 m_itemRewardEvent.BeginReward();
                 break;
             case EEventType.WildEncounter:
+                hit2D.collider.enabled = false;
                 SceneManager.LoadScene("Demo", LoadSceneMode.Single);
                 break;
             case EEventType.Shop:
                 m_shopEventUI.ToggleShop();
-                explorationNode.GetComponent<Collider2D>().enabled = true;
+                break;
+            case EEventType.Ship:
+                //TODO: The ship is where you can manage your explorators, where you can travel from island to island and is the hub. Lots of work to do here
                 break;
             default:
                 break;
@@ -222,6 +254,11 @@ public class GameMaster : MonoBehaviour
         {
             Instantiate(go);
         }
+    }
+
+    public int GetCurrentNodeIndex()
+    {
+        return m_currentNodeIndex;
     }
 
     public void SaveGame()
@@ -262,6 +299,18 @@ public class GameMaster : MonoBehaviour
             if (!m_completedNodes.Contains(nodeIndex))
             {
                 m_completedNodes.Add(nodeIndex);
+
+                StatisticsManager.GetInstance().IncrementStat(EStat.NodesCompletedThisRun);
+                StatisticsManager.GetInstance().IncrementStat(EStat.NodesCompletedTotal);
+
+                if (GetMapData().explorationNodes[nodeIndex].explorationNode.eventType == EEventType.Boss)
+                {
+                    Instantiate(m_endGameText, GetComponentInChildren<Canvas>().transform);
+
+                    List<EExplorator> expList = new List<EExplorator>();
+                    expList.Add(EExplorator.Captain);
+                    TheUnlocker.GetInstance().UnlockExplorators(expList);
+                }
             }
         }
     }
@@ -282,7 +331,8 @@ public class GameMaster : MonoBehaviour
         }
         if (scene.name == "Demo")
         {
-            BattleStateMachine battleStateMachine = gameObject.AddComponent(typeof(BattleStateMachine)) as BattleStateMachine;
+            gameObject.AddComponent(typeof(BattleStateMachine));
+            Player.GetPlayerInstance().EnterOverworld(false);
         }
     }
 

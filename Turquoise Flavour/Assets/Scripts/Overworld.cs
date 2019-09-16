@@ -4,6 +4,7 @@ using UnityEngine;
 using Exploration;
 using Turquoise;
 using TMPro;
+using UnityEngine.UI;
 
 public class Overworld : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class Overworld : MonoBehaviour
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
     [SerializeField]
     protected TextMeshProUGUI m_goldTextMesh;
+    [SerializeField]
+    protected Image m_exploratorImage;
+    [SerializeField]
+    protected List<Image> m_creatureImages;
 
     public static Overworld GetInstance()
     {
@@ -32,7 +37,13 @@ public class Overworld : MonoBehaviour
 
     public void Update()
     {
-        m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
+        if (!GameMaster.GetInstance().GetInBattle())
+        {
+            if (InventoryManager.GetInstance() != null)
+            {
+                m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
+            }
+        }
     }
 
     public GameObject GetObjectFromNode(ExplorationNode explorationNode)
@@ -53,7 +64,27 @@ public class Overworld : MonoBehaviour
             m_explorationScreen = Instantiate(MapPrefab, transform).GetComponent<ExplorationScreen>();
             m_explorationScreen.Init();
             EndInit(completedNodes);
+            Player.GetPlayerInstance().EnterOverworld(true);
+            ChangeExplorator(Player.GetPlayerInstance().GetCurrentExploratorEnum());
         }
+    }
+
+    public void ChangeExplorator(EExplorator explorator)
+    {
+        if (ExploratorManager.GetInstance() != null)
+        {
+            m_exploratorImage.sprite = ExploratorManager.GetInstance().GetExploratorDataFromExploName(explorator).sprite;
+        }
+    }
+
+    public void ClickExploratorButton()
+    {
+
+    }
+
+    public void ChangeCreature(int index, CreatureData creature)
+    {
+        m_creatureImages[index].sprite = creature.sprite;
     }
 
     public void EndInit(List<int> completedNodes)
@@ -105,7 +136,7 @@ public class Overworld : MonoBehaviour
 
     public MapData GetCurrentMapData()
     {
-        return m_explorationScreen.GetMapData();
+        return GameMaster.GetInstance().GetMapData();
     }
 }
 

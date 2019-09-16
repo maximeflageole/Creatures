@@ -45,6 +45,7 @@ public struct NodeDataAndLocation
 {
     public ExplorationNodeData explorationNode;
     public Vector2 location;
+    public CreatureData creatureData;
 }
 
 [System.Serializable]

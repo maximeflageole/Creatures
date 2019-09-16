@@ -163,6 +163,18 @@ public class CardEffects : TurquoiseEvent {
 
     public void Start()
     {
+        SetEnemyCreature();
+    }
+
+    void SetEnemyCreature()
+    {
+        int index = GameMaster.GetInstance().GetCurrentNodeIndex();
+        if (index != -1)
+        {
+            CreatureData creatureData = GameMaster.GetInstance().GetMapData().explorationNodes[index].creatureData;
+            GetEnemyCreature().CreateFromCreatureData(creatureData, creatureData.baseDeck);
+            SendCreatureToBattle(GetEnemyCreature(), false);
+        }
     }
 
     public Creature GetPlayerCreature()
@@ -203,6 +215,7 @@ public class CardEffects : TurquoiseEvent {
     {
         foreach (SAbilityEffect effect in card.effects)
         {
+            GetEnemyCreature().PlayAnimation(ECardGenre.Attack);
             if (effect.m_targetType == ETarget.Enemy)
             {
                 GetPlayerCreature().ApplyEffect(effect, GetEnemyCreature(), GetPlayerCreature(), card.damageType);
@@ -375,6 +388,11 @@ public class CardEffects : TurquoiseEvent {
                 }
                 drawPileCards.ShufflePile();
             }
+        }
+        else
+        {
+            //This is the enemy
+            creature.SendCreatureToBattle(m_enemyCreature.GetComponent<CreatureUIComp>());
         }
     }
 
@@ -1554,14 +1572,11 @@ public class CardEffects : TurquoiseEvent {
                 }
                 arrows[i].transform.localScale = new Vector3(1.0f - 0.03f * (arrows.Count - 1 - i), 1.0f - 0.03f * (arrows.Count - 1 - i), 0);
             }
-            drawBtn.enabled = false;
-            m_nextTurnBtn.enabled = false;
+            StartCoroutine("DisableUIForAMoment", 2.0f);
         }
         else
         {
             HideArrows();
-            drawBtn.enabled = true;
-            m_nextTurnBtn.enabled = true;
         }
     }
 
@@ -1595,6 +1610,7 @@ public class CardEffects : TurquoiseEvent {
             m_player.TurnEnd();
             GetEnemyCreature().GetComponent<EnemyAI>().BeginTurn();
         }
+        StartCoroutine("DisableUIForAMoment", 1.7f);
     }
 
     public void EndBattleState()
@@ -1623,5 +1639,24 @@ public class CardEffects : TurquoiseEvent {
                 m_actionPile.RemoveAt(0);
             }
         }
+    }
+
+    public void DisableUI()
+    {
+        drawBtn.enabled = false;
+        m_nextTurnBtn.enabled = false;
+    }
+
+    public IEnumerator DisableUIForAMoment(int time)
+    {
+        DisableUI();
+        yield return new WaitForSeconds(time);
+        EnableUI();
+    }
+
+    public void EnableUI()
+    {
+        drawBtn.enabled = true;
+        m_nextTurnBtn.enabled = true;
     }
 }

@@ -5,10 +5,6 @@ using UnityEngine;
 public class ExplorationScreen : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject m_exploratorPrefab;
-    [SerializeField]
-    protected GameObject m_explorator;
-    [SerializeField]
     protected Vector3 m_exploratorNodeOffset;
     [SerializeField]
     protected GameObject m_nodePrefab;
@@ -23,9 +19,6 @@ public class ExplorationScreen : MonoBehaviour
     protected Color m_unavailableColor;
     [SerializeField]
     protected Color m_undiscoveredColor;
-    [SerializeField]
-    protected MapData m_mapData;
-    public MapData GetMapData() { return m_mapData; }
 
     void Start()
     {
@@ -35,7 +28,7 @@ public class ExplorationScreen : MonoBehaviour
     public void Init()
     {
         int i = 0;
-        foreach (var node in m_mapData.explorationNodes)
+        foreach (var node in GameMaster.GetInstance().GetMapData().explorationNodes)
         {
             Vector3 vec = new Vector3(node.location.x, node.location.y, 0);
             GameObject gameObject = Instantiate(m_nodePrefab, vec, Quaternion.identity, transform);
@@ -76,7 +69,6 @@ public class ExplorationScreen : MonoBehaviour
                 }
             }
         }
-        m_explorator = Instantiate(m_exploratorPrefab, transform);
         MoveExplorator(m_explorationNodes[0]);
     }
 
@@ -92,15 +84,14 @@ public class ExplorationScreen : MonoBehaviour
                 ExplorationNode node = go.GetComponent<ExplorationNode>();
                 if (node != null && !node.GetIsCompleted() && node.IsAvailable())
                 {
-                    if (m_explorator.GetComponent<Explorator>().IsNodeSelected(node))
+                    if (Player.GetPlayerInstance().GetCurrentExplorator().IsNodeSelected(node))
                     {
-                        hit.collider.enabled = false;
-                        GameMaster.GetInstance().StartEvent(node);
+                        GameMaster.GetInstance().StartEvent(node, hit);
                     }
                     else
                     {
                         MoveExplorator(node);
-                        m_explorator.GetComponent<Explorator>().SelectNode(node);
+                        Player.GetPlayerInstance().GetCurrentExplorator().SelectNode(node);
                     }
                 }
             }
@@ -109,7 +100,7 @@ public class ExplorationScreen : MonoBehaviour
 
     void MoveExplorator(ExplorationNode node)
     {
-        m_explorator.transform.position = node.transform.position + m_exploratorNodeOffset;
+        Player.GetPlayerInstance().GetCurrentExplorator().transform.position = node.transform.position + m_exploratorNodeOffset;
     }
 }
 
@@ -123,6 +114,7 @@ namespace Exploration
         ItemReward,
         CreaturePick,
         Shop,
+        Ship,
         Count
     }
 }

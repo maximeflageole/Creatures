@@ -74,6 +74,7 @@ public class Creature : MonoBehaviour
     protected int m_speed;
     [SerializeField]
     protected CreatureData m_creatureData;
+    public CreatureData GetData() { return m_creatureData; }
     [SerializeField]
     protected ConditionsComponent m_conditionsComponent;
     public ConditionsComponent GetConditionsComponent() { return m_conditionsComponent; }
@@ -276,12 +277,33 @@ public class Creature : MonoBehaviour
         return returnInt;
     }
 
+    public void PlayAnimation(ECardGenre eCardGenre)
+    {
+        m_creatureUIComp.PlayAnimation(eCardGenre);
+    }
+
     public void ApplyDamage(int damage, EDamageType damageType = EDamageType.None)
     {
         float calculatedDamage = CalculateDamage(damage, damageType);
         int intFinalDamage = Mathf.RoundToInt(calculatedDamage);
 
-        if (m_armor > 0 && damageType != EDamageType.True)
+        EDamageIntensity damageIntensity = EDamageIntensity.Normal;
+        float typeMultiplier = GetTypeMultiplier(m_primaryType, damageType);
+
+        if (damage <0)
+        {
+            damageIntensity = EDamageIntensity.Heal;
+        }
+        else if (typeMultiplier > 1)
+        {
+            damageIntensity = EDamageIntensity.SuperEffective;
+        }
+        else if (typeMultiplier < 1)
+        {
+            damageIntensity = EDamageIntensity.Reduced;
+        }
+
+        if (m_armor > 0 && damageType != EDamageType.True && intFinalDamage>0)
         {
             m_armor -= intFinalDamage;
             if (m_armor < 0)
@@ -298,10 +320,30 @@ public class Creature : MonoBehaviour
         {
             DieEvent();
         }
-        if (m_health > m_maxHealth)
+        //Stat tracking
+        if(m_team == ETeams.Ally)
         {
-            m_health = m_maxHealth;
+            if (damage > 0)
+            {
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedThisRun, intFinalDamage);
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedTotal, intFinalDamage);
+            }
+            else
+            {
+                StatisticsManager.GetInstance().IncrementStat(EStat.HealingThisRun, -intFinalDamage);
+                StatisticsManager.GetInstance().IncrementStat(EStat.HealingTotal, -intFinalDamage);
+            }
         }
+        else
+        {
+            if (damage > 0)
+            {
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedThisRun, intFinalDamage);
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedTotal, intFinalDamage);
+            }
+        }
+        Mathf.Clamp(m_health, 0, m_maxHealth);
+        m_creatureUIComp.ReceiveDamage(intFinalDamage, damageIntensity);
     }
 
     public void ApplyDamagePercent(int damagePercent)
@@ -310,8 +352,7 @@ public class Creature : MonoBehaviour
         damagePercentFloat /= 100.0f;
         float calculatedDamage = damagePercentFloat * m_maxHealth;
 
-        m_health -= (int)calculatedDamage;
-        m_health = Mathf.Clamp(m_health, 0, m_maxHealth);
+        ApplyDamage((int)calculatedDamage, EDamageType.True);
     }
 
     public void StartTurn()
