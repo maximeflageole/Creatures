@@ -323,13 +323,24 @@ public class Creature : MonoBehaviour
         //Stat tracking
         if(m_team == ETeams.Ally)
         {
-            StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedThisRun, intFinalDamage);
-            StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedTotal, intFinalDamage);
+            if (damage > 0)
+            {
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedThisRun, intFinalDamage);
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageReceivedTotal, intFinalDamage);
+            }
+            else
+            {
+                StatisticsManager.GetInstance().IncrementStat(EStat.HealingThisRun, -intFinalDamage);
+                StatisticsManager.GetInstance().IncrementStat(EStat.HealingTotal, -intFinalDamage);
+            }
         }
         else
         {
-            StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedThisRun, intFinalDamage);
-            StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedTotal, intFinalDamage);
+            if (damage > 0)
+            {
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedThisRun, intFinalDamage);
+                StatisticsManager.GetInstance().IncrementStat(EStat.DamageInflictedTotal, intFinalDamage);
+            }
         }
         Mathf.Clamp(m_health, 0, m_maxHealth);
         m_creatureUIComp.ReceiveDamage(intFinalDamage, damageIntensity);
