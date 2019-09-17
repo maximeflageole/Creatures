@@ -185,10 +185,6 @@ public class GameMaster : MonoBehaviour
         {
             m_exploratorManager = Instantiate(m_exploratorManagerPrefab, transform).GetComponent<ExploratorManager>();
         }
-    }
-
-    public void Start()
-    {
         Player.GetPlayerInstance().LoadGame();
     }
 
