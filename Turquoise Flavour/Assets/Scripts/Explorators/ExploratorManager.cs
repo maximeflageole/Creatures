@@ -30,6 +30,12 @@ public class ExploratorManager : MonoBehaviour
     {
         return m_unlockedExplorators.Contains(explorator);
     }
+
+    public void LoadGame()
+    {
+        SaveData saveData = SaveSystem.LoadGame();
+        m_unlockedExplorators = saveData.unlockedExplorators;
+    }
 }
 
 [System.Serializable]

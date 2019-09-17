@@ -186,6 +186,7 @@ public class GameMaster : MonoBehaviour
             m_exploratorManager = Instantiate(m_exploratorManagerPrefab, transform).GetComponent<ExploratorManager>();
         }
         Player.GetPlayerInstance().LoadGame();
+        m_exploratorManager.LoadGame();
     }
 
     public GameObject GetRewardPrefab()
@@ -298,15 +299,6 @@ public class GameMaster : MonoBehaviour
 
                 StatisticsManager.GetInstance().IncrementStat(EStat.NodesCompletedThisRun);
                 StatisticsManager.GetInstance().IncrementStat(EStat.NodesCompletedTotal);
-
-                if (GetMapData().explorationNodes[nodeIndex].explorationNode.eventType == EEventType.Boss)
-                {
-                    Instantiate(m_endGameText, GetComponentInChildren<Canvas>().transform);
-
-                    List<EExplorator> expList = new List<EExplorator>();
-                    expList.Add(EExplorator.Captain);
-                    TheUnlocker.GetInstance().UnlockExplorators(expList);
-                }
             }
         }
     }
