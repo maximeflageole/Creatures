@@ -213,9 +213,9 @@ public class CardEffects : TurquoiseEvent {
 
     public void ExecuteEnemyCard(CardData card)
     {
+        GetEnemyCreature().PlayAnimation(ECardGenre.Attack);
         foreach (SAbilityEffect effect in card.effects)
         {
-            GetEnemyCreature().PlayAnimation(ECardGenre.Attack);
             if (effect.m_targetType == ETarget.Enemy)
             {
                 GetPlayerCreature().ApplyEffect(effect, GetEnemyCreature(), GetPlayerCreature(), card.damageType);

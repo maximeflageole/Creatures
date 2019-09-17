@@ -203,10 +203,10 @@ public class Card : MonoBehaviour
             }
             if (conditionsVerified)
             {
-                cardPlayingCreature.PlayAnimation(ECardGenre.Attack);
                 ApplyEffect(cardEffect, selectedCreature, cardPlayingCreature);
             }
         }
+        cardPlayingCreature.PlayAnimation(ECardGenre.Attack);
     }
 
     protected bool DoesFearTrigger(Creature creature)
