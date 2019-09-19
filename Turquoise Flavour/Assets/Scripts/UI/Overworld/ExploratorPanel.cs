@@ -60,4 +60,13 @@ public class ExploratorPanel : UIIconParent
         Player.GetPlayerInstance().ChangeExplorator(chosenExplorator);
         Reset();
     }
+
+    public void OnClickedCreature(int index)
+    {
+        Creature creature = Player.GetPlayerInstance().GetCreatureAtIndex(index);
+        if (creature != null)
+        {
+            GameMaster.GetInstance().m_cardsPanelUI.DisplayCards(creature.GetDeck().GetCardDatas());
+        }
+    }
 }

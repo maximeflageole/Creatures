@@ -21,4 +21,14 @@ public class Deck : MonoBehaviour
         }
         return false;
     }
+
+    public List<CardData> GetCardDatas()
+    {
+        List<CardData> cardDatas = new List<CardData>();
+        foreach (var card in m_cards)
+        {
+            cardDatas.Add(GameMaster.GetInstance().m_cardList.GetCardDataFromCardName(card));
+        }
+        return cardDatas;
+    }
 }

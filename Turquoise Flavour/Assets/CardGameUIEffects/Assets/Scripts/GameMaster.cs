@@ -53,6 +53,7 @@ public class GameMaster : MonoBehaviour
     public GameObject m_endGameText;
     public RewardPanel m_rewardPanel;
     public StatsPanelUI m_statsPanel;
+    public CardsPanelUI m_cardsPanelUI;
 
     [SerializeField]
     protected MapData m_mapData;

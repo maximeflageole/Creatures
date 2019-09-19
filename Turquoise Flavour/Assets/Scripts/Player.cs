@@ -141,6 +141,15 @@ public class Player : MonoBehaviour
         return m_creatures;
     }
 
+    public Creature GetCreatureAtIndex(int index)
+    {
+        if (m_creatures.Count > index)
+        {
+            return m_creatures[index];
+        }
+        return null;
+    }
+
     public bool TryPlayCard(Card card)
     {
         //Verify mana
