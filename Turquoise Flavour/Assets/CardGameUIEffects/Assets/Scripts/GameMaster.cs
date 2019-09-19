@@ -54,6 +54,7 @@ public class GameMaster : MonoBehaviour
     public RewardPanel m_rewardPanel;
     public StatsPanelUI m_statsPanel;
     public CardsPanelUI m_cardsPanelUI;
+    public Biopedia m_biopedia;
 
     [SerializeField]
     protected MapData m_mapData;
@@ -340,6 +341,11 @@ public class GameMaster : MonoBehaviour
     {
         m_inventoryUI.Close();
         m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
+    }
+
+    public void OnBiopediaClicked()
+    {
+        m_biopedia.Open();
     }
 }
 

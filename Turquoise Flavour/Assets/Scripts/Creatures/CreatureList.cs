@@ -26,6 +26,16 @@ public class CreatureList : MonoBehaviour
         }
         return null;
     }
+
+    public List<CreatureData> GetAllCreaturesInDexOrder()
+    {
+        List<CreatureData> creaturesData = new List<CreatureData>();
+        foreach (var creature in creatureDataDictionnary)
+        {
+            creaturesData.Add(creature.creatureData);
+        }
+        return creaturesData;
+    }
 }
 
 [System.Serializable]
