@@ -45,8 +45,8 @@ public class TheUnlocker : MonoBehaviour
             if (str.Count > 0)
             {
                 GameMaster.GetInstance().m_rewardPanel.UnlockReward(str, sprites);
+                SaveSystem.SaveGame();
             }
-            SaveSystem.SaveGame();
         }
         else
         {
