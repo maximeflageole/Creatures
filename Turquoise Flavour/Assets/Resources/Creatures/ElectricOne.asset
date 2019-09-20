@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cda87c80a53c91d4a908b444eee9d35b, type: 3}
-  m_Name: FrostOwl
+  m_Name: ElectricOne
   m_EditorClassIdentifier: 
-  eCreature: 2
-  creatureName: Frost Owl
-  creatureType: 7
-  initialHealth: 40
+  eCreature: 5
+  creatureName: Electric one
+  creatureType: 8
+  initialHealth: 42
   healthPerLevel: 5
   initialMana: 3
-  sprite: {fileID: 21300000, guid: 9cdc3e7f5f78e7846b2f5585e3d5a12b, type: 3}
-  baseDeck: 00000000000000000000000000000000000000000300000003000000030000000400000004000000
+  sprite: {fileID: 21300000, guid: 412542056e65bab4ab27faa6fdf63676, type: 3}
+  baseDeck: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   activeAbilityData: {fileID: 11400000, guid: 3d6d59fc37cbab340a9124f9312d6351, type: 2}
   levelSpeed: 1
-  abilityTree: {fileID: 11400000, guid: f6476787307250f4588df08e9a31b83b, type: 2}
+  abilityTree: {fileID: 11400000, guid: 8b7130e9980a7634a9c5dd9fe7fbed70, type: 2}

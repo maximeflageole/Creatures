@@ -694,6 +694,7 @@ namespace Creatures
         FrostOwl,
         Doggo,
         GhostMonkey,
+        ElectricOne,
         Count
     }
 }
