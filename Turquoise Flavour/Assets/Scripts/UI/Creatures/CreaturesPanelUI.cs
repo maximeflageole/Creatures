@@ -23,14 +23,25 @@ public class CreaturesPanelUI : MonoBehaviour
 
     public void OpenMenu(List<Creature> creatures)
     {
-        gameObject.SetActive(true);
-        foreach (var creaturePanel in m_creaturePanels)
+        if (gameObject.activeSelf)
         {
-            creaturePanel.Reset();
+            Reset();
+            return;
         }
+        Reset();
+        gameObject.SetActive(true);
         for (int i = 0; i < creatures.Count && i < 3; i++)
         {
             m_creaturePanels[i].OnOpenMenu(creatures[i]);
+        }
+    }
+
+    private void Reset()
+    {
+        gameObject.SetActive(false);
+        foreach (var creaturePanel in m_creaturePanels)
+        {
+            creaturePanel.Reset();
         }
     }
 

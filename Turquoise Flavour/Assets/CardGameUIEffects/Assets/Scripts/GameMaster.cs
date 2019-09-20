@@ -347,6 +347,16 @@ public class GameMaster : MonoBehaviour
     {
         m_biopedia.Open();
     }
+
+    public void OnInventoryClicked()
+    {
+        m_inventoryUI.Toggle();
+    }
+
+    public void OnGroupClicked()
+    {
+        m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
+    }
 }
 
 [CustomEditor(typeof(GameMaster))]
