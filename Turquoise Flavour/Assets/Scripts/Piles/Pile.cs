@@ -99,6 +99,20 @@ public class Pile: MonoBehaviour
         Enqueue(card);
     }
 
+    public void AddCardOnTop(Card card)
+    {
+        card.gameObject.SetActive(false);
+        List<Card> cardList = new List<Card>();
+        cardList.Add(card);
+        cardList.AddRange(GetPileAsList());
+        m_queuedPile.Clear();
+
+        foreach (var cardInPile in cardList)
+        {
+            m_queuedPile.Enqueue(cardInPile);
+        }
+    }
+
     public List<Card> Peek(int number = 1)
     {
         List<Card> listCard = GetPileAsList();

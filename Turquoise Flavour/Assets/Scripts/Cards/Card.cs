@@ -81,6 +81,7 @@ namespace Turquoise
         Unprepared,                     //Card per turn -1
         Burn,
         Ethereal,
+        Clone,
         Count
     }
 

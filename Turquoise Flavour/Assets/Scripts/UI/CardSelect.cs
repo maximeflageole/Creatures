@@ -56,7 +56,7 @@ public class CardSelect : MonoBehaviour
         }
     }
 
-    protected void Discard()
+    protected void Select()
     {
         if ((m_selectedCards.Count == m_amountToSelect) || CardEffects.GetInstance().CardHandCount() == m_selectedCards.Count)
         {
@@ -81,12 +81,17 @@ public class CardSelect : MonoBehaviour
                 {
                     case ESelectionType.Discarding:
                         Debug.Log("Discarding");
-                        Discard();
+                        Select();
                         break;
                     case ESelectionType.Exhausting:
                         Debug.Log("Exhausting");
-                        Discard();
+                        Select();
                         break;
+                    case ESelectionType.Other:
+                        Debug.Log("Selecting");
+                        Select();
+                        break;
+
                     default:
                         break;
                 }
@@ -123,11 +128,27 @@ public class CardSelect : MonoBehaviour
             m_text.text = "Exhaust " + amount + " cards";
         }
     }
+
+    public void StartSelecting(int amount)
+    {
+        m_selectionType = ESelectionType.Other;
+        m_amountToSelect = amount;
+        m_selectedCards.Clear();
+        if (amount == 1)
+        {
+            m_text.text = "Select " + amount + " card";
+        }
+        else
+        {
+            m_text.text = "Select " + amount + " cards";
+        }
+    }
 }
 
 public enum ESelectionType
 {
     Discarding,
     Exhausting,
+    Other,
     None
 }

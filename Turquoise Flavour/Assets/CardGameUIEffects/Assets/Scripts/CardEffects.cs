@@ -149,6 +149,12 @@ public class CardEffects : TurquoiseEvent {
     [SerializeField]
     protected bool m_exhaustingCards;
     [SerializeField]
+    protected bool m_selectingCards;
+    [SerializeField]
+    protected ECardEffect m_cardSelectionEffects;
+    [SerializeField]
+    protected int m_cardSelectionEffectsAmount;
+    [SerializeField]
     protected bool m_noTargetSkill;
     [SerializeField]
     protected bool m_isPlayerTurn;
@@ -277,7 +283,7 @@ public class CardEffects : TurquoiseEvent {
             {
                 CalCardsTransform();
             }
-            if (m_discardingCards || m_exhaustingCards)
+            if (m_discardingCards || m_exhaustingCards || m_selectingCards)
             {
                 CheckCardSelect();
                 return;
@@ -741,7 +747,7 @@ public class CardEffects : TurquoiseEvent {
                             m_discardingCards = true;
                         }
                     }
-                    if (effect.m_effect == ECardEffect.Exhaust)
+                    else if (effect.m_effect == ECardEffect.Exhaust)
                     {
                         if (effect.m_targetType == ETarget.Card)
                         {
@@ -752,9 +758,20 @@ public class CardEffects : TurquoiseEvent {
                                 m_exhaustingCards = true;
                             }
                         }
-                        else if (effect.m_targetType == ETarget.None)
+                        else if (effect.m_targetType == ETarget.None || effect.m_targetType == ETarget.Self)
                         {
                             ExhaustSelf(card);
+                        }
+                    }
+                    else if (effect.m_targetType == ETarget.Card)
+                    {
+                        if (m_cardSelectUI != null)
+                        {
+                            m_cardSelectUI.gameObject.SetActive(true);
+                            m_cardSelectUI.StartSelecting(1);
+                            m_selectingCards = true;
+                            m_cardSelectionEffects = effect.m_effect;
+                            m_cardSelectionEffectsAmount = effect.m_value;
                         }
                     }
                     if (effect.m_effect == ECardEffect.Find)
@@ -826,6 +843,10 @@ public class CardEffects : TurquoiseEvent {
             {
                 ExhaustCard(card);
             }
+            else if (m_selectingCards)
+            {
+                ApplyEffectOnCard(card);
+            }
             else
             {
                 Debug.Log("We have a problem, card selected without exhausting or discarding cards");
@@ -833,6 +854,29 @@ public class CardEffects : TurquoiseEvent {
         }
         m_discardingCards = false;
         m_exhaustingCards = false;
+        m_selectingCards = false;
+        m_cardSelectionEffects = ECardEffect.Count;
+        m_cardSelectionEffectsAmount = 0;
+    }
+
+    public void ApplyEffectOnCard(Card card)
+    {
+        //Here is all of the different in battle card effects. Example: adding components to card, clone them, curse them, etc
+        if (m_cardSelectionEffects == ECardEffect.Clone)
+        {
+            CloneCards(card, m_cardSelectionEffectsAmount);
+        }
+    }
+
+    void CloneCards(Card card, int amount = 1)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Card cardInstance = Instantiate(cardPrefabs[0].GetComponent<Card>());
+            cardInstance.SetCardData(card.GetCardData());
+            drawPileCards.AddCardOnTop(cardInstance);
+        }
+
     }
 
     public void ExhaustCardList(List<Card> cards)

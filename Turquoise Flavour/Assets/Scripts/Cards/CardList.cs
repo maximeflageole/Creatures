@@ -48,7 +48,8 @@ namespace Turquoise
         RagingBite,
         FrenziedBite,
         EtherealForm,
-        Count                           //40
+        CloneCard,                      //40
+        Count
     }
 }
 
