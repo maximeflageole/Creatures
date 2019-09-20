@@ -15,6 +15,7 @@ namespace Creatures
         Aquatic,
         Ice,
         Electric,
+        Ghost,
         None
     };
 }

@@ -47,7 +47,8 @@ namespace Turquoise
         ChillingBite,
         RagingBite,
         FrenziedBite,
-        Count
+        EtherealForm,
+        Count                           //40
     }
 }
 

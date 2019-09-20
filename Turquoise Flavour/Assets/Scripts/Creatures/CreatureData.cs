@@ -15,8 +15,6 @@ public class CreatureData : ScriptableObject
     public Sprite sprite;
     public List<Turquoise.ECard> baseDeck;
     public ActiveAbilityData activeAbilityData;
-    public int level;
-    public int experience;
     public Experience.ELevelSpeed levelSpeed;
     public AbilityTreeData abilityTree;
 }

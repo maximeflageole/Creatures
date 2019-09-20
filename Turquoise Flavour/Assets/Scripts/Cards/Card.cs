@@ -80,6 +80,7 @@ namespace Turquoise
         Haste,                          //Draw 1 more card when using a card with the keyword "draw"
         Unprepared,                     //Card per turn -1
         Burn,
+        Ethereal,
         Count
     }
 

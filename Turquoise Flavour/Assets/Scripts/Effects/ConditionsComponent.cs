@@ -115,6 +115,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.Recycle:
             case ECardEffect.SignatureMove:
             case ECardEffect.Vigor:
+            case ECardEffect.Ethereal:
                 return true;
         }
         return false;
@@ -239,7 +240,7 @@ public class ConditionsComponent : MonoBehaviour
         }
     }
 
-    public void RemoveBuff(ECardEffect effect, int qty = 1)
+    public void RemoveConditionStack(ECardEffect effect, int qty = 1)
     {
         Condition condition = GetCondition(effect);
         if (condition != null)

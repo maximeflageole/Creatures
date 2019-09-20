@@ -169,6 +169,10 @@ public class Creature : MonoBehaviour
         switch (cardEffect.m_effect)
         {
             case ECardEffect.Damage:
+                if(IsPreventingDamage())
+                {
+                    break;
+                }
                 int calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(cardEffect.m_value);
                 ApplyDamage(calculatedDamage, damageType);
                 m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
@@ -192,14 +196,24 @@ public class Creature : MonoBehaviour
                 cardPlayingCreature.ApplyDamage(-cardEffect.m_value * selectedCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.Bleed));
                 break;
             case ECardEffect.HeAttacks:
-                cardPlayingCreature.m_conditionsComponent.RemoveBuff(ECardEffect.HeProtects, 1);
+                cardPlayingCreature.m_conditionsComponent.RemoveConditionStack(ECardEffect.HeProtects, 1);
                 break;
             case ECardEffect.HeProtects:
-                cardPlayingCreature.m_conditionsComponent.RemoveBuff(ECardEffect.HeAttacks, 1);
+                cardPlayingCreature.m_conditionsComponent.RemoveConditionStack(ECardEffect.HeAttacks, 1);
                 break;
             default:
                 break;
         }
+    }
+
+    bool IsPreventingDamage()
+    {
+        if (m_conditionsComponent.GetBoonStacks(ECardEffect.Ethereal) > 0)
+        {
+            m_conditionsComponent.RemoveConditionStack(ECardEffect.Ethereal);
+            return true;
+        }
+        return false;
     }
 
     public List<ECardEffect> GetBuffs()
@@ -679,6 +693,7 @@ namespace Creatures
         Dragon,
         FrostOwl,
         Doggo,
+        GhostMonkey,
         Count
     }
 }
