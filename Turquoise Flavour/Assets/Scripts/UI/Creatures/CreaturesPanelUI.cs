@@ -104,10 +104,20 @@ public class CreaturesPanelUI : MonoBehaviour
             case ECreatureInteraction.Swap:
                 Player.GetPlayerInstance().SwapCreature(m_currentCreature);
                 break;
+            case ECreatureInteraction.Use:
+                InstantiateItemCarousel(EItemTypes.TMs);
+                break;
             default:
                 break;
         }
         CloseMenu();
+    }
+
+    void InstantiateItemCarousel(EItemTypes eItemTypes)
+    {
+        List<InventoryItemData> itemsData = new List<InventoryItemData>();
+        itemsData.AddRange(InventoryManager.GetInstance().GetInventoryItemsDataForType(eItemTypes));
+        GameMaster.GetInstance().m_carousel.AssignElements(itemsData);
     }
 
     public void CloseMenu()

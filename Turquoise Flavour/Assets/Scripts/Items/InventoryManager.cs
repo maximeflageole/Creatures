@@ -104,6 +104,17 @@ public class InventoryManager : MonoBehaviour
         return returnItems;
     }
 
+    public List<InventoryItemData> GetInventoryItemsDataForType(EItemTypes itemType)
+    {
+        List<InventoryItemData> itemDatas = new List<InventoryItemData>();
+        var tupleItems = GetInventoryItemsOfType(itemType);
+        foreach (var tuple in tupleItems)
+        {
+            itemDatas.Add(GetItemFromEnum(tuple.itemEnum));
+        }
+        return itemDatas;
+    }
+
     public InventoryItemData GetItemFromEnum(EItem item)
     {
         return m_itemDictionnary[item];

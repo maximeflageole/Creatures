@@ -55,6 +55,7 @@ public class GameMaster : MonoBehaviour
     public StatsPanelUI m_statsPanel;
     public CardsPanelUI m_cardsPanelUI;
     public Biopedia m_biopedia;
+    public Carousel m_carousel;
 
     [SerializeField]
     protected MapData m_mapData;
