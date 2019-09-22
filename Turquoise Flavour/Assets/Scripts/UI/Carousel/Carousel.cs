@@ -5,7 +5,7 @@ using UnityEngine;
 public class Carousel : MonoBehaviour
 {
     public GameObject m_carouselElementPrefab;
-    public List<GameObject> m_carouselElementChilds = new List<GameObject>();
+    public List<CarouselElement> m_carouselElementChilds = new List<CarouselElement>();
     public RectTransform m_carouselTransform;
     public List<Sprite> m_sprites = new List<Sprite>();
     public List<string> m_names = new List<string>();
@@ -37,6 +37,7 @@ public class Carousel : MonoBehaviour
             CarouselElement carouselElement = Instantiate(m_carouselElementPrefab, m_carouselTransform).GetComponent<CarouselElement>();
             carouselElement.m_image.sprite = sprite;
             carouselElement.m_text.text = m_names[i];
+            m_carouselElementChilds.Add(carouselElement);
             i++;
         }
     }

@@ -105,7 +105,7 @@ public class CreaturesPanelUI : MonoBehaviour
                 Player.GetPlayerInstance().SwapCreature(m_currentCreature);
                 break;
             case ECreatureInteraction.Use:
-                InstantiateItemCarousel(EItemTypes.TMs);
+                InstantiateItemCarousel(EItemTypes.Trinkets);
                 break;
             default:
                 break;
