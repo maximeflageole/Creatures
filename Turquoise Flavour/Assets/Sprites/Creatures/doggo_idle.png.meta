@@ -80,12 +80,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: -1
     mipBias: -100
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -112,7 +112,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,7 +123,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,9 +137,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3528
-        width: 488
-        height: 588
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,7 +147,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71eac9029e635dc4ba77c24f0f835f58
+      spriteID: 6b60a477da64b3c438f8ed27836c3d7a
       vertices: []
       indices: 
       edges: []
@@ -156,10 +156,10 @@ TextureImporter:
       name: doggo_idle_1
       rect:
         serializedVersion: 2
-        x: 488
-        y: 3528
-        width: 488
-        height: 588
+        x: 550
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,7 +167,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c0b39bae77998242a29d36854e49bb6
+      spriteID: 6e22adb40d14df146bdb035bf87da123
       vertices: []
       indices: 
       edges: []
@@ -176,10 +176,10 @@ TextureImporter:
       name: doggo_idle_2
       rect:
         serializedVersion: 2
-        x: 976
-        y: 3528
-        width: 488
-        height: 588
+        x: 1100
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ddfd4d42e5c46c44abdd857ea083dc7
+      spriteID: 96bd3c689986f0b4299f512624e6f15d
       vertices: []
       indices: 
       edges: []
@@ -196,10 +196,10 @@ TextureImporter:
       name: doggo_idle_3
       rect:
         serializedVersion: 2
-        x: 1464
-        y: 3528
-        width: 488
-        height: 588
+        x: 1650
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,7 +207,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 843f5804cfd970b4195646d677af7061
+      spriteID: 89d922289a3e9074384b943039d92fba
       vertices: []
       indices: 
       edges: []
@@ -216,10 +216,10 @@ TextureImporter:
       name: doggo_idle_4
       rect:
         serializedVersion: 2
-        x: 1952
-        y: 3528
-        width: 488
-        height: 588
+        x: 2200
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,7 +227,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ca8ed2c7291fad479b46735e6412b84
+      spriteID: fc3be739e6c6d7d4e97efe77289f28a3
       vertices: []
       indices: 
       edges: []
@@ -236,10 +236,10 @@ TextureImporter:
       name: doggo_idle_5
       rect:
         serializedVersion: 2
-        x: 2440
-        y: 3528
-        width: 488
-        height: 588
+        x: 2750
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,7 +247,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: daf1ec613e061b945b5aca094e2db9c5
+      spriteID: 7772f7137a5f4c24c9e320e9dbbfd2ce
       vertices: []
       indices: 
       edges: []
@@ -256,10 +256,10 @@ TextureImporter:
       name: doggo_idle_6
       rect:
         serializedVersion: 2
-        x: 2928
-        y: 3528
-        width: 488
-        height: 588
+        x: 3300
+        y: 4080
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,7 +267,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2a0b0b0e72258949ac2d1ecdf989459
+      spriteID: e5b338835c0e57f4f80914754e9e007d
       vertices: []
       indices: 
       edges: []
@@ -277,9 +277,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2940
-        width: 488
-        height: 588
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,7 +287,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa5adb08b73fc4c4599ed8165efc94c7
+      spriteID: 54bd6376a4d5cf34fb60de96c4cc9776
       vertices: []
       indices: 
       edges: []
@@ -296,10 +296,10 @@ TextureImporter:
       name: doggo_idle_8
       rect:
         serializedVersion: 2
-        x: 488
-        y: 2940
-        width: 488
-        height: 588
+        x: 550
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,7 +307,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c646ac131d5da2478736863e9ef80a1
+      spriteID: cf9f72f21f94bbd478448597ed4c0d1c
       vertices: []
       indices: 
       edges: []
@@ -316,10 +316,10 @@ TextureImporter:
       name: doggo_idle_9
       rect:
         serializedVersion: 2
-        x: 976
-        y: 2940
-        width: 488
-        height: 588
+        x: 1100
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,7 +327,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a48b0e643eda3de46b208adadcbf3899
+      spriteID: 3b268314dc803aa4684fd4eb6764ed23
       vertices: []
       indices: 
       edges: []
@@ -336,10 +336,10 @@ TextureImporter:
       name: doggo_idle_10
       rect:
         serializedVersion: 2
-        x: 1464
-        y: 2940
-        width: 488
-        height: 588
+        x: 1650
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,7 +347,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d0053d30defa7648b232a6c7d4c6b3e
+      spriteID: 1f587b8dd1cb736419ab7dd82ee1a153
       vertices: []
       indices: 
       edges: []
@@ -356,10 +356,10 @@ TextureImporter:
       name: doggo_idle_11
       rect:
         serializedVersion: 2
-        x: 1952
-        y: 2940
-        width: 488
-        height: 588
+        x: 2200
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,7 +367,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71adad2e729637c45ae4ed39f4a4e586
+      spriteID: 42fc714421b40e4459b7a511870bf987
       vertices: []
       indices: 
       edges: []
@@ -376,10 +376,10 @@ TextureImporter:
       name: doggo_idle_12
       rect:
         serializedVersion: 2
-        x: 2440
-        y: 2940
-        width: 488
-        height: 588
+        x: 2750
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,7 +387,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17f61f534ae5cc24984007bb9192874b
+      spriteID: c0ed6cc9a47d2924287068b7b88df740
       vertices: []
       indices: 
       edges: []
@@ -396,10 +396,10 @@ TextureImporter:
       name: doggo_idle_13
       rect:
         serializedVersion: 2
-        x: 2928
-        y: 2940
-        width: 488
-        height: 588
+        x: 3300
+        y: 3400
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,7 +407,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad315d6953ffeff40abe13d4b9438560
+      spriteID: daeeac4a2642bc8489ed9328c213a5a6
       vertices: []
       indices: 
       edges: []
@@ -417,9 +417,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2352
-        width: 488
-        height: 588
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,7 +427,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89ff03121d4f41d4abb32fad68a024ed
+      spriteID: 0c6df38c1e95b804991e615bcf52edc5
       vertices: []
       indices: 
       edges: []
@@ -436,10 +436,10 @@ TextureImporter:
       name: doggo_idle_15
       rect:
         serializedVersion: 2
-        x: 488
-        y: 2352
-        width: 488
-        height: 588
+        x: 550
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,7 +447,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b177ab0e12f27954cbea96d13c2f7ad9
+      spriteID: e30ed4a7d7c1686499e5224a8ecddfc1
       vertices: []
       indices: 
       edges: []
@@ -456,10 +456,10 @@ TextureImporter:
       name: doggo_idle_16
       rect:
         serializedVersion: 2
-        x: 976
-        y: 2352
-        width: 488
-        height: 588
+        x: 1100
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,7 +467,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adf5df34955e79b4186f5bdf1ab77bd1
+      spriteID: 0892e3458a932ad43b30bdcd6c006649
       vertices: []
       indices: 
       edges: []
@@ -476,10 +476,10 @@ TextureImporter:
       name: doggo_idle_17
       rect:
         serializedVersion: 2
-        x: 1464
-        y: 2352
-        width: 488
-        height: 588
+        x: 1650
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -487,7 +487,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aae4497fbb910a6458edf7d4a99ace71
+      spriteID: 75c686d020f0f224f86eb76493f8dfc7
       vertices: []
       indices: 
       edges: []
@@ -496,10 +496,10 @@ TextureImporter:
       name: doggo_idle_18
       rect:
         serializedVersion: 2
-        x: 1952
-        y: 2352
-        width: 488
-        height: 588
+        x: 2200
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -507,7 +507,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 645441c95376eb3459c9ba8e6da7e51a
+      spriteID: f9481984c765d344e8e6580c5f9a131e
       vertices: []
       indices: 
       edges: []
@@ -516,10 +516,10 @@ TextureImporter:
       name: doggo_idle_19
       rect:
         serializedVersion: 2
-        x: 2440
-        y: 2352
-        width: 488
-        height: 588
+        x: 2750
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -527,7 +527,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f906207f7000b4541aafde60845d7c3a
+      spriteID: 3834e07b2086e9048a9bf957a613ced6
       vertices: []
       indices: 
       edges: []
@@ -536,10 +536,10 @@ TextureImporter:
       name: doggo_idle_20
       rect:
         serializedVersion: 2
-        x: 2928
-        y: 2352
-        width: 488
-        height: 588
+        x: 3300
+        y: 2720
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -547,7 +547,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55e3c72b52787464aae3d5e0331cb468
+      spriteID: 5ed918fc3d0fbdc4c86e4cea1acc460e
       vertices: []
       indices: 
       edges: []
@@ -557,9 +557,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1764
-        width: 488
-        height: 588
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -567,7 +567,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b55a342b5744ed449a5da3fbdb608f44
+      spriteID: 8f9f328b9cc346749b5b6fd2ef184464
       vertices: []
       indices: 
       edges: []
@@ -576,10 +576,10 @@ TextureImporter:
       name: doggo_idle_22
       rect:
         serializedVersion: 2
-        x: 488
-        y: 1764
-        width: 488
-        height: 588
+        x: 550
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -587,7 +587,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 245c83b81a7754c40a7d3f39d32c7c34
+      spriteID: e98d20af355b7c64d8ffdafaeb1337e7
       vertices: []
       indices: 
       edges: []
@@ -596,10 +596,10 @@ TextureImporter:
       name: doggo_idle_23
       rect:
         serializedVersion: 2
-        x: 976
-        y: 1764
-        width: 488
-        height: 588
+        x: 1100
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -607,7 +607,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e47a4dcca07b7f4898c19dac3f7cc68
+      spriteID: 066e88313dfcfc0459af623ed7f6ca30
       vertices: []
       indices: 
       edges: []
@@ -616,10 +616,10 @@ TextureImporter:
       name: doggo_idle_24
       rect:
         serializedVersion: 2
-        x: 1464
-        y: 1764
-        width: 488
-        height: 588
+        x: 1650
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -627,7 +627,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d3ceda0b7933c94a8ca88287e609a8b
+      spriteID: cb80b021e9d6c164c854b64253edcc83
       vertices: []
       indices: 
       edges: []
@@ -636,10 +636,10 @@ TextureImporter:
       name: doggo_idle_25
       rect:
         serializedVersion: 2
-        x: 1952
-        y: 1764
-        width: 488
-        height: 588
+        x: 2200
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -647,7 +647,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6978443568bb85a46af253011774e5c7
+      spriteID: 7f99d06bb4025e844b1dfe8dda4e8b73
       vertices: []
       indices: 
       edges: []
@@ -656,10 +656,10 @@ TextureImporter:
       name: doggo_idle_26
       rect:
         serializedVersion: 2
-        x: 2440
-        y: 1764
-        width: 488
-        height: 588
+        x: 2750
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -667,7 +667,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 673f28932731da64e8e80696b4efd235
+      spriteID: 1f268f9705ff26647b3336a9e6dc6cb5
       vertices: []
       indices: 
       edges: []
@@ -676,10 +676,10 @@ TextureImporter:
       name: doggo_idle_27
       rect:
         serializedVersion: 2
-        x: 2928
-        y: 1764
-        width: 488
-        height: 588
+        x: 3300
+        y: 2040
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -687,7 +687,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4187f378d0525346bba58ccd6fb86dc
+      spriteID: 16e118631ae647a44ab017fab78efa39
       vertices: []
       indices: 
       edges: []
@@ -697,9 +697,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1176
-        width: 488
-        height: 588
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -707,7 +707,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f157c6512c87f94d8c0420f9cf27e56
+      spriteID: 1dd5ec3d58f703345a3c5a308ddf76f6
       vertices: []
       indices: 
       edges: []
@@ -716,10 +716,10 @@ TextureImporter:
       name: doggo_idle_29
       rect:
         serializedVersion: 2
-        x: 488
-        y: 1176
-        width: 488
-        height: 588
+        x: 550
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -727,7 +727,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9f3a326d89bff940806d219ff4c3dba
+      spriteID: fc9d94e9dc58de442af27cf602967689
       vertices: []
       indices: 
       edges: []
@@ -736,10 +736,10 @@ TextureImporter:
       name: doggo_idle_30
       rect:
         serializedVersion: 2
-        x: 976
-        y: 1176
-        width: 488
-        height: 588
+        x: 1100
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -747,7 +747,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f89ac8eb8b59974fa2f9ffbab67b09d
+      spriteID: 4feb6c99c8c2296479eecebaa2041f06
       vertices: []
       indices: 
       edges: []
@@ -756,10 +756,10 @@ TextureImporter:
       name: doggo_idle_31
       rect:
         serializedVersion: 2
-        x: 1464
-        y: 1176
-        width: 488
-        height: 588
+        x: 1650
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -767,7 +767,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b93d2885c6d089a43b89d4ff0e606a51
+      spriteID: 927f5ade198b562438f95b706e627067
       vertices: []
       indices: 
       edges: []
@@ -776,10 +776,10 @@ TextureImporter:
       name: doggo_idle_32
       rect:
         serializedVersion: 2
-        x: 1952
-        y: 1176
-        width: 488
-        height: 588
+        x: 2200
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -787,7 +787,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f711dc49058f6724b9f179265b0d50fb
+      spriteID: 8cce146051fd91e409cb837037346494
       vertices: []
       indices: 
       edges: []
@@ -796,10 +796,10 @@ TextureImporter:
       name: doggo_idle_33
       rect:
         serializedVersion: 2
-        x: 2440
-        y: 1176
-        width: 488
-        height: 588
+        x: 2750
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -807,7 +807,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d219798ed946bb849a204da091c0530a
+      spriteID: 46b7e27abe3d9ac4eaf154c6f5e85695
       vertices: []
       indices: 
       edges: []
@@ -816,10 +816,10 @@ TextureImporter:
       name: doggo_idle_34
       rect:
         serializedVersion: 2
-        x: 2928
-        y: 1176
-        width: 488
-        height: 588
+        x: 3300
+        y: 1360
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -827,7 +827,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67b03b12cf2c6e6429febf9e3841f1ae
+      spriteID: 94d09ebd006b43044bf7f05a0e26ca4d
       vertices: []
       indices: 
       edges: []
@@ -837,9 +837,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 588
-        width: 488
-        height: 588
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -847,7 +847,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84908841284a07b46aff04810717206d
+      spriteID: e86fcc47d2612d448a3ceb14ee441d5a
       vertices: []
       indices: 
       edges: []
@@ -856,10 +856,10 @@ TextureImporter:
       name: doggo_idle_36
       rect:
         serializedVersion: 2
-        x: 488
-        y: 588
-        width: 488
-        height: 588
+        x: 550
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -867,7 +867,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13fc68f9c37dfdf4c97163d2342394b2
+      spriteID: e6d74cf0f445fc444a703467f58607ee
       vertices: []
       indices: 
       edges: []
@@ -876,10 +876,10 @@ TextureImporter:
       name: doggo_idle_37
       rect:
         serializedVersion: 2
-        x: 976
-        y: 588
-        width: 488
-        height: 588
+        x: 1100
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -887,7 +887,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff50412504b8d643877e8f78409bc55
+      spriteID: 060ad8b8e44d9c449b143c4da2cc6fb0
       vertices: []
       indices: 
       edges: []
@@ -896,10 +896,10 @@ TextureImporter:
       name: doggo_idle_38
       rect:
         serializedVersion: 2
-        x: 1464
-        y: 588
-        width: 488
-        height: 588
+        x: 1650
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -907,7 +907,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0644b95568e32c049ae9f360900cabe2
+      spriteID: a91b44295e339f14794d9c5c7cd7cf94
       vertices: []
       indices: 
       edges: []
@@ -916,10 +916,10 @@ TextureImporter:
       name: doggo_idle_39
       rect:
         serializedVersion: 2
-        x: 1952
-        y: 588
-        width: 488
-        height: 588
+        x: 2200
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -927,7 +927,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68a3c9cffd5a6c498f11766f1c84145
+      spriteID: 280435d9a1d1b7d43a7264f57ad70de7
       vertices: []
       indices: 
       edges: []
@@ -936,10 +936,10 @@ TextureImporter:
       name: doggo_idle_40
       rect:
         serializedVersion: 2
-        x: 2440
-        y: 588
-        width: 488
-        height: 588
+        x: 2750
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -947,7 +947,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba427389442c273488634a52853b33cf
+      spriteID: 863be8928557e6d4e8a641f32845f084
       vertices: []
       indices: 
       edges: []
@@ -956,10 +956,10 @@ TextureImporter:
       name: doggo_idle_41
       rect:
         serializedVersion: 2
-        x: 2928
-        y: 588
-        width: 488
-        height: 588
+        x: 3300
+        y: 680
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -967,7 +967,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa3d90b0f5f98754088edd583b6ccf22
+      spriteID: 25a6bc620a65c1649b06141306b011f2
       vertices: []
       indices: 
       edges: []
@@ -978,8 +978,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -987,7 +987,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8d9e5cc8f4c99f45a9740708a5a553b
+      spriteID: 3a8b93d6b7384004ea26d5fa7e4e3c1e
       vertices: []
       indices: 
       edges: []
@@ -996,10 +996,10 @@ TextureImporter:
       name: doggo_idle_43
       rect:
         serializedVersion: 2
-        x: 488
+        x: 550
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1007,7 +1007,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2b6d1a17487c144cb59cb75237dc119
+      spriteID: 2e021ac55dd7f4a4d8ea874b360849b6
       vertices: []
       indices: 
       edges: []
@@ -1016,10 +1016,10 @@ TextureImporter:
       name: doggo_idle_44
       rect:
         serializedVersion: 2
-        x: 976
+        x: 1100
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,7 +1027,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19bf60624076dae46883ea550fab0932
+      spriteID: 24d000daee125084ca4e3723ecc6f120
       vertices: []
       indices: 
       edges: []
@@ -1036,10 +1036,10 @@ TextureImporter:
       name: doggo_idle_45
       rect:
         serializedVersion: 2
-        x: 1464
+        x: 1650
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1047,7 +1047,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f06d3d3f4ea02a846ae93bcac7015d42
+      spriteID: 33c2e29a5cb481e40b3d6bf7e7e2f2ef
       vertices: []
       indices: 
       edges: []
@@ -1056,10 +1056,10 @@ TextureImporter:
       name: doggo_idle_46
       rect:
         serializedVersion: 2
-        x: 1952
+        x: 2200
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1067,7 +1067,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4b6564941089f042bea4725158234a0
+      spriteID: e2283e545445cea45b77d8c977e696fb
       vertices: []
       indices: 
       edges: []
@@ -1076,10 +1076,10 @@ TextureImporter:
       name: doggo_idle_47
       rect:
         serializedVersion: 2
-        x: 2440
+        x: 2750
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1087,7 +1087,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f31c6b2f7f237f4d9282a90ababc52d
+      spriteID: 3f15d7890da21fc478db858cccd0f794
       vertices: []
       indices: 
       edges: []
@@ -1096,10 +1096,10 @@ TextureImporter:
       name: doggo_idle_48
       rect:
         serializedVersion: 2
-        x: 2928
+        x: 3300
         y: 0
-        width: 488
-        height: 588
+        width: 550
+        height: 680
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1107,7 +1107,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a73ac765bb61b6b4d98ec1b7af4c9fac
+      spriteID: a7204b9cee36397449297d048ff0d7fd
       vertices: []
       indices: 
       edges: []
@@ -1115,7 +1115,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b8e6a2d8a61236548b56162ceea6a584
+    spriteID: 1f113dc9bba332b44b6b53f438111677
     vertices: []
     indices: 
     edges: []
