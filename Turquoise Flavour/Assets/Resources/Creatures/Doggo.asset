@@ -20,8 +20,6 @@ MonoBehaviour:
   initialMana: 3
   sprite: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
   baseDeck: 09000000090000001d0000001d0000000e0000000e0000000e0000001b0000001d0000001d000000
-  activeAbilityData: {fileID: 11400000, guid: 3d6d59fc37cbab340a9124f9312d6351, type: 2}
-  level: 0
-  experience: 0
+  activeAbilityData: {fileID: 11400000, guid: 60740c37ab6a92546a46dd90d66e1cf3, type: 2}
   levelSpeed: 0
   abilityTree: {fileID: 11400000, guid: 8b7130e9980a7634a9c5dd9fe7fbed70, type: 2}

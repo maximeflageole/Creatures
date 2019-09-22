@@ -132,6 +132,7 @@ public class BattleStateMachine : MonoBehaviour
         if (m_currentCreature == m_enemyCreature)
         {
             BattleUI.m_instance.ChangeTurn("Player's turn");
+            m_playerCreature.GetActiveAbility().StartCreatureTurn();
             m_currentCreature = m_playerCreature;
             var ai = m_enemyCreature.GetComponent<EnemyAI>();
             if (ai != null)

@@ -82,6 +82,7 @@ namespace Turquoise
         Burn,
         Ethereal,
         Clone,
+        Vulnerable,
         Count
     }
 

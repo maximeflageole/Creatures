@@ -650,6 +650,7 @@ public class CardEffects : TurquoiseEvent {
                     {
                         m_player.GetCurrentCreature().GetActiveAbility().ApplyEffects(GetEnemyCreature(), cardPlayingCreature);
                     }
+                    m_player.GetCurrentCreature().GetActiveAbility().PlayAbility();
                 }
             }
             foreach (var effect in m_player.GetCurrentCreature().GetActiveAbility().GetData().effects)

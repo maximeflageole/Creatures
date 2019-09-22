@@ -49,4 +49,9 @@ public class ActiveAbilityUI : MonoBehaviour
             m_cooldownText.text = data.cooldown.ToString();
         }
     }
+
+    public void SetCooldown(int cooldown)
+    {
+        m_cooldownText.text = cooldown.ToString();
+    }
 }

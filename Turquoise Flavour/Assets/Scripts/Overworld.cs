@@ -35,6 +35,11 @@ public class Overworld : MonoBehaviour
         return s_OverworldInstance;
     }
 
+    public static bool HasInstance()
+    {
+        return s_OverworldInstance != null;
+    }
+
     public void Update()
     {
         if (!GameMaster.GetInstance().GetInBattle())
@@ -85,6 +90,16 @@ public class Overworld : MonoBehaviour
     public void ChangeCreature(int index, CreatureData creature)
     {
         m_creatureImages[index].sprite = creature.sprite;
+    }
+
+    public void UpdateCreatures()
+    {
+        int i = 0;
+        foreach (var creature in Player.GetPlayerInstance().GetCreatures())
+        {
+            m_creatureImages[i].sprite = creature.GetData().sprite;
+            i++;
+        }
     }
 
     public void EndInit(List<int> completedNodes)

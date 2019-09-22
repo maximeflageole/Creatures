@@ -139,6 +139,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.Slow:
             case ECardEffect.Unprepared:
             case ECardEffect.Burn:
+            case ECardEffect.Vulnerable:
                 return true;
         }
         return false;

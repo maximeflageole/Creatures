@@ -211,14 +211,19 @@ public class Player : MonoBehaviour
         if (m_creatures.Count < MAX_CREATURE_COUNT)
         {
             var creature = new GameObject("Creature");
-            var creatureObject = Instantiate(creature, transform);
-            Creature creatureComp = creatureObject.AddComponent<Creature>();
+            creature.transform.SetParent(transform);
+            Creature creatureComp = creature.AddComponent<Creature>();
             m_creatures.Add(creatureComp);
             if (m_currentCreature == null)
             {
                 m_currentCreature = creatureComp;
             }
             creatureComp.CreateFromCreatureData(creatureData, creatureData.baseDeck, level);
+            if (Overworld.HasInstance())
+            {
+                Overworld.GetInstance().UpdateCreatures();
+            }
+            SaveSystem.SaveGame();
         }
     }
 

@@ -9,6 +9,8 @@ public class ActiveAbility : MonoBehaviour
     protected bool m_inCooldown;
     [SerializeField]
     protected ActiveAbilityData m_abilityData;
+    protected int m_currentCooldown;
+    protected ActiveAbilityUI m_activeAbilityUI;
 
     public void LoadAbility(ActiveAbilityData data)
     {
@@ -17,7 +19,9 @@ public class ActiveAbility : MonoBehaviour
 
     public void LoadAbilityUI(ActiveAbilityUI abilityUI)
     {
+        m_activeAbilityUI = abilityUI;
         abilityUI.LoadAbility(m_abilityData);
+        abilityUI.SetCooldown(0);
     }
 
     public ActiveAbilityData GetData()
@@ -38,7 +42,7 @@ public class ActiveAbility : MonoBehaviour
         return true;
     }
 
-    public Turquoise.ETarget GetTargetType()
+    public ETarget GetTargetType()
     {
         return m_abilityData.targetType;
     }
@@ -63,4 +67,26 @@ public class ActiveAbility : MonoBehaviour
         selectedCreature.ApplyEffect(effect, cardPlayingCreature, selectedCreature);
     }
 
+    public void PlayAbility()
+    {
+        if (m_abilityData.cooldown > 0)
+        {
+            m_inCooldown = true;
+            m_currentCooldown = m_abilityData.cooldown;
+            m_activeAbilityUI.SetCooldown(m_currentCooldown);
+        }
+    }
+
+    public void StartCreatureTurn()
+    {
+        if (m_abilityData.repeatable == true)
+        {
+            m_currentCooldown--;
+            m_activeAbilityUI.SetCooldown(m_currentCooldown);
+            if (m_currentCooldown <= 0)
+            {
+                m_inCooldown = false;
+            }
+        }
+    }
 }

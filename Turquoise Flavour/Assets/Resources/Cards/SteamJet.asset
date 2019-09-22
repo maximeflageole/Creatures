@@ -24,13 +24,13 @@ MonoBehaviour:
     m_targetType: 1
     m_chancesOfEffectOnHundred: 0
     m_conditions: 
-  - m_effect: 3
+  - m_effect: 37
     m_value: 1
     m_targetType: 1
-    m_chancesOfEffectOnHundred: 0
+    m_chancesOfEffectOnHundred: 50
     m_conditions: 
   cardGenre: 0
-  damageType: 5
-  rarity: 3
+  damageType: 1
+  rarity: 0
   creaturePart: 2
   chancesOnHundred: 0

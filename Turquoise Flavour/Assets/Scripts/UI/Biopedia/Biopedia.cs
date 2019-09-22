@@ -23,6 +23,7 @@ public class Biopedia : MonoBehaviour
     protected TextMeshProUGUI m_locationsTextMesh;
     [SerializeField]
     protected Image m_image;
+    protected CreatureData m_currentCreatureData;
 
     public void Open()
     {
@@ -70,5 +71,14 @@ public class Biopedia : MonoBehaviour
         m_typeTextMesh.text = "Type: " + data.creatureType.ToString();
         m_locationsTextMesh.text = "Known locations: Unknown";
         m_image.sprite = data.sprite;
+        m_currentCreatureData = data;
+    }
+
+    public void OnAddButtonClick()
+    {
+        if (m_currentCreatureData != null)
+        {
+            Player.GetPlayerInstance().CaptureCreature(m_currentCreatureData, 1);
+        }
     }
 }

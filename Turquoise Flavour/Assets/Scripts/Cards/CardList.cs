@@ -49,6 +49,7 @@ namespace Turquoise
         FrenziedBite,
         EtherealForm,
         CloneCard,                      //40
+        UnstableHeat,
         Count
     }
 }
