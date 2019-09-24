@@ -50,6 +50,7 @@ namespace Turquoise
         EtherealForm,
         CloneCard,                      //40
         UnstableHeat,
+        SurprisingShock,
         Count
     }
 }

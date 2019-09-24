@@ -404,6 +404,14 @@ public class CardEffects : TurquoiseEvent {
 
     public void ChangePlayerCreature(Creature creature, bool battleStart = false)
     {
+        if (creature.GetData().eCreature != Creatures.ECreature.Doggo)
+        {
+            m_playerCreature.GetComponent<Animator>().enabled = false;
+        }
+        else
+        {
+            m_playerCreature.GetComponent<Animator>().enabled = true;
+        }
         creature = Player.GetPlayerInstance().GetCurrentCreature();
         creature.SendCreatureToBattle(m_playerCreature.GetComponent<CreatureUIComp>());
         creature.RefreshEnergy();

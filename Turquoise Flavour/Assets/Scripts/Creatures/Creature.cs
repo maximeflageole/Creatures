@@ -335,7 +335,7 @@ public class Creature : MonoBehaviour
             DieEvent();
         }
         //Stat tracking
-        if(m_team == ETeams.Ally)
+        if(m_team != ETeams.Enemy)
         {
             if (damage > 0)
             {
