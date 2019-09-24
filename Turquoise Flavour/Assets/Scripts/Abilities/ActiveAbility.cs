@@ -81,11 +81,14 @@ public class ActiveAbility : MonoBehaviour
     {
         if (m_abilityData.repeatable == true)
         {
-            m_currentCooldown--;
-            m_activeAbilityUI.SetCooldown(m_currentCooldown);
-            if (m_currentCooldown <= 0)
+            if (m_inCooldown)
             {
-                m_inCooldown = false;
+                m_currentCooldown--;
+                m_activeAbilityUI.SetCooldown(m_currentCooldown);
+                if (m_currentCooldown <= 0)
+                {
+                    m_inCooldown = false;
+                }
             }
         }
     }

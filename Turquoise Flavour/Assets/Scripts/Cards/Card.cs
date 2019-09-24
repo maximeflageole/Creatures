@@ -50,7 +50,7 @@ namespace Turquoise
         Consume,
         Bleed,
         Armor,
-        DamageBuff,
+        Strength,
         Find,
         Pick,                                   //10
         Other,
@@ -83,6 +83,7 @@ namespace Turquoise
         Ethereal,
         Clone,
         Vulnerable,
+        Weakened,
         Count
     }
 

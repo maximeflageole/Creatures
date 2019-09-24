@@ -101,7 +101,7 @@ public class ConditionsComponent : MonoBehaviour
         switch (cardEffect)
         {
             case ECardEffect.Armor:
-            case ECardEffect.DamageBuff:
+            case ECardEffect.Strength:
             case ECardEffect.HeAttacks:
             case ECardEffect.HeProtects:
             case ECardEffect.BleedingAttacks:
@@ -140,6 +140,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.Unprepared:
             case ECardEffect.Burn:
             case ECardEffect.Vulnerable:
+            case ECardEffect.Weakened:
                 return true;
         }
         return false;
@@ -197,7 +198,7 @@ public class ConditionsComponent : MonoBehaviour
         int calculatedDamage = initialDamage;
         foreach (var boon in m_boons)
         {
-            if (boon.GetData().cardEffect == ECardEffect.DamageBuff)
+            if (boon.GetData().cardEffect == ECardEffect.Strength)
             {
                 calculatedDamage += boon.GetStacks();
             }
