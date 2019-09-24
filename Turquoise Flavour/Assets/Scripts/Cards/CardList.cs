@@ -51,6 +51,7 @@ namespace Turquoise
         CloneCard,                      //40
         UnstableHeat,
         SurprisingShock,
+        StaticShock,
         Count
     }
 }
