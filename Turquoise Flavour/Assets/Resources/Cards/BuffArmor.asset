@@ -24,6 +24,7 @@ MonoBehaviour:
     m_targetType: 0
     m_chancesOfEffectOnHundred: 0
     m_conditions: 
+    m_complexConditions: []
   cardGenre: 0
   damageType: 0
   rarity: 0

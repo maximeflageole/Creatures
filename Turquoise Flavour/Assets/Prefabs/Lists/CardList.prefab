@@ -130,3 +130,5 @@ MonoBehaviour:
     cardData: {fileID: 11400000, guid: d476a2fc06ab2d0499241370dcb12cc4, type: 2}
   - cardName: 43
     cardData: {fileID: 11400000, guid: fc4ccc440aad635449af8b86d830119d, type: 2}
+  - cardName: 44
+    cardData: {fileID: 11400000, guid: 4502db54181ab8a4e99b52091bd5b891, type: 2}

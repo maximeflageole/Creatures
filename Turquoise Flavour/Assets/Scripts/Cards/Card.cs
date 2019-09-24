@@ -205,6 +205,14 @@ public class Card : MonoBehaviour
                     break;
                 }
             }
+            foreach (var condition in cardEffect.m_complexConditions)
+            {
+                if (!selectedCreature.GetConditionsComponent().VerifyComplexCondition(condition))
+                {
+                    conditionsVerified = false;
+                    break;
+                }
+            }
             if (conditionsVerified)
             {
                 ApplyEffect(cardEffect, selectedCreature, cardPlayingCreature);
@@ -258,4 +266,14 @@ public struct SAbilityEffect
     public ETarget m_targetType;
     public int m_chancesOfEffectOnHundred;
     public List<ECardEffect> m_conditions;
+    public List<sComplexConditions> m_complexConditions;
+}
+
+[System.Serializable]
+public struct sComplexConditions
+{
+    public ECardEffect condition;
+    public EOperation operation;
+    public int comparativeNumber;
+    public ECardEffect otherCondition;
 }

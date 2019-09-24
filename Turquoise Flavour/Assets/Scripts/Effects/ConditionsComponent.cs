@@ -352,6 +352,32 @@ public class ConditionsComponent : MonoBehaviour
             }
         }
     }
+
+    public bool VerifyComplexCondition(sComplexConditions sComplexConditions)
+    {
+        int first = GetBoonStacks(sComplexConditions.condition);
+        int second = sComplexConditions.comparativeNumber;
+        if (sComplexConditions.otherCondition != ECardEffect.Count)
+        {
+            second = GetBoonStacks(sComplexConditions.otherCondition);
+        }
+        switch (sComplexConditions.operation)
+        {
+            case EOperation.Equals:
+                return first == second;
+            case EOperation.NotEqual:
+                return first != second;
+            case EOperation.Bigger:
+                return first > second;
+            case EOperation.BiggerOrEqual:
+                return first >= second;
+            case EOperation.Less:
+                return first < second;
+            case EOperation.LessOrEqual:
+                return first <= second;
+        }
+        return false;
+    }
 }
 
 namespace Turquoise

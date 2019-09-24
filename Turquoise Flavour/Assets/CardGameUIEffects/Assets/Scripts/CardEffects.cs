@@ -738,6 +738,14 @@ public class CardEffects : TurquoiseEvent {
                             break;
                         }
                     }
+                    foreach (var condition in effect.m_complexConditions)
+                    {
+                        if (!GetEnemyCreature().GetConditionsComponent().VerifyComplexCondition(condition))
+                        {
+                            conditionVerified = false;
+                            break;
+                        }
+                    }
                     if (!conditionVerified)
                     {
                         continue;

@@ -52,6 +52,7 @@ namespace Turquoise
         UnstableHeat,
         SurprisingShock,
         StaticShock,
+        ThunderStrike,
         Count
     }
 }
