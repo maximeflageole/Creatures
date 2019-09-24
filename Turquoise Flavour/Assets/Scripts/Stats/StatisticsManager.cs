@@ -7,6 +7,7 @@ public class StatisticsManager : MonoBehaviour
 {
     public static StatisticsManager s_instance;
     public static StatisticsManager GetInstance() { return s_instance; }
+    public bool m_isDirty = false;
 
     [SerializeField]
     protected List<SStatTuple> m_statistics = new List<SStatTuple>();
@@ -42,6 +43,7 @@ public class StatisticsManager : MonoBehaviour
 
     public void IncrementStat(EStat stat, int amount = 1)
     {
+        m_isDirty = true;
         for (int i = 0; i < m_statistics.Count; i++)
         {
             if (m_statistics[i].stat == stat)

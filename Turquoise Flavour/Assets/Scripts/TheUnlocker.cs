@@ -61,14 +61,19 @@ public class TheUnlocker : MonoBehaviour
 
     public void Update()
     {
-        //TODO: Probably not put this in a for loop dummy
+        var statManager = StatisticsManager.GetInstance();
+        if (!statManager.m_isDirty)
+        {
+            return;
+        }
+        statManager.m_isDirty = false;
         foreach (var data in m_unlocksData)
         {
             bool unlocked = false;
-            int statNumber = StatisticsManager.GetInstance().GetStatAmount(data.stat);
+            int statNumber = statManager.GetStatAmount(data.stat);
             if (data.comparisonStat != EStat.Count)
             {
-                unlocked = ValidateCondition(data.operation, statNumber, StatisticsManager.GetInstance().GetStatAmount(data.comparisonStat));
+                unlocked = ValidateCondition(data.operation, statNumber, statManager.GetStatAmount(data.comparisonStat));
             }
             else
             {
