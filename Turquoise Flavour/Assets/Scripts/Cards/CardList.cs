@@ -53,7 +53,9 @@ namespace Turquoise
         SurprisingShock,
         StaticShock,
         ThunderStrike,
-        LightningBolt,
+        LightningBolt,                  //45
+        MultiShock,
+        ElectricSlash,
         Count
     }
 }
