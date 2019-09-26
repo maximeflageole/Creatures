@@ -11,6 +11,7 @@ public class TheUnlocker : MonoBehaviour
     protected List<UnlockData> m_unlocksData;
 
     List<EExplorator> m_unlockedExploratorsAtGameEnds = new List<EExplorator>();
+    public List<ECard> m_unlockedCards = new List<ECard>();
 
     private void Awake()
     {

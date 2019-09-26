@@ -22,8 +22,12 @@ public class CardPanelUI : MonoBehaviour
     protected string m_text;
     [SerializeField]
     protected int m_energy;
+    public Color m_ownedColor;
+    public Color m_availableColor;
+    public Color m_tooExpensiveColor;
 
-    public void AssignCardData(CardData cardData, bool display = true)
+
+    public void AssignCardData(CardData cardData, bool display = true, bool owned = true, bool canbuy = true)
     {
         m_cardData = cardData;
 
@@ -39,6 +43,17 @@ public class CardPanelUI : MonoBehaviour
         else
         {
             enabled = false;
+        }
+        if (!owned)
+        {
+            if (canbuy)
+            {
+                GetComponent<Image>().color = m_availableColor;
+            }
+            else
+            {
+                GetComponent<Image>().color = m_tooExpensiveColor;
+            }
         }
     }
 
