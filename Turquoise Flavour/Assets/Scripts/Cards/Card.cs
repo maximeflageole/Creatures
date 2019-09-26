@@ -84,6 +84,8 @@ namespace Turquoise
         Clone,
         Vulnerable,
         Weakened,
+        DamagePerCharge,
+        Discharge,
         Count
     }
 

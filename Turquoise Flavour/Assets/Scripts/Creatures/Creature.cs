@@ -201,6 +201,23 @@ public class Creature : MonoBehaviour
             case ECardEffect.HeProtects:
                 cardPlayingCreature.m_conditionsComponent.RemoveConditionStack(ECardEffect.HeAttacks, 1);
                 break;
+            case ECardEffect.DamagePerCharge:
+                int chargesAmount = cardPlayingCreature.GetConditionsComponent().GetBoonStacks(ECardEffect.Charge);
+                int damage = chargesAmount * cardEffect.m_value;
+                calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(damage);
+                ApplyDamage(calculatedDamage, damageType);
+                m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
+                break;
+            case ECardEffect.Discharge:
+                if (cardEffect.m_value == -1)
+                {
+                    cardPlayingCreature.m_conditionsComponent.RemoveAllConditionStacks(ECardEffect.Charge);
+                }
+                else
+                {
+                    cardPlayingCreature.m_conditionsComponent.RemoveConditionStack(ECardEffect.Charge, cardEffect.m_value);
+                }
+                break;
             default:
                 break;
         }

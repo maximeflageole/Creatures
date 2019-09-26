@@ -252,6 +252,16 @@ public class ConditionsComponent : MonoBehaviour
         }
     }
 
+    public void RemoveAllConditionStacks(ECardEffect effect)
+    {
+        Condition condition = GetCondition(effect);
+        if (condition != null)
+        {
+            condition.RemoveAllStacks();
+            VerifyBoon(condition);
+        }
+    }
+
     Condition GetCondition(ECardEffect effect)
     {
         foreach (var boon in m_boons)

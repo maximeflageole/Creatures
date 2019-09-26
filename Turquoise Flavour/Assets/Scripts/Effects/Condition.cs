@@ -9,6 +9,7 @@ public class Condition : MonoBehaviour
     protected int m_stacks;
     public int GetStacks() { return m_stacks; }
     public void IncrementStacks(int increment) { m_stacks += increment; }
+    public void RemoveAllStacks() { m_stacks = 0; }
 
     [SerializeField]
     protected ConditionData m_conditionData;
