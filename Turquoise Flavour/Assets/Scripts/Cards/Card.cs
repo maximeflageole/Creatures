@@ -82,11 +82,12 @@ namespace Turquoise
         Burn,
         Ethereal,
         Clone,
-        Vulnerable,
+        Vulnerable,                             //40
         Weakened,
         DamagePerCharge,
         Discharge,
         DamagePerEnemyCharge,
+        HealingPerCharge,
         Count
     }
 

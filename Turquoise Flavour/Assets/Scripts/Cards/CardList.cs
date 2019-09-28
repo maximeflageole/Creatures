@@ -57,6 +57,7 @@ namespace Turquoise
         MultiShock,
         ElectricSlash,
         Discharge,
+        ConcentrateCharges,
         Count
     }
 }
