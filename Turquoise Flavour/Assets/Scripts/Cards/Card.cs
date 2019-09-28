@@ -86,6 +86,7 @@ namespace Turquoise
         Weakened,
         DamagePerCharge,
         Discharge,
+        DamagePerEnemyCharge,
         Count
     }
 

@@ -56,6 +56,7 @@ namespace Turquoise
         LightningBolt,                  //45
         MultiShock,
         ElectricSlash,
+        Discharge,
         Count
     }
 }

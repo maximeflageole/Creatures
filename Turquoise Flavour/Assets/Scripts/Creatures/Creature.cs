@@ -208,6 +208,13 @@ public class Creature : MonoBehaviour
                 ApplyDamage(calculatedDamage, damageType);
                 m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
                 break;
+            case ECardEffect.DamagePerEnemyCharge:
+                chargesAmount = targetCreature.GetConditionsComponent().GetBoonStacks(ECardEffect.Charge);
+                damage = chargesAmount * cardEffect.m_value;
+                calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(damage);
+                ApplyDamage(calculatedDamage, damageType);
+                m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
+                break;
             case ECardEffect.Discharge:
                 if (cardEffect.m_value == -1)
                 {
