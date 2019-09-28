@@ -14,13 +14,26 @@ public class CardsHub : MonoBehaviour
     public List<GameObject> m_child = new List<GameObject>();
     CardDetailsPanel m_detailsPanel;
     CardPanelUI m_currentlySelectedPanel;
+    int creatureIndex = 0;
+
+    public void OpenMenu()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            Reset();
+            m_creatureData = null;
+            return;
+        }
+        gameObject.SetActive(true);
+        DisplayCardsForCreature(GameMaster.GetInstance().m_creatureList.GetAllCreaturesInDexOrder()[creatureIndex]);
+    }
 
     public void DisplayCardsForCreature(CreatureData data)
     {
         Reset();
         gameObject.SetActive(true);
-        //TODO: Change creature 
-        //m_creatureData = data;
+        m_creatureData = data;
         m_image.sprite = m_creatureData.sprite;
         m_creatureCards = m_creatureData.abilityTree.commonCards;
         InstantiateCards();
@@ -44,7 +57,6 @@ public class CardsHub : MonoBehaviour
     private void Reset()
     {
         gameObject.SetActive(false);
-        //m_creatureData = null;
         m_image.sprite = null;
         m_creatureCards = null;
         foreach (var child in m_child)
@@ -52,11 +64,6 @@ public class CardsHub : MonoBehaviour
             Destroy(child.gameObject);
         }
         Destroy(m_detailsPanel?.gameObject);
-    }
-
-    private void Start()
-    {
-        DisplayCardsForCreature(null);
     }
 
     public static int GetPricePerCardRarity(Turquoise.ERarity rarity)
@@ -110,5 +117,13 @@ public class CardsHub : MonoBehaviour
         }
         m_detailsPanel = Instantiate(m_cardDetailsPrefab, m_scrollableTransform).GetComponent<CardDetailsPanel>();
         m_detailsPanel.transform.SetSiblingIndex(index + 1);
+    }
+
+    public void GetNextCreature(int iteration)
+    {
+        creatureIndex += iteration;
+        var creatures = GameMaster.GetInstance().m_creatureList.GetAllCreaturesInDexOrder();
+        creatureIndex %= creatures.Count;
+        DisplayCardsForCreature(creatures[creatureIndex]);
     }
 }

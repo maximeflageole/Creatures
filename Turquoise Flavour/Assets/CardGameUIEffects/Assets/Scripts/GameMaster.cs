@@ -56,6 +56,7 @@ public class GameMaster : MonoBehaviour
     public CardsPanelUI m_cardsPanelUI;
     public Biopedia m_biopedia;
     public Carousel m_carousel;
+    public CardsHub m_cardsHub;
 
     [SerializeField]
     protected MapData m_mapData;
@@ -357,6 +358,11 @@ public class GameMaster : MonoBehaviour
     public void OnGroupClicked()
     {
         m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
+    }
+
+    public void OnCardsHubClicked()
+    {
+        m_cardsHub.OpenMenu();
     }
 }
 
