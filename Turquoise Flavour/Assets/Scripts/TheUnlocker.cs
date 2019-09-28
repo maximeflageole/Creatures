@@ -23,6 +23,19 @@ public class TheUnlocker : MonoBehaviour
         {
             m_instance = this;
         }
+        var saveUnlockedCards = SaveSystem.LoadGame().unlockedCards;
+        if (saveUnlockedCards.Count!= 0)
+        {
+            m_unlockedCards = saveUnlockedCards;
+        }
+    }
+
+    public void UnlockCard(ECard card)
+    {
+        if (m_unlockedCards.Contains(card))
+            return;
+        m_unlockedCards.Add(card);
+        SaveSystem.SaveGame();
     }
 
     public void UnlockExplorators(List<EExplorator> explorators, bool rightAway = true)

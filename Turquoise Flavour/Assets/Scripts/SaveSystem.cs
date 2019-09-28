@@ -36,6 +36,10 @@ public static class SaveSystem
         {
             data.gameStatistics.Add(stat);
         }
+        foreach (var unlockedCard in TheUnlocker.GetInstance().m_unlockedCards)
+        {
+            data.unlockedCards.Add(unlockedCard);
+        }
         formatter.Serialize(stream, data);
         stream.Close();
         Debug.Log("End saving");
@@ -93,4 +97,5 @@ public class SaveData
     public List<Turquoise.EExplorator> unlockedExplorators = new List<Turquoise.EExplorator>();
     public Turquoise.EExplorator currentExplorator = Turquoise.EExplorator.Count;
     public List<Turquoise.SStatTuple> gameStatistics = new List<Turquoise.SStatTuple>();
+    public List<Turquoise.ECard> unlockedCards = new List<Turquoise.ECard>();
 }

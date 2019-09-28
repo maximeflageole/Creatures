@@ -14,6 +14,7 @@ public class CardPanelUI : MonoBehaviour
     protected TextMeshProUGUI m_cardEnergyTextMesh;
     [SerializeField]
     protected CardData m_cardData;
+    public CardData GetCardData() { return m_cardData; }
     [SerializeField]
     protected Sprite m_sprite;
     [SerializeField]
@@ -25,6 +26,7 @@ public class CardPanelUI : MonoBehaviour
     public Color m_ownedColor;
     public Color m_availableColor;
     public Color m_tooExpensiveColor;
+    public bool m_canBuy = false;
 
 
     public void AssignCardData(CardData cardData, bool display = true, bool owned = true, bool canbuy = true)
@@ -35,6 +37,7 @@ public class CardPanelUI : MonoBehaviour
         m_name = cardData.cardName;
         m_text = cardData.description;
         m_energy = cardData.energyCost;
+        m_canBuy = canbuy && !owned;
 
         if (display)
         {
@@ -63,5 +66,10 @@ public class CardPanelUI : MonoBehaviour
         m_cardImage.sprite = m_sprite;
         m_cardNameTextMesh.text = m_name;
         m_cardEnergyTextMesh.text = m_energy.ToString();
+    }
+
+    public void OnClick()
+    {
+        GetComponentInParent<CardsHub>()?.OnCardPanelClicked(this, transform.GetSiblingIndex());
     }
 }

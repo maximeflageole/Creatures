@@ -10,12 +10,22 @@ public class CardDetailsPanel : MonoBehaviour
     public Button m_unlockBtn;
     public TextMeshProUGUI m_priceText;
     public Image m_currencyImage;
+    public CardPanelUI m_cardPanel;
 
-    public void InstantiateCardDetails(string text, bool canBuy)
+    public void InstantiateCardDetails(CardPanelUI cardPanel)
     {
-        m_text.text = text;
-        m_unlockBtn.gameObject.SetActive(canBuy);
-        m_priceText.gameObject.SetActive(canBuy);
-        m_currencyImage.gameObject.SetActive(canBuy);
+        m_cardPanel = cardPanel;
+        CardData cardData = cardPanel.GetCardData();
+        m_text.text = cardData.description;
+
+        m_unlockBtn.gameObject.SetActive(cardPanel.m_canBuy);
+        m_priceText.gameObject.SetActive(cardPanel.m_canBuy);
+        m_currencyImage.gameObject.SetActive(cardPanel.m_canBuy);
+        m_priceText.text = "x " + CardsHub.GetPricePerCardRarity(cardData.rarity).ToString();
+    }
+
+    public void OnClick()
+    {
+        GetComponentInParent<CardsHub>()?.OnBuyCardClicked(m_cardPanel);
     }
 }
