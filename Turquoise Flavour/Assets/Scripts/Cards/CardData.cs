@@ -15,6 +15,5 @@ public class CardData : ScriptableObject
     public Turquoise.ECardGenre cardGenre;
     public Turquoise.EDamageType damageType;
     public Turquoise.ERarity rarity;
-    public Turquoise.ECreaturePart creaturePart;
     public int chancesOnHundred;
 }
