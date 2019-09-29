@@ -21,6 +21,7 @@ public class BattleRewardState : TurquoiseState
 
     public override void StartState()
     {
+        GiveCreatureCurrency();
         m_rewardChosen = false;
         PickNextCreature();
         if (m_levelingCreature == null)
@@ -65,5 +66,14 @@ public class BattleRewardState : TurquoiseState
         {
             return;
         }
+    }
+
+    void GiveCreatureCurrency()
+    {
+        var enemyCreature = CardEffects.GetInstance().GetEnemyCreature().GetData().eCreature;
+        var playerCreature = CardEffects.GetInstance().GetPlayerCreature().GetData().eCreature;
+
+        InventoryManager.GetInstance().AddCreatureCurrency(enemyCreature, 3);
+        InventoryManager.GetInstance().AddCreatureCurrency(playerCreature, 3);
     }
 }

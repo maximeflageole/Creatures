@@ -134,6 +134,19 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        var savedCreatureCUrrencies = SaveSystem.LoadGame().creatureCurrencies;
+        if (savedCreatureCUrrencies.Count == 0)
+        {
+            return;
+        }
+        foreach (var tuplet in SaveSystem.LoadGame().creatureCurrencies)
+        {
+            m_creatureCurrencies.Add(tuplet.creature, tuplet.amount);
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))

@@ -40,6 +40,13 @@ public static class SaveSystem
         {
             data.unlockedCards.Add(unlockedCard);
         }
+        foreach (var tuplet in InventoryManager.GetInstance().m_creatureCurrencies)
+        {
+            var creatureCurrency = new sCreatureCurrency();
+            creatureCurrency.amount = tuplet.Value;
+            creatureCurrency.creature = tuplet.Key;
+            data.creatureCurrencies.Add(creatureCurrency);
+        }
         formatter.Serialize(stream, data);
         stream.Close();
         Debug.Log("End saving");
@@ -98,4 +105,12 @@ public class SaveData
     public Turquoise.EExplorator currentExplorator = Turquoise.EExplorator.Count;
     public List<Turquoise.SStatTuple> gameStatistics = new List<Turquoise.SStatTuple>();
     public List<Turquoise.ECard> unlockedCards = new List<Turquoise.ECard>();
+    public List<sCreatureCurrency> creatureCurrencies = new List<sCreatureCurrency>();
+}
+
+[System.Serializable]
+public struct sCreatureCurrency
+{
+    public Creatures.ECreature creature;
+    public int amount;
 }

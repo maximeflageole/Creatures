@@ -59,11 +59,6 @@ public class CardsHub : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        InventoryManager.GetInstance().AddCreatureCurrency(Creatures.ECreature.Doggo, 50);
-    }
-
     private void Reset()
     {
         gameObject.SetActive(false);
