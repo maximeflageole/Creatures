@@ -9,11 +9,61 @@ public class InventoryManager : MonoBehaviour
     protected List<sItemTuplet> m_itemTuplets = new List<sItemTuplet>();
     public Dictionary<EItem, InventoryItemData> m_itemDictionnary = new Dictionary<EItem, InventoryItemData>();
 
+    public Dictionary<Creatures.ECreature, int> m_creatureCurrencies = new Dictionary<Creatures.ECreature, int>();
+    public int GetCreatureCurrency(Creatures.ECreature creature)
+    {
+        if (m_creatureCurrencies.ContainsKey(creature))
+            return m_creatureCurrencies[creature];
+        return 0;
+    }
 
     public static InventoryManager m_instance;
     public static InventoryManager GetInstance()
     {
         return m_instance;
+    }
+
+    public void AddCreatureCurrency(Creatures.ECreature creature, int amount)
+    {
+        if(m_creatureCurrencies.ContainsKey(creature))
+        {
+            m_creatureCurrencies[creature] += amount;
+        }
+        else
+        {
+            m_creatureCurrencies.Add(creature, amount);
+        }
+    }
+
+    void SpendCreatureCurrency(Creatures.ECreature creature, int amount)
+    {
+        m_creatureCurrencies[creature] -= amount;
+        if (m_creatureCurrencies[creature] <= 0)
+        {
+            m_creatureCurrencies.Remove(creature);
+        }
+    }
+
+    public bool TryBuyWithCreatureCurrency(Creatures.ECreature creature, int amount)
+    {
+        if (CanBuyWithCreatureCurrency(creature, amount))
+        {
+            SpendCreatureCurrency(creature, amount);
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanBuyWithCreatureCurrency(Creatures.ECreature creature, int amount)
+    {
+        if (m_creatureCurrencies.ContainsKey(creature))
+        {
+            if (m_creatureCurrencies[creature] >= amount)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void AddInventoryItemFromEItem(EItem item, int amount = 1)

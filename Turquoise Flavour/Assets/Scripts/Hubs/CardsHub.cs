@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class CardsHub : MonoBehaviour
     public List<GameObject> m_child = new List<GameObject>();
     CardDetailsPanel m_detailsPanel;
     CardPanelUI m_currentlySelectedPanel;
+    public Image m_currencyImage;
+    public TextMeshProUGUI m_currencyText;
     int creatureIndex = 0;
 
     public void OpenMenu()
@@ -37,6 +40,8 @@ public class CardsHub : MonoBehaviour
         m_image.sprite = m_creatureData.sprite;
         m_creatureCards = m_creatureData.abilityTree.commonCards;
         InstantiateCards();
+        m_currencyImage.sprite = data.sprite;
+        m_currencyText.text = "x " + InventoryManager.GetInstance().GetCreatureCurrency(data.eCreature).ToString();
     }
 
     public void InstantiateCards()
@@ -49,9 +54,14 @@ public class CardsHub : MonoBehaviour
 
             bool owned = TheUnlocker.GetInstance().m_unlockedCards.Contains(card);
             int price = GetPricePerCardRarity(cardData.rarity);
-            bool canBuy = price <= InventoryManager.GetInstance().GetPlayerGold();
+            bool canBuy = InventoryManager.GetInstance().CanBuyWithCreatureCurrency(m_creatureData.eCreature, price);
             cardPanel.AssignCardData(cardData, true, owned, canBuy);
         }
+    }
+
+    private void Start()
+    {
+        InventoryManager.GetInstance().AddCreatureCurrency(Creatures.ECreature.Doggo, 50);
     }
 
     private void Reset()
@@ -63,7 +73,10 @@ public class CardsHub : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        Destroy(m_detailsPanel?.gameObject);
+        if (m_detailsPanel != null)
+        {
+            Destroy(m_detailsPanel.gameObject);
+        }
     }
 
     public static int GetPricePerCardRarity(Turquoise.ERarity rarity)
@@ -96,8 +109,11 @@ public class CardsHub : MonoBehaviour
 
     public void OnBuyCardClicked(CardPanelUI cardPanel)
     {
-        TheUnlocker.GetInstance().UnlockCard(cardPanel.GetCardData().cardEnumValue);
-        DisplayCardsForCreature(m_creatureData);
+        if (InventoryManager.GetInstance().TryBuyWithCreatureCurrency(m_creatureData.eCreature, GetPricePerCardRarity(cardPanel.GetCardData().rarity)))
+        {
+            TheUnlocker.GetInstance().UnlockCard(cardPanel.GetCardData().cardEnumValue);
+            DisplayCardsForCreature(m_creatureData);
+        }
     }
 
     void Shrink()
@@ -124,6 +140,10 @@ public class CardsHub : MonoBehaviour
         creatureIndex += iteration;
         var creatures = GameMaster.GetInstance().m_creatureList.GetAllCreaturesInDexOrder();
         creatureIndex %= creatures.Count;
+        if (creatureIndex < 0)
+        {
+            creatureIndex += creatures.Count;
+        }
         DisplayCardsForCreature(creatures[creatureIndex]);
     }
 }
