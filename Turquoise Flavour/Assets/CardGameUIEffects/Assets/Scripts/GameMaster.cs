@@ -62,6 +62,7 @@ public class GameMaster : MonoBehaviour
     protected TextMeshProUGUI m_goldTextMesh;
     [SerializeField]
     protected GameObject m_overworldPanel;
+    public PostBattleRewardUI m_postBattleRewardUI;
 
     [SerializeField]
     protected MapData m_mapData;

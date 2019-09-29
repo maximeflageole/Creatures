@@ -5,7 +5,8 @@ using UnityEngine;
 public class BattleRewardState : TurquoiseState
 {
     [SerializeField]
-    protected bool m_rewardChosen;
+    protected bool m_levelUpRewardsPicked;
+    protected bool m_battleRewardsPicked;
     [SerializeField]
     protected Creature m_levelingCreature;
 
@@ -16,17 +17,18 @@ public class BattleRewardState : TurquoiseState
 
     public override bool VerifyOutConditions()
     {
-        return m_rewardChosen;
+        return m_levelUpRewardsPicked && m_battleRewardsPicked;
     }
 
     public override void StartState()
     {
         GiveCreatureCurrency();
-        m_rewardChosen = false;
+        m_levelUpRewardsPicked = false;
+        m_battleRewardsPicked = false;
         PickNextCreature();
         if (m_levelingCreature == null)
         {
-            m_rewardChosen = true;
+            m_levelUpRewardsPicked = true;
             return;
         }
         GameObject reward = Instantiate(GameMaster.GetInstance().GetRewardPrefab());
@@ -50,13 +52,19 @@ public class BattleRewardState : TurquoiseState
         PickNextCreature();
         if (m_levelingCreature == null)
         {
-            m_rewardChosen = true;
+            m_levelUpRewardsPicked = true;
+            GameMaster.GetInstance().m_postBattleRewardUI.InstantiatePostBattleReward(null, BattleRewardPickedCallback);
         }
-        else
+        else if (!m_levelUpRewardsPicked)
         {
             GameObject reward = Instantiate(GameMaster.GetInstance().GetRewardPrefab());
             reward.GetComponent<RewardEvent>().SetCallback(RewardPickedCallback);
         }
+    }
+
+    public void BattleRewardPickedCallback()
+    {
+        m_battleRewardsPicked = true;
     }
 
     protected void PickNextCreature()

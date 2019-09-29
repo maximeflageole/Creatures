@@ -12,6 +12,7 @@ public class InventoryItemUI : MonoBehaviour
     protected Image m_image;
     [SerializeField]
     protected InventoryItemData m_itemData;
+    public InventoryItemData GetItemData() { return m_itemData; }
 
     public void SetUI(InventoryItemData itemData, int qty = 1)
     {
@@ -19,7 +20,7 @@ public class InventoryItemUI : MonoBehaviour
         m_image.sprite = itemData.sprite;
         if (qty > 1)
         {
-            m_textMeshProUGUI.text = itemData.name + " * " + qty;
+            m_textMeshProUGUI.text = itemData.name + "    x " + qty;
         }
         else
         {
@@ -29,6 +30,10 @@ public class InventoryItemUI : MonoBehaviour
 
     public void OnCLick()
     {
-        GetComponentInParent<InventoryUI>().OnClickItem(m_itemData);
+        var inventoryUI = GetComponentInParent<InventoryUI>();
+        if (inventoryUI)
+        {
+            inventoryUI.OnClickItem(m_itemData);
+        }
     }
 }
