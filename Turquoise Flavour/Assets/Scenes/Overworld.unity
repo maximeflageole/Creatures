@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 466565329}
   - component: {fileID: 466565328}
   m_Layer: 5
-  m_Name: PlayerPanel
+  m_Name: OverworldPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8139,6 +8139,11 @@ PrefabInstance:
       propertyPath: m_cardsHub
       value: 
       objectReference: {fileID: 1676311965}
+    - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_goldTextMesh
+      value: 
+      objectReference: {fileID: 133468678}
     - target: {fileID: 5178197101758460254, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
         type: 3}
       propertyPath: m_LocalPosition.x

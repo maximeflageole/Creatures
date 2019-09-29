@@ -18,8 +18,6 @@ public class Overworld : MonoBehaviour
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
     [SerializeField]
-    protected TextMeshProUGUI m_goldTextMesh;
-    [SerializeField]
     protected Image m_exploratorImage;
     [SerializeField]
     protected List<Image> m_creatureImages;
@@ -38,17 +36,6 @@ public class Overworld : MonoBehaviour
     public static bool HasInstance()
     {
         return s_OverworldInstance != null;
-    }
-
-    public void Update()
-    {
-        if (!GameMaster.GetInstance().GetInBattle())
-        {
-            if (InventoryManager.GetInstance() != null)
-            {
-                m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
-            }
-        }
     }
 
     public GameObject GetObjectFromNode(ExplorationNode explorationNode)

@@ -5,6 +5,7 @@ using Exploration;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using Turquoise;
+using TMPro;
 
 public class GameMaster : MonoBehaviour
 {
@@ -57,6 +58,10 @@ public class GameMaster : MonoBehaviour
     public Biopedia m_biopedia;
     public Carousel m_carousel;
     public CardsHub m_cardsHub;
+    [SerializeField]
+    protected TextMeshProUGUI m_goldTextMesh;
+    [SerializeField]
+    protected GameObject m_overworldPanel;
 
     [SerializeField]
     protected MapData m_mapData;
@@ -81,6 +86,7 @@ public class GameMaster : MonoBehaviour
     public void SetInBattle(bool inBattle)
     {
         m_inBattle = inBattle;
+        m_overworldPanel.gameObject.SetActive(!inBattle);
     }
 
     void Update()
@@ -131,6 +137,13 @@ public class GameMaster : MonoBehaviour
             List<EExplorator> expList = new List<EExplorator>();
             expList.Add(EExplorator.Captain);
             TheUnlocker.GetInstance().UnlockExplorators(expList);
+        }
+        if (!GetInBattle())
+        {
+            if (InventoryManager.GetInstance() != null)
+            {
+                m_goldTextMesh.text = InventoryManager.GetInstance().GetPlayerGold().ToString();
+            }
         }
     }
 
