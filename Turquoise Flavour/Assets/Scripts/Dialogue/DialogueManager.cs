@@ -17,6 +17,10 @@ public class DialogueManager : MonoBehaviour
     protected TextMeshProUGUI m_nameTextMesh;
     [SerializeField]
     protected GameObject m_namePanel;
+    protected bool m_sentenceEnded;
+    public delegate void CallbackType();
+    protected CallbackType m_dialogueEndedCallback; // to store the function
+
 
     private void Start()
     {
@@ -32,9 +36,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void QueueDialogues(List<Dialogue> dialogues)
+    public void QueueDialogues(List<Dialogue> dialogues, CallbackType callbackType)
     {
-
+        m_dialogueEndedCallback = callbackType;
+        foreach (var dialogue in dialogues)
+        {
+            foreach (var sentence in dialogue.sentences)
+            {
+                sSentence newSentence = new sSentence();
+                newSentence.m_talker = dialogue.name;
+                newSentence.m_sentence = sentence;
+                m_sentences.Enqueue(newSentence);
+            }
+        }
     }
 
     public void Update()
@@ -70,12 +84,14 @@ public class DialogueManager : MonoBehaviour
     void StartDialogue()
     {
         m_animator.SetBool("IsOpen", true);
+        m_sentenceEnded = false;
         DisplayNextSentence();
     }
 
     void EndDialogue()
     {
         m_animator.SetBool("IsOpen", false);
+        m_dialogueEndedCallback?.Invoke();
     }
 
     IEnumerator TypeSentence (string sentence)
@@ -86,6 +102,7 @@ public class DialogueManager : MonoBehaviour
             m_dialogueTextMesh.text += letter;
             yield return new WaitForSeconds(0.02f);
         }
+        m_sentenceEnded = true;
     }
 }
 

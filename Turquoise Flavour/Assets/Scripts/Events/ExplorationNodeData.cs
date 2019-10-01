@@ -10,4 +10,5 @@ public class ExplorationNodeData : ScriptableObject
     public Sprite discoveredSprite;
     public string nodeName;
     public Exploration.EEventType eventType;
+    public DialogueData dialogueData;
 }

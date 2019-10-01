@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurquoiseEvent : MonoBehaviour
+public class ShopEvent : TurquoiseEvent
 {
+
 }

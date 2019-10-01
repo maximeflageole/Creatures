@@ -17,3 +17,4 @@ MonoBehaviour:
   discoveredSprite: {fileID: 21300000, guid: 44efd54dff8af4b468f10ceaeac02934, type: 3}
   nodeName: Shop
   eventType: 5
+  dialogueData: {fileID: 11400000, guid: 7e5c6227f3cdc324b8b3ae429c77ef54, type: 2}
