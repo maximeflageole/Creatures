@@ -12,8 +12,11 @@ public class PostBattleRewardUI : MonoBehaviour
     protected GameObject m_itemUIPrefab;
     protected CallbackType m_rewardsPickedCallback; // to store the function
 
-    public void InstantiatePostBattleReward(List<InventoryItemData> itemsData, CallbackType callback)
+    public void InstantiatePostBattleReward(CallbackType callback)
     {
+        var itemsData = TheRewarder.sInstance.GetBattleRewards();
+        int goldAmount = TheRewarder.sInstance.GetGoldAmount();
+        var goldItemData = InventoryManager.GetInstance().GetGoldItemData();
         m_rewardsPickedCallback = callback;
         Reset();
         gameObject.SetActive(true);
@@ -24,6 +27,10 @@ public class PostBattleRewardUI : MonoBehaviour
             itemUI.SetUI(itemData);
             m_gainedItems.Add(itemUI);
         }
+        var goldUI = Instantiate(m_itemUIPrefab, m_contentParent).GetComponent<InventoryItemUI>();
+        goldUI.SetUI(goldItemData, goldAmount);
+        m_gainedItems.Add(goldUI);
+        InventoryManager.GetInstance().AddInventoryItem(goldItemData, goldAmount);
     }
 
     public void NextButtonPressed()

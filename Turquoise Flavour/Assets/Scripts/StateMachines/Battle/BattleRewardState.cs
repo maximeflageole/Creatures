@@ -29,6 +29,7 @@ public class BattleRewardState : TurquoiseState
         if (m_levelingCreature == null)
         {
             m_levelUpRewardsPicked = true;
+            GameMaster.GetInstance().m_postBattleRewardUI.InstantiatePostBattleReward(BattleRewardPickedCallback);
             return;
         }
         GameObject reward = Instantiate(GameMaster.GetInstance().GetRewardPrefab());
@@ -53,7 +54,7 @@ public class BattleRewardState : TurquoiseState
         if (m_levelingCreature == null)
         {
             m_levelUpRewardsPicked = true;
-            GameMaster.GetInstance().m_postBattleRewardUI.InstantiatePostBattleReward(null, BattleRewardPickedCallback);
+            GameMaster.GetInstance().m_postBattleRewardUI.InstantiatePostBattleReward(BattleRewardPickedCallback);
         }
         else if (!m_levelUpRewardsPicked)
         {

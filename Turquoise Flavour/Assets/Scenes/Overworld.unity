@@ -2631,11 +2631,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8128,6 +8128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9b8e2041b1344408967fa4363336e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_battleRewards: []
 --- !u!114 &1963057695 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
