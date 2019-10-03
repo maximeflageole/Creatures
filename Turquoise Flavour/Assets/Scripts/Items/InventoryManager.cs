@@ -197,6 +197,18 @@ public class InventoryManager : MonoBehaviour
         return itemDatas[randomIndex];
     }
 
+    public List<InventoryItemData> GetRandomItemsOfRarity(ERarity rarity, int amount)
+    {
+        List<InventoryItemData> items = new List<InventoryItemData>();
+
+        for (int i = 0; i < amount; i++)
+        {
+            int randomType = Random.Range(0, (int)EItemTypes.Gold - 1);
+            items.Add(GetRandomItem((EItemTypes)randomType));
+        }
+        return items;
+    }
+
     public InventoryItemData GetGoldItemData()
     {
         return m_itemDictionnary[EItem.Gold];

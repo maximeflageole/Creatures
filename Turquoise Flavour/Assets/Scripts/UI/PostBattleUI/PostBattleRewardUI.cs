@@ -14,8 +14,9 @@ public class PostBattleRewardUI : MonoBehaviour
 
     public void InstantiatePostBattleReward(CallbackType callback)
     {
-        var itemsData = TheRewarder.sInstance.GetBattleRewards();
-        int goldAmount = TheRewarder.sInstance.GetGoldAmount();
+        TheRewarder.sInstance.GenerateRewards();
+        var itemsData = TheRewarder.sInstance.GetItemRewards();
+        int goldAmount = TheRewarder.sInstance.GetGoldReward();
         var goldItemData = InventoryManager.GetInstance().GetGoldItemData();
         m_rewardsPickedCallback = callback;
         Reset();
@@ -50,5 +51,6 @@ public class PostBattleRewardUI : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
+        m_gainedItems.Clear();
     }
 }

@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Turquoise;
 
 public class TheRewarder : MonoBehaviour
 {
-    [SerializeField]
-    protected List<InventoryItemData> m_battleRewards;
     public static TheRewarder sInstance;
+    int m_goldAmount;
+    List<InventoryItemData> m_itemsReward = default;
+    [SerializeField]
+    protected CreatureRewardData rewardData;
 
     public void Awake()
     {
@@ -22,17 +22,37 @@ public class TheRewarder : MonoBehaviour
         sInstance = this;
     }
 
-    public void GenerateRewards(EventType eventType, int islandLevel, List<InventoryItemData> extraBattleRewards = null)
+    public List<InventoryItemData> GetItemRewards()
     {
+        return m_itemsReward;
     }
 
-    public List<InventoryItemData> GetBattleRewards()
+    public int GetGoldReward()
     {
-        return m_battleRewards;
+        return m_goldAmount;
     }
 
-    public int GetGoldAmount()
+    public void GenerateRewards()
     {
-        return Random.Range(10, 20);
+        //TODO: Remove
+        GenerateRewards(rewardData.rewards);
+    }
+    public void GenerateRewards(List<sRewardOdds> rewards)
+    {
+        m_itemsReward = new List<InventoryItemData>();
+        int random0to100 = Random.Range(0, 100);
+        foreach (var reward in rewards)
+        {
+            random0to100 -= reward.oddsOnHundred;
+            if (random0to100 <= 0)
+            {
+                m_goldAmount = (int)Random.Range(reward.m_goldMinMax.x, reward.m_goldMinMax.y);
+                foreach (var rarity in reward.itemRarities)
+                {
+                    m_itemsReward.AddRange(InventoryManager.GetInstance().GetRandomItemsOfRarity(rarity, 1));
+                }
+                break;
+            }
+        }
     }
 }
