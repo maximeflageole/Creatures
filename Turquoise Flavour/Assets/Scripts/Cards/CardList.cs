@@ -58,9 +58,10 @@ namespace Turquoise
         ElectricSlash,
         Discharge,
         ConcentrateCharges,
-        Grounding,
+        Grounding,                      //50
         ElectricField,
         IncreasingCharges,
+        OpposingCharges,
         Count
     }
 }

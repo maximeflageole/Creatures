@@ -169,6 +169,7 @@ public class Card : MonoBehaviour
             cardUI.InitCardUI(m_cardData.cardName, m_cardData.description, m_cardData.energyCost.ToString(), m_cardData.artwork);
         }
         m_effects = m_cardData.effects;
+        m_addedEffects.Clear();
     }
 
     public void Reset()
