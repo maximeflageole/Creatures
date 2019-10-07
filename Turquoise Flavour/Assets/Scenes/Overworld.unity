@@ -9240,7 +9240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1876068865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10741,6 +10741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
         type: 3}
+      propertyPath: m_creatureImages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
       propertyPath: m_rewardPanel
       value: 
       objectReference: {fileID: 498822507}
@@ -10784,6 +10789,26 @@ PrefabInstance:
       propertyPath: m_postBattleRewardUI
       value: 
       objectReference: {fileID: 1814085493}
+    - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_exploratorImage
+      value: 
+      objectReference: {fileID: 1818383890}
+    - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_creatureImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 980674329}
+    - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_creatureImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 1410296995}
+    - target: {fileID: 5178197101758460255, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
+        type: 3}
+      propertyPath: m_creatureImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 1039563759}
     - target: {fileID: 5178197101758460254, guid: 0a2bdd0e68131294f9c2cbc92f62e4f3,
         type: 3}
       propertyPath: m_LocalPosition.x

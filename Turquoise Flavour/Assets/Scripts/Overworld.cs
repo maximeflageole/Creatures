@@ -17,10 +17,6 @@ public class Overworld : MonoBehaviour
     protected GameObject MapPrefab;
     protected ExplorationScreen m_explorationScreen;
     public ExplorationScreen GetExplorationScreen() { return m_explorationScreen; }
-    [SerializeField]
-    protected Image m_exploratorImage;
-    [SerializeField]
-    protected List<Image> m_creatureImages;
 
     public static Overworld GetInstance()
     {
@@ -57,36 +53,13 @@ public class Overworld : MonoBehaviour
             m_explorationScreen.Init();
             EndInit(completedNodes);
             Player.GetPlayerInstance().EnterOverworld(true);
-            ChangeExplorator(Player.GetPlayerInstance().GetCurrentExploratorEnum());
-        }
-    }
-
-    public void ChangeExplorator(EExplorator explorator)
-    {
-        if (ExploratorManager.GetInstance() != null)
-        {
-            m_exploratorImage.sprite = ExploratorManager.GetInstance().GetExploratorDataFromExploName(explorator).sprite;
+            GameMaster.GetInstance().ChangeExplorator(Player.GetPlayerInstance().GetCurrentExploratorEnum());
         }
     }
 
     public void ClickExploratorButton()
     {
 
-    }
-
-    public void ChangeCreature(int index, CreatureData creature)
-    {
-        m_creatureImages[index].sprite = creature.sprite;
-    }
-
-    public void UpdateCreatures()
-    {
-        int i = 0;
-        foreach (var creature in Player.GetPlayerInstance().GetCreatures())
-        {
-            m_creatureImages[i].sprite = creature.GetData().sprite;
-            i++;
-        }
     }
 
     public void EndInit(List<int> completedNodes)

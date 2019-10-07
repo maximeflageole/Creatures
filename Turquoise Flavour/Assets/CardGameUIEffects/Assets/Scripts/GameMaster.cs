@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using Turquoise;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
@@ -63,6 +64,11 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     protected GameObject m_overworldPanel;
     public PostBattleRewardUI m_postBattleRewardUI;
+
+    [SerializeField]
+    protected Image m_exploratorImage;
+    [SerializeField]
+    protected List<Image> m_creatureImages;
 
     [SerializeField]
     protected MapData m_mapData;
@@ -377,6 +383,29 @@ public class GameMaster : MonoBehaviour
     public void OnCardsHubClicked()
     {
         m_cardsHub.OpenMenu();
+    }
+
+    public void UpdateCreatures()
+    {
+        int i = 0;
+        foreach (var creature in Player.GetPlayerInstance().GetCreatures())
+        {
+            m_creatureImages[i].sprite = creature.GetData().sprite;
+            i++;
+        }
+    }
+
+    public void ChangeExplorator(EExplorator explorator)
+    {
+        if (ExploratorManager.GetInstance() != null)
+        {
+            m_exploratorImage.sprite = ExploratorManager.GetInstance().GetExploratorDataFromExploName(explorator).sprite;
+        }
+    }
+
+    public void ChangeCreature(int index, CreatureData creature)
+    {
+        m_creatureImages[index].sprite = creature.sprite;
     }
 }
 

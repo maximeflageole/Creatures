@@ -60,6 +60,7 @@ namespace Turquoise
         ConcentrateCharges,
         Grounding,
         ElectricField,
+        IncreasingCharges,
         Count
     }
 }

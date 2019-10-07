@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
             int i = 0;
             foreach (var creature in m_creatures)
             {
-                Overworld.GetInstance().ChangeCreature(i, creature.GetData());
+                GameMaster.GetInstance().ChangeCreature(i, creature.GetData());
                 i++;
             }
         }
@@ -219,10 +219,7 @@ public class Player : MonoBehaviour
                 m_currentCreature = creatureComp;
             }
             creatureComp.CreateFromCreatureData(creatureData, creatureData.baseDeck, level);
-            if (Overworld.HasInstance())
-            {
-                Overworld.GetInstance().UpdateCreatures();
-            }
+            GameMaster.GetInstance().UpdateCreatures();
             SaveSystem.SaveGame();
         }
     }

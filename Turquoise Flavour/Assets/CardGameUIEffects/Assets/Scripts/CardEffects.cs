@@ -740,7 +740,7 @@ public class CardEffects : TurquoiseEvent {
                     }
                 }
                 //TODO: See card.ApplyEffects: Need to have similar, unified verifications for conditions
-                foreach (var effect in card.m_effects)
+                foreach (var effect in card.GetAllAbilityEffects())
                 {
                     bool conditionVerified = true;
                     foreach (var condition in effect.m_conditions)
@@ -822,6 +822,17 @@ public class CardEffects : TurquoiseEvent {
                     if (effect.m_effect == ECardEffect.ElectricField)
                     {
                         ApplyField(effect.m_effect, effect.m_value);
+                    }
+                    if (effect.m_effect == ECardEffect.IncreasingCharges)
+                    {
+                        SAbilityEffect abilityEffect = new SAbilityEffect
+                        { m_effect = ECardEffect.Charge,
+                            m_chancesOfEffectOnHundred = 0,
+                            m_complexConditions = new List<sComplexConditions>(),
+                            m_conditions = new List<ECardEffect>(),
+                            m_targetType = ETarget.Creature,
+                            m_value = 1 };
+                        card.AddEffect(abilityEffect);
                     }
                     if (effect.m_effect == ECardEffect.Consume)
                     {

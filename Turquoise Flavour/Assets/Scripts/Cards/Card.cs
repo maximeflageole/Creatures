@@ -89,6 +89,7 @@ namespace Turquoise
         DamagePerEnemyCharge,
         HealingPerCharge,
         ElectricField,
+        IncreasingCharges,
         Count
     }
 
@@ -114,6 +115,7 @@ public class Card : MonoBehaviour
     protected uint m_manaCost = 0;
 
     public List<SAbilityEffect> m_effects;
+    public List<SAbilityEffect> m_addedEffects = new List<SAbilityEffect>();
 
     [SerializeField]
     protected CardData m_cardData;
@@ -195,7 +197,7 @@ public class Card : MonoBehaviour
             Debug.Log("Fear triggers. Card skipped");
             return;
         }
-        foreach (var cardEffect in m_effects)
+        foreach (var cardEffect in GetAllAbilityEffects())
         {
             if (!GetIsLucky(cardEffect.m_chancesOfEffectOnHundred))
             {
@@ -260,6 +262,19 @@ public class Card : MonoBehaviour
         }
         Debug.Log("Is lucky return: " + chances);
         return chances;
+    }
+
+    public void AddEffect(SAbilityEffect abilityEffect)
+    {
+        m_addedEffects.Add(abilityEffect);
+    }
+
+    public List<SAbilityEffect> GetAllAbilityEffects()
+    {
+        List<SAbilityEffect> abilityEffects = new List<SAbilityEffect>();
+        abilityEffects.AddRange(m_effects);
+        abilityEffects.AddRange(m_addedEffects);
+        return abilityEffects;
     }
 }
 
