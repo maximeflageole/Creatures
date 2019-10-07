@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Turquoise;
+using TMPro;
 
 public class CardEffects : TurquoiseEvent {
 
@@ -160,6 +161,19 @@ public class CardEffects : TurquoiseEvent {
     protected bool m_isPlayerTurn;
     public bool m_isSelectingCards;
     public bool m_hasPeekInOrderBuff;
+    ECardEffect m_currentBattleField = ECardEffect.Count;
+    int m_battleFieldDuration = 0;
+    [SerializeField]
+    protected GameObject m_playerPassivePanel;
+    [SerializeField]
+    protected GameObject m_neutralPassivePanel;
+    [SerializeField]
+    protected GameObject m_enemyPassivePanel;
+    [SerializeField]
+    protected GameObject m_boonUiPrefab;
+    protected GameObject m_fieldBoonInstance;
+
+
 
     public void Awake()
     {
@@ -804,6 +818,10 @@ public class CardEffects : TurquoiseEvent {
                     if (effect.m_effect == ECardEffect.EnergyGain)
                     {
                         GetPlayerCreature().IncrementEnergy(effect.m_value);
+                    }
+                    if (effect.m_effect == ECardEffect.ElectricField)
+                    {
+                        ApplyField(effect.m_effect, effect.m_value);
                     }
                     if (effect.m_effect == ECardEffect.Consume)
                     {
@@ -1671,6 +1689,7 @@ public class CardEffects : TurquoiseEvent {
             m_player.TurnEnd();
             GetEnemyCreature().GetComponent<EnemyAI>().BeginTurn();
         }
+        TriggerField();
         StartCoroutine("DisableUIForAMoment", 1.7f);
     }
 
@@ -1719,5 +1738,75 @@ public class CardEffects : TurquoiseEvent {
     {
         drawBtn.enabled = true;
         m_nextTurnBtn.enabled = true;
+    }
+
+    public ECardEffect GetCUrrentBattleField()
+    {
+        return m_currentBattleField;
+    }
+
+    void ApplyField(ECardEffect fieldType, int turnAmount)
+    {
+        StopCurrentField();
+        m_currentBattleField = fieldType;
+        m_battleFieldDuration = turnAmount;
+        AddNeutralPassive(fieldType, turnAmount);
+    }
+
+    void StopCurrentField()
+    {
+        //TODO: There will be effects here
+    }
+
+    public void AddNeutralPassive(ECardEffect cardEffect, int turns)
+    {
+        var data = GameMaster.GetInstance().m_boonList.GetBoonDataFromCardEffect(cardEffect);
+        if (data != null)
+        {
+            m_fieldBoonInstance = Instantiate(m_boonUiPrefab, m_neutralPassivePanel.transform);
+            m_fieldBoonInstance.GetComponent<Image>().sprite = data.sprite;
+            m_fieldBoonInstance.GetComponentInChildren<TextMeshProUGUI>().text = turns.ToString();
+        }
+    }
+
+    public int GetModifierFromField(EDamageType damageType)
+    {
+        switch (damageType)
+        {
+            case EDamageType.Electric:
+            if (m_currentBattleField == ECardEffect.ElectricField)
+            {
+                return 1;
+            }
+            break;
+        }
+        return 0;
+    }
+
+    public void TriggerField()
+    {
+        if (m_currentBattleField == ECardEffect.ElectricField)
+        {
+            GetPlayerCreature().AddBoonSimple(ECardEffect.Charge);
+            GetEnemyCreature().AddBoonSimple(ECardEffect.Charge);
+            DecayField();
+        }
+    }
+
+    void DecayField()
+    {
+        m_battleFieldDuration -= 1;
+        if (m_battleFieldDuration <=0)
+        {
+            RemoveField();
+            return;
+        }
+        m_fieldBoonInstance.GetComponentInChildren<TextMeshProUGUI>().text = m_battleFieldDuration.ToString();
+    }
+
+    void RemoveField()
+    {
+        m_currentBattleField = ECardEffect.Count;
+        Destroy(m_fieldBoonInstance);
     }
 }

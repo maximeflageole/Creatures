@@ -100,3 +100,5 @@ MonoBehaviour:
     boonData: {fileID: 11400000, guid: 0af1bf8cc4187ae4ab6ebe3689e528bd, type: 2}
   - cardEffect: 41
     boonData: {fileID: 11400000, guid: d91093d3e263730419a6ef34f8bcfdde, type: 2}
+  - cardEffect: 46
+    boonData: {fileID: 11400000, guid: 28fb196bf1c6e304687507c2aadc907d, type: 2}

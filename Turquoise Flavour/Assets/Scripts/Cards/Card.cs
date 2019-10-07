@@ -88,6 +88,7 @@ namespace Turquoise
         Discharge,
         DamagePerEnemyCharge,
         HealingPerCharge,
+        ElectricField,
         Count
     }
 

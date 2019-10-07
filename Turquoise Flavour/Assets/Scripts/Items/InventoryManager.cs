@@ -136,8 +136,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        var savedCreatureCUrrencies = SaveSystem.LoadGame().creatureCurrencies;
-        if (savedCreatureCUrrencies.Count == 0)
+        var savedCreatureCurrencies = SaveSystem.LoadGame().creatureCurrencies;
+        if (savedCreatureCurrencies.Count == 0)
         {
             return;
         }

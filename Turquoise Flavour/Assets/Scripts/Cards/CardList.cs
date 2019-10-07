@@ -59,6 +59,7 @@ namespace Turquoise
         Discharge,
         ConcentrateCharges,
         Grounding,
+        ElectricField,
         Count
     }
 }
