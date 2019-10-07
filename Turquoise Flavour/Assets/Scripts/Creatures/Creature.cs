@@ -146,6 +146,11 @@ public class Creature : MonoBehaviour
         m_conditionsComponent = gameObject.AddComponent<ConditionsComponent>();
     }
 
+    public void AddBoonSimple(ECardEffect cardEffect, int amount = 1)
+    {
+        m_conditionsComponent.TryAddCondition(cardEffect, amount);
+    }
+
     public void ApplyEffect(SAbilityEffect cardEffect, Creature cardPlayingCreature, Creature selectedCreature, EDamageType damageType = EDamageType.None)
     {
         if (m_conditionsComponent == null)
@@ -173,7 +178,9 @@ public class Creature : MonoBehaviour
                 {
                     break;
                 }
-                int calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(cardEffect.m_value);
+                int calculatedDamage  = cardEffect.m_value + CardEffects.GetInstance().GetModifierFromField(damageType);
+                calculatedDamage = cardPlayingCreature.m_conditionsComponent.GetCalculatedDamage(calculatedDamage);
+
                 ApplyDamage(calculatedDamage, damageType);
                 m_conditionsComponent.TryAddCondition(ECardEffect.Bleed, cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.BleedingAttacks));
                 break;
