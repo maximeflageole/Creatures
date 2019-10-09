@@ -29,6 +29,7 @@ public class CardsHub : TurquoisePanel
             return;
         }
         gameObject.SetActive(true);
+        GameMaster.GetInstance().m_currentPanel = this;
         DisplayCardsForCreature(GameMaster.GetInstance().m_creatureList.GetAllCreaturesInDexOrder()[creatureIndex]);
     }
 

@@ -29,6 +29,7 @@ public class CreaturesPanelUI : TurquoisePanel
             return;
         }
         Reset();
+        GameMaster.GetInstance().m_currentPanel = this;
         gameObject.SetActive(true);
         for (int i = 0; i < creatures.Count && i < 3; i++)
         {

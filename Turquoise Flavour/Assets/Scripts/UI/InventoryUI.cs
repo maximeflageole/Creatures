@@ -31,6 +31,7 @@ public class InventoryUI : TurquoisePanel
             return;
         }
         Reset();
+        GameMaster.GetInstance().m_currentPanel = this;
         gameObject.SetActive(true);
         UpdateUI();
         m_parentTransform.gameObject.SetActive(true);

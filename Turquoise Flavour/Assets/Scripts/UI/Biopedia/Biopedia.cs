@@ -41,6 +41,7 @@ public class Biopedia : TurquoisePanel
             mini.AssignData(creature);
             m_biopedMiniatures.Add(mini);
         }
+        GameMaster.GetInstance().m_currentPanel = this;
         LoadPage(m_creaturesList[0]);
         gameObject.SetActive(true);
     }

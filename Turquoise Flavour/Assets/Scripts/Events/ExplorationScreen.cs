@@ -77,21 +77,24 @@ public class ExplorationScreen : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
+            if (GameMaster.GetInstance().CanNavigate())
             {
-                GameObject go = hit.collider.gameObject;
-                ExplorationNode node = go.GetComponent<ExplorationNode>();
-                if (node != null && !node.GetIsCompleted() && node.IsAvailable())
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider != null)
                 {
-                    if (Player.GetPlayerInstance().GetCurrentExplorator().IsNodeSelected(node))
+                    GameObject go = hit.collider.gameObject;
+                    ExplorationNode node = go.GetComponent<ExplorationNode>();
+                    if (node != null && !node.GetIsCompleted() && node.IsAvailable())
                     {
-                        GameMaster.GetInstance().StartEvent(node, hit);
-                    }
-                    else
-                    {
-                        MoveExplorator(node);
-                        Player.GetPlayerInstance().GetCurrentExplorator().SelectNode(node);
+                        if (Player.GetPlayerInstance().GetCurrentExplorator().IsNodeSelected(node))
+                        {
+                            GameMaster.GetInstance().StartEvent(node, hit);
+                        }
+                        else
+                        {
+                            MoveExplorator(node);
+                            Player.GetPlayerInstance().GetCurrentExplorator().SelectNode(node);
+                        }
                     }
                 }
             }

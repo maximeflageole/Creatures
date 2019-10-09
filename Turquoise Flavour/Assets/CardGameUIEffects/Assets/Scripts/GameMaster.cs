@@ -65,7 +65,7 @@ public class GameMaster : MonoBehaviour
     protected GameObject m_overworldPanel;
     public PostBattleRewardUI m_postBattleRewardUI;
     public GeneticEnhancementPanel m_geneticEnhancementPanel;
-    protected TurquoisePanel m_currentPanel;
+    public TurquoisePanel m_currentPanel = null;
 
     [SerializeField]
     protected Image m_exploratorImage;
@@ -366,35 +366,30 @@ public class GameMaster : MonoBehaviour
         CloseCurrentPanel(m_inventoryUI);
         m_inventoryUI.Reset();
         m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
-        m_currentPanel = m_inventoryUI;
     }
 
     public void OnBiopediaClicked()
     {
         CloseCurrentPanel(m_biopedia);
         m_biopedia.OpenMenu();
-        m_currentPanel = m_biopedia;
     }
 
     public void OnInventoryClicked()
     {
         CloseCurrentPanel(m_inventoryUI);
         m_inventoryUI.OpenMenu();
-        m_currentPanel = m_inventoryUI;
     }
 
     public void OnGroupClicked()
     {
         CloseCurrentPanel(m_creatureUI);
         m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
-        m_currentPanel = m_creatureUI;
     }
 
     public void OnCardsHubClicked()
     {
         CloseCurrentPanel(m_cardsHub);
         m_cardsHub.OpenMenu();
-        m_currentPanel = m_cardsHub;
     }
 
     void CloseCurrentPanel(TurquoisePanel nextPanel)
@@ -427,6 +422,11 @@ public class GameMaster : MonoBehaviour
     public void ChangeCreature(int index, CreatureData creature)
     {
         m_creatureImages[index].sprite = creature.sprite;
+    }
+
+    public bool CanNavigate()
+    {
+        return (m_currentPanel == null);
     }
 }
 
