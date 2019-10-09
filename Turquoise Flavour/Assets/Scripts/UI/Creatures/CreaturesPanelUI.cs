@@ -43,6 +43,12 @@ public class CreaturesPanelUI : TurquoisePanel
         {
             creaturePanel.Reset();
         }
+        m_inCreatureSelection = false;
+        if (m_actionPanelUIInstance != null)
+        {
+            Destroy(m_actionPanelUIInstance.gameObject);
+            m_actionPanelUIInstance = null;
+        }
     }
 
     public void StartSelectCreature()
@@ -80,13 +86,14 @@ public class CreaturesPanelUI : TurquoisePanel
                     break;
             }
 
-            CloseMenu();
+            Reset();
             m_item = EItem.Count;
             return;
         }
         if (m_actionPanelUIInstance != null)
         {
             Destroy(m_actionPanelUIInstance.gameObject);
+            m_actionPanelUIInstance = null;
         }
         if (creature != null)
         {
@@ -105,25 +112,25 @@ public class CreaturesPanelUI : TurquoisePanel
                 Player.GetPlayerInstance().SwapCreature(m_currentCreature);
                 break;
             case ECreatureInteraction.Use:
+                InstantiateItemCarousel(EItemTypes.Consumables);
+                break;
+            case ECreatureInteraction.ChangeTrinket:
                 InstantiateItemCarousel(EItemTypes.Trinkets);
                 break;
             default:
                 break;
         }
-        CloseMenu();
+        Reset();
     }
 
     void InstantiateItemCarousel(EItemTypes eItemTypes)
     {
         List<InventoryItemData> itemsData = new List<InventoryItemData>();
         itemsData.AddRange(InventoryManager.GetInstance().GetInventoryItemsDataForType(eItemTypes));
-        GameMaster.GetInstance().m_carousel.AssignElements(itemsData);
-    }
-
-    public void CloseMenu()
-    {
-        m_inCreatureSelection = false;
-        gameObject.SetActive(false);
+        if (itemsData.Count != 0)
+        {
+            GameMaster.GetInstance().m_carousel.AssignElements(itemsData);
+        }
     }
 }
 

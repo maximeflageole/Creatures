@@ -119,7 +119,7 @@ public class GameMaster : MonoBehaviour
                 }
                 else
                 {
-                    m_creatureUI.CloseMenu();
+                    m_creatureUI.Reset();
                 }
             }
         }
