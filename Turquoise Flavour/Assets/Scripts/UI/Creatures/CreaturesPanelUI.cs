@@ -28,7 +28,15 @@ public class CreaturesPanelUI : TurquoisePanel
             Reset();
             return;
         }
-        Reset();
+        foreach (var creaturePanel in m_creaturePanels)
+        {
+            creaturePanel.Reset();
+        }
+        if (m_actionPanelUIInstance != null)
+        {
+            Destroy(m_actionPanelUIInstance.gameObject);
+            m_actionPanelUIInstance = null;
+        }
         GameMaster.GetInstance().m_currentPanel = this;
         gameObject.SetActive(true);
         for (int i = 0; i < creatures.Count && i < 3; i++)
@@ -45,6 +53,7 @@ public class CreaturesPanelUI : TurquoisePanel
             creaturePanel.Reset();
         }
         m_inCreatureSelection = false;
+        GameMaster.GetInstance().m_currentPanel = null;
         if (m_actionPanelUIInstance != null)
         {
             Destroy(m_actionPanelUIInstance.gameObject);
