@@ -17,4 +17,5 @@ public class CreatureData : ScriptableObject
     public ActiveAbilityData activeAbilityData;
     public Experience.ELevelSpeed levelSpeed;
     public AbilityTreeData abilityTree;
+    public CreatureEvolutionTree evolutionTree;
 }

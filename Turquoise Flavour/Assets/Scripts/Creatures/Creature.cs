@@ -74,6 +74,9 @@ public class Creature : MonoBehaviour
     protected int m_speed;
     [SerializeField]
     protected CreatureData m_creatureData;
+    [SerializeField]
+    protected sEvolutionTreeState m_evolutionTreeState;
+
     public CreatureData GetData() { return m_creatureData; }
     [SerializeField]
     protected ConditionsComponent m_conditionsComponent;
@@ -113,6 +116,16 @@ public class Creature : MonoBehaviour
             m_activeAbility = gameObject.AddComponent<ActiveAbility>();
             m_activeAbility.LoadAbility(creatureData.activeAbilityData);
         }
+    }
+
+    public void SelectEvoTreeNode(int level, bool left)
+    {
+        m_evolutionTreeState.levelValue[level - 1] = left ? -1 : 1;
+    }
+
+    public List<int> GetEvoTreeState()
+    {
+        return m_evolutionTreeState.levelValue;
     }
 
     public string GetName()
@@ -743,3 +756,8 @@ namespace Creatures
     }
 }
 
+public struct sEvolutionTreeState
+{
+    //0 = unselected, -1 = left, 1 = right
+    public List<int> levelValue;
+}

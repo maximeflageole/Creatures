@@ -64,6 +64,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     protected GameObject m_overworldPanel;
     public PostBattleRewardUI m_postBattleRewardUI;
+    public GeneticEnhancementPanel geneticEnhancementPanel;
 
     [SerializeField]
     protected Image m_exploratorImage;

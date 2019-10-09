@@ -23,3 +23,4 @@ MonoBehaviour:
   activeAbilityData: {fileID: 11400000, guid: 60740c37ab6a92546a46dd90d66e1cf3, type: 2}
   levelSpeed: 0
   abilityTree: {fileID: 11400000, guid: 8b7130e9980a7634a9c5dd9fe7fbed70, type: 2}
+  evolutionTree: {fileID: 11400000, guid: 603f72185cd93304db4282a9d52166c0, type: 2}

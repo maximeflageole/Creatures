@@ -173,8 +173,6 @@ public class CardEffects : TurquoiseEvent {
     protected GameObject m_boonUiPrefab;
     protected GameObject m_fieldBoonInstance;
 
-
-
     public void Awake()
     {
         //Card effect is a singleton and should behave as such

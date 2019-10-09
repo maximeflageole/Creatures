@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class GeneticEnhancementPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    protected List<GeneticEnhancementLevel> m_levelPanels;
+
+    [SerializeField]
+    protected Creature m_creature;
+    protected CreatureEvolutionTree m_evolutionTree;
+
+    public void OnInstantiate(Creature creature)
     {
-        
+        m_creature = creature;
+        m_evolutionTree = m_creature.GetData().evolutionTree;
+        int i = 0;
+        foreach (var panel in m_levelPanels)
+        {
+            if (panel != null)
+            {
+                panel.OnInstantiate(m_evolutionTree.evolutionNodes[i]);
+            }
+            i++;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        OnInstantiate(Player.GetPlayerInstance().GetCurrentCreature());
+    }
+
+    public void OnSelectEvolution(int level, bool left)
+    {
+
     }
 }
