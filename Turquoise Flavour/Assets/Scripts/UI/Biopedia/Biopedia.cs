@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Biopedia : MonoBehaviour
+public class Biopedia : TurquoisePanel
 {
     [SerializeField]
     protected List<CreatureData> m_creaturesList = new List<CreatureData>();
@@ -25,7 +25,7 @@ public class Biopedia : MonoBehaviour
     protected Image m_image;
     protected CreatureData m_currentCreatureData;
 
-    public void Open()
+    public override void OpenMenu()
     {
         if (gameObject.activeSelf)
         {
@@ -50,7 +50,7 @@ public class Biopedia : MonoBehaviour
         LoadPage(data);
     }
 
-    private void Reset()
+    public override void Reset()
     {
         gameObject.SetActive(false);
         foreach (var min in m_biopedMiniatures)

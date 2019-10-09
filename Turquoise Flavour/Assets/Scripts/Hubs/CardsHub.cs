@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardsHub : MonoBehaviour
+public class CardsHub : TurquoisePanel
 {
     public Image m_image;
     public CreatureData m_creatureData;
@@ -19,7 +19,7 @@ public class CardsHub : MonoBehaviour
     public TextMeshProUGUI m_currencyText;
     int creatureIndex = 0;
 
-    public void OpenMenu()
+    public override void OpenMenu()
     {
         if (gameObject.activeSelf)
         {
@@ -59,7 +59,7 @@ public class CardsHub : MonoBehaviour
         }
     }
 
-    private void Reset()
+    public override void Reset()
     {
         gameObject.SetActive(false);
         m_image.sprite = null;

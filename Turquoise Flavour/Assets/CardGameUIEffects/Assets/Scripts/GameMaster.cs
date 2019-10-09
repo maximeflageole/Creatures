@@ -64,7 +64,8 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     protected GameObject m_overworldPanel;
     public PostBattleRewardUI m_postBattleRewardUI;
-    public GeneticEnhancementPanel geneticEnhancementPanel;
+    public GeneticEnhancementPanel m_geneticEnhancementPanel;
+    protected TurquoisePanel m_currentPanel;
 
     [SerializeField]
     protected Image m_exploratorImage;
@@ -104,7 +105,7 @@ public class GameMaster : MonoBehaviour
         {
             if (m_inventoryUI != null)
             {
-                m_inventoryUI.Toggle();
+                m_inventoryUI.OpenMenu();
             }
         }
         if (Input.GetKeyDown(KeyCode.C))
@@ -362,28 +363,47 @@ public class GameMaster : MonoBehaviour
 
     public void OpenMenuToGiveItem(EItem item)
     {
-        m_inventoryUI.Close();
+        CloseCurrentPanel(m_inventoryUI);
+        m_inventoryUI.Reset();
         m_creatureUI.GetComponent<CreaturesPanelUI>().StartSelectCreatureForItem(item);
+        m_currentPanel = m_inventoryUI;
     }
 
     public void OnBiopediaClicked()
     {
-        m_biopedia.Open();
+        CloseCurrentPanel(m_biopedia);
+        m_biopedia.OpenMenu();
+        m_currentPanel = m_biopedia;
     }
 
     public void OnInventoryClicked()
     {
-        m_inventoryUI.Toggle();
+        CloseCurrentPanel(m_inventoryUI);
+        m_inventoryUI.OpenMenu();
+        m_currentPanel = m_inventoryUI;
     }
 
     public void OnGroupClicked()
     {
+        CloseCurrentPanel(m_creatureUI);
         m_creatureUI.OpenMenu(Player.GetPlayerInstance().GetCreatures());
+        m_currentPanel = m_creatureUI;
     }
 
     public void OnCardsHubClicked()
     {
+        CloseCurrentPanel(m_cardsHub);
         m_cardsHub.OpenMenu();
+        m_currentPanel = m_cardsHub;
+    }
+
+    void CloseCurrentPanel(TurquoisePanel nextPanel)
+    {
+        if (m_currentPanel != null && m_currentPanel != nextPanel)
+        {
+            m_currentPanel.Reset();
+        }
+        m_currentPanel = null;
     }
 
     public void UpdateCreatures()

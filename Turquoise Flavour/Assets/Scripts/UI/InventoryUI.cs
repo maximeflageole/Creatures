@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Turquoise;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : TurquoisePanel
 {
     [SerializeField]
     protected Color m_unselectedItemColor;
@@ -23,21 +23,19 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     protected RectTransform m_parentTransform;
 
-    public void Toggle()
+    public override void OpenMenu()
     {
-        if (m_parentTransform.gameObject.activeSelf)
-            Close();
-        else
-            Open();
-    }
-
-    public void Open()
-    {
+        if (gameObject.activeSelf)
+        {
+            Reset();
+            return;
+        }
+        Reset();
         gameObject.SetActive(true);
         UpdateUI();
         m_parentTransform.gameObject.SetActive(true);
     }
-    public void Close()
+    public override void Reset()
     {
         gameObject.SetActive(false);
         m_parentTransform.gameObject.SetActive(false);

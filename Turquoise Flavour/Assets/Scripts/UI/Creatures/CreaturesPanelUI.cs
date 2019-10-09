@@ -4,7 +4,7 @@ using UnityEngine;
 using Turquoise;
 using TMPro;
 
-public class CreaturesPanelUI : MonoBehaviour
+public class CreaturesPanelUI : TurquoisePanel
 {
     [SerializeField]
     protected List<CreaturePanelUI> m_creaturePanels;
@@ -21,7 +21,7 @@ public class CreaturesPanelUI : MonoBehaviour
     protected bool m_inCreatureSelection;
     protected EItem m_item = EItem.Count;
 
-    public void OpenMenu(List<Creature> creatures)
+    public virtual void OpenMenu(List<Creature> creatures)
     {
         if (gameObject.activeSelf)
         {
@@ -36,7 +36,7 @@ public class CreaturesPanelUI : MonoBehaviour
         }
     }
 
-    private void Reset()
+    public override void Reset()
     {
         gameObject.SetActive(false);
         foreach (var creaturePanel in m_creaturePanels)
