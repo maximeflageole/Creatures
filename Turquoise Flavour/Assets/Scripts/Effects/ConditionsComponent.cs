@@ -116,6 +116,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.SignatureMove:
             case ECardEffect.Vigor:
             case ECardEffect.Ethereal:
+            case ECardEffect.Magnet:
                 return true;
         }
         return false;
@@ -141,6 +142,7 @@ public class ConditionsComponent : MonoBehaviour
             case ECardEffect.Burn:
             case ECardEffect.Vulnerable:
             case ECardEffect.Weakened:
+            case ECardEffect.Magnet:
                 return true;
         }
         return false;
@@ -236,6 +238,12 @@ public class ConditionsComponent : MonoBehaviour
                 break;
             case ECardEffect.Burn:
                 GetComponentInParent<Creature>().ApplyDamage(condition.GetStacks(), EDamageType.True);
+                break;
+            case ECardEffect.Magnet:
+                if (GetBoonStacks(ECardEffect.Charge) > 0)
+                {
+                    TryAddCondition(ECardEffect.Charge, 1);
+                }
                 break;
             default:
                 break;

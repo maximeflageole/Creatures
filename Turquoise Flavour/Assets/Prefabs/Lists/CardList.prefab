@@ -146,3 +146,11 @@ MonoBehaviour:
     cardData: {fileID: 11400000, guid: 6c9f1f9691c036f4dacf67d14ae8ce9c, type: 2}
   - cardName: 53
     cardData: {fileID: 11400000, guid: 3a76d56abc2c98943b2b67282e62c032, type: 2}
+  - cardName: 54
+    cardData: {fileID: 11400000, guid: 060e2c395fe10444a89150ec3164abd7, type: 2}
+  - cardName: 55
+    cardData: {fileID: 11400000, guid: c128b414d7882ce4f8b851be1489fe97, type: 2}
+  - cardName: 56
+    cardData: {fileID: 11400000, guid: 3f7736c02786410478c56050a804e01a, type: 2}
+  - cardName: 57
+    cardData: {fileID: 11400000, guid: f1ffe6c95c54d6f4eb02b7e47e6803dc, type: 2}

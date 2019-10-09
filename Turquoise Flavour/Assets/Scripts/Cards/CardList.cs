@@ -62,6 +62,11 @@ namespace Turquoise
         ElectricField,
         IncreasingCharges,
         OpposingCharges,
+        MagneticGoo,
+        MindReading,                    //55
+        ManaConversion,
+        PolarInversion,
+        EnergyConversion,
         Count
     }
 }

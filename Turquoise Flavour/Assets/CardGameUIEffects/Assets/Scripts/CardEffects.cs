@@ -815,6 +815,16 @@ public class CardEffects : TurquoiseEvent {
                         actionPickCards.SetAction(1, effect.m_value);
                         m_actionPile.Add(actionPickCards);
                     }
+                    if (effect.m_effect == ECardEffect.Peek)
+                    {
+                        if (drawPileCards.Count() < effect.m_value)
+                        {
+                            RefreshDrawPile();
+                        }
+                        ActionPickCards actionPickCards = gameObject.AddComponent<ActionPickCards>();
+                        actionPickCards.SetAction(0, effect.m_value);
+                        m_actionPile.Add(actionPickCards);
+                    }
                     if (effect.m_effect == ECardEffect.EnergyGain)
                     {
                         GetPlayerCreature().IncrementEnergy(effect.m_value);

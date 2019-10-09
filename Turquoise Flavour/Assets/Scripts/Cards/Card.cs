@@ -90,6 +90,9 @@ namespace Turquoise
         HealingPerCharge,
         ElectricField,
         IncreasingCharges,
+        Magnet,
+        Peek,
+        ChargesSwap,
         Count
     }
 

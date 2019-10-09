@@ -237,6 +237,14 @@ public class Creature : MonoBehaviour
                     cardPlayingCreature.m_conditionsComponent.RemoveConditionStack(ECardEffect.Charge, cardEffect.m_value);
                 }
                 break;
+            case ECardEffect.ChargesSwap:
+                int cardPlayingCharges = cardPlayingCreature.m_conditionsComponent.GetBoonStacks(ECardEffect.Charge);
+                int thisCreatureCharges = m_conditionsComponent.GetBoonStacks(ECardEffect.Charge);
+                cardPlayingCreature.m_conditionsComponent.RemoveAllConditionStacks(ECardEffect.Charge);
+                m_conditionsComponent.RemoveAllConditionStacks(ECardEffect.Charge);
+                cardPlayingCreature.m_conditionsComponent.TryAddCondition(ECardEffect.Charge, thisCreatureCharges);
+                m_conditionsComponent.TryAddCondition(ECardEffect.Charge, cardPlayingCharges);
+                break;
             default:
                 break;
         }
