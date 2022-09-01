@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda87c80a53c91d4a908b444eee9d35b, type: 3}
+  m_Name: CreatureTest
+  m_EditorClassIdentifier: 
+  eCreature: 1
+  creatureName: Dragon Test
+  creatureType: 1
+  initialHealth: 30
+  healthPerLevel: 0
+  initialMana: 3
+  sprite: {fileID: 21300000, guid: bd09284133d49c74aaedd572b3015b09, type: 3}
+  baseDeck: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  activeAbilityData: {fileID: 11400000, guid: db8884ab3ce60d849aeb145d96efe743, type: 2}
+  levelSpeed: 0
+  abilityTree: {fileID: 0}
+  evolutionTree: {fileID: 0}

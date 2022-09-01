@@ -1,0 +1,394 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.7f1 (240f4c1f462c) revision 2363212'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'en' Physical Memory: 16322 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.1.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+64963
+Successfully changed project path to: C:/Users/minig/Documents/Projects/Turquoise Flavour
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 64.97 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.7f1 (240f4c1f462c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/minig/Documents/Projects/Turquoise Flavour/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f02)
+    Vendor:   NVIDIA
+    VRAM:     8031 MB
+    Driver:   30.0.15.1215
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56392
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005832 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 56.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.604 seconds
+Domain Reload Profiling:
+	ReloadAssembly (604ms)
+		BeginReloadAssembly (73ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (430ms)
+			LoadAssemblies (71ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (107ms)
+				TypeCache.Initialize (106ms)
+					TypeCache.ScanAssembly (105ms)
+				ResolveRequiredComponents (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (243ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (8ms)
+				RefreshPlugins (57ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (124ms)
+				ProcessInitializeOnLoadMethodAttributes (45ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004888 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 57.87 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.241 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1242ms)
+		BeginReloadAssembly (120ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1011ms)
+			LoadAssemblies (79ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (208ms)
+				TypeCache.Initialize (203ms)
+					TypeCache.ScanAssembly (199ms)
+				ResolveRequiredComponents (5ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (59ms)
+			SetupLoadedEditorAssemblies (612ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (58ms)
+				BeforeProcessingInitializeOnLoad (92ms)
+				ProcessInitializeOnLoadAttributes (271ms)
+				ProcessInitializeOnLoadMethodAttributes (172ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3432 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 58 unused Assets / (323.4 KB). Loaded Objects now: 3988.
+Memory consumption went from 0.52 GB to 0.52 GB.
+Total: 6.142400 ms (FindLiveObjects: 0.325500 ms CreateObjectMapping: 0.251300 ms MarkObjects: 5.480200 ms  DeleteObjects: 0.084400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 611.803630 seconds.
+  path: Assets/CardGameUIEffects/Assets
+  artifactKey: Guid(f368b86fea4cff64fa94201855e9e303) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets using Guid(f368b86fea4cff64fa94201855e9e303) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c75b90d2f3b40ea2d3a35bd4d689e9e6') in 0.006648 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.038862 seconds.
+  path: Assets/Resources/_GM.prefab
+  artifactKey: Guid(0a2bdd0e68131294f9c2cbc92f62e4f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/_GM.prefab using Guid(0a2bdd0e68131294f9c2cbc92f62e4f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Upgrading font asset [LiberationSans SDF] to version 1.1.0.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:Log (object,UnityEngine.Object)
+TMPro.TMP_FontAsset:UpgradeFontAsset () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:2865)
+TMPro.TMP_FontAsset:ReadFontAssetDefinition () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:569)
+TMPro.TMP_FontAsset:OnValidate () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:555)
+
+(Filename: Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs Line: 2865)
+
+Upgrading font asset [LiberationSans SDF] Glyph Adjustment Table.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:Log (object,UnityEngine.Object)
+TMPro.TMP_FontAsset:UpgradeGlyphAdjustmentTableToFontFeatureTable () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:3035)
+TMPro.TMP_FontAsset:InitializeGlyphPaidAdjustmentRecordsLookupDictionary () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:697)
+TMPro.TMP_FontAsset:InitializeDictionaryLookupTables () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:619)
+TMPro.TMP_FontAsset:ReadFontAssetDefinition () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:572)
+TMPro.TMP_FontAsset:UpgradeFontAsset () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:3018)
+TMPro.TMP_FontAsset:ReadFontAssetDefinition () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:569)
+TMPro.TMP_FontAsset:OnValidate () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:555)
+
+(Filename: Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs Line: 3035)
+
+Upgrading font asset [Montserrat-ExtraBold SDF] to version 1.1.0.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:Log (object,UnityEngine.Object)
+TMPro.TMP_FontAsset:UpgradeFontAsset () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:2865)
+TMPro.TMP_FontAsset:ReadFontAssetDefinition () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:569)
+TMPro.TMP_FontAsset:OnValidate () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:555)
+
+(Filename: Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs Line: 2865)
+
+ -> (artifact id: 'f6a592f88c1d5b60a4a14ec896306e21') in 0.191855 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.343616 seconds.
+  path: Assets/Resources/Cards
+  artifactKey: Guid(d52b963106ca5f447a4511013c9c54bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards using Guid(d52b963106ca5f447a4511013c9c54bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c4183609471397250b2f75ab719735e') in 0.004613 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.063882 seconds.
+  path: Assets/Resources/Cards/Bite.asset
+  artifactKey: Guid(eda8bdf1cc11acc439012a063265d4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Bite.asset using Guid(eda8bdf1cc11acc439012a063265d4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8120ecd24b0f18da22fe27f099e5eb90') in 0.008190 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001307 seconds.
+  path: Assets/Resources/Cards/CloneCards.asset
+  artifactKey: Guid(7367e16d146c95744be69d20bffa53f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/CloneCards.asset using Guid(7367e16d146c95744be69d20bffa53f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2447a0e9f341abf63b8a738865618995') in 0.006417 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Cards/FieryBite.asset
+  artifactKey: Guid(93091685821d6d0459153285f5893bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/FieryBite.asset using Guid(93091685821d6d0459153285f5893bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d89fbd2f41cf266987af44fa752d4d2') in 0.007088 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Cards/HealthPotion.asset
+  artifactKey: Guid(42badb9dcacdb1447964e189064551d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/HealthPotion.asset using Guid(42badb9dcacdb1447964e189064551d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46660dff4cf010eeb2008bf7414aec33') in 0.005620 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/Cards/ExhaustSelf.asset
+  artifactKey: Guid(fa0546560d7e1084c98668ae91f40ea5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/ExhaustSelf.asset using Guid(fa0546560d7e1084c98668ae91f40ea5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e17727e733bbcd9954f81f588bc2e90') in 0.007256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/Cards/Woof.asset
+  artifactKey: Guid(43a7f63a5d316d9449b5bbefa8f063df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Woof.asset using Guid(43a7f63a5d316d9449b5bbefa8f063df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33694d3a4b55d3ebcf2a1cec50c31819') in 0.007008 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Resources/Cards/Shake it off.asset
+  artifactKey: Guid(69be73a1aedac544eb3ca9342952ff7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Shake it off.asset using Guid(69be73a1aedac544eb3ca9342952ff7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc6c30a414ce12b34c7401d832bfe8ec') in 0.005954 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Cards/FastAsLightning.asset
+  artifactKey: Guid(9af6cc6c7fac74a4581fe0d2c6eeb1c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/FastAsLightning.asset using Guid(9af6cc6c7fac74a4581fe0d2c6eeb1c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4c08d6e3b8d30ec3c60343826d609a7') in 0.005796 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Resources/Cards/Howl.asset
+  artifactKey: Guid(2143777a9c9640242af97ca805082433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Howl.asset using Guid(2143777a9c9640242af97ca805082433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6392a853966d39d2089ddbcd8b78765') in 0.006283 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Resources/Cards/OpposingCharges.asset
+  artifactKey: Guid(3a76d56abc2c98943b2b67282e62c032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/OpposingCharges.asset using Guid(3a76d56abc2c98943b2b67282e62c032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8cf643ba56eecc4420d3d497173a1225') in 0.005777 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/Cards/Vampiric Bite.asset
+  artifactKey: Guid(7accefc5d44d2964f8cc85aa8430dd52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Vampiric Bite.asset using Guid(7accefc5d44d2964f8cc85aa8430dd52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '708e7e98b6b07955852069f07c2572d9') in 0.006038 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Resources/Cards/Slam.asset
+  artifactKey: Guid(867b32dcba61b1f45a99aa1f51c3b4e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Slam.asset using Guid(867b32dcba61b1f45a99aa1f51c3b4e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '575ca5dd6a881fc256964fdd8ba9dd59') in 0.007784 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Resources/Cards/ElectricField.asset
+  artifactKey: Guid(40390f459db92eb4780e18ef715c37b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/ElectricField.asset using Guid(40390f459db92eb4780e18ef715c37b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b53f77b298cab745d7675be019dd338') in 0.012337 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Resources/Cards/ExhaustOther.asset
+  artifactKey: Guid(388ae74910028724693577927dc1221d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/ExhaustOther.asset using Guid(388ae74910028724693577927dc1221d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '924cc0b5c340c481ed731c33396e2cae') in 0.006404 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/Cards/ManaConversion.asset
+  artifactKey: Guid(3f7736c02786410478c56050a804e01a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/ManaConversion.asset using Guid(3f7736c02786410478c56050a804e01a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b0a880804d3aedf2b17244680d12c86') in 0.006331 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Cards/Pedro.asset
+  artifactKey: Guid(074e5751f9a9492408c2dee6864b3df6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Pedro.asset using Guid(074e5751f9a9492408c2dee6864b3df6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aed97e0ad7a07ef31e7343b9d6e848a8') in 0.006996 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/Cards/ElectricSlash.asset
+  artifactKey: Guid(54137048503bbcc42b35908aa73b34fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/ElectricSlash.asset using Guid(54137048503bbcc42b35908aa73b34fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6fccad1f360bc02e0206739ba0b8a4d') in 0.005287 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/Cards/StaticBite.asset
+  artifactKey: Guid(b8f3c78c6ca5a55449d8c20382f5918d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/StaticBite.asset using Guid(b8f3c78c6ca5a55449d8c20382f5918d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2484bd6ff6faeb244f2eae67ffecd3b7') in 0.005058 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/Cards/Unstable heat.asset
+  artifactKey: Guid(bace559a9d58c654382c2590aab08622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Unstable heat.asset using Guid(bace559a9d58c654382c2590aab08622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '126f5c7fea2b78059b6f1c96816ea49f') in 0.006635 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/Cards/Scare away.asset
+  artifactKey: Guid(9ad6b943f829f3e438bc4b0dc6c85516) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Scare away.asset using Guid(9ad6b943f829f3e438bc4b0dc6c85516) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '997090c72ce0eb93bc3fd548cb10b2d6') in 0.005911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/Cards/He attacks.asset
+  artifactKey: Guid(c51fc41b379300b418ec681c8d49064c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/He attacks.asset using Guid(c51fc41b379300b418ec681c8d49064c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cd21333cd82765254a0009da339a0f0') in 0.005495 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/Cards/PolarInversion.asset
+  artifactKey: Guid(f1ffe6c95c54d6f4eb02b7e47e6803dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/PolarInversion.asset using Guid(f1ffe6c95c54d6f4eb02b7e47e6803dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69346d03e99324ebd21e74e1c6376032') in 0.006736 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/Cards/BuffArmor.asset
+  artifactKey: Guid(99b9b7280030cd3479bfa274d482e0e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/BuffArmor.asset using Guid(99b9b7280030cd3479bfa274d482e0e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de0d6491366748d81ab3a8e1573b3086') in 0.005678 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Cards/He protects.asset
+  artifactKey: Guid(b7ee0679d88f7b64991392cd792e0409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/He protects.asset using Guid(b7ee0679d88f7b64991392cd792e0409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfb954543c6305e8bceccbdcaab841a3') in 0.005790 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/Cards/ElectricTackle.asset
+  artifactKey: Guid(d8d4c6168f47615439d0a57922793cf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/ElectricTackle.asset using Guid(d8d4c6168f47615439d0a57922793cf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f9b9378e105630ca55528cbafbd5084') in 0.006508 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Resources/Cards/BuffDamage.asset
+  artifactKey: Guid(4cc7375d81c64114797527932102b25d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/BuffDamage.asset using Guid(4cc7375d81c64114797527932102b25d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fec82cefbcfece4aa9dc69182ab066b') in 0.006347 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Cards/Slash.asset
+  artifactKey: Guid(d21893938d49c474d9151046641effef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Slash.asset using Guid(d21893938d49c474d9151046641effef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdf81de44f6f27ae582959f344d1042f') in 0.005784 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Resources/Cards/Quick attack.asset
+  artifactKey: Guid(56f0a704e0e7afd448fa599652990376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cards/Quick attack.asset using Guid(56f0a704e0e7afd448fa599652990376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e0be1325b698f001370be05ad626d7c') in 0.006250 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

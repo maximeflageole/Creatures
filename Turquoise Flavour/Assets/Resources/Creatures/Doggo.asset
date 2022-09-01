@@ -18,7 +18,7 @@ MonoBehaviour:
   initialHealth: 45
   healthPerLevel: 7
   initialMana: 3
-  sprite: {fileID: 21300000, guid: c3887c8271d58a749a0b274cd68c1998, type: 3}
+  sprite: {fileID: 21300000, guid: 64e4d5425dc01bf48ac0deeab049d1a5, type: 3}
   baseDeck: 09000000090000001d0000001d0000000e0000000e0000000e0000001b0000001d0000001d000000
   activeAbilityData: {fileID: 11400000, guid: 60740c37ab6a92546a46dd90d66e1cf3, type: 2}
   levelSpeed: 0
