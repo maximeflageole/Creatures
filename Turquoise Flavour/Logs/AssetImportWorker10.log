@@ -1,0 +1,382 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.7f1 (240f4c1f462c) revision 2363212'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'en' Physical Memory: 16322 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.1.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker10
+-projectPath
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+-logFile
+Logs/AssetImportWorker10.log
+-srvPort
+58203
+Successfully changed project path to: C:/Users/minig/Documents/Projects/Turquoise Flavour
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 69.13 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.7f1 (240f4c1f462c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/minig/Documents/Projects/Turquoise Flavour/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f02)
+    Vendor:   NVIDIA
+    VRAM:     8031 MB
+    Driver:   30.0.15.1215
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006025 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 62.87 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.633 seconds
+Domain Reload Profiling:
+	ReloadAssembly (633ms)
+		BeginReloadAssembly (89ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (429ms)
+			LoadAssemblies (86ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (110ms)
+				TypeCache.Initialize (110ms)
+					TypeCache.ScanAssembly (109ms)
+				ResolveRequiredComponents (1ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (241ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (63ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (121ms)
+				ProcessInitializeOnLoadMethodAttributes (41ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004600 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 63.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.250 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1251ms)
+		BeginReloadAssembly (106ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (1042ms)
+			LoadAssemblies (78ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (221ms)
+				TypeCache.Initialize (210ms)
+					TypeCache.ScanAssembly (206ms)
+				ResolveRequiredComponents (11ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (74ms)
+			SetupLoadedEditorAssemblies (618ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (64ms)
+				BeforeProcessingInitializeOnLoad (101ms)
+				ProcessInitializeOnLoadAttributes (275ms)
+				ProcessInitializeOnLoadMethodAttributes (160ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 1.30 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4224 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 58 unused Assets / (323.6 KB). Loaded Objects now: 4802.
+Memory consumption went from 0.74 GB to 0.74 GB.
+Total: 6.430500 ms (FindLiveObjects: 0.368700 ms CreateObjectMapping: 0.346500 ms MarkObjects: 5.609900 ms  DeleteObjects: 0.104200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 866480.754992 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesFlash.png
+  artifactKey: Guid(9f9e4aca8bab2b74aaed6715f75873ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesFlash.png using Guid(9f9e4aca8bab2b74aaed6715f75873ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '399a55da2d8af9ec7093cd06f3f94f45') in 0.063474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.451317 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMFireNoise.png
+  artifactKey: Guid(10f0f05cdfbe64f44b9e3b2655c32308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMFireNoise.png using Guid(10f0f05cdfbe64f44b9e3b2655c32308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e747a890066bd94bcf8f5f9c9b8c4bc5') in 0.019778 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.020153 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMBrushNoise.png
+  artifactKey: Guid(f1d51ed493a42ad4789ff2be401e8b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMBrushNoise.png using Guid(f1d51ed493a42ad4789ff2be401e8b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8882a460547aff0e842d305465afbf69') in 0.017212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.858460 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMBrushes/MMBrush0.png
+  artifactKey: Guid(04d21181005a65b47acaea5c6f605184) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMBrushes/MMBrush0.png using Guid(04d21181005a65b47acaea5c6f605184) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd83042f34ecb27f897f9433cf60530c0') in 0.030853 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.051140 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMBayerNoise.png
+  artifactKey: Guid(0f0e0708166913e448eb6195f7e96bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMBayerNoise.png using Guid(0f0e0708166913e448eb6195f7e96bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77982d67072528e04166635e64a6fb5f') in 0.022422 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.007356 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMBloomDirt/MMBloomDirt3.png
+  artifactKey: Guid(0448ffbb2d259c74496e9252af0411b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMBloomDirt/MMBloomDirt3.png using Guid(0448ffbb2d259c74496e9252af0411b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e081eff7b3c05da1450c920602ed0ec') in 0.023324 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006129 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.784 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1785ms)
+		BeginReloadAssembly (212ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (22ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (77ms)
+		EndReloadAssembly (1486ms)
+			LoadAssemblies (607ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (233ms)
+				TypeCache.Initialize (216ms)
+					TypeCache.ScanAssembly (211ms)
+				ResolveRequiredComponents (17ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (45ms)
+			SetupLoadedEditorAssemblies (546ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (8ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (88ms)
+				ProcessInitializeOnLoadAttributes (256ms)
+				ProcessInitializeOnLoadMethodAttributes (174ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Nature/SpeedTree7': dependency 'BillboardShader' shader 'Universal Render Pipeline/Nature/SpeedTree7 Billboard' not found
+Shader 'Hidden/Universal Render Pipeline/Terrain/Lit (Add Pass)': fallback shader 'Hidden/Universal Render Pipeline/FallbackError' not found
+Shader 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)': fallback shader 'Hidden/Universal Render Pipeline/FallbackError' not found
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader 'Universal Render Pipeline/Baked Lit': fallback shader 'Universal Render Pipeline/Unlit' not found
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Refreshing native plugins compatible for Editor in 3.85 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4926 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 116 unused Assets / (5.8 MB). Loaded Objects now: 5501.
+Memory consumption went from 0.88 GB to 0.88 GB.
+Total: 9.420100 ms (FindLiveObjects: 0.410800 ms CreateObjectMapping: 0.361500 ms MarkObjects: 6.482900 ms  DeleteObjects: 2.164000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2599.928956 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/BRDF.hlsl
+  artifactKey: Guid(e325eaafb90d419598a94581ba3335a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/BRDF.hlsl using Guid(e325eaafb90d419598a94581ba3335a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a18855bf8f2a525087740b65f285802b') in 0.215627 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/Deprecated.hlsl
+  artifactKey: Guid(9802e36ef1c38064d9bcd7bf2e01cccb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/Deprecated.hlsl using Guid(9802e36ef1c38064d9bcd7bf2e01cccb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8408ae5cf90a5c8b79d72c0369d3ad78') in 0.015110 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareOpaqueTexture.hlsl
+  artifactKey: Guid(29619926ce55c944aa978fe5e07cc3db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareOpaqueTexture.hlsl using Guid(29619926ce55c944aa978fe5e07cc3db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19b61cf2190ad9f7e51ee7e132305be') in 0.006995 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/NormalReconstruction.hlsl
+  artifactKey: Guid(20013f01a8cbaef4c9545926c27b8d73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/NormalReconstruction.hlsl using Guid(20013f01a8cbaef4c9545926c27b8d73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4816a6ce2495e86a5dd7b402897115d1') in 0.007229 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityTypes.hlsl
+  artifactKey: Guid(8d0dd75f99f9243d584a08489c8498b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityTypes.hlsl using Guid(8d0dd75f99f9243d584a08489c8498b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '348d97defe23f5ac0c8d1687439b7bad') in 0.006706 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl
+  artifactKey: Guid(db51e39af1b3c01449a3e6b1ce782a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl using Guid(db51e39af1b3c01449a3e6b1ce782a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9698ec0f365db25d70ad699240755282') in 0.006848 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/GlobalIllumination.hlsl
+  artifactKey: Guid(1be91b057dbe43239a838d9e45a42a32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/GlobalIllumination.hlsl using Guid(1be91b057dbe43239a838d9e45a42a32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1757b70fcbefa5779cbeec0900fcef6f') in 0.006868 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderVariablesFunctions.hlsl
+  artifactKey: Guid(a8db2eae5ac4548a683f17e8c528c05c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderVariablesFunctions.hlsl using Guid(a8db2eae5ac4548a683f17e8c528c05c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8b56d595ca342b9258ef7bcb64c61fd') in 0.006456 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl
+  artifactKey: Guid(9041fd6e0797cf74a8f08340e6157c0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl using Guid(9041fd6e0797cf74a8f08340e6157c0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a864c2218a2457de87734c46653fe344') in 0.006250 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl
+  artifactKey: Guid(41a9ae1971520f84c89225b0e84299ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl using Guid(41a9ae1971520f84c89225b0e84299ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '048030a22ced91e7faf88e8aa1c8e94e') in 0.006680 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl
+  artifactKey: Guid(762f0a4829f44584ba01e2f0661150d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl using Guid(762f0a4829f44584ba01e2f0661150d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9285eeaa8b01d53d9aff45cc9cd6dcf') in 0.008463 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl
+  artifactKey: Guid(9adc879d74aec4400bbdce89ff664a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl using Guid(9adc879d74aec4400bbdce89ff664a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0dc746fb88ae1b398c98095410caa99d') in 0.006347 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/UniversalDOTSInstancing.hlsl
+  artifactKey: Guid(91bd1404255c4cb28a6c81f20300308f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/UniversalDOTSInstancing.hlsl using Guid(91bd1404255c4cb28a6c81f20300308f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '581ef99120929b12b45f00772868d860') in 0.006839 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/DecalInput.hlsl
+  artifactKey: Guid(3e4be2c2c37a850478a159473b68a63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/DecalInput.hlsl using Guid(3e4be2c2c37a850478a159473b68a63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f611b2e9447a2a4ad06a7c5b6142f1d') in 0.005875 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/ParticlesInstancing.hlsl
+  artifactKey: Guid(c70398529f54bc44ca6a3ed0211e039f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/ParticlesInstancing.hlsl using Guid(c70398529f54bc44ca6a3ed0211e039f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '892b7255fc7ee317c31a4e564556fe3f') in 0.007238 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl
+  artifactKey: Guid(b2555155ead696140913bef1ec93adf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl using Guid(b2555155ead696140913bef1ec93adf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e4a75d1313f6830fb59b7391da79300') in 0.393219 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl
+  artifactKey: Guid(ff20ba0133cd2904ebf470aedb16e9a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl using Guid(ff20ba0133cd2904ebf470aedb16e9a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f2a90d57de407b5f14376cb81814bba') in 0.006374 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

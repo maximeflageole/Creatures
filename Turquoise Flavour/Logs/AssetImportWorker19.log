@@ -1,0 +1,544 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.7f1 (240f4c1f462c) revision 2363212'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'en' Physical Memory: 16322 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.1.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker19
+-projectPath
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+-logFile
+Logs/AssetImportWorker19.log
+-srvPort
+58203
+Successfully changed project path to: C:/Users/minig/Documents/Projects/Turquoise Flavour
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 85.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.7f1 (240f4c1f462c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/minig/Documents/Projects/Turquoise Flavour/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f02)
+    Vendor:   NVIDIA
+    VRAM:     8031 MB
+    Driver:   30.0.15.1215
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56536
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005843 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 91.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.664 seconds
+Domain Reload Profiling:
+	ReloadAssembly (664ms)
+		BeginReloadAssembly (67ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (499ms)
+			LoadAssemblies (65ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (114ms)
+				TypeCache.Initialize (113ms)
+					TypeCache.ScanAssembly (110ms)
+				ResolveRequiredComponents (1ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (272ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (9ms)
+				RefreshPlugins (92ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (120ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.006682 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 78.97 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.457 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1458ms)
+		BeginReloadAssembly (160ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (39ms)
+		EndReloadAssembly (1179ms)
+			LoadAssemblies (99ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (245ms)
+				TypeCache.Initialize (228ms)
+					TypeCache.ScanAssembly (224ms)
+				ResolveRequiredComponents (18ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (88ms)
+			SetupLoadedEditorAssemblies (705ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (8ms)
+				RefreshPlugins (79ms)
+				BeforeProcessingInitializeOnLoad (116ms)
+				ProcessInitializeOnLoadAttributes (309ms)
+				ProcessInitializeOnLoadMethodAttributes (182ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5041 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 62 unused Assets / (323.7 KB). Loaded Objects now: 5615.
+Memory consumption went from 0.89 GB to 0.89 GB.
+Total: 6.694900 ms (FindLiveObjects: 0.430700 ms CreateObjectMapping: 0.488700 ms MarkObjects: 5.672600 ms  DeleteObjects: 0.101800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 871476.186943 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_BlueDots.png
+  artifactKey: Guid(bdc5330a25b04664fbea7584bb62d859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_BlueDots.png using Guid(bdc5330a25b04664fbea7584bb62d859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd6cbc05a6c904197351e564c950d41c') in 0.097794 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/CreatureCards/creature_transparent/02.png
+  artifactKey: Guid(9b1587ae330cc1b4981886dd494847d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/02.png using Guid(9b1587ae330cc1b4981886dd494847d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e2fc8a2a7c07d2e534ccec7b2256e9d') in 0.265017 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/CreatureCards/creature_transparent/30.png
+  artifactKey: Guid(da222ef95e0c29d4ea04eea7c7e43ff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/30.png using Guid(da222ef95e0c29d4ea04eea7c7e43ff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8fe0921873080d567d2acd477500a2a') in 0.196886 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenDots.png
+  artifactKey: Guid(72c581fb2cdf1344f9da353c3f78ccd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenDots.png using Guid(72c581fb2cdf1344f9da353c3f78ccd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35a436eee4bc2812eff1f12006f4bba2') in 0.031052 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/CreatureCards/creature_bg/27.png
+  artifactKey: Guid(8a90daaa70bda304bab65637421e02bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/27.png using Guid(8a90daaa70bda304bab65637421e02bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7473bd303a1b97c9cab691f70a104585') in 0.231953 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_YellowDots.png
+  artifactKey: Guid(149489106c60322478987726a9b71cc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_YellowDots.png using Guid(149489106c60322478987726a9b71cc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7219195165c516e4f34152666f767317') in 0.015391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/CreatureCards/creature_bg/11.png
+  artifactKey: Guid(03d0d67b6627bfc4c89665ba69dfd071) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/11.png using Guid(03d0d67b6627bfc4c89665ba69dfd071) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc7f33ea229d830a6f337d37b652238d') in 0.235740 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/CreatureCards/creature_bg/02.png
+  artifactKey: Guid(fcb26ac6913eaab48889747d25eec1af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/02.png using Guid(fcb26ac6913eaab48889747d25eec1af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2204b80c55a15c9e215079906febdba') in 0.210945 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 378.954254 seconds.
+  path: Assets/Shaders/PixelatedShader.shadergraph
+  artifactKey: Guid(953cc7a8a4c05354ca1a1afd47f12fcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/PixelatedShader.shadergraph using Guid(953cc7a8a4c05354ca1a1afd47f12fcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9ce0530e837a4d787070ebbdd636754') in 0.415679 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 296.011534 seconds.
+  path: Assets/Shaders/PixelatedShader.shadergraph
+  artifactKey: Guid(953cc7a8a4c05354ca1a1afd47f12fcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/PixelatedShader.shadergraph using Guid(953cc7a8a4c05354ca1a1afd47f12fcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90666e976cd8a912cc407271410cf301') in 0.084809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.069603 seconds.
+  path: Assets/Shaders/PixelatedShader Variant.mat
+  artifactKey: Guid(17d703aa55d3b9348bbb9fd395434fd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/PixelatedShader Variant.mat using Guid(17d703aa55d3b9348bbb9fd395434fd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '346029bbdcdf18e335aba0b90575a4f9') in 0.087410 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 312.452818 seconds.
+  path: Assets/Sprites/Creatures/doggo_idle.png
+  artifactKey: Guid(64e4d5425dc01bf48ac0deeab049d1a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Creatures/doggo_idle.png using Guid(64e4d5425dc01bf48ac0deeab049d1a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7850e2c9147d4dc00bd2e2a26618afe9') in 0.755552 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 527.576213 seconds.
+  path: Assets/Sprites/Cards/ClawAttack_card_shine_anim.png
+  artifactKey: Guid(58f09bf0c0f92554cb00207ce103e8b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Cards/ClawAttack_card_shine_anim.png using Guid(58f09bf0c0f92554cb00207ce103e8b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4d498707b8a7d4d74ab8a008612641a') in 0.193637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVision/ConeOfVisionAlpha.png
+  artifactKey: Guid(671b69569d53c4c47ba2a89fb544082f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVision/ConeOfVisionAlpha.png using Guid(671b69569d53c4c47ba2a89fb544082f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e0fd38bc64af4bec273dd01ef5a512e') in 0.030613 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Fonts/CODE Light SDF.asset
+  artifactKey: Guid(a386ae90162aaff45ac082fc6f82b118) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Fonts/CODE Light SDF.asset using Guid(a386ae90162aaff45ac082fc6f82b118) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Upgrading font asset [CODE Light SDF] to version 1.1.0.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:Log (object,UnityEngine.Object)
+TMPro.TMP_FontAsset:UpgradeFontAsset () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:2865)
+TMPro.TMP_FontAsset:ReadFontAssetDefinition () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:569)
+TMPro.TMP_FontAsset:OnValidate () (at Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs:555)
+
+(Filename: Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs Line: 2865)
+
+ -> (artifact id: 'dfadded8be8659457fd058add45c045a') in 0.049194 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Sprites/Actives/circle (1).png
+  artifactKey: Guid(78ecfd88086ed154e8df3a312567af04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Actives/circle (1).png using Guid(78ecfd88086ed154e8df3a312567af04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a54b4023930cb57e3610ed97e90702e') in 0.034631 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Sprites/Actives/circle.png
+  artifactKey: Guid(8d264c7a682ddc34ca337cd85ebf0bb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Actives/circle.png using Guid(8d264c7a682ddc34ca337cd85ebf0bb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83f4b71a3f8225c37034668ee89cccb0') in 0.026809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Sprites/UI/boon_armor.png
+  artifactKey: Guid(21c2f40e5d84489488e87cf0831d9871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/boon_armor.png using Guid(21c2f40e5d84489488e87cf0831d9871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '319111ff0ec1b6423a44dc1c754e50e5') in 0.016629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Images/UI/circle.png
+  artifactKey: Guid(47d79a0acca40d143bedf4c1dbb138f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/circle.png using Guid(47d79a0acca40d143bedf4c1dbb138f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a83e07b8101c6b141ecb02178a994100') in 0.024683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_18.png
+  artifactKey: Guid(e450051b924415f42a4778ce8a710f4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_18.png using Guid(e450051b924415f42a4778ce8a710f4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb6167116eefd50369c6088268f199df') in 0.023576 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_21.png
+  artifactKey: Guid(17bd5ca54ad061a4ba5430f01076fc8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_21.png using Guid(17bd5ca54ad061a4ba5430f01076fc8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bea85386cd0242211741226fe0d4b2c') in 0.023801 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/Cards/card_bg.png
+  artifactKey: Guid(33c42d41088e09b418dd231a1aa05dca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Cards/card_bg.png using Guid(33c42d41088e09b418dd231a1aa05dca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87eadfe5902898a94c86838b6234993d') in 0.018303 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/CardGameUIEffects/Assets/Textures/Characters/BadEgg.png
+  artifactKey: Guid(4d8259a4cb6d7f54e9d19e9acb685d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Textures/Characters/BadEgg.png using Guid(4d8259a4cb6d7f54e9d19e9acb685d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e7a7b64ce7e72181b8098b93bafa0d0') in 0.034992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_03.png
+  artifactKey: Guid(75d6ea54a1d29d047ae1504ab0468465) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_03.png using Guid(75d6ea54a1d29d047ae1504ab0468465) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6a99b491939bf45b177ffe01a1df709') in 0.020925 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_06.png
+  artifactKey: Guid(3d5decc255173c7429e5bbffb7c198f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_06.png using Guid(3d5decc255173c7429e5bbffb7c198f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5daca92f3afda2672af26725699e62eb') in 0.020989 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_07.png
+  artifactKey: Guid(e6cc1fb11ee1e094881ee07a41e96582) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_07.png using Guid(e6cc1fb11ee1e094881ee07a41e96582) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7599b048c25cbb17c19edd4117061744') in 0.023721 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_08.png
+  artifactKey: Guid(76a80de3731bcba4e84534779b86a631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_08.png using Guid(76a80de3731bcba4e84534779b86a631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c26296802b4a03a03dd2a6f6362de3d9') in 0.020699 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/CardGameUIEffects/Assets/Textures/Cards/AttackEffect.png
+  artifactKey: Guid(30d247dadf54f6c4a99448de90b97eb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Textures/Cards/AttackEffect.png using Guid(30d247dadf54f6c4a99448de90b97eb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8602d330dbe536a0c47c65ca2b0d7d76') in 0.046328 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_09.png
+  artifactKey: Guid(0188e403cbe6b8547ac480e99ca7933a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_09.png using Guid(0188e403cbe6b8547ac480e99ca7933a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e31f8c2cc3dcd4c180c211d4ab2885e2') in 0.022765 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Sprites/UI/card_bg.png
+  artifactKey: Guid(f83d64e4485a09842893376e3bc1bb63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/card_bg.png using Guid(f83d64e4485a09842893376e3bc1bb63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a5f015ba82aa60d145b8db6b82c6b3d') in 0.026588 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_19.png
+  artifactKey: Guid(1ae6bc58c01b7c4499bbae3547a306e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_19.png using Guid(1ae6bc58c01b7c4499bbae3547a306e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93fe0448537032e838d476d30eb26f5b') in 0.020729 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_22.png
+  artifactKey: Guid(4a14cb2b6103dea4d9a5874f3f21ffaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_22.png using Guid(4a14cb2b6103dea4d9a5874f3f21ffaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b71061e2359b77d1baf2d2feea80327f') in 0.023831 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Sprites/UI/boon_burnt.png
+  artifactKey: Guid(90709349b0c96a042bd6ae567eb0fc86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/boon_burnt.png using Guid(90709349b0c96a042bd6ae567eb0fc86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77059c025ee46c63fdca6eb586c97f77') in 0.015747 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/CardGameUIEffects/Assets/Textures/Arrows/ArrowHeadRed.png
+  artifactKey: Guid(e156240a5ca89ef48b7a7741acf1c6be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Textures/Arrows/ArrowHeadRed.png using Guid(e156240a5ca89ef48b7a7741acf1c6be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '848a1702ad5e656c9f389faf6f4684ee') in 0.018756 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_17.png
+  artifactKey: Guid(8ef6f85c84228094994ca2737dcdc646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_17.png using Guid(8ef6f85c84228094994ca2737dcdc646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76ac42d7019f2fcc6963c6b16687f43f') in 0.024803 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Sprites/UI/boon_chilled.png
+  artifactKey: Guid(7e8a286adb90344408c914ec367cb56e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/boon_chilled.png using Guid(7e8a286adb90344408c914ec367cb56e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b13ae1281383d26d9c69f7e05b64511a') in 0.015798 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Sprites/UI/boon_frozen.png
+  artifactKey: Guid(e5ea85b00723f6b4c8ac846779417651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/boon_frozen.png using Guid(e5ea85b00723f6b4c8ac846779417651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db956d5579f54c9d5b13dbe66bb3e93c') in 0.014683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Sprites/Actives/chest-armor.png
+  artifactKey: Guid(9126eff5161743640abb4e690ca0f296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Actives/chest-armor.png using Guid(9126eff5161743640abb4e690ca0f296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77b930fcccb4b9ffc1373a7e569fc6d2') in 0.026903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_15.png
+  artifactKey: Guid(63e02208a291f7f418930da854bb7c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Animations/Characters/BadEgg/BadEgg_15.png using Guid(63e02208a291f7f418930da854bb7c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38c4ce6526d727677ccc93fb7e6c5d69') in 0.027830 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/CreatureCards/card/card_02_02.png
+  artifactKey: Guid(3805c639b59bb9042b276f1da44ed629) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/card/card_02_02.png using Guid(3805c639b59bb9042b276f1da44ed629) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52e0c2e0d2a0595a638892232504d848') in 0.265223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.177779 seconds.
+  path: Assets/Feel/MMTools/Tools/MMAchievements/Sprites/AchievementIcon.png
+  artifactKey: Guid(16a86a7f581fc4dfb953e0df8ad3ecac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMAchievements/Sprites/AchievementIcon.png using Guid(16a86a7f581fc4dfb953e0df8ad3ecac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c48e40bdcbf57fab3ba93417dae9d48') in 0.017629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/CardGameUIEffects/Assets/Textures/Arrows/ArrowBodyRed.png
+  artifactKey: Guid(464a564c1396d84428d6e31355e871a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Textures/Arrows/ArrowBodyRed.png using Guid(464a564c1396d84428d6e31355e871a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9724d71fd330d2a425a6c7c77dfe9f2e') in 0.017798 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/CardGameUIEffects/Assets/Textures/Arrows/ArrowHeadGray.png
+  artifactKey: Guid(ec12f142743f4ec40b97e036c34e1f05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CardGameUIEffects/Assets/Textures/Arrows/ArrowHeadGray.png using Guid(ec12f142743f4ec40b97e036c34e1f05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e6458705609f37f6f3d9bc5de0e53f2') in 0.022502 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/CreatureCards/creature_bg/66.png
+  artifactKey: Guid(face993a85872d0469649a61adecffd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/66.png using Guid(face993a85872d0469649a61adecffd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '148f09d12542f9532592fb9d8d31907f') in 0.230547 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/CreatureCards/creature_transparent/75.png
+  artifactKey: Guid(6439a4642f66f3a44857cdda0904105f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/75.png using Guid(6439a4642f66f3a44857cdda0904105f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27620281612ed72b442292cc36dbef83') in 0.170766 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/CreatureCards/creature_bg/79.png
+  artifactKey: Guid(997c008f7cab6d84180ce8349a9df198) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/79.png using Guid(997c008f7cab6d84180ce8349a9df198) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '425b8267a4550c2e1afdb2aec38fa996') in 0.216485 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/CreatureCards/creature_transparent/68.png
+  artifactKey: Guid(f2f258ae315098d4083001cc843a8d09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/68.png using Guid(f2f258ae315098d4083001cc843a8d09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfcffcf14d4a866ff06581bb638a9998') in 0.177195 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/CreatureCards/creature_transparent/84.png
+  artifactKey: Guid(8b860554c968f4b4f9fdff85c7929d38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/84.png using Guid(8b860554c968f4b4f9fdff85c7929d38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05bb89c35e4a3447b758f4f478b327f8') in 0.167849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/CreatureCards/creature_transparent/91.png
+  artifactKey: Guid(ec53d4db97ae7544ca25a58eae6df428) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/91.png using Guid(ec53d4db97ae7544ca25a58eae6df428) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c54a864d19330a88fb17c0622cd01ffa') in 0.178085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/CreatureCards/creature_transparent/77.png
+  artifactKey: Guid(ebbcac318e8ba1b40b2a1676778bac24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/77.png using Guid(ebbcac318e8ba1b40b2a1676778bac24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62482b4a9a0c8201c5e42cba4a5a8bc9') in 0.191830 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/CreatureCards/creature_transparent/69.png
+  artifactKey: Guid(39a72a9cd0c9c2e4a9de829bb74934fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/69.png using Guid(39a72a9cd0c9c2e4a9de829bb74934fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '169bfd50820680bfdec753a2dda0b4a1') in 0.191315 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/CreatureCards/creature_transparent/95.png
+  artifactKey: Guid(0523c699572d0df4c9d296fc2a8e2b3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/95.png using Guid(0523c699572d0df4c9d296fc2a8e2b3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edefd71c42a587ff7451c77b805d0cca') in 0.165148 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/CreatureCards/creature_bg/86.png
+  artifactKey: Guid(9790189e47a88f24696c3fccd1b860a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/86.png using Guid(9790189e47a88f24696c3fccd1b860a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45ab092df97e4579b6db6fbdcdde7af2') in 0.226847 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/CreatureCards/creature_bg/96.png
+  artifactKey: Guid(eb015ac41c9ea87469a29f307c41e254) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/96.png using Guid(eb015ac41c9ea87469a29f307c41e254) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfe1b8c7103255388557c2f98e0aa4d0') in 0.296256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/CreatureCards/creature_bg/75.png
+  artifactKey: Guid(0d38797631f798b48b9c9c19c7fe9367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/75.png using Guid(0d38797631f798b48b9c9c19c7fe9367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '673e29876656cc2c70dc48f68487bf1d') in 0.231081 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/CreatureCards/creature_bg/84.png
+  artifactKey: Guid(80cb8ec4b7cad474b9003f3933a24f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_bg/84.png using Guid(80cb8ec4b7cad474b9003f3933a24f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9a13f189905e188ad737cc7c19174d2') in 0.236862 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/CreatureCards/creature_transparent/85.png
+  artifactKey: Guid(cf200fb6265512048871680cefba2aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/85.png using Guid(cf200fb6265512048871680cefba2aac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d96dc8f49536906d5a82e8098e51cc7') in 0.238775 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/CreatureCards/creature_transparent/79.png
+  artifactKey: Guid(db7b4323166368f468323074cd835d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/79.png using Guid(db7b4323166368f468323074cd835d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4068ea0911f72cc87db427495e733ad') in 0.151834 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/CreatureCards/creature_transparent/88.png
+  artifactKey: Guid(e1e123d0fc09a374d887b2993753fe76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/88.png using Guid(e1e123d0fc09a374d887b2993753fe76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6ea090a5f37ece87efd19b04bdd5dd6') in 0.174981 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/CreatureCards/creature_transparent/98.png
+  artifactKey: Guid(d57dbcb51da6cb0468f5e39d67623b31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CreatureCards/creature_transparent/98.png using Guid(d57dbcb51da6cb0468f5e39d67623b31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f356891df233a77c568beb7d5733b58') in 0.185969 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

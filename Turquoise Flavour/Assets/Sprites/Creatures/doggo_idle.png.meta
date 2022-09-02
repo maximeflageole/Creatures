@@ -224,7 +224,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 8192
@@ -236,7 +236,19 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -244,10 +256,10 @@ TextureImporter:
       name: doggo_idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4080
-        width: 550
-        height: 680
+        x: 88
+        y: 4176
+        width: 380
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,10 +277,10 @@ TextureImporter:
       name: doggo_idle_1
       rect:
         serializedVersion: 2
-        x: 550
-        y: 4080
-        width: 550
-        height: 680
+        x: 638
+        y: 4176
+        width: 380
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,10 +298,10 @@ TextureImporter:
       name: doggo_idle_2
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 4080
-        width: 550
-        height: 680
+        x: 1188
+        y: 4176
+        width: 380
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,10 +319,10 @@ TextureImporter:
       name: doggo_idle_3
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 4080
-        width: 550
-        height: 680
+        x: 1738
+        y: 4176
+        width: 381
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +340,10 @@ TextureImporter:
       name: doggo_idle_4
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 4080
-        width: 550
-        height: 680
+        x: 2288
+        y: 4175
+        width: 381
+        height: 489
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +361,10 @@ TextureImporter:
       name: doggo_idle_5
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 4080
-        width: 550
-        height: 680
+        x: 2839
+        y: 4176
+        width: 380
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,10 +382,10 @@ TextureImporter:
       name: doggo_idle_6
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 4080
-        width: 550
-        height: 680
+        x: 3388
+        y: 4176
+        width: 380
+        height: 487
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +403,10 @@ TextureImporter:
       name: doggo_idle_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3400
-        width: 550
-        height: 680
+        x: 88
+        y: 3496
+        width: 380
+        height: 486
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,10 +424,10 @@ TextureImporter:
       name: doggo_idle_8
       rect:
         serializedVersion: 2
-        x: 550
-        y: 3400
-        width: 550
-        height: 680
+        x: 638
+        y: 3496
+        width: 380
+        height: 486
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,10 +445,10 @@ TextureImporter:
       name: doggo_idle_9
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 3400
-        width: 550
-        height: 680
+        x: 1188
+        y: 3495
+        width: 380
+        height: 486
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -454,10 +466,10 @@ TextureImporter:
       name: doggo_idle_10
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 3400
-        width: 550
-        height: 680
+        x: 1737
+        y: 3496
+        width: 381
+        height: 484
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -475,10 +487,10 @@ TextureImporter:
       name: doggo_idle_11
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 3400
-        width: 550
-        height: 680
+        x: 2287
+        y: 3496
+        width: 380
+        height: 483
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -496,10 +508,10 @@ TextureImporter:
       name: doggo_idle_12
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 3400
-        width: 550
-        height: 680
+        x: 2837
+        y: 3496
+        width: 380
+        height: 482
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -517,10 +529,10 @@ TextureImporter:
       name: doggo_idle_13
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 3400
-        width: 550
-        height: 680
+        x: 3386
+        y: 3496
+        width: 380
+        height: 481
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -538,10 +550,10 @@ TextureImporter:
       name: doggo_idle_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2720
-        width: 550
-        height: 680
+        x: 86
+        y: 2816
+        width: 380
+        height: 480
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -559,10 +571,10 @@ TextureImporter:
       name: doggo_idle_15
       rect:
         serializedVersion: 2
-        x: 550
-        y: 2720
-        width: 550
-        height: 680
+        x: 636
+        y: 2816
+        width: 379
+        height: 479
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -580,10 +592,10 @@ TextureImporter:
       name: doggo_idle_16
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 2720
-        width: 550
-        height: 680
+        x: 1186
+        y: 2816
+        width: 379
+        height: 478
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,10 +613,10 @@ TextureImporter:
       name: doggo_idle_17
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 2720
-        width: 550
-        height: 680
+        x: 1736
+        y: 2816
+        width: 378
+        height: 477
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,10 +634,10 @@ TextureImporter:
       name: doggo_idle_18
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 2720
-        width: 550
-        height: 680
+        x: 2285
+        y: 2816
+        width: 379
+        height: 477
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -643,10 +655,10 @@ TextureImporter:
       name: doggo_idle_19
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 2720
-        width: 550
-        height: 680
+        x: 2835
+        y: 2816
+        width: 379
+        height: 476
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -664,10 +676,10 @@ TextureImporter:
       name: doggo_idle_20
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 2720
-        width: 550
-        height: 680
+        x: 3385
+        y: 2816
+        width: 379
+        height: 476
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -685,10 +697,10 @@ TextureImporter:
       name: doggo_idle_21
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2040
-        width: 550
-        height: 680
+        x: 85
+        y: 2136
+        width: 378
+        height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -706,10 +718,10 @@ TextureImporter:
       name: doggo_idle_22
       rect:
         serializedVersion: 2
-        x: 550
-        y: 2040
-        width: 550
-        height: 680
+        x: 635
+        y: 2136
+        width: 378
+        height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -727,10 +739,10 @@ TextureImporter:
       name: doggo_idle_23
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 2040
-        width: 550
-        height: 680
+        x: 1185
+        y: 2136
+        width: 378
+        height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -748,10 +760,10 @@ TextureImporter:
       name: doggo_idle_24
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 2040
-        width: 550
-        height: 680
+        x: 1735
+        y: 2136
+        width: 378
+        height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -769,10 +781,10 @@ TextureImporter:
       name: doggo_idle_25
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 2040
-        width: 550
-        height: 680
+        x: 2285
+        y: 2136
+        width: 378
+        height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -790,10 +802,10 @@ TextureImporter:
       name: doggo_idle_26
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 2040
-        width: 550
-        height: 680
+        x: 2835
+        y: 2136
+        width: 379
+        height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -811,10 +823,10 @@ TextureImporter:
       name: doggo_idle_27
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 2040
-        width: 550
-        height: 680
+        x: 3385
+        y: 2136
+        width: 379
+        height: 476
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -832,10 +844,10 @@ TextureImporter:
       name: doggo_idle_28
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1360
-        width: 550
-        height: 680
+        x: 85
+        y: 1456
+        width: 379
+        height: 476
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -853,10 +865,10 @@ TextureImporter:
       name: doggo_idle_29
       rect:
         serializedVersion: 2
-        x: 550
-        y: 1360
-        width: 550
-        height: 680
+        x: 635
+        y: 1456
+        width: 379
+        height: 476
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -874,10 +886,10 @@ TextureImporter:
       name: doggo_idle_30
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 1360
-        width: 550
-        height: 680
+        x: 1185
+        y: 1456
+        width: 379
+        height: 477
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -895,10 +907,10 @@ TextureImporter:
       name: doggo_idle_31
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 1360
-        width: 550
-        height: 680
+        x: 1735
+        y: 1456
+        width: 380
+        height: 478
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -916,10 +928,10 @@ TextureImporter:
       name: doggo_idle_32
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 1360
-        width: 550
-        height: 680
+        x: 2285
+        y: 1456
+        width: 380
+        height: 478
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -937,10 +949,10 @@ TextureImporter:
       name: doggo_idle_33
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 1360
-        width: 550
-        height: 680
+        x: 2836
+        y: 1456
+        width: 379
+        height: 479
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -958,10 +970,10 @@ TextureImporter:
       name: doggo_idle_34
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 1360
-        width: 550
-        height: 680
+        x: 3386
+        y: 1456
+        width: 380
+        height: 480
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -979,10 +991,10 @@ TextureImporter:
       name: doggo_idle_35
       rect:
         serializedVersion: 2
-        x: 0
-        y: 680
-        width: 550
-        height: 680
+        x: 86
+        y: 776
+        width: 380
+        height: 481
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1000,10 +1012,10 @@ TextureImporter:
       name: doggo_idle_36
       rect:
         serializedVersion: 2
-        x: 550
-        y: 680
-        width: 550
-        height: 680
+        x: 637
+        y: 776
+        width: 380
+        height: 482
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1021,10 +1033,10 @@ TextureImporter:
       name: doggo_idle_37
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 680
-        width: 550
-        height: 680
+        x: 1187
+        y: 776
+        width: 380
+        height: 482
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1042,10 +1054,10 @@ TextureImporter:
       name: doggo_idle_38
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 680
-        width: 550
-        height: 680
+        x: 1738
+        y: 776
+        width: 379
+        height: 483
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1063,10 +1075,10 @@ TextureImporter:
       name: doggo_idle_39
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 680
-        width: 550
-        height: 680
+        x: 2287
+        y: 776
+        width: 381
+        height: 484
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1084,10 +1096,10 @@ TextureImporter:
       name: doggo_idle_40
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 680
-        width: 550
-        height: 680
+        x: 2838
+        y: 776
+        width: 380
+        height: 485
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1105,10 +1117,10 @@ TextureImporter:
       name: doggo_idle_41
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 680
-        width: 550
-        height: 680
+        x: 3388
+        y: 776
+        width: 380
+        height: 486
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1126,10 +1138,10 @@ TextureImporter:
       name: doggo_idle_42
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 550
-        height: 680
+        x: 88
+        y: 96
+        width: 380
+        height: 486
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1147,10 +1159,10 @@ TextureImporter:
       name: doggo_idle_43
       rect:
         serializedVersion: 2
-        x: 550
-        y: 0
-        width: 550
-        height: 680
+        x: 639
+        y: 96
+        width: 379
+        height: 487
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1168,10 +1180,10 @@ TextureImporter:
       name: doggo_idle_44
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 0
-        width: 550
-        height: 680
+        x: 1189
+        y: 96
+        width: 379
+        height: 487
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1189,10 +1201,10 @@ TextureImporter:
       name: doggo_idle_45
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 0
-        width: 550
-        height: 680
+        x: 1739
+        y: 96
+        width: 379
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1210,10 +1222,10 @@ TextureImporter:
       name: doggo_idle_46
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 0
-        width: 550
-        height: 680
+        x: 2289
+        y: 96
+        width: 379
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1231,10 +1243,10 @@ TextureImporter:
       name: doggo_idle_47
       rect:
         serializedVersion: 2
-        x: 2750
-        y: 0
-        width: 550
-        height: 680
+        x: 2839
+        y: 96
+        width: 379
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1252,10 +1264,10 @@ TextureImporter:
       name: doggo_idle_48
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 0
-        width: 550
-        height: 680
+        x: 3388
+        y: 96
+        width: 380
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

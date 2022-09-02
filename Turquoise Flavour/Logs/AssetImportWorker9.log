@@ -1,0 +1,395 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.7f1 (240f4c1f462c) revision 2363212'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'en' Physical Memory: 16322 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.1.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker9
+-projectPath
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+-logFile
+Logs/AssetImportWorker9.log
+-srvPort
+58203
+Successfully changed project path to: C:/Users/minig/Documents/Projects/Turquoise Flavour
+C:/Users/minig/Documents/Projects/Turquoise Flavour
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 69.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.7f1 (240f4c1f462c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/minig/Documents/Projects/Turquoise Flavour/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f02)
+    Vendor:   NVIDIA
+    VRAM:     8031 MB
+    Driver:   30.0.15.1215
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56864
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.008014 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 62.62 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.590 seconds
+Domain Reload Profiling:
+	ReloadAssembly (590ms)
+		BeginReloadAssembly (86ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (402ms)
+			LoadAssemblies (84ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (96ms)
+				TypeCache.Initialize (96ms)
+					TypeCache.ScanAssembly (95ms)
+				ResolveRequiredComponents (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (232ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (63ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (114ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.006345 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 63.14 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.387 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1388ms)
+		BeginReloadAssembly (108ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (1182ms)
+			LoadAssemblies (261ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (213ms)
+				TypeCache.Initialize (202ms)
+					TypeCache.ScanAssembly (198ms)
+				ResolveRequiredComponents (11ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (593ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (63ms)
+				BeforeProcessingInitializeOnLoad (97ms)
+				ProcessInitializeOnLoadAttributes (256ms)
+				ProcessInitializeOnLoadMethodAttributes (159ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 1.01 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4223 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 58 unused Assets / (323.4 KB). Loaded Objects now: 4800.
+Memory consumption went from 0.73 GB to 0.73 GB.
+Total: 5.514600 ms (FindLiveObjects: 0.327200 ms CreateObjectMapping: 0.264100 ms MarkObjects: 4.849200 ms  DeleteObjects: 0.073300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 866451.131520 seconds.
+  path: Packages/com.unity.purchasing/Icons/UnityEngine.Purchasing.IAPButtonIcon.png
+  artifactKey: Guid(55e457740fe60405dac77af143e1a867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.purchasing/Icons/UnityEngine.Purchasing.IAPButtonIcon.png using Guid(55e457740fe60405dac77af143e1a867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c51c8ad4b62b838a1d20016ba73ba665') in 0.060697 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.148192 seconds.
+  path: Assets/Gizmos/PlayMakerGlobals Icon.tiff
+  artifactKey: Guid(846171814b98d1d48afa7805037eb0bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/PlayMakerGlobals Icon.tiff using Guid(846171814b98d1d48afa7805037eb0bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28ea02393d42ea6fd8f2b8000a1732e3') in 0.013585 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Gizmos/PlaymakerIcon.tiff
+  artifactKey: Guid(dd021173169ae0c45840a63894bc27c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/PlaymakerIcon.tiff using Guid(dd021173169ae0c45840a63894bc27c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1617321d37cc2da7080a7f6a8222153') in 0.020255 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.388574 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMWhiteNoise.png
+  artifactKey: Guid(f3b13b1ebf6e39d4ca1ce4ac83706896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMWhiteNoise.png using Guid(f3b13b1ebf6e39d4ca1ce4ac83706896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20ff0f4a569a0249faf9063d880a5219') in 0.013571 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002397 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleSpiral1NM.png
+  artifactKey: Guid(72c72b2c72465e04ab1e30491d0bf708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleSpiral1NM.png using Guid(72c72b2c72465e04ab1e30491d0bf708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaf9f6e7941a2e83b98b4b46ed081d23') in 0.036409 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleSquare1NM.png
+  artifactKey: Guid(ae5458ffd8cecaa4da3b1e90ef61cb88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleSquare1NM.png using Guid(ae5458ffd8cecaa4da3b1e90ef61cb88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '932448bcf0918f2814208b1fd248d58a') in 0.015811 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleRosace1NM.png
+  artifactKey: Guid(3389a4d784f51b246b280b493aebe105) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleRosace1NM.png using Guid(3389a4d784f51b246b280b493aebe105) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0da015a4a5c540833394ebee9c11ac7') in 0.015489 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleCircle3NM.png
+  artifactKey: Guid(9f32f9f1779317340b6f9788fb5f5c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleCircle3NM.png using Guid(9f32f9f1779317340b6f9788fb5f5c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '025820571afc4b2ab06b367a91547f8f') in 0.014365 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleBubble1NM.png
+  artifactKey: Guid(06c3a06ad80bcb147b2c74ed37ff2333) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleBubble1NM.png using Guid(06c3a06ad80bcb147b2c74ed37ff2333) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3ed165d5180ca07c707d843fd8b48c0') in 0.015619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleSaw1NM.png
+  artifactKey: Guid(c42d019b36d0e95449e2114a78af0458) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRipple/MMRippleSaw1NM.png using Guid(c42d019b36d0e95449e2114a78af0458) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '437173a0086c14d2b8d1e5ff68c42f7b') in 0.014369 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.335606 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRamps/MMRamp3.png
+  artifactKey: Guid(05cb76770cb65124ebc19520574e2a60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRamps/MMRamp3.png using Guid(05cb76770cb65124ebc19520574e2a60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66c02cf15123a7c4f226d7de45c90169') in 0.012654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRamps/MMRamp6.png
+  artifactKey: Guid(63dabf038bafcdd4c9fd22dcdf057dd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRamps/MMRamp6.png using Guid(63dabf038bafcdd4c9fd22dcdf057dd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '999f6f6dbf675ddc49d9334f67f02ab4') in 0.012660 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMRamps/MMRamp7.png
+  artifactKey: Guid(5f57c110c89ccd542abda3719c5818ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMRamps/MMRamp7.png using Guid(5f57c110c89ccd542abda3719c5818ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ce6141289221b87ccea8f0e36aa441e') in 0.012986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_YellowSquares.png
+  artifactKey: Guid(9fb2f7aca634c294ab8ca0d06ee4d78a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_YellowSquares.png using Guid(9fb2f7aca634c294ab8ca0d06ee4d78a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b2818fd124b0a53f27647325b9dafc1') in 0.014249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_LightGreyFrame.png
+  artifactKey: Guid(a6bacc483b5f80645a74c1382418b149) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_LightGreyFrame.png using Guid(a6bacc483b5f80645a74c1382418b149) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d0597c80bc77b9397a97c66f289ba8c') in 0.013783 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_RedFrame.png
+  artifactKey: Guid(e9ef29555e27c764193e85d5ac4cf4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_RedFrame.png using Guid(e9ef29555e27c764193e85d5ac4cf4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bf8799d5cf82bd100957dabac4e0041') in 0.014545 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_RedDots.png
+  artifactKey: Guid(caa99440fded2af41b1d0c99fea51b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_RedDots.png using Guid(caa99440fded2af41b1d0c99fea51b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05d5a43d30273c93e95bdc6f7bb255a4') in 0.012901 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenDots.png
+  artifactKey: Guid(72c581fb2cdf1344f9da353c3f78ccd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenDots.png using Guid(72c581fb2cdf1344f9da353c3f78ccd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '972d6a4bef1f7db7414a19cbfaa02d5d') in 0.013246 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenCrosses.png
+  artifactKey: Guid(a6f79153eaeaf214e9259d50f28e637f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenCrosses.png using Guid(a6f79153eaeaf214e9259d50f28e637f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d0cf56364a624aeb237358b246e3414') in 0.012497 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenFrame.png
+  artifactKey: Guid(563d63a1a6da33c43a2b5c5a9e398c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_GreenFrame.png using Guid(563d63a1a6da33c43a2b5c5a9e398c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10928ab8110695c4ea860934541987fd') in 0.012556 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_YellowDots.png
+  artifactKey: Guid(149489106c60322478987726a9b71cc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_YellowDots.png using Guid(149489106c60322478987726a9b71cc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce254ad984fda74b756c38c8533f7bb0') in 0.011575 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_DarkGreyFrame.png
+  artifactKey: Guid(87cd835267fdf4e47b4c5974e3a3b4fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_DarkGreyFrame.png using Guid(87cd835267fdf4e47b4c5974e3a3b4fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17081cd821742d0dba6bdcb6d78c760b') in 0.012642 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_RedSquares.png
+  artifactKey: Guid(0bdb020a90b5f5247ab5695053e84e11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_RedSquares.png using Guid(0bdb020a90b5f5247ab5695053e84e11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e30d6217edeb75c4067bef030a67d106') in 0.011867 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_DarkGreyDots.png
+  artifactKey: Guid(8274e1a60f17f4e4890fc0814db5e357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_DarkGreyDots.png using Guid(8274e1a60f17f4e4890fc0814db5e357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '732fdb03e6e52c9235aa7d827be5c9d3') in 0.012597 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_LightGreySquares.png
+  artifactKey: Guid(9cf882a8a1f69ff43b2216f75cddd54d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_LightGreySquares.png using Guid(9cf882a8a1f69ff43b2216f75cddd54d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dffd7847cfdf364e84a8607bc3671837') in 0.013539 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.921987 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMPlastic/MMPlasticAO.png
+  artifactKey: Guid(6380989b56d512c498442aa08d0dfe03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMPlastic/MMPlasticAO.png using Guid(6380989b56d512c498442aa08d0dfe03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '040eef4a421ac0a1535dd5c73db1ae7e') in 0.019343 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesLight.png
+  artifactKey: Guid(d231e18e55f422349931d83925fdece0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesLight.png using Guid(d231e18e55f422349931d83925fdece0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf44d295866098bbb801b8410b1c37bb') in 0.011800 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesSmoke.png
+  artifactKey: Guid(c3e892db83f1adb49a1c18b15f231589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesSmoke.png using Guid(c3e892db83f1adb49a1c18b15f231589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac8c27943245cb966f5374c592a063b2') in 0.012649 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesStar.png
+  artifactKey: Guid(00f22d9f2016ae748a57e4777184eba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesStar.png using Guid(00f22d9f2016ae748a57e4777184eba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6eb1478fd0d3af5b9869df672d47830b') in 0.011676 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_BlueCrosses.png
+  artifactKey: Guid(3940f67cfdf57d642894f21532af98e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMPrototypeTextures/Textures/MMProtoTextures/MMProtoTextures_BlueCrosses.png using Guid(3940f67cfdf57d642894f21532af98e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70d1cc7e98571674959b0e231a26450b') in 0.014462 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesStorm.png
+  artifactKey: Guid(0c56439a20097e54b9fc9cbdca6968e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesStorm.png using Guid(0c56439a20097e54b9fc9cbdca6968e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f21ff0f8c4828dfa798d3b000c80a714') in 0.015589 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.136615 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesGamma.png
+  artifactKey: Guid(6f35f0fe92adb174e8a5fbf7b40eeea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesGamma.png using Guid(6f35f0fe92adb174e8a5fbf7b40eeea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9533b32f8ec3bd23850b48fee86e624d') in 0.014153 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesJab.png
+  artifactKey: Guid(6756ce1110b2ba24e9f356c415a5a73d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesJab.png using Guid(6756ce1110b2ba24e9f356c415a5a73d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6dc9e042370308998bfbbf39190e6f5') in 0.013877 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005627 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesBolt.png
+  artifactKey: Guid(4b2f59655d77fdd40bca0d6809adad81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMParticles/MMParticlesBolt.png using Guid(4b2f59655d77fdd40bca0d6809adad81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14182e9858043dfffa89b9cae2753467') in 0.015930 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.448568 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMFlowNoise.png
+  artifactKey: Guid(5c2ab7cb954a3974c8a19f8c9c6f6fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMFlowNoise.png using Guid(5c2ab7cb954a3974c8a19f8c9c6f6fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9c454e383a7fbbc17032674a28fe7b1') in 0.013677 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.024301 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMCellNoise.png
+  artifactKey: Guid(6415e4b059f8ca249ad6c1c205f2330e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMNoise/MMCellNoise.png using Guid(6415e4b059f8ca249ad6c1c205f2330e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b745049a2b9790a29ebb67525a5678ed') in 0.016989 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.870859 seconds.
+  path: Assets/Feel/MMTools/Tools/MMVFX/MMBrushes/MMBrush1.png
+  artifactKey: Guid(bee69e9222e12344bb5a210ca5e5b2c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Feel/MMTools/Tools/MMVFX/MMBrushes/MMBrush1.png using Guid(bee69e9222e12344bb5a210ca5e5b2c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a96b66cef0eb1f7339529d400353cb7') in 0.022376 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
