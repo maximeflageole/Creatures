@@ -15,7 +15,7 @@ C:/Users/minig/Documents/Projects/Turquoise Flavour
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58203
+56236
 Successfully changed project path to: C:/Users/minig/Documents/Projects/Turquoise Flavour
 C:/Users/minig/Documents/Projects/Turquoise Flavour
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ C:/Users/minig/Documents/Projects/Turquoise Flavour
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 74.04 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 84.78 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.1.7f1 (240f4c1f462c)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Resources/UnitySubsystems
@@ -64,83 +64,83 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56892
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56176
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006692 seconds.
+Registered in 0.005820 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 64.87 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 78.51 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.626 seconds
+- Completed reload, in  0.631 seconds
 Domain Reload Profiling:
-	ReloadAssembly (627ms)
-		BeginReloadAssembly (83ms)
+	ReloadAssembly (632ms)
+		BeginReloadAssembly (77ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (435ms)
-			LoadAssemblies (81ms)
+		EndReloadAssembly (455ms)
+			LoadAssemblies (74ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (106ms)
-				TypeCache.Initialize (105ms)
-					TypeCache.ScanAssembly (104ms)
+			SetupTypeCache (109ms)
+				TypeCache.Initialize (109ms)
+					TypeCache.ScanAssembly (108ms)
 				ResolveRequiredComponents (0ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (250ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (263ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (7ms)
-				RefreshPlugins (65ms)
-				BeforeProcessingInitializeOnLoad (1ms)
+				RefreshPlugins (79ms)
+				BeforeProcessingInitializeOnLoad (2ms)
 				ProcessInitializeOnLoadAttributes (127ms)
-				ProcessInitializeOnLoadMethodAttributes (42ms)
+				ProcessInitializeOnLoadMethodAttributes (41ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004782 seconds.
+Registered in 0.006643 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 64.01 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 77.96 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Completed reload, in  1.284 seconds
+- Completed reload, in  1.387 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1285ms)
-		BeginReloadAssembly (107ms)
+	ReloadAssembly (1388ms)
+		BeginReloadAssembly (108ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (1074ms)
-			LoadAssemblies (77ms)
+		EndReloadAssembly (1174ms)
+			LoadAssemblies (93ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (220ms)
-				TypeCache.Initialize (209ms)
-					TypeCache.ScanAssembly (205ms)
-				ResolveRequiredComponents (11ms)
+			SetupTypeCache (284ms)
+				TypeCache.Initialize (266ms)
+					TypeCache.ScanAssembly (261ms)
+				ResolveRequiredComponents (18ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (77ms)
-			SetupLoadedEditorAssemblies (645ms)
+			RebuildScriptCaches (78ms)
+			SetupLoadedEditorAssemblies (660ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (7ms)
-				RefreshPlugins (64ms)
-				BeforeProcessingInitializeOnLoad (100ms)
-				ProcessInitializeOnLoadAttributes (303ms)
-				ProcessInitializeOnLoadMethodAttributes (159ms)
+				SetLoadedEditorAssemblies (8ms)
+				RefreshPlugins (78ms)
+				BeforeProcessingInitializeOnLoad (111ms)
+				ProcessInitializeOnLoadAttributes (282ms)
+				ProcessInitializeOnLoadMethodAttributes (170ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -149,13 +149,13 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'MoreMountains/MMRipple': fallback shader 'Particle/AlphaBlended' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 2.39 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.96 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4208 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 58 unused Assets / (323.4 KB). Loaded Objects now: 4766.
-Memory consumption went from 0.71 GB to 0.71 GB.
-Total: 10.141600 ms (FindLiveObjects: 0.807300 ms CreateObjectMapping: 0.724200 ms MarkObjects: 8.417200 ms  DeleteObjects: 0.191400 ms)
+Unloading 4983 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 66 unused Assets / (0.6 MB). Loaded Objects now: 5553.
+Memory consumption went from 0.87 GB to 0.87 GB.
+Total: 6.014400 ms (FindLiveObjects: 0.422500 ms CreateObjectMapping: 0.397300 ms MarkObjects: 4.934500 ms  DeleteObjects: 0.259200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -169,209 +169,19 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 863837.603947 seconds.
-  path: Assets/Feel/MMTools/Tools/MMSceneLoading/Sprites/LoadingProgressBar.png
-  artifactKey: Guid(553f615332baa0d4a842d5600f824551) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Feel/MMTools/Tools/MMSceneLoading/Sprites/LoadingProgressBar.png using Guid(553f615332baa0d4a842d5600f824551) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0113b539ede34195c148387bba65b95c') in 0.235896 seconds 
+  Time since last request: 7869.672255 seconds.
+  path: Assets/Sprites/Creatures/doggo_idle.png
+  artifactKey: Guid(64e4d5425dc01bf48ac0deeab049d1a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Creatures/doggo_idle.png using Guid(64e4d5425dc01bf48ac0deeab049d1a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2f84d7a79be7bbf5392c68f9ff9cb99') in 0.866192 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000073 seconds.
-  path: Assets/Feel/MMTools/Tools/MMVFX/MMPalette/MMLowPolyPalette.png
-  artifactKey: Guid(0f7538ff15051d14c9a387d4773180bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Feel/MMTools/Tools/MMVFX/MMPalette/MMLowPolyPalette.png using Guid(0f7538ff15051d14c9a387d4773180bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43fe038d8053009143d4a6087ba1ef3f') in 0.052523 seconds 
+  Time since last request: 67.514204 seconds.
+  path: Assets/Scenes/DraftScene.unity
+  artifactKey: Guid(d3badc692348d3546969db2c0172f2b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/DraftScene.unity using Guid(d3badc692348d3546969db2c0172f2b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aee6571d03b0794854982c13c323f9d') in 0.004928 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000044 seconds.
-  path: Assets/Feel/MMTools/Tools/MMGUI/Sprites/MMFaderRoundMask.png
-  artifactKey: Guid(47332880f10dee4429534303790a8399) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Feel/MMTools/Tools/MMGUI/Sprites/MMFaderRoundMask.png using Guid(47332880f10dee4429534303790a8399) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c3fb131f256d00b3dbd56512d207d8b') in 0.065060 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000051 seconds.
-  path: Assets/Feel/MMTools/Tools/MMSceneLoading/Sprites/MoreMountainsLogo.png
-  artifactKey: Guid(a5240da7fff0bf34da21c7edff42b1d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Feel/MMTools/Tools/MMSceneLoading/Sprites/MoreMountainsLogo.png using Guid(a5240da7fff0bf34da21c7edff42b1d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b31ca3208414f79f410e3f21da86300') in 0.033493 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Feel/MMFeedbacks/Editor/Sequencing/Resources/SequencerButtonBackground.png
-  artifactKey: Guid(e802b29e86b4ef74abe728250ecaf37c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Feel/MMFeedbacks/Editor/Sequencing/Resources/SequencerButtonBackground.png using Guid(e802b29e86b4ef74abe728250ecaf37c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bdf0c77652e46ed2fd5234b5052cf06') in 0.018456 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.238145 seconds.
-  path: Assets/2D_Background_SunshineForest/2D_Horizontal_battle_Enviroment_05/4096_2160/Image/layer0.png
-  artifactKey: Guid(eb569dd5e2da3484da0bb59ab35a8160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/2D_Background_SunshineForest/2D_Horizontal_battle_Enviroment_05/4096_2160/Image/layer0.png using Guid(eb569dd5e2da3484da0bb59ab35a8160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '828a3668f2c87b63a6035d68dd6f425f') in 0.263448 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/2D_Background_SunshineForest/2D_Horizontal_battle_Enviroment_05/4096_2160/Image/layer2.png
-  artifactKey: Guid(9f298a71d05d23546abbf4e952ce8199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/2D_Background_SunshineForest/2D_Horizontal_battle_Enviroment_05/4096_2160/Image/layer2.png using Guid(9f298a71d05d23546abbf4e952ce8199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f9c82842aaadf4cc9f22433f1490872') in 0.155844 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/2D_Background_SunshineForest/2D_Horizontal_battle_Enviroment_05/2436_1125/Image/layer0.png
-  artifactKey: Guid(34205f7a8ffff12418d171f633aa2311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/2D_Background_SunshineForest/2D_Horizontal_battle_Enviroment_05/2436_1125/Image/layer0.png using Guid(34205f7a8ffff12418d171f633aa2311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aed4927d664b8e8d23946dedbbc7b176') in 0.073714 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.010523 seconds.
-  path: Assets/Sprites/UI/FrostOwl_ability_ui.png
-  artifactKey: Guid(ae9a2637318776a42943b336b975e02b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/UI/FrostOwl_ability_ui.png using Guid(ae9a2637318776a42943b336b975e02b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c33f26a14097e5801ba02ad2036d31f') in 0.019524 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.101837 seconds.
-  path: Assets/CreatureCards/creature_bg/46.png
-  artifactKey: Guid(4924b3406eebe4041951b94152f6a156) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/46.png using Guid(4924b3406eebe4041951b94152f6a156) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a8b259655c93c0dd9cc5cc5f4f9a0d2') in 0.285517 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/CreatureCards/creature_bg/51.png
-  artifactKey: Guid(b8ade7a2f53ba854d9e738dadae5d3ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/51.png using Guid(b8ade7a2f53ba854d9e738dadae5d3ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaf2d81b5d959ab54aa04b182a7df35e') in 0.227578 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/CreatureCards/creature_bg/67.png
-  artifactKey: Guid(ec3b48894c1ff4c498da3449484713ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/67.png using Guid(ec3b48894c1ff4c498da3449484713ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc72d0d78c139a99697d39e32cdeb06f') in 0.242988 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/CreatureCards/creature_bg/70.png
-  artifactKey: Guid(1860e5151a977b445b05e45f9c5339ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/70.png using Guid(1860e5151a977b445b05e45f9c5339ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd638aa9c6492fe6253f984d85fda2b1a') in 0.283174 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/CreatureCards/creature_bg/72.png
-  artifactKey: Guid(9ccbcd30ad92c16469e898d6c924a950) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/72.png using Guid(9ccbcd30ad92c16469e898d6c924a950) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f22189fd8bdb6998359368f4171f48ef') in 0.247488 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/CreatureCards/creature_bg/31.png
-  artifactKey: Guid(8297007598047c34a8367721f217549b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/31.png using Guid(8297007598047c34a8367721f217549b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fa596e190b671b051a624c37757e674') in 0.236641 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000059 seconds.
-  path: Assets/CreatureCards/creature_bg/60.png
-  artifactKey: Guid(10fc5fcf7964dd840ab18cea70e8a66f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/60.png using Guid(10fc5fcf7964dd840ab18cea70e8a66f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4a34cbd745f9e410ca508aa96f6e140') in 0.260702 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/CreatureCards/creature_bg/30.png
-  artifactKey: Guid(485d40b3a3015084993472ccfaeb1a06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/30.png using Guid(485d40b3a3015084993472ccfaeb1a06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e329e7ba7b75fb20d74448ac6ccb9b6') in 0.271258 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/CreatureCards/creature_bg/33.png
-  artifactKey: Guid(054b4d4758b7acd44a2a5f600b422e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/33.png using Guid(054b4d4758b7acd44a2a5f600b422e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85579bae90b3e1f33bf4a6018f3e593c') in 0.255868 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/CreatureCards/creature_bg/75.png
-  artifactKey: Guid(0d38797631f798b48b9c9c19c7fe9367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/75.png using Guid(0d38797631f798b48b9c9c19c7fe9367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cfcf3e5a2b7828fd6ffc94da1bdf3ab') in 0.300885 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/CreatureCards/creature_bg/78.png
-  artifactKey: Guid(c9747ce28bbdf6e4294352baa591fa39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/78.png using Guid(c9747ce28bbdf6e4294352baa591fa39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46dc35de8c7eb46a5915e6fd28bf9a3d') in 0.275760 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.093605 seconds.
-  path: Assets/CreatureCards/creature_bg/82.png
-  artifactKey: Guid(0aaa5f0ffdc82e745bb778c665751aab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CreatureCards/creature_bg/82.png using Guid(0aaa5f0ffdc82e745bb778c665751aab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa12ad6f6ecd6893e12a7ec65381e21b') in 0.273267 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 68.899877 seconds.
-  path: Assets/Fonts/CODE Bold.otf
-  artifactKey: Guid(be34fac7bc3509645ad7a3434c429ce0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/CODE Bold.otf using Guid(be34fac7bc3509645ad7a3434c429ce0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78722e15de0e1856f4f2c3ce9cb9bc95') in 0.223174 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-ExtraBold.ttf
-  artifactKey: Guid(c865972ba3c8cdb49af38c2082ac27e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-ExtraBold.ttf using Guid(c865972ba3c8cdb49af38c2082ac27e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7c6d4d92bc9fdfa7b5d02685c355946') in 0.022085 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-Light.ttf
-  artifactKey: Guid(2ec8d81cd984e0c4b9f8e7afcae102fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-Light.ttf using Guid(2ec8d81cd984e0c4b9f8e7afcae102fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '652496abb44eb44778ca5e690fd5d3ee') in 0.019009 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-SemiBoldItalic.ttf
-  artifactKey: Guid(5b835c2197dbbe54684b1474d2d3faa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-SemiBoldItalic.ttf using Guid(5b835c2197dbbe54684b1474d2d3faa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f659f39a9c7c2c676994feddf32df6b') in 0.019443 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-ExtraLight.ttf
-  artifactKey: Guid(3af274fcd2db9ed438157fe15554cb6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-ExtraLight.ttf using Guid(3af274fcd2db9ed438157fe15554cb6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd0e118522185d3e8fd97df6140a094e') in 0.030474 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-MediumItalic.ttf
-  artifactKey: Guid(b78bfcde76ee5ea44904c193ac6b979e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-MediumItalic.ttf using Guid(b78bfcde76ee5ea44904c193ac6b979e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fae02aaf0b17280e9b063879e827c1b5') in 0.026311 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-BlackItalic.ttf
-  artifactKey: Guid(d32e33dcc8a4989498aeba3fa9ac1b9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-BlackItalic.ttf using Guid(d32e33dcc8a4989498aeba3fa9ac1b9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '358e96b6daf098583d5809dda7d5b854') in 0.029927 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-Thin.ttf
-  artifactKey: Guid(e224fc17a0f1d2c42b13e0e6df261ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-Thin.ttf using Guid(e224fc17a0f1d2c42b13e0e6df261ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ac6937d87ed351ca04e2bc892576bb6') in 0.027318 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-Italic.ttf
-  artifactKey: Guid(85913e715aafb6243b5315c02212646f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-Italic.ttf using Guid(85913e715aafb6243b5315c02212646f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ae38f14fa31d129722647d10b18c831') in 0.038518 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-BoldItalic.ttf
-  artifactKey: Guid(22e3a9ed96369454b8134e47cdec0f1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-BoldItalic.ttf using Guid(22e3a9ed96369454b8134e47cdec0f1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68bdff7cecc7e05a2897433b8e774ba9') in 0.020501 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Fonts/Pixel Square 10.ttf
-  artifactKey: Guid(69e781cfd40dd9549a49b23abc06c361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Pixel Square 10.ttf using Guid(69e781cfd40dd9549a49b23abc06c361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6087de08a73aabf1fb93f3f37a47062') in 0.017610 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-Black.ttf
-  artifactKey: Guid(20972361aebfcb6409767ffde493c411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-Black.ttf using Guid(20972361aebfcb6409767ffde493c411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '054b84f56749d4c9a91cef9bd21a18ae') in 0.031758 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Fonts/Montserrat/Montserrat-Bold.ttf
-  artifactKey: Guid(96f99c9797b0a7b4593e100a2b4cf9db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Montserrat/Montserrat-Bold.ttf using Guid(96f99c9797b0a7b4593e100a2b4cf9db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62c08b8813bfd45c15b036038c6be6d0') in 0.022353 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+  Time since last request: 315.160376 seconds.
+  path: Assets/Images/Creatures
+  artifactKey: Guid(dc79320ee5291cc4cbca8f46a569fabf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/Creatures using Guid(dc79320ee5291cc4cbca8f46a569fabf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb70599947634c8892027a435bcfdac8') in 0.005019 seconds 
