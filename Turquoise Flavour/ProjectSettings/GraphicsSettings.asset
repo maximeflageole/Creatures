@@ -39,7 +39,7 @@ GraphicsSettings:
   m_PreloadShadersBatchTimeLimit: -1
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
     type: 0}
-  m_CustomRenderPipeline: {fileID: 11400000, guid: 379b05d37cbda2f4b8d4046a37dd4c63,
+  m_CustomRenderPipeline: {fileID: 11400000, guid: 18cb0a55d989b3a43978fa1eecc3cc10,
     type: 2}
   m_TransparencySortMode: 0
   m_TransparencySortAxis: {x: 0, y: 0, z: 1}
@@ -65,5 +65,5 @@ GraphicsSettings:
   m_DefaultRenderingLayerMask: 1
   m_LogWhenShaderIsCompiled: 0
   m_SRPDefaultSettings:
-    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: d47134aa3d3c28c4690954ec4ca9f5bf,
+    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: efd16728aebca5348af03ed354bd43f7,
       type: 2}
